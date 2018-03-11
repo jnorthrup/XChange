@@ -4,6 +4,7 @@ import org.apache.commons.codec.binary.Hex;
 import org.web3j.crypto.ECKeyPair;
 import org.web3j.crypto.Sign;
 import org.web3j.crypto.Sign.SignatureData;
+import org.web3j.crypto.TransactionEncoder;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -84,8 +85,8 @@ public class IdexSignature {
         try (ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream()) {
             byteArrayOutputStream.write(saltBytes);
             byteArrayOutputStream.write(rawhash);
-            bytes = byteArrayOutputStream.toByteArray();
-            salted = sha3(bytes);
+            salted =      bytes = byteArrayOutputStream.toByteArray();
+//            sha3(bytes);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -100,11 +101,13 @@ public class IdexSignature {
         ecKeyPair = ECKeyPair.create(apiSecret1);
 
 
+        SignatureData signatureData;
+         signatureData = Sign.signMessage(
+                /* message = */salted,
+                /* keyPair=  */ ecKeyPair
+        );
         return
-                Sign.signMessage(
-                        /* message = */salted,
-                        /* keyPair=  */ ecKeyPair
-                );
+                signatureData;
     }
 
 
