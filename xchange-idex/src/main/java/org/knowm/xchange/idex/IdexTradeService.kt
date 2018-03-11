@@ -8,8 +8,7 @@ import org.knowm.xchange.dto.Order.OrderType.*
 import org.knowm.xchange.dto.marketdata.*
 import org.knowm.xchange.dto.trade.*
 import org.knowm.xchange.exceptions.*
-import org.knowm.xchange.idex.IdexMarketDataService.Companion.debugMe
-import org.knowm.xchange.idex.IdexSignature.*
+import org.knowm.xchange.idex.IdexSignature.generateSignature
 import org.knowm.xchange.idex.dto.*
 import org.knowm.xchange.idex.service.*
 import org.knowm.xchange.idex.util.*
@@ -17,9 +16,6 @@ import org.knowm.xchange.service.trade.*
 import org.knowm.xchange.service.trade.params.*
 import org.knowm.xchange.service.trade.params.orders.*
 import org.knowm.xchange.utils.*
-import org.web3j.crypto.*
-import org.web3j.crypto.Hash.*
-import org.web3j.crypto.Sign.*
 import java.math.*
 import java.math.BigDecimal.*
 import java.util.*
