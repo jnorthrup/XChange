@@ -1,4 +1,1234 @@
 swagger: 2.0
 schemes:
   -  https
-basePath:
+  -  http
+tags:
+  - name: market
+  - name: public
+  - name: account
+  - name: trade
+  - name: margin
+  - name: withdraw
+basePath: api.huobi.pro
+externalDocs:
+  description: english
+  url: https://github.com/huobiapi/API_Docs_en/wiki/REST_Reference
+produces:
+  - application/json
+paths:
+  /market/history/kline:
+    get:
+      summary: https://github.com/huobiapi/API_Docs_en/wiki/REST_Reference#get-markethistorykline--get-candlestick-data
+      tags:
+        - market
+      operationId: CandleStickData
+      parameters:
+        - name: symbol
+          in:  query
+          required: true
+          type: string	
+          description: 'trading asset		btcusdt, bccbtc, rcneth ...'
+        - name: period	
+          required: true	
+          schema:
+            enum:
+              - 1min
+              - 5min
+              - 15min
+              - 30min
+              - 60min
+              - 1day
+              - 1mon
+              - 1week
+              - 1year
+          description: '1min, 5min, 15min, 30min, 60min, 1day, 1mon, 1week, 1year'
+        - name: size	
+          required: false	
+          type: integer		
+          description: '150	[1,2000]'
+          default: 150
+          maximum: 2000
+          minimum: 1
+          
+      responses:
+        200:
+          schema:
+            $ref: '#/definitions/markethistoryklineresponse'
+  /market/detail/merged:
+    get:
+      tags:
+        - market
+      operationId: Ticker
+      summary: https://github.com/huobiapi/API_Docs_en/wiki/REST_Reference#get-marketdetailmerged-get-ticker
+      parameters:
+        - in: query
+          name: symbol
+          required: true
+          type: string
+          description:  trading asset		btcusdt, bccbtc, rcneth ...
+
+      responses:
+        200:
+          schema: object
+           properties:
+            status:
+              $id: /properties/status
+              type: string
+              title: 'The Status Schema '
+              default: ''
+              examples:
+              - ok
+            ch:
+              $id: /properties/ch
+              type: string
+              title: 'The Ch Schema '
+              default: ''
+              examples:
+              - market.ethusdt.detail.merged
+            ts:
+              $id: /properties/ts
+              type: integer
+              title: 'The Ts Schema '
+              default: 0
+              examples:
+              - 1499225276950
+            tick:
+              $id: /properties/tick
+              type: object
+              properties:
+                id:
+                  $id: /properties/tick/properties/id
+                  type: integer
+                  title: 'The Id Schema '
+                  default: 0
+                  examples:
+                  - 1499225271
+                ts:
+                  $id: /properties/tick/properties/ts
+                  type: integer
+                  title: 'The Ts Schema '
+                  default: 0
+                  examples:
+                  - 1499225271000
+                close:
+                  $id: /properties/tick/properties/close
+                  type: integer
+                  title: 'The Close Schema '
+                  default: 0
+                  examples:
+                  - 1885
+                open:
+                  $id: /properties/tick/properties/open
+                  type: integer
+                  title: 'The Open Schema '
+                  default: 0
+                  examples:
+                  - 1960
+                high:
+                  $id: /properties/tick/properties/high
+                  type: integer
+                  title: 'The High Schema '
+                  default: 0
+                  examples:
+                  - 1985
+                low:
+                  $id: /properties/tick/properties/low
+                  type: integer
+                  title: 'The Low Schema '
+                  default: 0
+                  examples:
+                  - 1856
+                amount:
+                  $id: /properties/tick/properties/amount
+                  type: number
+                  title: 'The Amount Schema '
+                  default: 0.0
+                  examples:
+                  - 81486.2890625
+                count:
+                  $id: /properties/tick/properties/count
+                  type: integer
+                  title: 'The Count Schema '
+                  default: 0
+                  examples:
+                  - 42122
+                vol:
+                  $id: /properties/tick/properties/vol
+                  type: number
+                  title: 'The Vol Schema '
+                  default: 0.0
+                  examples:
+                  - 157052752.0
+                ask:
+                  $id: /properties/tick/properties/ask
+                  type: array
+                  items:
+                    $id: /properties/tick/properties/ask/items
+                    type: integer
+                    title: 'The 0th Schema '
+                    default: 0
+                    examples:
+                    - 1885
+                    - 21.880399703979492
+                bid:
+                  $id: /properties/tick/properties/bid
+                  type: array
+                  items:
+                    $id: /properties/tick/properties/bid/items
+                    type: integer
+                    title: 'The 0th Schema '
+                    default: 0
+                    examples:
+                    - 1884
+                    - 1.670199990272522:
+  /market/depth:
+    get:
+      tags:
+        - market
+      summary: https://github.com/huobiapi/API_Docs_en/wiki/REST_Reference#get-marketdepth---market-depth
+      operationId: MarketDepth
+      parameters:
+        - name: symbol	
+          required: true	
+          type: string	
+          description: trading asset		btcusdt, bccbtc, rcneth ...
+        - name: type	
+          required: true	
+          type: string
+          schema:
+            enum:
+              - step0
+              - step1
+              - step2
+              - step3
+              - step4
+              - step5
+          description: Depth data type		step0, step1, step2, step3, step4, step5
+      responses:
+        200:
+          schema:
+            type: object
+            properties:
+              status:
+                $id: /properties/status
+                type: string
+                title: 'The Status Schema '
+                default: ''
+                examples:
+                - ok
+              ch:
+                $id: /properties/ch
+                type: string
+                title: 'The Ch Schema '
+                default: ''
+                examples:
+                - market.btcusdt.depth.step1
+              ts:
+                $id: /properties/ts
+                type: integer
+                title: 'The Ts Schema '
+                default: 0
+                examples:
+                - 1489472598812
+              tick:
+                $id: /properties/tick
+                type: object
+                properties:
+                  id:
+                    $id: /properties/tick/properties/id
+                    type: integer
+                    title: 'The Id Schema '
+                    default: 0
+                    examples:
+                    - 1489464585407
+                  ts:
+                    $id: /properties/tick/properties/ts
+                    type: integer
+                    title: 'The Ts Schema '
+                    default: 0
+                    examples:
+                    - 1489464585407
+                  bids:
+                    $id: /properties/tick/properties/bids
+                    type: array
+                    items:
+                      $id: /properties/tick/properties/bids/items
+                      type: array
+                      items:
+                        $id: /properties/tick/properties/bids/items/items
+                        type: integer
+                        title: 'The 0th Schema '
+                        default: 0
+                        examples:
+                        - 7964
+                        - 0.06780000030994415
+                  asks:
+                    $id: /properties/tick/properties/asks
+                    type: array
+                    items:
+                      $id: /properties/tick/properties/asks/items
+                      type: array
+                      items:
+                        $id: /properties/tick/properties/asks/items/items
+                        type: integer
+                        title: 'The 0th Schema '
+                        default: 0
+                        examples:
+                        - 7979
+                        - 0.07360000163316727
+  /market/trade:
+    get:
+      summary: https://github.com/huobiapi/API_Docs_en/wiki/REST_Reference#get-markettrade--trade-detail
+      operationId: TradeDetail
+      tags:
+        - market
+      parameters:
+        - in: query
+          name: symbol
+          required: true
+          type: string
+          description: trading asset		btcusdt, bccbtc, rcneth ...
+      responses:
+        200:
+          schema:
+            type: object
+            properties:
+              status:
+                $id: /properties/status
+                type: string
+                title: 'The Status Schema '
+                default: ''
+                examples:
+                - ok
+              ch:
+                $id: /properties/ch
+                type: string
+                title: 'The Ch Schema '
+                default: ''
+                examples:
+                - market.btcusdt.trade.detail
+              ts:
+                $id: /properties/ts
+                type: integer
+                title: 'The Ts Schema '
+                default: 0
+                examples:
+                - 1489473346905
+              tick:
+                $id: /properties/tick
+                type: object
+                properties:
+                  id:
+                    $id: /properties/tick/properties/id
+                    type: integer
+                    title: 'The Id Schema '
+                    default: 0
+                    examples:
+                    - 600848670
+                  ts:
+                    $id: /properties/tick/properties/ts
+                    type: integer
+                    title: 'The Ts Schema '
+                    default: 0
+                    examples:
+                    - 1489464451000
+                  data:
+                    $id: /properties/tick/properties/data
+                    type: array
+                    items:
+                      $id: /properties/tick/properties/data/items
+                      type: object
+                      properties:
+                        id:
+                          $id: /properties/tick/properties/data/items/properties/id
+                          type: integer
+                          title: 'The Id Schema '
+                          default: 0
+                          examples:
+                          - 600848670
+                        price:
+                          $id: /properties/tick/properties/data/items/properties/price
+                          type: number
+                          title: 'The Price Schema '
+                          default: 0.0
+                          examples:
+                          - 7962.6201171875
+                        amount:
+                          $id: /properties/tick/properties/data/items/properties/amount
+                          type: number
+                          title: 'The Amount Schema '
+                          default: 0.0
+                          examples:
+                          - 0.012199999764561653
+                        direction:
+                          $id: /properties/tick/properties/data/items/properties/direction
+                          type: string
+                          title: 'The Direction Schema '
+                          default: ''
+                          examples:
+                          - buy
+                        ts:
+                          $id: /properties/tick/properties/data/items/properties/ts
+                          type: integer
+                          title: 'The Ts Schema '
+                          default: 0
+                          examples:
+                          - 1489464451000
+  /market/history/trade:
+    get:
+      summary: https://github.com/huobiapi/API_Docs_en/wiki/REST_Reference#get-markethistorytrade-orderbook
+      operationId: orderbook
+      parameters:
+        - in: query
+          name: symbol
+          required: true
+          type: string
+          description: trading asset		btcusdt, bccbtc, rcneth ...
+        - name: size
+          required: false
+          type: integer
+          description: 1	[1, 2000]
+          minimum: 1
+          maximum: 2000
+
+      responses:
+        200:
+          schema:
+            type: object
+            properties:
+              status:
+                $id: /properties/status
+                type: string
+                title: 'The Status Schema '
+                default: ''
+                examples:
+                - ok
+              ch:
+                $id: /properties/ch
+                type: string
+                title: 'The Ch Schema '
+                default: ''
+                examples:
+                - market.ethusdt.trade.detail
+              ts:
+                $id: /properties/ts
+                type: integer
+                title: 'The Ts Schema '
+                default: 0
+                examples:
+                - 1502448925216
+              data:
+                $id: /properties/data
+                type: array
+                items:
+                  $id: /properties/data/items
+                  type: object
+                  properties:
+                    id:
+                      $id: /properties/data/items/properties/id
+                      type: integer
+                      title: 'The Id Schema '
+                      default: 0
+                      examples:
+                      - 31459998
+                    ts:
+                      $id: /properties/data/items/properties/ts
+                      type: integer
+                      title: 'The Ts Schema '
+                      default: 0
+                      examples:
+                      - 1502448920106
+                    data:
+                      $id: /properties/data/items/properties/data
+                      type: array
+                      items:
+                        $id: /properties/data/items/properties/data/items
+                        type: object
+                        properties:
+                          id:
+                            $id: /properties/data/items/properties/data/items/properties/id
+                            type: integer
+                            title: 'The Id Schema '
+                            default: 0
+                            examples:
+                            - 17592256642623
+                          amount:
+                            $id: /properties/data/items/properties/data/items/properties/amount
+                            type: number
+                            title: 'The Amount Schema '
+                            default: 0.0
+                            examples:
+                            - 0.03999999910593033
+                          price:
+                            $id: /properties/data/items/properties/data/items/properties/price
+                            type: integer
+                            title: 'The Price Schema '
+                            default: 0
+                            examples:
+                            - 1997
+                          direction:
+                            $id: /properties/data/items/properties/data/items/properties/direction
+                            type: string
+                            title: 'The Direction Schema '
+                            default: ''
+                            examples:
+                            - buy
+                          ts:
+                            $id: /properties/data/items/properties/data/items/properties/ts
+                            type: integer
+                            title: 'The Ts Schema '
+                            default: 0
+                            examples:
+                            - 1502448920106
+  /market/detail:
+    get:
+      tags:
+        - market
+      summary: https://github.com/huobiapi/API_Docs_en/wiki/REST_Reference#get-marketdetail---market-detail-in-24-hours
+      operationId: Market Detail in 24 hours
+      parameters:
+        - in: query
+          name: symbol
+          required: true
+          type: string
+          description: trading asset		btcusdt, bccbtc, rcneth ...
+      responses:
+        200:
+          schema:
+            type: object
+            properties:
+              status:
+                $id: /properties/status
+                type: string
+                title: 'The Status Schema '
+                default: ''
+                examples:
+                - ok
+              ch:
+                $id: /properties/ch
+                type: string
+                title: 'The Ch Schema '
+                default: ''
+                examples:
+                - market.btcusdt.detail
+              ts:
+                $id: /properties/ts
+                type: integer
+                title: 'The Ts Schema '
+                default: 0
+                examples:
+                - 1489473538996
+              tick:
+                $id: /properties/tick
+                type: object
+                properties:
+                  amount:
+                    $id: /properties/tick/properties/amount
+                    type: number
+                    title: 'The Amount Schema '
+                    default: 0.0
+                    examples:
+                    - 4316.4345703125
+                  open:
+                    $id: /properties/tick/properties/open
+                    type: number
+                    title: 'The Open Schema '
+                    default: 0.0
+                    examples:
+                    - 8090.5400390625
+                  close:
+                    $id: /properties/tick/properties/close
+                    type: number
+                    title: 'The Close Schema '
+                    default: 0.0
+                    examples:
+                    - 7962.6201171875
+                  high:
+                    $id: /properties/tick/properties/high
+                    type: integer
+                    title: 'The High Schema '
+                    default: 0
+                    examples:
+                    - 8119
+                  ts:
+                    $id: /properties/tick/properties/ts
+                    type: integer
+                    title: 'The Ts Schema '
+                    default: 0
+                    examples:
+                    - 1489464451000
+                  id:
+                    $id: /properties/tick/properties/id
+                    type: integer
+                    title: 'The Id Schema '
+                    default: 0
+                    examples:
+                    - 1489464451
+                  count:
+                    $id: /properties/tick/properties/count
+                    type: integer
+                    title: 'The Count Schema '
+                    default: 0
+                    examples:
+                    - 9595
+                  low:
+                    $id: /properties/tick/properties/low
+                    type: integer
+                    title: 'The Low Schema '
+                    default: 0
+                    examples:
+                    - 7875
+                  vol:
+                    $id: /properties/tick/properties/vol
+                    type: number
+                    title: 'The Vol Schema '
+                    default: 0.0
+                    examples:
+                    - 34497276.0
+  /v1/common/symbols:
+    get:
+      tags:
+        - public
+      summary: https://github.com/huobiapi/API_Docs_en/wiki/REST_Reference#public-api
+      operationId: Get all the trading assets in huobi.pro
+      parameters:
+        - in: query
+        - name: base-currency
+          required: true
+          type: string
+        - name: quote-currency
+          required: true
+          type: string
+        - name: price-precision
+          required: true
+          type: string
+        - name: amount-precision
+          required: true
+          type: string
+        - name: symbol-partition
+          required: true
+          type: string
+          schema:
+            enum:
+              - main
+              - innovation
+              - bifurcation
+
+      responses:
+        200:
+          schema:
+            type: object
+            properties:
+              status:
+                $id: /properties/status
+                type: string
+                title: 'The Status Schema '
+                default: ''
+                examples:
+                - ok
+              data:
+                $id: /properties/data
+                type: array
+                items:
+                  $id: /properties/data/items
+                  type: object
+                  properties:
+                    base-currency:
+                      $id: /properties/data/items/properties/base-currency
+                      type: string
+                      title: 'The Base-currency Schema '
+                      default: ''
+                      examples:
+                      - eth
+                    quote-currency:
+                      $id: /properties/data/items/properties/quote-currency
+                      type: string
+                      title: 'The Quote-currency Schema '
+                      default: ''
+                      examples:
+                      - usdt
+                    symbol:
+                      $id: /properties/data/items/properties/symbol
+                      type: string
+                      title: 'The Symbol Schema '
+                      default: ''
+                      examples:
+                      - ethusdt
+  /v1/common/currencys:
+    get:
+      tags:
+        - public
+      summary: https://github.com/huobiapi/API_Docs_en/wiki/REST_Reference#get-v1commoncurrencys-----get-currencys-supported-in-huobipro
+      operationId: Currencies
+      responses:
+        200:
+          schema:
+            type: object
+            properties:
+              status:
+                $id: /properties/status
+                type: string
+                title: 'The Status Schema '
+                default: ''
+                examples:
+                - ok
+              data:
+                $id: /properties/data
+                type: array
+                items:
+                  $id: /properties/data/items
+                  type: string
+                  title: 'The 0th Schema '
+                  default: ''
+                  examples:
+                  - usdt
+                  - eth
+                  - etc
+  /v1/common/timestamp:
+    get:
+      tags:
+        - public
+      summary:
+      operationId: Get system timestamp
+      responses:
+        200:
+          schema:
+            type: object
+            properties:
+              status:
+                $id: /properties/status
+                type: string
+                title: 'The Status Schema '
+                default: ''
+                examples:
+                - ok
+              data:
+                $id: /properties/data
+                type: integer
+                title: 'The Data Schema '
+                default: 0
+                examples:
+                - 1494900087029
+  /v1/account/accounts:
+    get:
+      tags:
+        - account
+      responses:
+        200:
+          schema:
+            type: object
+            properties:
+              status:
+                $id: /properties/status
+                type: string
+                title: 'The Status Schema '
+                default: ''
+                examples:
+                - ok
+              data:
+                $id: /properties/data
+                type: array
+                items:
+                  $id: /properties/data/items
+                  type: object
+                  properties:
+                    id:
+                      $id: /properties/data/items/properties/id
+                      type: integer
+                      title: 'The Id Schema '
+                      default: 0
+                      examples:
+                      - 100009
+                    type:
+                      $id: /properties/data/items/properties/type
+                      type: string
+                      title: 'The Type Schema '
+                      default: ''
+                      examples:
+                      - spot
+                    state:
+                      $id: /properties/data/items/properties/state
+                      type: string
+                      title: 'The State Schema '
+                      default: ''
+                      examples:
+                      - working
+                    user-id:
+                      $id: /properties/data/items/properties/user-id
+                      type: integer
+                      title: 'The User-id Schema '
+                      default: 0
+                      examples:
+                      - 1000
+  /v1/account/accounts/{account-id}/balance:
+    get:
+      tags:
+        - account
+      summary: Get balance in huobi.pro
+      operationId: balance
+      parameters:
+        - in: path
+          name: account-id
+          required: true
+          type: string
+          description: account-id, not UID, filled in the methos path
+      responses:
+        200:
+          schema:
+            type: object
+            properties:
+              status:
+                $id: /properties/status
+                type: string
+                title: 'The Status Schema '
+                default: ''
+                examples:
+                - ok
+              data:
+                $id: /properties/data
+                type: object
+                properties:
+                  id:
+                    $id: /properties/data/properties/id
+                    type: integer
+                    title: 'The Id Schema '
+                    default: 0
+                    examples:
+                    - 100009
+                  type:
+                    $id: /properties/data/properties/type
+                    type: string
+                    enum:
+                      - spot
+                      - margin
+                  state:
+                    type: string
+                    enum:
+                      - working
+                      - lock
+                  list:
+                    $id: /properties/data/properties/list
+                    type: array
+                    items:
+                      $id: /properties/data/properties/list/items
+                      type: object
+                      properties:
+                        currency:
+                          $id: /properties/data/properties/list/items/properties/currency
+                          type: string
+                          title: 'The Currency Schema '
+                          default: ''
+                          examples:
+                          - usdt
+                        type:
+                          type: string
+                          enum:
+                            - trade
+                            - frozen
+                        balance:
+                          $id: /properties/data/properties/list/items/properties/balance
+                          type: string
+                          title: 'The Balance Schema '
+                          default: ''
+                          examples:
+                          - '500009195917.4362872650'
+                  user-id:
+                    $id: /properties/data/properties/user-id
+                    type: integer
+                    title: 'The User-id Schema '
+                    default: 0
+                    examples:
+                    - 1000
+  /v1/order/orders/place:
+    post:
+      summary: https://github.com/huobiapi/API_Docs_en/wiki/REST_Reference#post-v1orderordersplace--make-an-order-in-huobipro
+      operationId: order
+      tags:
+        - trade
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+        - name: account-id
+          type: true
+          description: string	accountid in ‘spot’ for spot trade, ‘margin’ for margin trade
+        - name: amount
+          required: true
+          type: string
+          description: Amount in buy-limit or sell-limitorder. It presents how much quote-currency you trade in buy-market order, and how many base-currency you trade in sell-market order
+        - name: price
+          required: false
+          type: string
+          description: don't use this param in buy-market or sell-market order
+        - name: source
+          required: false
+          type: string
+          description: 'api' for spot trade and 'margin-api' for margin trade
+        - name: symbol
+          required: true
+          type: string
+          description: trading asset		btcusdt, bccbtc, rcneth ...
+        - name: type
+          required: true
+          type: string
+          description: buy-market , sell-market , buy-limit , sell-limit
+          enum:
+            - buy-market
+            - sell-market
+            - buy-limit
+            - sell-limit
+      responses:
+        200:
+          schema:
+            type: object
+            properties:
+              status:
+                $id: /properties/status
+                type: string
+              data:
+                $id: /properties/data
+                type: string
+  /v1/order/orders/{order-id}/submitcancel:
+    post:
+      tags:
+        - trade
+      summary: https://github.com/huobiapi/API_Docs_en/wiki/REST_Reference#post-v1orderordersorder-idsubmitcancel--request-for-cancelling-an-order
+      operationId:
+      parameters:
+        - in: path
+      responses:
+        200:
+          schema:
+            type: object
+            properties:
+              status:
+                $id: /properties/status
+                type: string
+              data:
+                $id: /properties/data
+                type: string
+  /v1/order/orders/batchcancel:
+    post:
+      summary: https://github.com/huobiapi/API_Docs_en/wiki/REST_Reference#post-v1orderordersbatchcancel--batch-cancel
+      operationId: Batch Cancel
+      tags:
+        - trade
+      parameters:
+        - in: body
+          name: tuple
+          schema:
+            type: object
+            properties:
+                order-ids:
+                  $id: /properties/order-ids
+                  type: array
+                  items:
+                    $id: /properties/order-ids/items
+                    type: string
+                    title: 'The 0th Schema '
+                    default: ''
+                    examples:
+                    - '1'
+                    - '2'
+                    - '3'
+      responses:
+        200:
+          schema:
+            type: object
+            properties:
+              status:
+                $id: /properties/status
+                type: string
+                title: 'The Status Schema '
+                default: ''
+                examples:
+                - ok
+              data:
+                $id: /properties/data
+                type: object
+                properties:
+                  success:
+                    $id: /properties/data/properties/success
+                    type: array
+                    items:
+                      $id: /properties/data/properties/success/items
+                      type: string
+                      title: 'The 0th Schema '
+                      default: ''
+                      examples:
+                      - '1'
+                      - '3'
+                  failed:
+                    $id: /properties/data/properties/failed
+                    type: array
+                    items:
+                      $id: /properties/data/properties/failed/items
+                      type: object
+                      properties:
+                        err-msg:
+                          $id: /properties/data/properties/failed/items/properties/err-msg
+                          type: string
+                          title: 'The Err-msg Schema '
+                          default: ''
+                          examples:
+                          - 记录无效
+                        order-id:
+                          $id: /properties/data/properties/failed/items/properties/order-id
+                          type: string
+                          title: 'The Order-id Schema '
+                          default: ''
+                          examples:
+                          - '2'
+                        err-code:
+                          $id: /properties/data/properties/failed/items/properties/err-code
+                          type: string
+                          title: 'The Err-code Schema '
+                          default: ''
+                          examples:
+                          - base-record-invalid
+
+
+
+
+
+definitions:
+
+  status:
+    description: | provided here because i had an inkling of doing fine grained objects.  that diddn't hold water very
+                   long the schema is more dynamic here.
+    type: string
+    enum:
+      - ok
+      - error
+
+  mergedTick:
+    $id: http://example.com/example.json
+    type: object
+    definitions: {}
+    $schema: http://json-schema.org/draft-07/schema#
+    properties:
+      id:
+        $id: /properties/tick/properties/id
+        type: integer
+        title: 'The Id Schema '
+        default: 0
+        examples:
+        - 1499225271
+      ts:
+        $id: /properties/tick/properties/ts
+        type: integer
+        title: 'The Ts Schema '
+        default: 0
+        examples:
+        - 1499225271000
+      close:
+        $id: /properties/tick/properties/close
+        type: integer
+        title: 'The Close Schema '
+        default: 0
+        examples:
+        - 1885
+      open:
+        $id: /properties/tick/properties/open
+        type: integer
+        title: 'The Open Schema '
+        default: 0
+        examples:
+        - 1960
+      high:
+        $id: /properties/tick/properties/high
+        type: integer
+        title: 'The High Schema '
+        default: 0
+        examples:
+        - 1985
+      low:
+        $id: /properties/tick/properties/low
+        type: integer
+        title: 'The Low Schema '
+        default: 0
+        examples:
+        - 1856
+      amount:
+        $id: /properties/tick/properties/amount
+        type: number
+        title: 'The Amount Schema '
+        default: 0.0
+        examples:
+        - 81486.2890625
+      count:
+        $id: /properties/tick/properties/count
+        type: integer
+        title: 'The Count Schema '
+        default: 0
+        examples:
+        - 42122
+      vol:
+        $id: /properties/tick/properties/vol
+        type: number
+        title: 'The Vol Schema '
+        default: 0.0
+        examples:
+        - 157052752.0
+      ask:
+        $id: /properties/tick/properties/ask
+        type: array
+        items:
+          $id: /properties/tick/properties/ask/items
+          type: integer
+          title: 'The 0th Schema '
+          default: 0
+          examples:
+          - 1885
+          - 21.880399703979492
+      bid:
+        $id: /properties/tick/properties/bid
+        type: array
+        items:
+          $id: /properties/tick/properties/bid/items
+          type: integer
+          title: 'The 0th Schema '
+          default: 0
+          examples:
+          - 1884
+          - 1.670199990272522
+
+  depthTick:
+    type: object
+    properties:
+      id:
+        $id: /properties/tick/properties/id
+        type: integer
+        title: 'The Id Schema '
+        default: 0
+        examples:
+        - 1489464585407
+      ts:
+        $id: /properties/tick/properties/ts
+        type: integer
+        title: 'The Ts Schema '
+        default: 0
+        examples:
+        - 1489464585407
+      bids:
+        $id: /properties/tick/properties/bids
+        type: array
+        items:
+          $id: /properties/tick/properties/bids/items
+          type: array
+          items:
+            $id: /properties/tick/properties/bids/items/items
+            type: integer
+            title: 'The 0th Schema '
+            default: 0
+            examples:
+            - 7964
+            - 0.06780000030994415
+      asks:
+        $id: /properties/tick/properties/asks
+        type: array
+        items:
+          $id: /properties/tick/properties/asks/items
+          type: array
+          items:
+            $id: /properties/tick/properties/asks/items/items
+            type: integer
+            title: 'The 0th Schema '
+            default: 0
+            examples:
+            - 7979
+            - 0.07360000163316727
+
+  baseResponse:
+    type: object
+    properties:
+      status:
+        $ref: '#/definitions/status'
+      ch:
+        $id: /properties/ch
+        type: string
+        title: 'The Ch Schema '
+        default: ''
+        examples:
+        - market.btcusdt.kline.1day
+      ts:
+        $id: /properties/ts
+        type: integer
+        title: 'The Ts Schema '
+        default: 0
+        examples:
+        - 1499223904680
+      tick:
+        type: object
+        description: documented as required however not defined.
+
+  markethistoryklineresponsedata:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              default: 0
+              examples:
+              - 1499184000
+            amount:
+              $id: /properties/data/items/properties/amount
+              type: number
+              title: 'The Amount Schema '
+              default: 0.0
+              examples:
+              - 37593.02734375
+            count:
+              $id: /properties/data/items/properties/count
+              type: integer
+              title: 'The Count Schema '
+              default: 0
+              examples:
+              - 0
+            open:
+              $id: /properties/data/items/properties/open
+              type: number
+              title: 'The Open Schema '
+              default: 0.0
+              examples:
+              - 1935.199951171875
+            close:
+              $id: /properties/data/items/properties/close
+              type: integer
+              title: 'The Close Schema '
+              default: 0
+              examples:
+              - 1879
+            low:
+              $id: /properties/data/items/properties/low
+              type: integer
+              title: 'The Low Schema '
+              default: 0
+              examples:
+              - 1856
+            high:
+              $id: /properties/data/items/properties/high
+              type: integer
+              title: 'The High Schema '
+              default: 0
+              examples:
+              - 1940
+            vol:
+              $id: /properties/data/items/properties/vol
+              type: integer
+              title: 'The Vol Schema '
+              default: 0
+              examples:
+              - 71031536
+
+  markethistoryklineresponse:
+    allOf:
+      - $ref: '#/definitions/baseResponse'
+      - $ref: '#/definitions/markethistoryklineresponsedata'
+
