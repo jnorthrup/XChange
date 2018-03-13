@@ -35,12 +35,12 @@ class IdexMarketDataService(private val idexExchange: IdexExchange) : MarketData
             orderBook(currencyPair.orderbook)
                     .run {
                         OrderBook(Date(),
-                                  asks.map {
+                                  asks?.map {
                                       LimitOrder(ASK, it.amount.toBigDecimal() ?: ZERO, currencyPair,
                                                  it.orderHash,
                                                  Date(it.params.expires.toLong()), it.price.toBigDecimal() ?: ZERO)
                                   },
-                                  bids.map {
+                                  bids?.map {
                                       LimitOrder(BID, it.amount.toBigDecimalOrNull() ?: ZERO,
                                                  currencyPair,
                                                  it.orderHash,
@@ -48,16 +48,12 @@ class IdexMarketDataService(private val idexExchange: IdexExchange) : MarketData
                                   })
                     }
 
-    override fun getTrades(currencyPair: CurrencyPair, vararg args: Any?) = Trades(MarketApi().tradeHistory(
-            TradeHistoryReq().market(currencyPair.idexMkt)).map { tradeHistoryItem ->
-
-
+    override fun getTrades(currencyPair: CurrencyPair, vararg args: Any?) = Trades(idexExchange.marketDataService.tradeHistory(TradeHistoryReq().market(currencyPair.idexMkt)).map { tradeHistoryItem: TradeHistoryItem  ->
         Trade(ASK[tradeHistoryItem.type], tradeHistoryItem.amount.toBigDecimalOrNull() ?: ZERO, currencyPair,
               tradeHistoryItem.price.toBigDecimalOrNull() ?: ZERO, DateUtils.fromISO8601DateString(
                 tradeHistoryItem.date.replace(" ", "T") + "Z")
                       .also {
-                          if (debugMe && 0 == (debugDateCounter++)) System.err.println(
-                                  tradeHistoryItem.date + " = " + it)
+                          if (debugMe && 0 == (debugDateCounter++)) System.err.println(tradeHistoryItem.date + " = " + it)
                       }, tradeHistoryItem.transactionHash)
     })
 

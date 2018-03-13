@@ -18,7 +18,8 @@ fun main (args: Array<String>) {
     System.err.println(accountInfo.toString())
 
     System.err.println("Ticker... looking for OMG (ticker for ETH_OMG)")
-    val ticker = idex.marketDataService.getTicker(CurrencyPair("OMG", "ETH"));
+    val omgPair = CurrencyPair("OMG", "ETH")
+    val ticker = idex.marketDataService.getTicker(omgPair);
     val tickers = ticker.toString()
     System.err.println(
             tickers
@@ -26,7 +27,12 @@ fun main (args: Array<String>) {
     System.err.println("Trade History... using arg[2]")
 
     val split = args[2].split("_")
-    System.err.println(idex.marketDataService.getTrades(CurrencyPair(split[1], split[0]))).toString()
+    val currencyPair = CurrencyPair(split[1], split[0])
+    System.err.println(idex.marketDataService.getTrades(currencyPair)).toString()
+
+    System.err.println("Orderbook... using arg[2]")
+    System.err.println(idex.marketDataService.getOrderBook(currencyPair)).toString()
+
 
     System.err.println("Funding History... using arg[0]")
     val c: IdexTradeHistoryParams = idex.accountService.createFundingHistoryParams() as IdexTradeHistoryParams
