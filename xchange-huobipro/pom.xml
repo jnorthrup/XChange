@@ -22,7 +22,6 @@
                 <artifactId>xchange-core</artifactId>
                 <version>${project.parent.version}</version>
             </dependency>
-
         </dependencies>
     </dependencyManagement>
     <modelVersion>4.0.0</modelVersion>
@@ -33,11 +32,7 @@
     <profiles>
         <profile>
             <id>regenerate</id>
-            <activation>
-                <file>
-                    <missing>${rebuild.sentinel}</missing>
-                </file>
-            </activation>
+            <activation><file><missing>${rebuild.sentinel}</missing></file></activation>
             <build>
                 <plugins>
                     <plugin>
@@ -55,8 +50,7 @@
                                     <configOptions>
                                         <apiPackage>${gen-package}.${exchangeName}.service</apiPackage>
                                         <modelPackage>${gen-package}.${exchangeName}.dto</modelPackage>
-                                        <invokerPackage>${gen-package}.${exchangeName}.util
-                                        </invokerPackage>
+                                        <invokerPackage>${gen-package}.${exchangeName}.util</invokerPackage>
                                         <useGzipFeature>false</useGzipFeature>
                                         <dateLibrary>java8</dateLibrary>
                                         <fullJavaUtil>true</fullJavaUtil>

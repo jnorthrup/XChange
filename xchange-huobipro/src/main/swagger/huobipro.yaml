@@ -702,46 +702,11 @@ paths:
     get:
       tags:
         - account
+      operationId: Get Accounts
       responses:
         '200':
           schema:
-            type: object
-            properties:
-              status:
-                type: string
-                title: The Status Schema
-                default: null
-                examples:
-                  - ok
-              data:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                      title: The Id Schema
-                      default: 0
-                      examples:
-                        - 100009
-                    type:
-                      type: string
-                      title: The Type Schema
-                      default: null
-                      examples:
-                        - spot
-                    state:
-                      type: string
-                      title: The State Schema
-                      default: null
-                      examples:
-                        - working
-                    user-id:
-                      type: integer
-                      title: The User-id Schema
-                      default: 0
-                      examples:
-                        - 1000
+            $ref: '#/definitions/accountsResponse'
   '/v1/account/accounts/{account-id}/balance':
     get:
       tags:
@@ -757,61 +722,7 @@ paths:
       responses:
         '200':
           schema:
-            type: object
-            properties:
-              status:
-                type: string
-                title: The Status Schema
-                default: null
-                examples:
-                  - ok
-              data:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                    title: The Id Schema
-                    default: 0
-                    examples:
-                      - 100009
-                  type:
-                    type: string
-                    enum:
-                      - spot
-                      - margin
-                  state:
-                    type: string
-                    enum:
-                      - working
-                      - lock
-                  list:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        currency:
-                          type: string
-                          title: The Currency Schema
-                          default: null
-                          examples:
-                            - usdt
-                        type:
-                          type: string
-                          enum:
-                            - trade
-                            - frozen
-                        balance:
-                          type: string
-                          title: The Balance Schema
-                          default: null
-                          examples:
-                            - 500009195917.4363
-                  user-id:
-                    type: integer
-                    title: The User-id Schema
-                    default: 0
-                    examples:
-                      - 1000
+            $ref: '#/definitions/accountsBalanceResponse'
   /v1/order/orders/place:
     post:
       summary: 'https://github.com/huobiapi/API_Docs_en/wiki/REST_Reference#post-v1orderordersplace--make-an-order-in-huobipro'
@@ -1839,3 +1750,99 @@ paths:
                       default: 0
                       examples:
                         - 1511145876575
+definitions:
+  accountsResponse:
+    type: object
+    properties:
+      status:
+        type: string
+        title: The Status Schema
+        default: null
+        examples:
+          - ok
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              title: The Id Schema
+              default: 0
+              examples:
+                - 100009
+            type:
+              type: string
+              title: The Type Schema
+              default: null
+              examples:
+                - spot
+            state:
+              type: string
+              title: The State Schema
+              default: null
+              examples:
+                - working
+            user-id:
+              type: integer
+              title: The User-id Schema
+              default: 0
+              examples:
+                - 1000
+  accountsBalanceResponse:
+
+            type: object
+            properties:
+              status:
+                type: string
+                title: The Status Schema
+                default: null
+                examples:
+                  - ok
+              data:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    title: The Id Schema
+                    default: 0
+                    examples:
+                      - 100009
+                  type:
+                    type: string
+                    enum:
+                      - spot
+                      - margin
+                  state:
+                    type: string
+                    enum:
+                      - working
+                      - lock
+                  list:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        currency:
+                          type: string
+                          title: The Currency Schema
+                          default: null
+                          examples:
+                            - usdt
+                        type:
+                          type: string
+                          enum:
+                            - trade
+                            - frozen
+                        balance:
+                          type: string
+                          title: The Balance Schema
+                          default: null
+                          examples:
+                            - 500009195917.4363
+                  user-id:
+                    type: integer
+                    title: The User-id Schema
+                    default: 0
+                    examples:
+                      - 1000
