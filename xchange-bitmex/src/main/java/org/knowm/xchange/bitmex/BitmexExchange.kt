@@ -26,14 +26,12 @@ class BitmexExchange : Exchange, BaseExchange() {
     val xwfc = "application/x-www-form-urlencoded"
 
 
-    val bitmexClient = object : ApiClient() {
+    val authClient = object : ApiClient() {
         var debugMe = System.getProperty("XChangeDebug", "false") != "false"
         private val CONTENT_TYPE = MediaType.parse(xwfc)
 
         init {
             httpClient.interceptors().add(
-
-
                     Interceptor {
                         val request = it.request()
                         val hdr = request.headers().toMultimap()
@@ -79,9 +77,9 @@ class BitmexExchange : Exchange, BaseExchange() {
 
     override fun getMarketDataService(): MarketDataService =
             object : MarketDataService {
-                val orderBookApi = OrderBookApi(bitmexClient)
-                val tradeApi = TradeApi(bitmexClient)
-                val instrumentApi = InstrumentApi(bitmexClient)
+                val orderBookApi = OrderBookApi(authClient)
+                val tradeApi = TradeApi(authClient)
+                val instrumentApi = InstrumentApi(authClient)
                 override fun getTicker(currencyPair: CurrencyPair?, vararg args: Any?): Ticker {
                     TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                 }
@@ -118,7 +116,7 @@ class BitmexExchange : Exchange, BaseExchange() {
 
     override fun getAccountService(): AccountService {
 
-        return object : AccountService, UserApi(bitmexClient) {
+        return object : AccountService, UserApi(authClient) {
 
             override fun withdrawFunds(currency: Currency?, amount: BigDecimal?, address: String?): String {
                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
@@ -185,19 +183,4 @@ operator fun Order.OrderType.get(side: String): Order.OrderType {
  */
 enum class BitmexPrompt {
     perpetual, weekly, monthly, quarterly, biquarterly
-}
-
-fun main(args: Array<String>) {
-    val apiKey = "LAqUlngMIQkIUjXMUreyu3qn"
-    val apiSecret = "chNOOS4KvNXR_Xq4k4c9qsfoKWvnDecLATCRlcBwyKDYnWgO"
-
-    var verb = "GET"
-//    # Note url-encoding on querystring - this is '/api/v1/instrument?filter={"symbol": "XBTM15"}'
-    var path = "/api/v1/instrument"
-    var expires = 1518064236 //# 2018-02-08T04:30:36Z
-    var data = ""
-    val hmacSha256Hex = HmacUtils.hmacSha256Hex(apiSecret, verb + path + expires + data)
-    System.err.println(hmacSha256Hex)
-
-
 }
