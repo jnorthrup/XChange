@@ -60,7 +60,7 @@ public class OkCoinAccountService extends OkCoinAccountServiceRaw implements Acc
   public String withdrawFunds(WithdrawFundsParams params) throws IOException {
     if (params instanceof DefaultWithdrawFundsParams) {
       DefaultWithdrawFundsParams defaultParams = (DefaultWithdrawFundsParams) params;
-      return withdrawFunds(defaultParams.currency, defaultParams.amount, defaultParams.address);
+      return withdrawFunds(defaultParams.getCurrency(), defaultParams.getAmount(), defaultParams.getAddress());
     }
     throw new IllegalStateException("Don't know how to withdraw: " + params);
   }
@@ -76,8 +76,7 @@ public class OkCoinAccountService extends OkCoinAccountServiceRaw implements Acc
   }
 
   @Override
-  public List<FundingRecord> getFundingHistory(
-      TradeHistoryParams params) throws IOException {
+  public List<FundingRecord> getFundingHistory(TradeHistoryParams params) throws IOException {
     String symbol = null;
     if (params instanceof TradeHistoryParamCurrency && ((TradeHistoryParamCurrency) params).getCurrency() != null) {
       symbol = OkCoinAdapters.adaptSymbol(((TradeHistoryParamCurrency) params).getCurrency());
@@ -124,23 +123,23 @@ public class OkCoinAccountService extends OkCoinAccountServiceRaw implements Acc
     }
 
     @Override
-    public void setCurrency(Currency currency) {
-      this.currency = currency;
-    }
-
-    @Override
     public Currency getCurrency() {
       return this.currency;
     }
 
     @Override
-    public void setCurrencyPair(CurrencyPair currencyPair) {
-      this.currencyPair = currencyPair;
+    public void setCurrency(Currency currency) {
+      this.currency = currency;
     }
 
     @Override
     public CurrencyPair getCurrencyPair() {
       return this.currencyPair;
+    }
+
+    @Override
+    public void setCurrencyPair(CurrencyPair currencyPair) {
+      this.currencyPair = currencyPair;
     }
   }
 

@@ -34,10 +34,11 @@ public final class CoinbaseAccountService extends CoinbaseAccountServiceRaw impl
   }
 
   @Override
-  public String withdrawFunds(WithdrawFundsParams params) throws ExchangeException, NotAvailableFromExchangeException, NotYetImplementedForExchangeException, IOException {
+  public String withdrawFunds(WithdrawFundsParams params)
+      throws ExchangeException, NotAvailableFromExchangeException, NotYetImplementedForExchangeException, IOException {
     if (params instanceof DefaultWithdrawFundsParams) {
       DefaultWithdrawFundsParams defaultParams = (DefaultWithdrawFundsParams) params;
-      return withdrawFunds(defaultParams.currency, defaultParams.amount, defaultParams.address);
+      return withdrawFunds(defaultParams.getCurrency(), defaultParams.getAmount(), defaultParams.getAddress());
     }
     throw new IllegalStateException("Don't know how to withdraw: " + params);
   }
@@ -53,8 +54,8 @@ public final class CoinbaseAccountService extends CoinbaseAccountServiceRaw impl
   }
 
   @Override
-  public List<FundingRecord> getFundingHistory(
-      TradeHistoryParams params) throws ExchangeException, NotAvailableFromExchangeException, NotYetImplementedForExchangeException, IOException {
+  public List<FundingRecord> getFundingHistory(TradeHistoryParams params)
+      throws ExchangeException, NotAvailableFromExchangeException, NotYetImplementedForExchangeException, IOException {
     throw new NotYetImplementedForExchangeException();
   }
 }

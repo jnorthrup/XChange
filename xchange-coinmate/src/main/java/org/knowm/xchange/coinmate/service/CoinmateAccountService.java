@@ -60,8 +60,7 @@ public class CoinmateAccountService extends CoinmateAccountServiceRaw implements
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount,
-      String address) throws IOException {
+  public String withdrawFunds(Currency currency, BigDecimal amount, String address) throws IOException {
     CoinmateTradeResponse response = coinmateBitcoinWithdrawal(amount, address);
 
     return Long.toString(response.getData());
@@ -71,14 +70,13 @@ public class CoinmateAccountService extends CoinmateAccountServiceRaw implements
   public String withdrawFunds(WithdrawFundsParams params) throws IOException {
     if (params instanceof DefaultWithdrawFundsParams) {
       DefaultWithdrawFundsParams defaultParams = (DefaultWithdrawFundsParams) params;
-      return withdrawFunds(defaultParams.currency, defaultParams.amount, defaultParams.address);
+      return withdrawFunds(defaultParams.getCurrency(), defaultParams.getAmount(), defaultParams.getAddress());
     }
     throw new IllegalStateException("Don't know how to withdraw: " + params);
   }
 
   @Override
-  public String requestDepositAddress(Currency currency,
-      String... args) throws IOException {
+  public String requestDepositAddress(Currency currency, String... args) throws IOException {
     CoinmateDepositAddresses addresses = coinmateBitcoinDepositAddresses();
 
     if (addresses.getData().isEmpty()) {
@@ -95,8 +93,7 @@ public class CoinmateAccountService extends CoinmateAccountServiceRaw implements
   }
 
   @Override
-  public List<FundingRecord> getFundingHistory(
-      TradeHistoryParams params) throws IOException {
+  public List<FundingRecord> getFundingHistory(TradeHistoryParams params) throws IOException {
 
     TradeHistoryParamsSorted.Order order = TradeHistoryParamsSorted.Order.asc;
     int limit = 1000;

@@ -32,23 +32,27 @@ public final class Ticker implements Serializable {
    * the timestamp of the ticker according to the exchange's server, null if not provided
    */
   private final Date timestamp;
+  private final BigDecimal bidSize;
+  private final BigDecimal askSize;
 
   /**
    * Constructor
    *
    * @param currencyPair The tradable identifier (e.g. BTC in BTC/USD)
-   * @param last Last price
-   * @param bid Bid price
-   * @param ask Ask price
-   * @param high High price
-   * @param low Low price
-   * @param vwap Volume Weighted Average Price
-   * @param volume 24h volume in base currency
-   * @param quoteVolume 24h volume in counter currency
-   * @param timestamp - the timestamp of the ticker according to the exchange's server, null if not provided
+   * @param last         Last price
+   * @param bid          Bid price
+   * @param ask          Ask price
+   * @param high         High price
+   * @param low          Low price
+   * @param vwap         Volume Weighted Average Price
+   * @param volume       24h volume in base currency
+   * @param quoteVolume  24h volume in counter currency
+   * @param timestamp    - the timestamp of the ticker according to the exchange's server, null if not provided
+   * @param bidSize      The instantaneous size at the bid price
+   * @param askSize      The instantaneous size at the ask price
    */
-  private Ticker(CurrencyPair currencyPair, BigDecimal open, BigDecimal last, BigDecimal bid, BigDecimal ask, BigDecimal high, BigDecimal low, BigDecimal vwap,
-      BigDecimal volume, BigDecimal quoteVolume, Date timestamp) {
+  private Ticker(CurrencyPair currencyPair, BigDecimal open, BigDecimal last, BigDecimal bid, BigDecimal ask, BigDecimal high, BigDecimal low,
+      BigDecimal vwap, BigDecimal volume, BigDecimal quoteVolume, Date timestamp, BigDecimal bidSize, BigDecimal askSize) {
     this.open = open;
     this.currencyPair = currencyPair;
     this.last = last;
@@ -60,6 +64,8 @@ public final class Ticker implements Serializable {
     this.volume = volume;
     this.quoteVolume = quoteVolume;
     this.timestamp = timestamp;
+    this.bidSize = bidSize;
+    this.askSize = askSize;
   }
 
   public CurrencyPair getCurrencyPair() {
@@ -119,11 +125,20 @@ public final class Ticker implements Serializable {
     return timestamp;
   }
 
+  public BigDecimal getBidSize() {
+    return bidSize;
+  }
+
+  public BigDecimal getAskSize() {
+    return askSize;
+  }
+
   @Override
   public String toString() {
 
-    return "Ticker [currencyPair=" + currencyPair + ", open=" + open + ", last=" + last + ", bid=" + bid + ", ask=" + ask + ", high=" + high + ", low=" + low + ",avg="
-        + vwap + ", volume=" + volume + ", quoteVolume=" + quoteVolume + ", timestamp=" + DateUtils.toMillisNullSafe(timestamp) + "]";
+    return "Ticker [currencyPair=" + currencyPair + ", open=" + open + ", last=" + last + ", bid=" + bid + ", ask=" + ask + ", high=" + high
+        + ", low=" + low + ",avg=" + vwap + ", volume=" + volume + ", quoteVolume=" + quoteVolume + ", timestamp=" + DateUtils
+        .toMillisNullSafe(timestamp) + ", bidSize=" + bidSize + ", askSize=" + askSize + "]";
   }
 
   /**
@@ -148,6 +163,8 @@ public final class Ticker implements Serializable {
     private BigDecimal volume;
     private BigDecimal quoteVolume;
     private Date timestamp;
+    private BigDecimal bidSize;
+    private BigDecimal askSize;
 
     // Prevent repeat builds
     private boolean isBuilt = false;
@@ -156,7 +173,7 @@ public final class Ticker implements Serializable {
 
       validateState();
 
-      Ticker ticker = new Ticker(currencyPair, open, last, bid, ask, high, low, vwap, volume, quoteVolume, timestamp);
+      Ticker ticker = new Ticker(currencyPair, open, last, bid, ask, high, low, vwap, volume, quoteVolume, timestamp, bidSize, askSize);
 
       isBuilt = true;
 
@@ -236,5 +253,14 @@ public final class Ticker implements Serializable {
       return this;
     }
 
+    public Builder bidSize(BigDecimal bidSize) {
+      this.bidSize = bidSize;
+      return this;
+    }
+
+    public Builder askSize(BigDecimal askSize) {
+      this.askSize = askSize;
+      return this;
+    }
   }
 }

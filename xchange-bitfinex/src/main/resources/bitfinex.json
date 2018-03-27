@@ -4,6 +4,10 @@
       "price_scale": 2,
       "min_amount": 0.01000000
     },
+    "BTG/USD": {
+      "price_scale": 2,
+      "min_amount": 0.01000000
+    },
     "BTC/EUR": {
       "price_scale": 2,
       "min_amount": 0.01000000
@@ -182,5 +186,12 @@
       "scale": 8,
       "withdrawal_fee": 20.0
     }
-  }
+  },
+  "public_rate_limits": [
+    {
+      "calls": 30,
+      "time_span": 60,
+      "time_unit": "SECONDS"
+    }
+  ]
 }

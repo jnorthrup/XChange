@@ -36,8 +36,7 @@ public class IndependentReserveAccountService extends IndependentReserveAccountS
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount,
-      String address) throws IOException {
+  public String withdrawFunds(Currency currency, BigDecimal amount, String address) throws IOException {
     withdrawDigitalCurrency(amount, address, "");
     return null;
   }
@@ -46,14 +45,13 @@ public class IndependentReserveAccountService extends IndependentReserveAccountS
   public String withdrawFunds(WithdrawFundsParams params) throws IOException {
     if (params instanceof DefaultWithdrawFundsParams) {
       DefaultWithdrawFundsParams defaultParams = (DefaultWithdrawFundsParams) params;
-      return withdrawFunds(defaultParams.currency, defaultParams.amount, defaultParams.address);
+      return withdrawFunds(defaultParams.getCurrency(), defaultParams.getAmount(), defaultParams.getAddress());
     }
     throw new IllegalStateException("Don't know how to withdraw: " + params);
   }
 
   @Override
-  public String requestDepositAddress(Currency currency,
-      String... args) throws IOException {
+  public String requestDepositAddress(Currency currency, String... args) throws IOException {
     throw new UnsupportedOperationException();
   }
 
@@ -63,8 +61,7 @@ public class IndependentReserveAccountService extends IndependentReserveAccountS
   }
 
   @Override
-  public List<FundingRecord> getFundingHistory(
-      TradeHistoryParams params) throws IOException {
+  public List<FundingRecord> getFundingHistory(TradeHistoryParams params) throws IOException {
     throw new NotYetImplementedForExchangeException();
   }
 }

@@ -11,7 +11,11 @@ import org.knowm.xchange.anx.v2.ANXExchange;
 import org.knowm.xchange.anx.v2.dto.trade.ANXTradeResultWrapper;
 import org.knowm.xchange.dto.Order;
 import org.knowm.xchange.dto.Order.OrderType;
-import org.knowm.xchange.dto.trade.*;
+import org.knowm.xchange.dto.trade.LimitOrder;
+import org.knowm.xchange.dto.trade.MarketOrder;
+import org.knowm.xchange.dto.trade.OpenOrders;
+import org.knowm.xchange.dto.trade.StopOrder;
+import org.knowm.xchange.dto.trade.UserTrades;
 import org.knowm.xchange.exceptions.NotYetImplementedForExchangeException;
 import org.knowm.xchange.service.trade.TradeService;
 import org.knowm.xchange.service.trade.params.CancelOrderByIdParams;
@@ -23,6 +27,8 @@ import org.knowm.xchange.service.trade.params.orders.OpenOrdersParams;
 import org.knowm.xchange.utils.Assert;
 import org.knowm.xchange.utils.DateUtils;
 
+import si.mazi.rescu.IRestProxyFactory;
+
 /**
  * @author timmolter
  */
@@ -33,9 +39,9 @@ public class ANXTradeService extends ANXTradeServiceRaw implements TradeService 
    *
    * @param baseExchange
    */
-  public ANXTradeService(BaseExchange baseExchange) {
+  public ANXTradeService(BaseExchange baseExchange, IRestProxyFactory restProxyFactory) {
 
-    super(baseExchange);
+    super(baseExchange, restProxyFactory);
   }
 
   @Override

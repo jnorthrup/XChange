@@ -51,7 +51,7 @@ public class KrakenAccountService extends KrakenAccountServiceRaw implements Acc
   public String withdrawFunds(WithdrawFundsParams params) throws IOException {
     if (params instanceof DefaultWithdrawFundsParams) {
       DefaultWithdrawFundsParams defaultParams = (DefaultWithdrawFundsParams) params;
-      return withdrawFunds(defaultParams.currency, defaultParams.amount, defaultParams.address);
+      return withdrawFunds(defaultParams.getCurrency(), defaultParams.getAmount(), defaultParams.getAddress());
     }
     throw new IllegalStateException("Don't know how to withdraw: " + params);
   }
@@ -120,23 +120,23 @@ public class KrakenAccountService extends KrakenAccountServiceRaw implements Acc
     }
 
     @Override
-    public void setOffset(final Long offset) {
-      this.offset = offset;
-    }
-
-    @Override
     public Long getOffset() {
       return offset;
     }
 
     @Override
-    public void setCurrencies(Currency[] currencies) {
-      this.currencies = currencies;
+    public void setOffset(final Long offset) {
+      this.offset = offset;
     }
 
     @Override
     public Currency[] getCurrencies() {
       return this.currencies;
+    }
+
+    @Override
+    public void setCurrencies(Currency[] currencies) {
+      this.currencies = currencies;
     }
 
     @Override

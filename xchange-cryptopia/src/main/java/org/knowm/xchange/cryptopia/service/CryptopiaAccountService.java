@@ -36,7 +36,7 @@ public class CryptopiaAccountService extends CryptopiaAccountServiceRaw implemen
   public String withdrawFunds(WithdrawFundsParams params) throws IOException {
     if (params instanceof DefaultWithdrawFundsParams) {
       DefaultWithdrawFundsParams defaultWithdrawFundsParams = (DefaultWithdrawFundsParams) params;
-      return submitWithdraw(defaultWithdrawFundsParams.currency, defaultWithdrawFundsParams.amount, defaultWithdrawFundsParams.address, null);
+      return submitWithdraw(defaultWithdrawFundsParams.getCurrency(), defaultWithdrawFundsParams.getAmount(), defaultWithdrawFundsParams.getAddress(), null);
     } else {
       throw new IllegalStateException("Don't understand " + params);
     }
@@ -64,6 +64,9 @@ public class CryptopiaAccountService extends CryptopiaAccountServiceRaw implemen
   }
 
   public static class CryptopiaFundingHistoryParams implements TradeHistoryParams {
+    public final Type type;
+    public final Integer count;
+
     public CryptopiaFundingHistoryParams(Type type, Integer count) {
       this.type = type;
       this.count = count;
@@ -72,8 +75,5 @@ public class CryptopiaAccountService extends CryptopiaAccountServiceRaw implemen
     public enum Type {
       Deposit, Withdraw
     }
-
-    public final Type type;
-    public final Integer count;
   }
 }

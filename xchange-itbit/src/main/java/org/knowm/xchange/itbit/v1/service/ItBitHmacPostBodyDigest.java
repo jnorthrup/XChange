@@ -3,13 +3,13 @@ package org.knowm.xchange.itbit.v1.service;
 import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
 import java.util.Map;
 
 import javax.crypto.Mac;
 
 import org.knowm.xchange.service.BaseParamsDigest;
 
-import net.iharder.Base64;
 import si.mazi.rescu.RestInvocation;
 
 public class ItBitHmacPostBodyDigest extends BaseParamsDigest {
@@ -72,6 +72,6 @@ public class ItBitHmacPostBodyDigest extends BaseParamsDigest {
     mac512.update(messageHash);
 
     byte[] hmacDigest = mac512.doFinal();
-    return apiKey + ":" + Base64.encodeBytes(hmacDigest);
+    return apiKey + ":" + Base64.getEncoder().encodeToString(hmacDigest);
   }
 }

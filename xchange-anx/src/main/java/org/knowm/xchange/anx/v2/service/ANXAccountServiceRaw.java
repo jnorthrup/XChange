@@ -29,7 +29,7 @@ import org.knowm.xchange.service.trade.params.TradeHistoryParamsTimeSpan;
 import org.knowm.xchange.utils.Assert;
 
 import si.mazi.rescu.HttpStatusIOException;
-import si.mazi.rescu.RestProxyFactory;
+import si.mazi.rescu.IRestProxyFactory;
 
 public class ANXAccountServiceRaw extends ANXBaseService {
 
@@ -39,20 +39,20 @@ public class ANXAccountServiceRaw extends ANXBaseService {
   /**
    * Constructor
    */
-  protected ANXAccountServiceRaw(Exchange exchange) {
+  protected ANXAccountServiceRaw(Exchange exchange, IRestProxyFactory restProxyFactory) {
 
     super(exchange);
 
     Assert.notNull(exchange.getExchangeSpecification().getSslUri(), "Exchange specification URI cannot be null");
-    this.anxV2 = RestProxyFactory.createProxy(ANXV2.class, exchange.getExchangeSpecification().getSslUri(), getClientConfig());
+    this.anxV2 = restProxyFactory.createProxy(ANXV2.class, exchange.getExchangeSpecification().getSslUri(), getClientConfig());
     this.signatureCreator = ANXV2Digest.createInstance(exchange.getExchangeSpecification().getSecretKey());
   }
 
   public ANXAccountInfo getANXAccountInfo() throws IOException {
 
     try {
-      ANXAccountInfoWrapper anxAccountInfoWrapper = anxV2.getAccountInfo(exchange.getExchangeSpecification().getApiKey(), signatureCreator,
-          exchange.getNonceFactory());
+      ANXAccountInfoWrapper anxAccountInfoWrapper = anxV2
+          .getAccountInfo(exchange.getExchangeSpecification().getApiKey(), signatureCreator, exchange.getNonceFactory());
       return anxAccountInfoWrapper.getANXAccountInfo();
     } catch (ANXException e) {
       throw handleError(e);
@@ -64,9 +64,23 @@ public class ANXAccountServiceRaw extends ANXBaseService {
   public ANXWithdrawalResponseWrapper anxWithdrawFunds(String currency, BigDecimal amount, String address) throws IOException {
 
     try {
-      ANXWithdrawalResponseWrapper anxWithdrawalResponseWrapper = anxV2.withdrawBtc(exchange.getExchangeSpecification().getApiKey(), signatureCreator,
-          exchange.getNonceFactory(), currency, address,
-          amount.multiply(new BigDecimal(ANXUtils.BTC_VOLUME_AND_AMOUNT_INT_2_DECIMAL_FACTOR_2)).intValue(), 1, false, false);
+      ANXWithdrawalResponseWrapper anxWithdrawalResponseWrapper = anxV2
+          .withdrawBtc(exchange.getExchangeSpecification().getApiKey(), signatureCreator, exchange.getNonceFactory(), currency, address,
+              amount.multiply(new BigDecimal(ANXUtils.BTC_VOLUME_AND_AMOUNT_INT_2_DECIMAL_FACTOR_2)).toBigIntegerExact(), 1, false, false);
+      return anxWithdrawalResponseWrapper;
+    } catch (ANXException e) {
+      throw handleError(e);
+    } catch (HttpStatusIOException e) {
+      throw handleHttpError(e);
+    }
+  }
+
+  public ANXWithdrawalResponseWrapper anxWithdrawFunds(String currency, BigDecimal amount, String address, String destinationTag) throws IOException {
+    try {
+      ANXWithdrawalResponseWrapper anxWithdrawalResponseWrapper = anxV2
+          .withdrawXrp(exchange.getExchangeSpecification().getApiKey(), signatureCreator, exchange.getNonceFactory(), currency, address,
+              amount.multiply(new BigDecimal(ANXUtils.BTC_VOLUME_AND_AMOUNT_INT_2_DECIMAL_FACTOR_2)).toBigIntegerExact(), 1, false, false,
+              destinationTag);
       return anxWithdrawalResponseWrapper;
     } catch (ANXException e) {
       throw handleError(e);
@@ -78,8 +92,8 @@ public class ANXAccountServiceRaw extends ANXBaseService {
   public ANXBitcoinDepositAddress anxRequestDepositAddress(String currency) throws IOException {
 
     try {
-      ANXBitcoinDepositAddressWrapper anxBitcoinDepositAddressWrapper = anxV2.requestDepositAddress(exchange.getExchangeSpecification().getApiKey(),
-          signatureCreator, exchange.getNonceFactory(), currency);
+      ANXBitcoinDepositAddressWrapper anxBitcoinDepositAddressWrapper = anxV2
+          .requestDepositAddress(exchange.getExchangeSpecification().getApiKey(), signatureCreator, exchange.getNonceFactory(), currency);
       return anxBitcoinDepositAddressWrapper.getAnxBitcoinDepositAddress();
     } catch (ANXException e) {
       throw handleError(e);
@@ -129,8 +143,9 @@ public class ANXAccountServiceRaw extends ANXBaseService {
 
   public ANXWalletHistory getWalletHistory(String currency, Integer page, Date from, Date to) throws IOException {
     try {
-      ANXWalletHistoryWrapper walletHistory = anxV2.getWalletHistory(exchange.getExchangeSpecification().getApiKey(),
-          signatureCreator, exchange.getNonceFactory(), currency, page, toMillisNullSafe(from), toMillisNullSafe(to));
+      ANXWalletHistoryWrapper walletHistory = anxV2
+          .getWalletHistory(exchange.getExchangeSpecification().getApiKey(), signatureCreator, exchange.getNonceFactory(), currency, page,
+              toMillisNullSafe(from), toMillisNullSafe(to));
       return walletHistory.getANXWalletHistory();
     } catch (ANXException e) {
       throw handleError(e);

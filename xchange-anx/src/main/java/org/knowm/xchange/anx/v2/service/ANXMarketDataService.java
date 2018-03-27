@@ -16,6 +16,8 @@ import org.knowm.xchange.dto.trade.LimitOrder;
 import org.knowm.xchange.exceptions.ExchangeException;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
+import si.mazi.rescu.IRestProxyFactory;
+
 /**
  * <p>
  * Implementation of the market data service for ANX V2
@@ -31,9 +33,9 @@ public class ANXMarketDataService extends ANXMarketDataServiceRaw implements Mar
    *
    * @param exchange
    */
-  public ANXMarketDataService(Exchange exchange) {
+  public ANXMarketDataService(Exchange exchange, IRestProxyFactory restProxyFactory) {
 
-    super(exchange);
+    super(exchange, restProxyFactory);
   }
 
   @Override
@@ -46,7 +48,7 @@ public class ANXMarketDataService extends ANXMarketDataServiceRaw implements Mar
    * Get market depth from exchange
    *
    * @param args Optional arguments. Exchange-specific. This implementation assumes: absent or "full" -> get full OrderBook "partial" -> get partial
-   * OrderBook
+   *             OrderBook
    * @return The OrderBook
    * @throws java.io.IOException
    */
@@ -70,10 +72,10 @@ public class ANXMarketDataService extends ANXMarketDataServiceRaw implements Mar
     }
 
     // Adapt to XChange DTOs
-    List<LimitOrder> asks = ANXAdapters.adaptOrders(anxDepthWrapper.getAnxDepth().getAsks(), currencyPair.base.getCurrencyCode(),
-        currencyPair.counter.getCurrencyCode(), "ask", "");
-    List<LimitOrder> bids = ANXAdapters.adaptOrders(anxDepthWrapper.getAnxDepth().getBids(), currencyPair.base.getCurrencyCode(),
-        currencyPair.counter.getCurrencyCode(), "bid", "");
+    List<LimitOrder> asks = ANXAdapters
+        .adaptOrders(anxDepthWrapper.getAnxDepth().getAsks(), currencyPair.base.getCurrencyCode(), currencyPair.counter.getCurrencyCode(), "ask", "");
+    List<LimitOrder> bids = ANXAdapters
+        .adaptOrders(anxDepthWrapper.getAnxDepth().getBids(), currencyPair.base.getCurrencyCode(), currencyPair.counter.getCurrencyCode(), "bid", "");
     Date date = new Date(anxDepthWrapper.getAnxDepth().getMicroTime() / 1000);
     return new OrderBook(date, asks, bids);
   }

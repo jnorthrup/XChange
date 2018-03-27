@@ -31,6 +31,20 @@ public class LunoAccountService extends LunoBaseService implements AccountServic
     super(exchange);
   }
 
+  private static Status convert(org.knowm.xchange.luno.dto.account.LunoWithdrawals.Status status) {
+    switch (status) {
+      case PENDING:
+        return Status.PROCESSING;
+      case COMPLETED:
+        return Status.COMPLETE;
+      case CANCELLED:
+        return Status.CANCELLED;
+      case UNKNOWN:
+      default:
+        throw new ExchangeException("Unknown status for luno withdrawal: " + status);
+    }
+  }
+
   @Override
   public AccountInfo getAccountInfo() throws IOException {
 
@@ -62,7 +76,7 @@ public class LunoAccountService extends LunoBaseService implements AccountServic
   public String withdrawFunds(WithdrawFundsParams params) throws IOException {
     if (params instanceof DefaultWithdrawFundsParams) {
       DefaultWithdrawFundsParams defaultParams = (DefaultWithdrawFundsParams) params;
-      return withdrawFunds(defaultParams.currency, defaultParams.amount, defaultParams.address);
+      return withdrawFunds(defaultParams.getCurrency(), defaultParams.getAmount(), defaultParams.getAddress());
     }
     throw new IllegalStateException("Don't know how to withdraw: " + params);
   }
@@ -80,29 +94,17 @@ public class LunoAccountService extends LunoBaseService implements AccountServic
   }
 
   @Override
-  public List<FundingRecord> getFundingHistory(TradeHistoryParams params) throws ExchangeException,
-      NotAvailableFromExchangeException, NotYetImplementedForExchangeException, IOException {
+  public List<FundingRecord> getFundingHistory(TradeHistoryParams params)
+      throws ExchangeException, NotAvailableFromExchangeException, NotYetImplementedForExchangeException, IOException {
     // currently no support for deposits!
 
     List<FundingRecord> result = new ArrayList<>();
     for (Withdrawal w : lunoAPI.withdrawals().getWithdrawals()) {
-      result.add(new FundingRecord(null, w.getCreatedAt(), LunoUtil.fromLunoCurrency(w.currency), w.amount, w.id, null, Type.WITHDRAWAL, convert(w.status), null, w.fee, null));
+      result.add(
+          new FundingRecord(null, w.getCreatedAt(), LunoUtil.fromLunoCurrency(w.currency), w.amount, w.id, null, Type.WITHDRAWAL, convert(w.status),
+              null, w.fee, null));
     }
     return result;
-  }
-
-  private static Status convert(org.knowm.xchange.luno.dto.account.LunoWithdrawals.Status status) {
-    switch (status) {
-      case PENDING:
-        return Status.PROCESSING;
-      case COMPLETED:
-        return Status.COMPLETE;
-      case CANCELLED:
-        return Status.CANCELLED;
-      case UNKNOWN:
-      default:
-        throw new ExchangeException("Unknown status for luno withdrawal: " + status);
-    }
   }
 
 }

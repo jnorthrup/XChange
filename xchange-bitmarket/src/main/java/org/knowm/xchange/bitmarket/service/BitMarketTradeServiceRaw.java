@@ -20,6 +20,8 @@ import org.knowm.xchange.service.trade.params.TradeHistoryParamCurrencyPair;
 import org.knowm.xchange.service.trade.params.TradeHistoryParamOffset;
 import org.knowm.xchange.service.trade.params.TradeHistoryParams;
 
+import si.mazi.rescu.IRestProxyFactory;
+
 /**
  * Created by krzysztoffonal on 25/05/15.
  */
@@ -29,8 +31,8 @@ public class BitMarketTradeServiceRaw extends BitMarketBaseService {
    *
    * @param exchange
    */
-  protected BitMarketTradeServiceRaw(Exchange exchange) {
-    super(exchange);
+  protected BitMarketTradeServiceRaw(Exchange exchange, IRestProxyFactory restProxyFactory) {
+    super(exchange, restProxyFactory);
   }
 
   public BitMarketOrdersResponse getBitMarketOpenOrders() throws IOException, ExchangeException {
@@ -49,8 +51,8 @@ public class BitMarketTradeServiceRaw extends BitMarketBaseService {
     String market = order.getCurrencyPair().toString().replace("/", "");
     String type = order.getType() == Order.OrderType.ASK ? "sell" : "buy";
 
-    BitMarketTradeResponse response = bitMarketAuthenticated.trade(apiKey, sign, exchange.getNonceFactory(), market, type, order.getOriginalAmount(),
-        order.getLimitPrice());
+    BitMarketTradeResponse response = bitMarketAuthenticated
+        .trade(apiKey, sign, exchange.getNonceFactory(), market, type, order.getOriginalAmount(), order.getLimitPrice());
 
     if (!response.getSuccess()) {
       throw new ExchangeException(String.format("%d: %s", response.getError(), response.getErrorMsg()));
@@ -117,11 +119,11 @@ public class BitMarketTradeServiceRaw extends BitMarketBaseService {
       count = ((BitMarketHistoryParams) params).getCount();
     }
 
-    BitMarketHistoryOperationsResponse response = bitMarketAuthenticated.history(apiKey, sign, exchange.getNonceFactory(),
-        currencyPair.base.getCurrencyCode(), count, offset);
+    BitMarketHistoryOperationsResponse response = bitMarketAuthenticated
+        .history(apiKey, sign, exchange.getNonceFactory(), currencyPair.base.getCurrencyCode(), count, offset);
 
-    BitMarketHistoryOperationsResponse response2 = bitMarketAuthenticated.history(apiKey, sign, exchange.getNonceFactory(),
-        currencyPair.counter.getCurrencyCode(), count, offset);
+    BitMarketHistoryOperationsResponse response2 = bitMarketAuthenticated
+        .history(apiKey, sign, exchange.getNonceFactory(), currencyPair.counter.getCurrencyCode(), count, offset);
 
     if (!response.getSuccess() || !response2.getSuccess()) {
       throw new ExchangeException(String.format("%d: %s", response.getError(), response.getErrorMsg()));

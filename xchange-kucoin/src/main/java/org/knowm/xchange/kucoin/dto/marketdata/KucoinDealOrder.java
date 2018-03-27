@@ -6,7 +6,7 @@ import org.knowm.xchange.kucoin.dto.KucoinOrderType;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonDeserialize(using=KucoinDealOrderDeserializer.class)
+@JsonDeserialize(using = KucoinDealOrderDeserializer.class)
 public class KucoinDealOrder {
 
   private Long timestamp;
@@ -15,9 +15,8 @@ public class KucoinDealOrder {
   private BigDecimal amount;
   private BigDecimal volume;
 
-  public KucoinDealOrder(Long timestamp, KucoinOrderType orderType, BigDecimal price, BigDecimal amount,
-      BigDecimal volume) {
-    super();
+  public KucoinDealOrder(Long timestamp, KucoinOrderType orderType, BigDecimal price, BigDecimal amount, BigDecimal volume) {
+
     this.timestamp = timestamp;
     this.orderType = orderType;
     this.price = price;

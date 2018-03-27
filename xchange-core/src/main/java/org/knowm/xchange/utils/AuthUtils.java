@@ -17,13 +17,12 @@ public class AuthUtils {
    */
   public static String getBasicAuth(String user, final String pass) {
 
-    return "Basic " + net.iharder.Base64.encodeBytes((user + ":" + pass).getBytes());
+    return "Basic " + java.util.Base64.getEncoder().encodeToString((user + ":" + pass).getBytes());
   }
 
   /**
-   * Read the API & Secret key from a resource called {@code secret.keys}.
-   * 
-   * NOTE: This file MUST NEVER be commited to source control. It is therefore added to .gitignore. 
+   * Read the API & Secret key from a resource called {@code secret.keys}. NOTE: This file MUST NEVER be commited to source control. It is therefore
+   * added to .gitignore.
    */
   public static void setApiAndSecretKey(ExchangeSpecification exchangeSpec) {
 
@@ -31,9 +30,8 @@ public class AuthUtils {
   }
 
   /**
-   * Read the API & Secret key from a resource called {@code prefix}-{@code secret.keys}.
-   * 
-   * NOTE: This file MUST NEVER be commited to source control. It is therefore added to .gitignore. 
+   * Read the API & Secret key from a resource called {@code prefix}-{@code secret.keys}. NOTE: This file MUST NEVER be commited to source control. It
+   * is therefore added to .gitignore.
    */
   public static void setApiAndSecretKey(ExchangeSpecification exchangeSpec, String prefix) {
 
@@ -46,9 +44,9 @@ public class AuthUtils {
   }
 
   /**
-   * Read the secret properties from a resource called {@code prefix}-{@code secret.keys}.
-   * 
-   * NOTE: This file MUST NEVER be commited to source control. It is therefore added to .gitignore. 
+   * Read the secret properties from a resource called {@code prefix}-{@code secret.keys}. NOTE: This file MUST NEVER be commited to source control.
+   * It is therefore added to .gitignore.
+   *
    * @return The properties or null
    */
   public static Properties getSecretProperties(String prefix) {
@@ -57,9 +55,9 @@ public class AuthUtils {
 
     // First try to find the keys in the classpath 
     InputStream inStream = AuthUtils.class.getResourceAsStream("/" + resource);
-    
+
     // Next try to find the keys in the user's home/.ssh dir
-    File keyfile = new File(System.getProperty("user.home") + "/" +".ssh", resource);
+    File keyfile = new File(System.getProperty("user.home") + "/" + ".ssh", resource);
     if (inStream == null && keyfile.isFile()) {
       try {
         inStream = new FileInputStream(keyfile);
@@ -67,7 +65,7 @@ public class AuthUtils {
         // do nothing
       }
     }
-    
+
     Properties props = null;
     if (inStream != null) {
       try {

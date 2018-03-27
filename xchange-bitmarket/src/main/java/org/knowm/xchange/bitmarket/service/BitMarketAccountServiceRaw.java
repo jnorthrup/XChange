@@ -14,13 +14,15 @@ import org.knowm.xchange.bitmarket.dto.trade.BitMarketHistoryOperationsResponse;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.exceptions.ExchangeException;
 
+import si.mazi.rescu.IRestProxyFactory;
+
 /**
  * @author kfonal
  */
 public class BitMarketAccountServiceRaw extends BitMarketBaseService {
 
-  public BitMarketAccountServiceRaw(Exchange exchange) {
-    super(exchange);
+  public BitMarketAccountServiceRaw(Exchange exchange, IRestProxyFactory restProxyFactory) {
+    super(exchange, restProxyFactory);
   }
 
   public BitMarketAccountInfoResponse getBitMarketAccountInfo() throws IOException, ExchangeException {
@@ -57,7 +59,8 @@ public class BitMarketAccountServiceRaw extends BitMarketBaseService {
   }
 
   public List<BitMarketHistoryOperation> accountHistory(Currency currency, int count, int offset) throws IOException {
-    BitMarketHistoryOperationsResponse history = bitMarketAuthenticated.history(apiKey, sign, exchange.getNonceFactory(), currency.getCurrencyCode(), count, offset);
+    BitMarketHistoryOperationsResponse history = bitMarketAuthenticated
+        .history(apiKey, sign, exchange.getNonceFactory(), currency.getCurrencyCode(), count, offset);
     BitMarketHistoryOperations data = history.getData();
     return data.getOperations();
   }

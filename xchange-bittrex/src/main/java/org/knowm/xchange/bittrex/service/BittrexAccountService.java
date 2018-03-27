@@ -15,6 +15,7 @@ import org.knowm.xchange.dto.account.FundingRecord;
 import org.knowm.xchange.exceptions.NotAvailableFromExchangeException;
 import org.knowm.xchange.service.account.AccountService;
 import org.knowm.xchange.service.trade.params.DefaultWithdrawFundsParams;
+import org.knowm.xchange.service.trade.params.MoneroWithdrawFundsParams;
 import org.knowm.xchange.service.trade.params.RippleWithdrawFundsParams;
 import org.knowm.xchange.service.trade.params.TradeHistoryParamCurrency;
 import org.knowm.xchange.service.trade.params.TradeHistoryParams;
@@ -48,11 +49,13 @@ public class BittrexAccountService extends BittrexAccountServiceRaw implements A
   public String withdrawFunds(WithdrawFundsParams params) throws IOException {
     if (params instanceof RippleWithdrawFundsParams) {
       RippleWithdrawFundsParams defaultParams = (RippleWithdrawFundsParams) params;
-      return withdraw(defaultParams.currency.getCurrencyCode(), defaultParams.amount, defaultParams.address, defaultParams.tag);
-    }
-    if (params instanceof DefaultWithdrawFundsParams) {
+      return withdraw(defaultParams.getCurrency().getCurrencyCode(), defaultParams.getAmount(), defaultParams.getAddress(), defaultParams.getTag());
+    } else if (params instanceof MoneroWithdrawFundsParams) {
+      MoneroWithdrawFundsParams moneroWithdrawFundsParams = (MoneroWithdrawFundsParams) params;
+      return withdraw(moneroWithdrawFundsParams.getCurrency().getCurrencyCode(), moneroWithdrawFundsParams.getAmount(), moneroWithdrawFundsParams.getAddress(), moneroWithdrawFundsParams.getPaymentId());
+    } else if (params instanceof DefaultWithdrawFundsParams) {
       DefaultWithdrawFundsParams defaultParams = (DefaultWithdrawFundsParams) params;
-      return withdrawFunds(defaultParams.currency, defaultParams.amount, defaultParams.address);
+      return withdrawFunds(defaultParams.getCurrency(), defaultParams.getAmount(), defaultParams.getAddress());
     }
     throw new IllegalStateException("Don't know how to withdraw: " + params);
   }
@@ -79,19 +82,10 @@ public class BittrexAccountService extends BittrexAccountServiceRaw implements A
 
     List<BittrexDepositHistory> depositsHistory = getDepositsHistory(currency);
     for (BittrexDepositHistory depositHistory : depositsHistory) {
-      res.add(new FundingRecord(
-          depositHistory.getCryptoAddress(),
-          depositHistory.getLastUpdated(),
-          Currency.getInstance(depositHistory.getCurrency()),
-          depositHistory.getAmount(),
-          String.valueOf(depositHistory.getId()),
-          depositHistory.getTxId(),
-          FundingRecord.Type.DEPOSIT,
-          FundingRecord.Status.COMPLETE,
-          null,
-          null,
-          null
-      ));
+      res.add(
+          new FundingRecord(depositHistory.getCryptoAddress(), depositHistory.getLastUpdated(), Currency.getInstance(depositHistory.getCurrency()),
+              depositHistory.getAmount(), String.valueOf(depositHistory.getId()), depositHistory.getTxId(), FundingRecord.Type.DEPOSIT,
+              FundingRecord.Status.COMPLETE, null, null, null));
     }
 
     List<BittrexWithdrawalHistory> withdrawalsHistory = getWithdrawalsHistory(currency);
@@ -109,19 +103,9 @@ public class BittrexAccountService extends BittrexAccountServiceRaw implements A
       if (withdrawalHistory.getInvalidAddress())
         continue;
 
-      res.add(new FundingRecord(
-          withdrawalHistory.getAddress(),
-          withdrawalHistory.getOpened(),
-          Currency.getInstance(withdrawalHistory.getCurrency()),
-          withdrawalHistory.getAmount(),
-          withdrawalHistory.getPaymentUuid(),
-          withdrawalHistory.getTxId(),
-          FundingRecord.Type.WITHDRAWAL,
-          status,
-          null,
-          withdrawalHistory.getTxCost(),
-          null
-      ));
+      res.add(new FundingRecord(withdrawalHistory.getAddress(), withdrawalHistory.getOpened(), Currency.getInstance(withdrawalHistory.getCurrency()),
+          withdrawalHistory.getAmount(), withdrawalHistory.getPaymentUuid(), withdrawalHistory.getTxId(), FundingRecord.Type.WITHDRAWAL, status, null,
+          withdrawalHistory.getTxCost(), null));
     }
 
     return res;
