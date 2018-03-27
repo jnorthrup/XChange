@@ -15,12 +15,16 @@ bootstrapping
 
 if done right you can be done in less time than a single XChange build
 
-in bash, (not windows bash) run bin/bootstrap (ssd helps)
+in bash, (not windows bash) run [`bin/bootstrap`](bin/bootstrap) (ssd helps)
+
 ```bash
 git clone git@github.com:jnorthrup/XChange.git
 git clone XChange -b Xpolyglot  Xpolyglot
 cd Xpolyglot
-bin/bootstrap
+```
+
+[`bin/bootstrap`](bin/bootstrap)
+```
 mvn clean install
 ```
 
@@ -40,7 +44,7 @@ mvn clean install
 
 testing
 ======
-we know that the XChange/develop branch tests are at a certain state, though the json test resources lack package isolation and there are collisions when merged.  for this reasons the test phase of maven should be de-emphasized until enough compartmentalization exists in the parent fork.  these are not hard to fix, but there's a large and growing number of cut and paste module artifacts with un-mergable structure at this time.
+the tests tend to work
 
 coding standards
 ======
