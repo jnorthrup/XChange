@@ -81,20 +81,70 @@
                             </execution>
                         </executions>
                     </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>mvsrc</id>
+            <activation>
+                <file>
+                    <exists>${project.build.directory}/generated-sources/swagger/src/main/java</exists>
+                </file>
+            </activation>
+            <build>
+                <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-antrun-plugin</artifactId>
                         <version>1.8</version>
                         <executions>
                             <execution>
-                                <phase>install</phase>
+                                <phase>generate-sources</phase>
+                                <id>move-broken-src</id>
                                 <goals>
                                     <goal>run</goal>
                                 </goals>
                                 <configuration>
                                     <target>
-                                        <delete dir="${toxic.test.include}"
-                                                includeemptydirs="true"/>
+                                        <move todir="${build.directory}/generated-sources/">
+                                            <fileset
+                                                    dir="${project.build.directory}/generated-sources/swagger/src/main"/>
+                                        </move>
+                                    </target>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>mvtest</id>
+            <activation>
+                <file>
+                    <exists>${project.build.directory}/generated-sources/swagger/src/test/java</exists>
+                </file>
+
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <version>1.8</version>
+                        <executions>
+                            <execution>
+                                <phase>generate-sources</phase>
+                                <id>move-broken-test</id>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <configuration>
+                                    <target>
+                                        <move todir="${build.directory}/generated-test-sources/">
+                                            <fileset
+                                                    dir="${project.build.directory}/generated-sources/swagger/src/test"/>
+                                        </move>
                                     </target>
                                 </configuration>
                             </execution>
@@ -179,10 +229,10 @@
                             <goal>compile</goal>
                         </goals>
                         <configuration>
-                            <sourceDirs>
+                            <!--sourceDirs>
                                 <source>target/generated-sources/swagger/src/main/java</source>
                                 <source>src/main/java</source>
-                            </sourceDirs>
+                            </sourceDirs-->
                         </configuration>
                     </execution>
                     <execution>
