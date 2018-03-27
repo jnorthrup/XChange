@@ -55,6 +55,7 @@
                                 <goals>
                                     <goal>generate</goal>
                                 </goals>
+                                <phase>initialize</phase>
                                 <configuration>
                                     <language>java</language>
                                     <inputSpec>${project.basedir}/src/main/swagger/${exchangeName}.yaml
@@ -79,18 +80,6 @@
                             </execution>
                         </executions>
                     </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>mvsrc</id>
-            <activation>
-                <file>
-                    <exists>${project.build.directory}/generated-sources/swagger/src/main/java</exists>
-                </file>
-            </activation>
-            <build>
-                <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-antrun-plugin</artifactId>
@@ -104,44 +93,11 @@
                                 </goals>
                                 <configuration>
                                     <target>
-                                        <move todir="${build.directory}/generated-sources/">
-                                            <fileset
-                                                    dir="${project.build.directory}/generated-sources/swagger/src/main"/>
+                                        <move todir="${project.build.directory}/generated-sources">
+                                            <fileset dir="${project.build.directory}/generated-sources/swagger/src/main"/>
                                         </move>
-                                    </target>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>mvtest</id>
-            <activation>
-                <file>
-                    <exists>${project.build.directory}/generated-sources/swagger/src/test/java</exists>
-                </file>
-
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-antrun-plugin</artifactId>
-                        <version>1.8</version>
-                        <executions>
-                            <execution>
-                                <phase>generate-sources</phase>
-                                <id>move-broken-test</id>
-                                <goals>
-                                    <goal>run</goal>
-                                </goals>
-                                <configuration>
-                                    <target>
-                                        <move todir="${build.directory}/generated-test-sources/">
-                                            <fileset
-                                                    dir="${project.build.directory}/generated-sources/swagger/src/test"/>
+                                        <move todir="${project.build.directory}/generated-test-sources">
+                                            <fileset dir="${project.build.directory}/generated-sources/swagger/src/test"/>
                                         </move>
                                     </target>
                                 </configuration>
@@ -222,10 +178,10 @@
                             <goal>compile</goal>
                         </goals>
                         <configuration>
-                            <!--sourceDirs>
-                                <source>target/generated-sources/swagger/src/main/java</source>
-                                <source>src/main/java</source>
-                            </sourceDirs-->
+                            <sourceDirs>
+                                <sourceDir>${project.basedir}/src/main/java</sourceDir>
+                                <sourceDir>${project.build.directory}/generated-sources/java</sourceDir>
+                            </sourceDirs>
                         </configuration>
                     </execution>
                     <execution>
@@ -234,6 +190,12 @@
                         <goals>
                             <goal>test-compile</goal>
                         </goals>
+                        <configuration>
+                            <sourceDirs>
+                                <sourceDir>${project.basedir}/src/test/java</sourceDir>
+                                <sourceDir>${project.build.directory}/generated-test-sources/java</sourceDir>
+                            </sourceDirs>
+                        </configuration>
                     </execution>
                 </executions>
                 <configuration>
@@ -278,8 +240,8 @@
         <gen-package>org.knowm.xchange</gen-package>
         <kotlin.version>1.2.31</kotlin.version>
         <commons-codec.version>1.11</commons-codec.version>
-        <rebuild.sentinel>target/generated-sources/swagger/pom.xml</rebuild.sentinel>
-        <toxic.test.include>${build.directory}/generated-sources/swagger/src/test</toxic.test.include>
+        <rebuild.sentinel>target/generated-sources/swagger/.swagger-codegen/VERSION</rebuild.sentinel>
+        <toxic.test.include>${project.build.directory}/generated-sources/swagger/src/test</toxic.test.include>
         <exchangeName>bitcoincoid</exchangeName>
     </properties>
 
