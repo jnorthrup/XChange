@@ -259,6 +259,7 @@
         <module>xchange-cryptocompare</module>
         <module>xchange-huobipro</module>
         <module>xchange-idex</module>
+        <module>xchange-idexjaxrs</module>
         <module>xchange-stocksexchange</module>
     </modules>
 <!-- tada
