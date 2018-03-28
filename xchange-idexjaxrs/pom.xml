@@ -97,11 +97,11 @@
                                 <configuration>
                                     <target>
                                         <move todir="${project.build.directory}/generated-sources">
-                                            <fileset dir="${project.build.directory}/generated-sources/swagger/src/main"/>
+                                            <fileset dir="${project.build.directory}/generated-sources/swagger/src/gen"/>
                                         </move>
-                                        <move todir="${project.build.directory}/generated-test-sources">
-                                            <fileset dir="${project.build.directory}/generated-sources/swagger/src/test"/>
-                                        </move>
+                                        <!--<move todir="${project.build.directory}/generated-test-sources">-->
+                                            <!--<fileset dir="${project.build.directory}/generated-sources/swagger/src/test"/>-->
+                                        <!--</move>-->
                                     </target>
                                 </configuration>
                             </execution>
