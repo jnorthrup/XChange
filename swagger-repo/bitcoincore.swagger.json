@@ -10,6 +10,11 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": ""
+        }
+    ],
     "paths": {
         "/": {
             "post": {
@@ -25,7 +30,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/BitcoinCoreBalanceRequest"
+                            "$ref": "#/definitions/BitcoinCoreUnconfirmedBalanceRequest"
                         }
                     }
                 ],
@@ -38,22 +43,25 @@
                             "$ref": "#/definitions/BitcoinCoreBalanceResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    ""
+                ]
             }
         }
     },
     "definitions": {
-        "BitcoinCoreBalanceRequest": {
-            "properties": {
-                "method": {
-                    "type": "string"
-                }
-            }
-        },
         "BitcoinCoreBalanceResponse": {
             "properties": {
                 "amount": {
                     "type": "number"
+                }
+            }
+        },
+        "BitcoinCoreUnconfirmedBalanceRequest": {
+            "properties": {
+                "method": {
+                    "type": "string"
                 }
             }
         }

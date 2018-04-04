@@ -10,6 +10,14 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "address"
+        },
+        {
+            "name": "multiaddr"
+        }
+    ],
     "paths": {
         "/address/{address}?format=json": {
             "get": {
@@ -35,7 +43,10 @@
                             "$ref": "#/definitions/BitcoinAddress"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "address"
+                ]
             }
         },
         "/multiaddr": {
@@ -63,7 +74,10 @@
                             "$ref": "#/definitions/BitcoinAddresses"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "multiaddr"
+                ]
             }
         }
     },

@@ -10,6 +10,11 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "api"
+        }
+    ],
     "paths": {
         "/api/ohlcdata": {
             "get": {
@@ -41,7 +46,10 @@
                             "$ref": "#/definitions/BTCTurkOHLC"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/orderbook": {
@@ -68,7 +76,10 @@
                             "$ref": "#/definitions/BTCTurkOrderBook"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/ticker": {
@@ -95,7 +106,10 @@
                             "$ref": "#/definitions/BTCTurkTicker"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/trades": {
@@ -128,7 +142,10 @@
                             "$ref": "#/definitions/BTCTurkTrade"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         }
     },

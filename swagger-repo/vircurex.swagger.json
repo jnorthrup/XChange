@@ -10,6 +10,11 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "api"
+        }
+    ],
     "paths": {
         "/api/create_order.json": {
             "get": {
@@ -83,7 +88,10 @@
                             "$ref": "#/definitions/VircurexPlaceOrderReturn"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/get_balances.json": {
@@ -128,7 +136,10 @@
                             "$ref": "#/definitions/VircurexAccountInfoReturn"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/get_last_trade.json": {
@@ -161,7 +172,10 @@
                             "$ref": "#/definitions/VircurexLastTrade"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/orderbook.json": {
@@ -194,7 +208,10 @@
                             "$ref": "#/definitions/VircurexDepth"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/read_orders.json": {
@@ -245,7 +262,10 @@
                             "$ref": "#/definitions/VircurexOpenOrdersReturn"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/release_order.json": {
@@ -296,7 +316,10 @@
                             "$ref": "#/definitions/VircurexPlaceOrderReturn"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         }
     },

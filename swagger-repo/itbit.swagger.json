@@ -10,6 +10,11 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "v1"
+        }
+    ],
     "paths": {
         "/v1/markets/{ident}{currency}/order_book": {
             "get": {
@@ -41,7 +46,10 @@
                             "$ref": "#/definitions/ItBitDepth"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/markets/{ident}{currency}/ticker": {
@@ -74,7 +82,10 @@
                             "$ref": "#/definitions/ItBitTicker"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/markets/{ident}{currency}/trades": {
@@ -113,7 +124,10 @@
                             "$ref": "#/definitions/ItBitTrades"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/wallets": {
@@ -171,7 +185,10 @@
                             "$ref": "#/definitions/ItBitAccountInfoReturn"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/wallets/{walletId}": {
@@ -216,7 +233,10 @@
                             "$ref": "#/definitions/ItBitAccountInfoReturn_2"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/wallets/{walletId}/cryptocurrency_deposits": {
@@ -270,7 +290,10 @@
                             "$ref": "#/definitions/ItBitDepositResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/wallets/{walletId}/cryptocurrency_withdrawals": {
@@ -324,7 +347,10 @@
                             "$ref": "#/definitions/ItBitWithdrawalResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/wallets/{walletId}/funding_history": {
@@ -382,7 +408,10 @@
                             "$ref": "#/definitions/ItBitFundingHistoryResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/wallets/{walletId}/orders": {
@@ -451,7 +480,10 @@
                             "$ref": "#/definitions/ItBitOrder"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             },
             "post": {
                 "consumes": [
@@ -503,7 +535,10 @@
                             "$ref": "#/definitions/ItBitOrder_2"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/wallets/{walletId}/orders/{orderId}": {
@@ -554,7 +589,10 @@
                             "$ref": "#/definitions/ItBitOrder_2"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             },
             "delete": {
                 "description": "Returns empty body, return object is always null",
@@ -604,7 +642,10 @@
                             "type": "integer"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/wallets/{walletId}/trades": {
@@ -680,7 +721,10 @@
                             "$ref": "#/definitions/ItBitTradeHistory"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         }
     },

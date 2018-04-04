@@ -10,6 +10,11 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "t"
+        }
+    ],
     "paths": {
         "/t/api.html?a=buylimit&apikey={apikey}&nonce={nonce}&market={lmarket}-{rmarket}&quantity={quantity}&rate={rate}": {
             "get": {
@@ -71,7 +76,10 @@
                             "$ref": "#/definitions/CCEXBuySellLimitResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "t"
+                ]
             }
         },
         "/t/api.html?a=cancel&apikey={apikey}&nonce={nonce}&uuid={uuid}": {
@@ -116,7 +124,10 @@
                             "$ref": "#/definitions/CCEXCancelResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "t"
+                ]
             }
         },
         "/t/api.html?a=getbalance&apikey={apikey}&nonce={nonce}&currency={currency}": {
@@ -161,7 +172,10 @@
                             "$ref": "#/definitions/CCEXBalanceResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "t"
+                ]
             }
         },
         "/t/api.html?a=getbalances&apikey={apikey}&nonce={nonce}": {
@@ -200,7 +214,10 @@
                             "$ref": "#/definitions/CCEXBalancesResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "t"
+                ]
             }
         },
         "/t/api.html?a=getopenorders&apikey={apikey}&nonce={nonce}": {
@@ -239,7 +256,10 @@
                             "$ref": "#/definitions/CCEXGetopenordersResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "t"
+                ]
             }
         },
         "/t/api.html?a=getorderhistory&apikey={apikey}&nonce={nonce}": {
@@ -278,7 +298,10 @@
                             "$ref": "#/definitions/CCEXGetorderhistoryResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "t"
+                ]
             }
         },
         "/t/api.html?a=selllimit&apikey={apikey}&nonce={nonce}&market={lmarket}-{rmarket}&quantity={quantity}&rate={rate}": {
@@ -341,7 +364,10 @@
                             "$ref": "#/definitions/CCEXBuySellLimitResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "t"
+                ]
             }
         },
         "/t/api_pub.html?a=getmarkethistory&market={pair}&count=100": {
@@ -369,7 +395,10 @@
                             "$ref": "#/definitions/CCEXTrades"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "t"
+                ]
             }
         },
         "/t/api_pub.html?a=getmarkets": {
@@ -390,7 +419,10 @@
                             "$ref": "#/definitions/CCEXMarkets"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "t"
+                ]
             }
         },
         "/t/api_pub.html?a=getorderbook&market={pair}&type=both&depth={depth}": {
@@ -424,7 +456,10 @@
                             "$ref": "#/definitions/CCEXGetorderbook"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "t"
+                ]
             }
         },
         "/t/pairs.json": {
@@ -445,7 +480,10 @@
                             "$ref": "#/definitions/CCEXPairs"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "t"
+                ]
             }
         },
         "/t/{lpair}-{rpair}.json": {
@@ -478,7 +516,10 @@
                             "$ref": "#/definitions/CCEXTickerResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "t"
+                ]
             }
         }
     },

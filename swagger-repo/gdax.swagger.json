@@ -10,6 +10,32 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "accounts"
+        },
+        {
+            "name": "coinbase-accounts"
+        },
+        {
+            "name": "fills"
+        },
+        {
+            "name": "orders"
+        },
+        {
+            "name": "products"
+        },
+        {
+            "name": "reports"
+        },
+        {
+            "name": "users"
+        },
+        {
+            "name": "withdrawals"
+        }
+    ],
     "paths": {
         "/accounts": {
             "get": {
@@ -53,7 +79,10 @@
                             "$ref": "#/definitions/GDAXAccount"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "accounts"
+                ]
             }
         },
         "/accounts/{account_id}/ledger": {
@@ -114,7 +143,10 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "accounts"
+                ]
             }
         },
         "/accounts/{account_id}/transactions": {
@@ -174,7 +206,10 @@
                             "$ref": "#/definitions/GDAXSendMoneyResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "accounts"
+                ]
             }
         },
         "/accounts/{account_id}/transfers": {
@@ -247,7 +282,10 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "accounts"
+                ]
             }
         },
         "/coinbase-accounts": {
@@ -292,7 +330,10 @@
                             "$ref": "#/definitions/GDAXCoinbaseAccount"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "coinbase-accounts"
+                ]
             }
         },
         "/coinbase-accounts/{account_id}/addresses": {
@@ -343,7 +384,10 @@
                             "$ref": "#/definitions/GDAXCoinbaseAccountAddress"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "coinbase-accounts"
+                ]
             }
         },
         "/fills": {
@@ -406,7 +450,10 @@
                             "$ref": "#/definitions/GDAXFill"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "fills"
+                ]
             }
         },
         "/orders": {
@@ -451,7 +498,10 @@
                             "$ref": "#/definitions/GDAXOrder"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "orders"
+                ]
             },
             "post": {
                 "consumes": [
@@ -503,7 +553,10 @@
                             "$ref": "#/definitions/GDAXIdResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "orders"
+                ]
             }
         },
         "/orders/{id}": {
@@ -554,7 +607,10 @@
                             "$ref": "#/definitions/GDAXOrder_2"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "orders"
+                ]
             },
             "delete": {
                 "consumes": [
@@ -600,7 +656,10 @@
                         "headers": {
                         }
                     }
-                }
+                },
+                "tags": [
+                    "orders"
+                ]
             }
         },
         "/orders?status={status}": {
@@ -672,7 +731,10 @@
                             "$ref": "#/definitions/GDAXProduct"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "products"
+                ]
             }
         },
         "/products/{baseCurrency}-{targetCurrency}/book?level={level}": {
@@ -711,7 +773,10 @@
                             "$ref": "#/definitions/GDAXProductBook"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "products"
+                ]
             }
         },
         "/products/{baseCurrency}-{targetCurrency}/candles": {
@@ -762,7 +827,10 @@
                             "$ref": "#/definitions/GDAXCandle"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "products"
+                ]
             }
         },
         "/products/{baseCurrency}-{targetCurrency}/stats": {
@@ -795,7 +863,10 @@
                             "$ref": "#/definitions/GDAXProductStats"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "products"
+                ]
             }
         },
         "/products/{baseCurrency}-{targetCurrency}/ticker": {
@@ -828,7 +899,10 @@
                             "$ref": "#/definitions/GDAXProductTicker"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "products"
+                ]
             }
         },
         "/products/{baseCurrency}-{targetCurrency}/trades": {
@@ -861,7 +935,10 @@
                             "$ref": "#/definitions/GDAXTrade"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "products"
+                ]
             }
         },
         "/reports": {
@@ -915,7 +992,10 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "reports"
+                ]
             }
         },
         "/reports/{report_id}": {
@@ -967,7 +1047,10 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "reports"
+                ]
             }
         },
         "/users/self/verify": {
@@ -1012,7 +1095,10 @@
                             "$ref": "#/definitions/JsonNode"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "users"
+                ]
             }
         },
         "/withdrawals/crypto": {
@@ -1066,7 +1152,10 @@
                             "$ref": "#/definitions/GDAXWithdrawCryptoResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "withdrawals"
+                ]
             }
         }
     },

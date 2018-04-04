@@ -10,6 +10,14 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "api"
+        },
+        {
+            "name": "tapi"
+        }
+    ],
     "paths": {
         "/api/3/depth/{pairs}": {
             "get": {
@@ -41,7 +49,10 @@
                             "$ref": "#/definitions/LiquiDepthResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/3/info": {
@@ -62,7 +73,10 @@
                             "$ref": "#/definitions/LiquiInfoResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/3/ticker/{pairs}": {
@@ -89,7 +103,10 @@
                             "$ref": "#/definitions/LiquiTickersResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/3/trades/{pairs}": {
@@ -122,7 +139,10 @@
                             "$ref": "#/definitions/LiquiPublicTradesResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/tapi": {
@@ -230,14 +250,33 @@
                         "headers": {
                         },
                         "schema": {
-                            "$ref": "#/definitions/LiquiTradeHistoryResult"
+                            "$ref": "#/definitions/LiquiCancelOrderResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "tapi"
+                ]
             }
         }
     },
     "definitions": {
+        "LiquiCancelOrderResult": {
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "object"
+                },
+                "stat": {
+                    "$ref": "#/definitions/LiquiStat"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
         "LiquiDepthResult": {
             "properties": {
                 "error": {
@@ -294,22 +333,6 @@
                 },
                 "result": {
                     "type": "object"
-                }
-            }
-        },
-        "LiquiTradeHistoryResult": {
-            "properties": {
-                "error": {
-                    "type": "string"
-                },
-                "result": {
-                    "type": "object"
-                },
-                "stat": {
-                    "$ref": "#/definitions/LiquiStat"
-                },
-                "success": {
-                    "type": "boolean"
                 }
             }
         }

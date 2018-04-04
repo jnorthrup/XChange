@@ -10,6 +10,23 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "account"
+        },
+        {
+            "name": "markethistory"
+        },
+        {
+            "name": "marketinfo"
+        },
+        {
+            "name": "orderbook"
+        },
+        {
+            "name": "trade"
+        }
+    ],
     "paths": {
         "/account/balance/{apiKey}": {
             "get": {
@@ -36,7 +53,10 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "account"
+                ]
             }
         },
         "/markethistory/{pairString}": {
@@ -63,7 +83,10 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "markethistory"
+                ]
             }
         },
         "/marketinfo": {
@@ -87,7 +110,10 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "marketinfo"
+                ]
             }
         },
         "/marketinfo/{pairString}": {
@@ -117,7 +143,10 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "marketinfo"
+                ]
             }
         },
         "/orderbook/{pairString}": {
@@ -144,7 +173,10 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "orderbook"
+                ]
             }
         },
         "/trade/buy/{apiKey}/{pairString}/{amount}/{price}": {
@@ -190,7 +222,10 @@
                             "$ref": "#/definitions/EmpoExOrderResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "trade"
+                ]
             }
         },
         "/trade/cancel/{apiKey}/{orderId}": {
@@ -224,7 +259,10 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "trade"
+                ]
             }
         },
         "/trade/openorders/{apiKey}": {
@@ -252,7 +290,10 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "trade"
+                ]
             }
         },
         "/trade/sell/{apiKey}/{pairString}/{amount}/{price}": {
@@ -298,7 +339,10 @@
                             "$ref": "#/definitions/EmpoExOrderResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "trade"
+                ]
             }
         }
     },

@@ -10,6 +10,11 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "ticker"
+        }
+    ],
     "paths": {
         "/ticker": {
             "get": {
@@ -29,7 +34,10 @@
                             "$ref": "#/definitions/KoinimTicker"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "ticker"
+                ]
             }
         }
     },

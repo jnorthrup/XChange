@@ -10,6 +10,11 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "apiv2"
+        }
+    ],
     "paths": {
         "/apiv2/rest/public/ccorder.json?bid_currency={bid_currency}&ask_currency={ask_currency}&ticker": {
             "get": {
@@ -41,7 +46,10 @@
                             "$ref": "#/definitions/CryptonitTicker"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "apiv2"
+                ]
             }
         },
         "/apiv2/rest/public/ccorder.json?bid_currency={bid_currency}&ask_currency={ask_currency}&type={type}&limit={limit}": {
@@ -86,7 +94,10 @@
                             "$ref": "#/definitions/CryptonitOrders"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "apiv2"
+                ]
             }
         },
         "/apiv2/rest/public/pairs.json": {
@@ -110,7 +121,10 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "apiv2"
+                ]
             }
         }
     },

@@ -10,6 +10,11 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "v1"
+        }
+    ],
     "paths": {
         "/v1/account/balances": {
             "get": {
@@ -59,7 +64,10 @@
                             "$ref": "#/definitions/KucoinCoinBalances;>"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/account/{coin}/wallet/address": {
@@ -104,7 +112,10 @@
                             "$ref": "#/definitions/KucoinDepositAddress;>"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/account/{coin}/wallet/records": {
@@ -174,7 +185,10 @@
                             "$ref": "#/definitions/KucoinWalletRecords;>"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/account/{coin}/withdraw/apply": {
@@ -231,7 +245,10 @@
                             "$ref": "#/definitions/Object;>"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/cancel-order": {
@@ -293,7 +310,10 @@
                             "$ref": "#/definitions/KucoinOrder;>"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/market/open/coins": {
@@ -315,7 +335,10 @@
                             "$ref": "#/definitions/KucoinCoin;>;>"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/open/deal-orders": {
@@ -358,7 +381,10 @@
                             "$ref": "#/definitions/KucoinDealOrder;>;>"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/open/orders": {
@@ -401,12 +427,15 @@
                             "$ref": "#/definitions/KucoinOrderBook;>"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/open/tick": {
             "get": {
-                "description": "Retrieves a ticker.\nRetrieves all tickers.",
+                "description": "Retrieves all tickers.\nRetrieves a ticker.",
                 "consumes": [
                 ],
                 "produces": [
@@ -427,10 +456,13 @@
                         "headers": {
                         },
                         "schema": {
-                            "$ref": "#/definitions/KucoinTicker;>;>"
+                            "$ref": "#/definitions/KucoinTicker;>"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/order": {
@@ -498,7 +530,10 @@
                             "$ref": "#/definitions/KucoinOrder;>"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/order/active": {
@@ -554,7 +589,10 @@
                             "$ref": "#/definitions/KucoinActiveOrders;>"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/order/dealt": {
@@ -634,7 +672,10 @@
                             "$ref": "#/definitions/KucoinDealtOrdersInfo;>"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         }
     },
@@ -767,7 +808,7 @@
                 }
             }
         },
-        "KucoinTicker;>;>": {
+        "KucoinTicker;>": {
             "properties": {
                 "code": {
                     "type": "string"

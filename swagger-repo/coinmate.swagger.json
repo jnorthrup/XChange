@@ -10,6 +10,11 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "api"
+        }
+    ],
     "paths": {
         "/api/balances": {
             "post": {
@@ -54,7 +59,10 @@
                             "$ref": "#/definitions/CoinmateBalance"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/bitcoinDepositAddresses": {
@@ -100,7 +108,10 @@
                             "$ref": "#/definitions/CoinmateDepositAddresses"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/bitcoinWithdrawal": {
@@ -158,7 +169,10 @@
                             "$ref": "#/definitions/CoinmateTradeResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/buyInstant": {
@@ -216,7 +230,10 @@
                             "$ref": "#/definitions/CoinmateTradeResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/buyLimit": {
@@ -280,7 +297,10 @@
                             "$ref": "#/definitions/CoinmateTradeResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/cancelOrder": {
@@ -332,7 +352,10 @@
                             "$ref": "#/definitions/CoinmateCancelOrderResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/cancelOrderWithInfo": {
@@ -384,7 +407,10 @@
                             "$ref": "#/definitions/CoinmateCancelOrderWithInfoResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/openOrders": {
@@ -436,7 +462,10 @@
                             "$ref": "#/definitions/CoinmateOpenOrders"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/orderBook": {
@@ -469,7 +498,10 @@
                             "$ref": "#/definitions/CoinmateOrderBook"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/orderHistory": {
@@ -527,7 +559,10 @@
                             "$ref": "#/definitions/CoinmateOrderHistory"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/sellInstant": {
@@ -585,7 +620,10 @@
                             "$ref": "#/definitions/CoinmateTradeResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/sellLimit": {
@@ -649,7 +687,10 @@
                             "$ref": "#/definitions/CoinmateTradeResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/ticker": {
@@ -676,7 +717,10 @@
                             "$ref": "#/definitions/CoinmateTicker"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/transactionHistory": {
@@ -740,7 +784,10 @@
                             "$ref": "#/definitions/CoinmateTransactionHistory"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/transactions": {
@@ -773,7 +820,10 @@
                             "$ref": "#/definitions/CoinmateTransactions"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         }
     },

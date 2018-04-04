@@ -10,6 +10,11 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "bist"
+        }
+    ],
     "paths": {
         "/bist/{base}/{counter}/balance": {
             "get": {
@@ -41,7 +46,10 @@
                             "$ref": "#/definitions/CoinfloorBalance"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "bist"
+                ]
             }
         },
         "/bist/{base}/{counter}/buy": {
@@ -86,7 +94,10 @@
                             "$ref": "#/definitions/CoinfloorOrder"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "bist"
+                ]
             }
         },
         "/bist/{base}/{counter}/buy_market": {
@@ -125,7 +136,10 @@
                             "$ref": "#/definitions/CoinfloorMarketOrderResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "bist"
+                ]
             }
         },
         "/bist/{base}/{counter}/cancel_order": {
@@ -164,7 +178,10 @@
                             "type": "boolean"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "bist"
+                ]
             }
         },
         "/bist/{base}/{counter}/open_orders": {
@@ -197,7 +214,10 @@
                             "$ref": "#/definitions/CoinfloorOrder_2"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "bist"
+                ]
             }
         },
         "/bist/{base}/{counter}/order_book": {
@@ -230,7 +250,10 @@
                             "$ref": "#/definitions/CoinfloorOrderBook"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "bist"
+                ]
             }
         },
         "/bist/{base}/{counter}/sell": {
@@ -275,7 +298,10 @@
                             "$ref": "#/definitions/CoinfloorOrder"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "bist"
+                ]
             }
         },
         "/bist/{base}/{counter}/sell_market": {
@@ -314,7 +340,10 @@
                             "$ref": "#/definitions/CoinfloorMarketOrderResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "bist"
+                ]
             }
         },
         "/bist/{base}/{counter}/ticker": {
@@ -347,7 +376,10 @@
                             "$ref": "#/definitions/CoinfloorTicker"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "bist"
+                ]
             }
         },
         "/bist/{base}/{counter}/transactions": {
@@ -391,7 +423,10 @@
                             "$ref": "#/definitions/CoinfloorTransaction"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "bist"
+                ]
             }
         },
         "/bist/{base}/{counter}/user_transactions": {
@@ -442,7 +477,10 @@
                             "$ref": "#/definitions/CoinfloorUserTransaction"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "bist"
+                ]
             }
         }
     },

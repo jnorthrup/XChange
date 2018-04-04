@@ -10,6 +10,41 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "balance"
+        },
+        {
+            "name": "bitcoin_deposit_address"
+        },
+        {
+            "name": "bitcoin_withdrawal"
+        },
+        {
+            "name": "buy"
+        },
+        {
+            "name": "cancel_order"
+        },
+        {
+            "name": "open_orders"
+        },
+        {
+            "name": "order_book"
+        },
+        {
+            "name": "sell"
+        },
+        {
+            "name": "ticker"
+        },
+        {
+            "name": "transactions"
+        },
+        {
+            "name": "user_transactions"
+        }
+    ],
     "paths": {
         "/balance": {
             "post": {
@@ -48,7 +83,10 @@
                             "$ref": "#/definitions/TaurusBalance"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "balance"
+                ]
             }
         },
         "/bitcoin_deposit_address": {
@@ -88,7 +126,10 @@
                             "type": "string"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "bitcoin_deposit_address"
+                ]
             }
         },
         "/bitcoin_withdrawal": {
@@ -140,7 +181,10 @@
                             "type": "string"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "bitcoin_withdrawal"
+                ]
             }
         },
         "/buy": {
@@ -192,7 +236,10 @@
                             "$ref": "#/definitions/TaurusOrder"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "buy"
+                ]
             }
         },
         "/cancel_order": {
@@ -238,7 +285,10 @@
                             "type": "boolean"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "cancel_order"
+                ]
             }
         },
         "/open_orders": {
@@ -278,7 +328,10 @@
                             "$ref": "#/definitions/TaurusOrder_2"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "open_orders"
+                ]
             }
         },
         "/order_book": {
@@ -299,7 +352,10 @@
                             "$ref": "#/definitions/TaurusOrderBook"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "order_book"
+                ]
             }
         },
         "/sell": {
@@ -351,7 +407,10 @@
                             "$ref": "#/definitions/TaurusOrder"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "sell"
+                ]
             }
         },
         "/ticker": {
@@ -372,7 +431,10 @@
                             "$ref": "#/definitions/TaurusTicker"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "ticker"
+                ]
             }
         },
         "/transactions": {
@@ -403,7 +465,10 @@
                             "$ref": "#/definitions/TaurusTransaction"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "transactions"
+                ]
             }
         },
         "/user_transactions": {
@@ -465,7 +530,10 @@
                             "$ref": "#/definitions/TaurusUserTransaction"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "user_transactions"
+                ]
             }
         }
     },

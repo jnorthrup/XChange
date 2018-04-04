@@ -494,6 +494,9 @@
                     <goal>analyze-jaxrs</goal>
                 </goals>
                 <configuration>
+                    <renderSwaggerTags>true</renderSwaggerTags>
+                    <inlinePrettify>true</inlinePrettify>
+                    <swaggerTagsPathOffset>0</swaggerTagsPathOffset>
                     <backend>swagger</backend>
                     <deployedDomain>${project.artifactId}.changeme</deployedDomain>
                 </configuration>

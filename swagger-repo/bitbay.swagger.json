@@ -10,6 +10,14 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "Public"
+        },
+        {
+            "name": "Trading"
+        }
+    ],
     "paths": {
         "/Public/{currencyPair}/orderbook.json": {
             "get": {
@@ -35,7 +43,10 @@
                             "$ref": "#/definitions/BitbayOrderBook"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "Public"
+                ]
             }
         },
         "/Public/{currencyPair}/ticker.json": {
@@ -62,7 +73,10 @@
                             "$ref": "#/definitions/BitbayTicker"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "Public"
+                ]
             }
         },
         "/Public/{currencyPair}/trades.json": {
@@ -101,12 +115,15 @@
                             "$ref": "#/definitions/BitbayTrade"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "Public"
+                ]
             }
         },
         "/Trading/tradingApi.php": {
             "post": {
-                "description": "orders - list of all your offers Input: (optional) limit : number of rows to show; if no\nspecified, returns latest 50 orders\ntrade - places offer at the stock market Input: type : offer type bid/buy or ask/sell currency\n: shortcut of main currency for offer (e.g. “BTC”) amount : quantity of main currency\npayment_currency : shortcut of currency used to pay for offer (e.g. “PLN”) rate : rate for\noffer\ninfo - returns information about account balances\ncancel - removes offer from the stock market Input: id : id used to recognize offer; you get it\nfrom trade method output",
+                "description": "trade - places offer at the stock market Input: type : offer type bid/buy or ask/sell currency\n: shortcut of main currency for offer (e.g. “BTC”) amount : quantity of main currency\npayment_currency : shortcut of currency used to pay for offer (e.g. “PLN”) rate : rate for\noffer\norders - list of all your offers Input: (optional) limit : number of rows to show; if no\nspecified, returns latest 50 orders\ncancel - removes offer from the stock market Input: id : id used to recognize offer; you get it\nfrom trade method output\ninfo - returns information about account balances",
                 "consumes": [
                     "application/x-www-form-urlencoded"
                 ],
@@ -217,29 +234,22 @@
                         "headers": {
                         },
                         "schema": {
-                            "$ref": "#/definitions/BitbayBaseResponse"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Map"
+                            }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "Trading"
+                ]
             }
         }
     },
     "definitions": {
         "BigDecimal": {
             "properties": {
-            }
-        },
-        "BitbayBaseResponse": {
-            "properties": {
-                "code": {
-                    "type": "integer"
-                },
-                "message": {
-                    "type": "string"
-                },
-                "success": {
-                    "type": "boolean"
-                }
             }
         },
         "BitbayOrderBook": {
@@ -294,6 +304,10 @@
                 "tid": {
                     "type": "string"
                 }
+            }
+        },
+        "Map": {
+            "properties": {
             }
         }
     }

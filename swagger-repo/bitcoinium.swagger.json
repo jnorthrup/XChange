@@ -10,6 +10,17 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "orderbook"
+        },
+        {
+            "name": "ticker"
+        },
+        {
+            "name": "tickerhistory"
+        }
+    ],
     "paths": {
         "/orderbook": {
             "get": {
@@ -47,7 +58,10 @@
                             "$ref": "#/definitions/BitcoiniumOrderbook"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "orderbook"
+                ]
             }
         },
         "/ticker": {
@@ -80,7 +94,10 @@
                             "$ref": "#/definitions/BitcoiniumTicker"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "ticker"
+                ]
             }
         },
         "/tickerhistory": {
@@ -119,7 +136,10 @@
                             "$ref": "#/definitions/BitcoiniumTickerHistory"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "tickerhistory"
+                ]
             }
         }
     },

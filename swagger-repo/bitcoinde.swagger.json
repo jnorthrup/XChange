@@ -10,6 +10,17 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "account"
+        },
+        {
+            "name": "orders"
+        },
+        {
+            "name": "trades"
+        }
+    ],
     "paths": {
         "/account": {
             "get": {
@@ -47,7 +58,10 @@
                             "$ref": "#/definitions/BitcoindeAccountWrapper"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "account"
+                ]
             }
         },
         "/orders": {
@@ -110,7 +124,10 @@
                             "$ref": "#/definitions/BitcoindeIdResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "orders"
+                ]
             }
         },
         "/orders/compact": {
@@ -155,7 +172,10 @@
                             "$ref": "#/definitions/BitcoindeOrderbookWrapper"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "orders"
+                ]
             }
         },
         "/orders/my_own": {
@@ -194,7 +214,10 @@
                             "$ref": "#/definitions/BitcoindeMyOpenOrdersWrapper"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "orders"
+                ]
             }
         },
         "/orders/{order_id}/{trading_pair}": {
@@ -245,7 +268,10 @@
                             "$ref": "#/definitions/BitcoindeIdResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "orders"
+                ]
             }
         },
         "/trades/history": {
@@ -296,7 +322,10 @@
                             "$ref": "#/definitions/BitcoindeTradesWrapper"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "trades"
+                ]
             }
         }
     },

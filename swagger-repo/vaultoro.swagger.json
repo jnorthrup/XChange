@@ -10,6 +10,20 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "1"
+        },
+        {
+            "name": "latest"
+        },
+        {
+            "name": "orderbook"
+        },
+        {
+            "name": "transactions"
+        }
+    ],
     "paths": {
         "/1/balance": {
             "get": {
@@ -47,7 +61,10 @@
                             "$ref": "#/definitions/VaultoroBalancesResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "1"
+                ]
             }
         },
         "/1/buy/{symbol}/{type}": {
@@ -110,7 +127,10 @@
                             "$ref": "#/definitions/VaultoroNewOrderResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "1"
+                ]
             }
         },
         "/1/cancel/{orderid}": {
@@ -155,7 +175,10 @@
                             "$ref": "#/definitions/VaultoroCancelOrderResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "1"
+                ]
             }
         },
         "/1/orders": {
@@ -194,7 +217,10 @@
                             "$ref": "#/definitions/VaultoroOrdersResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "1"
+                ]
             }
         },
         "/1/sell/{symbol}/{type}": {
@@ -257,7 +283,10 @@
                             "$ref": "#/definitions/VaultoroNewOrderResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "1"
+                ]
             }
         },
         "/latest": {
@@ -278,7 +307,10 @@
                             "type": "number"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "latest"
+                ]
             }
         },
         "/orderbook": {
@@ -299,7 +331,10 @@
                             "$ref": "#/definitions/VaultoroOrderBookResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "orderbook"
+                ]
             }
         },
         "/transactions/month": {
@@ -331,7 +366,10 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "transactions"
+                ]
             }
         }
     },

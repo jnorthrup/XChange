@@ -10,6 +10,11 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "0"
+        }
+    ],
     "paths": {
         "/0/private/AddOrder": {
             "post": {
@@ -132,7 +137,10 @@
                             "$ref": "#/definitions/KrakenOrderResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "0"
+                ]
             }
         },
         "/0/private/Balance": {
@@ -172,7 +180,10 @@
                             "$ref": "#/definitions/KrakenBalanceResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "0"
+                ]
             }
         },
         "/0/private/CancelOrder": {
@@ -218,7 +229,10 @@
                             "$ref": "#/definitions/KrakenCancelOrderResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "0"
+                ]
             }
         },
         "/0/private/ClosedOrders": {
@@ -294,7 +308,10 @@
                             "$ref": "#/definitions/KrakenClosedOrdersResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "0"
+                ]
             }
         },
         "/0/private/DepositAddresses": {
@@ -352,7 +369,10 @@
                             "$ref": "#/definitions/KrakenDepositAddressResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "0"
+                ]
             }
         },
         "/0/private/DepositMethods": {
@@ -404,7 +424,10 @@
                             "$ref": "#/definitions/KrakenDepositMethodsResults"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "0"
+                ]
             }
         },
         "/0/private/DepositStatus": {
@@ -462,7 +485,10 @@
                             "$ref": "#/definitions/DepositStatusResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "0"
+                ]
             }
         },
         "/0/private/Ledgers": {
@@ -538,7 +564,10 @@
                             "$ref": "#/definitions/KrakenLedgerResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "0"
+                ]
             }
         },
         "/0/private/OpenOrders": {
@@ -590,7 +619,10 @@
                             "$ref": "#/definitions/KrakenOpenOrdersResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "0"
+                ]
             }
         },
         "/0/private/OpenPositions": {
@@ -642,7 +674,10 @@
                             "$ref": "#/definitions/KrakenOpenPositionsResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "0"
+                ]
             }
         },
         "/0/private/QueryLedgers": {
@@ -688,7 +723,10 @@
                             "$ref": "#/definitions/KrakenQueryLedgerResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "0"
+                ]
             }
         },
         "/0/private/QueryOrders": {
@@ -746,7 +784,10 @@
                             "$ref": "#/definitions/KrakenQueryOrderResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "0"
+                ]
             }
         },
         "/0/private/QueryTrades": {
@@ -798,7 +839,10 @@
                             "$ref": "#/definitions/KrakenQueryTradeResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "0"
+                ]
             }
         },
         "/0/private/TradeBalance": {
@@ -850,7 +894,10 @@
                             "$ref": "#/definitions/KrakenTradeBalanceInfoResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "0"
+                ]
             }
         },
         "/0/private/TradeVolume": {
@@ -896,7 +943,10 @@
                             "$ref": "#/definitions/KrakenTradeVolumeResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "0"
+                ]
             }
         },
         "/0/private/TradesHistory": {
@@ -972,7 +1022,10 @@
                             "$ref": "#/definitions/KrakenTradeHistoryResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "0"
+                ]
             }
         },
         "/0/private/Withdraw": {
@@ -1036,7 +1089,10 @@
                             "$ref": "#/definitions/WithdrawResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "0"
+                ]
             }
         },
         "/0/private/WithdrawInfo": {
@@ -1100,7 +1156,10 @@
                             "$ref": "#/definitions/WithdrawInfoResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "0"
+                ]
             }
         },
         "/0/private/WithdrawStatus": {
@@ -1158,7 +1217,10 @@
                             "$ref": "#/definitions/WithdrawStatusResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "0"
+                ]
             }
         },
         "/0/public/AssetPairs": {
@@ -1185,7 +1247,10 @@
                             "$ref": "#/definitions/KrakenAssetPairsResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "0"
+                ]
             }
         },
         "/0/public/Assets": {
@@ -1218,7 +1283,10 @@
                             "$ref": "#/definitions/KrakenAssetsResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "0"
+                ]
             }
         },
         "/0/public/Depth": {
@@ -1251,7 +1319,10 @@
                             "$ref": "#/definitions/KrakenDepthResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "0"
+                ]
             }
         },
         "/0/public/OHLC": {
@@ -1290,7 +1361,10 @@
                             "$ref": "#/definitions/KrakenOHLCResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "0"
+                ]
             }
         },
         "/0/public/Spread": {
@@ -1323,7 +1397,10 @@
                             "$ref": "#/definitions/KrakenSpreadsResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "0"
+                ]
             }
         },
         "/0/public/Ticker": {
@@ -1350,7 +1427,10 @@
                             "$ref": "#/definitions/KrakenTickerResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "0"
+                ]
             }
         },
         "/0/public/Time": {
@@ -1371,7 +1451,10 @@
                             "$ref": "#/definitions/KrakenServerTimeResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "0"
+                ]
             }
         },
         "/0/public/Trades": {
@@ -1404,7 +1487,10 @@
                             "$ref": "#/definitions/KrakenPublicTradesResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "0"
+                ]
             }
         }
     },

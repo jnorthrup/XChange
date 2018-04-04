@@ -10,6 +10,11 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "v2"
+        }
+    ],
     "paths": {
         "/v2/balance": {
             "post": {
@@ -48,7 +53,10 @@
                             "$ref": "#/definitions/BitsoBalance"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v2"
+                ]
             }
         },
         "/v2/bitcoin_deposit_address": {
@@ -88,7 +96,10 @@
                             "$ref": "#/definitions/BitsoDepositAddress"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v2"
+                ]
             }
         },
         "/v2/bitcoin_withdrawal": {
@@ -140,7 +151,10 @@
                             "type": "string"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v2"
+                ]
             }
         },
         "/v2/buy": {
@@ -192,7 +206,10 @@
                             "$ref": "#/definitions/BitsoOrder"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v2"
+                ]
             }
         },
         "/v2/cancel_order": {
@@ -238,7 +255,10 @@
                             "type": "boolean"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v2"
+                ]
             }
         },
         "/v2/open_orders": {
@@ -278,7 +298,10 @@
                             "$ref": "#/definitions/BitsoOrder_2"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v2"
+                ]
             }
         },
         "/v2/order_book": {
@@ -300,7 +323,10 @@
                             "$ref": "#/definitions/BitsoOrderBook"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v2"
+                ]
             }
         },
         "/v2/ripple_withdrawal": {
@@ -358,7 +384,10 @@
                             "type": "string"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v2"
+                ]
             }
         },
         "/v2/sell": {
@@ -410,7 +439,10 @@
                             "$ref": "#/definitions/BitsoOrder"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v2"
+                ]
             }
         },
         "/v2/ticker/?book={currency}": {
@@ -437,7 +469,10 @@
                             "$ref": "#/definitions/BitsoTicker"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v2"
+                ]
             }
         },
         "/v2/transactions": {
@@ -464,7 +499,10 @@
                             "$ref": "#/definitions/BitsoTransaction"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v2"
+                ]
             }
         },
         "/v2/user_transactions": {
@@ -522,7 +560,10 @@
                             "$ref": "#/definitions/BitsoUserTransaction"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v2"
+                ]
             }
         }
     },

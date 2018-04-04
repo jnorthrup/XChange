@@ -10,6 +10,14 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "api"
+        },
+        {
+            "name": "tapi"
+        }
+    ],
     "paths": {
         "/api/3/depth/{currencyPairs}": {
             "get": {
@@ -41,7 +49,10 @@
                             "$ref": "#/definitions/YoBitOrderBooksReturn"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/3/info": {
@@ -62,7 +73,10 @@
                             "$ref": "#/definitions/YoBitInfo"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/3/ticker/{currencyPairs}": {
@@ -89,7 +103,10 @@
                             "$ref": "#/definitions/YoBitTickersReturn"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/3/trades/{currencyPairs}": {
@@ -116,7 +133,10 @@
                             "$ref": "#/definitions/YoBitTrades"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/tapi": {
@@ -251,7 +271,10 @@
                             "$ref": "#/definitions/BaseYoBitResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "tapi"
+                ]
             }
         }
     },

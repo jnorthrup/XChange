@@ -10,6 +10,11 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "v1"
+        }
+    ],
     "paths": {
         "/v1/getboard": {
             "get": {
@@ -36,7 +41,10 @@
                             "$ref": "#/definitions/BitflyerOrderbook"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/getexecutions": {
@@ -66,7 +74,10 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/getmarkets": {
@@ -90,7 +101,10 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/getticker": {
@@ -118,7 +132,10 @@
                             "$ref": "#/definitions/BitflyerTicker"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/me/getaddresses": {
@@ -160,7 +177,10 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/me/getbalance": {
@@ -202,7 +222,10 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/me/getbankaccounts": {
@@ -244,7 +267,10 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/me/getcoinins": {
@@ -286,7 +312,10 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/me/getcoinouts": {
@@ -328,7 +357,10 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/me/getcollateral": {
@@ -367,7 +399,10 @@
                             "$ref": "#/definitions/BitflyerMarginStatus"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/me/getcollateralaccounts": {
@@ -409,7 +444,10 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/me/getcollateralhistory": {
@@ -451,7 +489,10 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/me/getdeposits": {
@@ -493,7 +534,10 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/me/getpermissions": {
@@ -535,7 +579,10 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/me/getpositions": {
@@ -583,7 +630,10 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/me/getwithdrawals": {
@@ -625,7 +675,10 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/me/withdraw": {
@@ -673,7 +726,10 @@
                             "$ref": "#/definitions/BitflyerWithdrawResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         }
     },

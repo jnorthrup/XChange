@@ -10,6 +10,11 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "api_v1"
+        }
+    ],
     "paths": {
         "/api_v1/depth?coin={symbol}": {
             "get": {
@@ -35,7 +40,10 @@
                             "$ref": "#/definitions/BitZOrdersResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api_v1"
+                ]
             }
         },
         "/api_v1/kline?coin={symbol}&type={type}": {
@@ -68,7 +76,10 @@
                             "$ref": "#/definitions/BitZKlineResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api_v1"
+                ]
             }
         },
         "/api_v1/openOrders": {
@@ -120,7 +131,10 @@
                             "$ref": "#/definitions/BitZOpenOrderResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api_v1"
+                ]
             }
         },
         "/api_v1/orders?coin={symbol}": {
@@ -147,7 +161,10 @@
                             "$ref": "#/definitions/BitZTradesResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api_v1"
+                ]
             }
         },
         "/api_v1/ticker?coin={symbol}": {
@@ -174,7 +191,10 @@
                             "$ref": "#/definitions/BitZTickerResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api_v1"
+                ]
             }
         },
         "/api_v1/tickerall": {
@@ -195,7 +215,10 @@
                             "$ref": "#/definitions/BitZTickerAllResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api_v1"
+                ]
             }
         },
         "/api_v1/tradeAdd": {
@@ -271,7 +294,10 @@
                             "$ref": "#/definitions/BitZTradeAddResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api_v1"
+                ]
             }
         },
         "/api_v1/tradeCancel": {
@@ -323,7 +349,10 @@
                             "$ref": "#/definitions/BitZTradeCancelResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api_v1"
+                ]
             }
         }
     },

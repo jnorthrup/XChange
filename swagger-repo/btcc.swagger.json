@@ -10,6 +10,11 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "data"
+        }
+    ],
     "paths": {
         "/data/pro/ticker?symbol={symbol}": {
             "get": {
@@ -35,7 +40,10 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "data"
+                ]
             }
         }
     },

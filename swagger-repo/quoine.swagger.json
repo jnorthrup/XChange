@@ -10,6 +10,35 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "accounts"
+        },
+        {
+            "name": "crypto_accounts"
+        },
+        {
+            "name": "executions"
+        },
+        {
+            "name": "fiat_accounts"
+        },
+        {
+            "name": "orders"
+        },
+        {
+            "name": "products"
+        },
+        {
+            "name": "trades"
+        },
+        {
+            "name": "trading_accounts"
+        },
+        {
+            "name": "transactions"
+        }
+    ],
     "paths": {
         "/accounts/balance": {
             "get": {
@@ -47,7 +76,10 @@
                             "$ref": "#/definitions/QuoineAccountBalance"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "accounts"
+                ]
             }
         },
         "/crypto_accounts": {
@@ -86,7 +118,10 @@
                             "$ref": "#/definitions/BitcoinAccount"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "crypto_accounts"
+                ]
             }
         },
         "/executions/me": {
@@ -149,7 +184,10 @@
                             "$ref": "#/definitions/QuoineExecutionsResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "executions"
+                ]
             }
         },
         "/fiat_accounts": {
@@ -188,7 +226,10 @@
                             "$ref": "#/definitions/FiatAccount"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "fiat_accounts"
+                ]
             }
         },
         "/orders": {
@@ -233,7 +274,10 @@
                             "$ref": "#/definitions/QuoineOrdersList"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "orders"
+                ]
             },
             "post": {
                 "consumes": [
@@ -279,7 +323,10 @@
                             "$ref": "#/definitions/QuoineOrderResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "orders"
+                ]
             }
         },
         "/orders/{order_id}": {
@@ -324,7 +371,10 @@
                             "$ref": "#/definitions/QuoineOrderDetailsResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "orders"
+                ]
             }
         },
         "/orders/{order_id}/cancel": {
@@ -369,7 +419,10 @@
                             "$ref": "#/definitions/QuoineOrderResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "orders"
+                ]
             }
         },
         "/products": {
@@ -390,7 +443,10 @@
                             "$ref": "#/definitions/QuoineProduct"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "products"
+                ]
             }
         },
         "/products/code/CASH/{currency_pair_code}": {
@@ -417,7 +473,10 @@
                             "$ref": "#/definitions/QuoineProduct_2"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "products"
+                ]
             }
         },
         "/products/{product_id}/price_levels": {
@@ -444,7 +503,10 @@
                             "$ref": "#/definitions/QuoineOrderBook"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "products"
+                ]
             }
         },
         "/trades": {
@@ -507,7 +569,10 @@
                             "$ref": "#/definitions/QuoineTradesResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "trades"
+                ]
             }
         },
         "/trading_accounts": {
@@ -546,7 +611,10 @@
                             "$ref": "#/definitions/QuoineTradingAccountInfo"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "trading_accounts"
+                ]
             }
         },
         "/transactions": {
@@ -609,7 +677,10 @@
                             "$ref": "#/definitions/QuoineTransactionsResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "transactions"
+                ]
             }
         }
     },

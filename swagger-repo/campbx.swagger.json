@@ -10,6 +10,11 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "api"
+        }
+    ],
     "paths": {
         "/api/getbtcaddr.php": {
             "post": {
@@ -43,7 +48,10 @@
                             "$ref": "#/definitions/CampBXResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/myfunds.php": {
@@ -78,7 +86,10 @@
                             "$ref": "#/definitions/MyFunds"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/myorders.php": {
@@ -113,7 +124,10 @@
                             "$ref": "#/definitions/MyOpenOrders"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/sendbtc.php": {
@@ -160,7 +174,10 @@
                             "$ref": "#/definitions/CampBXResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/tradeadv.php": {
@@ -202,15 +219,15 @@
                     },
                     {
                         "type": "string",
+                        "enum": [
+                            "Market"
+                        ],
                         "name": "Price",
                         "in": "formData",
                         "required": true
                     },
                     {
                         "type": "string",
-                        "enum": [
-                            "Market"
-                        ],
                         "name": "Price",
                         "in": "formData",
                         "required": true
@@ -253,7 +270,10 @@
                             "$ref": "#/definitions/CampBXResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/tradecancel.php": {
@@ -304,7 +324,10 @@
                             "$ref": "#/definitions/CampBXResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/tradeenter.php": {
@@ -361,7 +384,10 @@
                             "$ref": "#/definitions/CampBXResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/xdepth.php": {
@@ -383,7 +409,10 @@
                             "$ref": "#/definitions/CampBXOrderBook"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/xticker.php": {
@@ -405,7 +434,10 @@
                             "$ref": "#/definitions/CampBXTicker"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         }
     },
@@ -422,7 +454,7 @@
                     "type": "string"
                 },
                 "info": {
-                    "type": "boolean"
+                    "type": "string"
                 },
                 "marginPercent": {
                     "type": "string"
@@ -449,7 +481,7 @@
                     "type": "boolean"
                 },
                 "success": {
-                    "type": "string"
+                    "type": "boolean"
                 }
             }
         },
@@ -471,10 +503,10 @@
                     "type": "boolean"
                 },
                 "info": {
-                    "type": "boolean"
+                    "type": "string"
                 },
                 "success": {
-                    "type": "string"
+                    "type": "boolean"
                 }
             }
         },
@@ -484,10 +516,10 @@
                     "type": "boolean"
                 },
                 "info": {
-                    "type": "boolean"
+                    "type": "string"
                 },
                 "success": {
-                    "type": "string"
+                    "type": "boolean"
                 }
             }
         },
@@ -503,13 +535,13 @@
                     "type": "boolean"
                 },
                 "info": {
-                    "type": "boolean"
+                    "type": "string"
                 },
                 "last": {
                     "type": "number"
                 },
                 "success": {
-                    "type": "string"
+                    "type": "boolean"
                 }
             }
         },
@@ -519,7 +551,7 @@
                     "type": "boolean"
                 },
                 "info": {
-                    "type": "boolean"
+                    "type": "string"
                 },
                 "liquidBTC": {
                     "type": "number"
@@ -534,7 +566,7 @@
                     "type": "number"
                 },
                 "success": {
-                    "type": "string"
+                    "type": "boolean"
                 },
                 "totalBTC": {
                     "type": "number"
@@ -556,7 +588,7 @@
                     "type": "boolean"
                 },
                 "info": {
-                    "type": "boolean"
+                    "type": "string"
                 },
                 "sell": {
                     "type": "array",
@@ -565,7 +597,7 @@
                     }
                 },
                 "success": {
-                    "type": "string"
+                    "type": "boolean"
                 }
             }
         }

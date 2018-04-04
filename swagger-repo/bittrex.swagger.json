@@ -10,6 +10,14 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "v1.1"
+        },
+        {
+            "name": "v2.0"
+        }
+    ],
     "paths": {
         "/v1.1/account/getbalance": {
             "get": {
@@ -54,7 +62,10 @@
                             "$ref": "#/definitions/BittrexBalanceResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1.1"
+                ]
             }
         },
         "/v1.1/account/getbalances": {
@@ -94,7 +105,10 @@
                             "$ref": "#/definitions/BittrexBalancesResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1.1"
+                ]
             }
         },
         "/v1.1/account/getdepositaddress": {
@@ -140,7 +154,10 @@
                             "$ref": "#/definitions/BittrexDepositAddressResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1.1"
+                ]
             }
         },
         "/v1.1/account/getdeposithistory": {
@@ -186,7 +203,10 @@
                             "$ref": "#/definitions/BittrexDepositsHistoryResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1.1"
+                ]
             }
         },
         "/v1.1/account/getorder": {
@@ -232,7 +252,10 @@
                             "$ref": "#/definitions/BittrexOrderResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1.1"
+                ]
             }
         },
         "/v1.1/account/getorderhistory": {
@@ -278,7 +301,10 @@
                             "$ref": "#/definitions/BittrexTradeHistoryResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1.1"
+                ]
             }
         },
         "/v1.1/account/getwithdrawalhistory": {
@@ -324,7 +350,10 @@
                             "$ref": "#/definitions/BittrexWithdrawalsHistoryResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1.1"
+                ]
             }
         },
         "/v1.1/account/withdraw": {
@@ -388,7 +417,10 @@
                             "$ref": "#/definitions/BittrexWithdrawResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1.1"
+                ]
             }
         },
         "/v1.1/market/buylimit": {
@@ -446,7 +478,10 @@
                             "$ref": "#/definitions/BittrexTradeResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1.1"
+                ]
             }
         },
         "/v1.1/market/buymarket": {
@@ -498,7 +533,10 @@
                             "$ref": "#/definitions/BittrexTradeResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1.1"
+                ]
             }
         },
         "/v1.1/market/cancel": {
@@ -544,7 +582,10 @@
                             "$ref": "#/definitions/BittrexCancelOrderResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1.1"
+                ]
             }
         },
         "/v1.1/market/getopenorders": {
@@ -590,7 +631,10 @@
                             "$ref": "#/definitions/BittrexOpenOrdersResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1.1"
+                ]
             }
         },
         "/v1.1/market/selllimit": {
@@ -648,7 +692,10 @@
                             "$ref": "#/definitions/BittrexTradeResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1.1"
+                ]
             }
         },
         "/v1.1/market/sellmarket": {
@@ -700,7 +747,10 @@
                             "$ref": "#/definitions/BittrexTradeResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1.1"
+                ]
             }
         },
         "/v1.1/public/getcurrencies": {
@@ -721,7 +771,10 @@
                             "$ref": "#/definitions/BittrexCurrenciesResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1.1"
+                ]
             }
         },
         "/v1.1/public/getmarkethistory": {
@@ -754,7 +807,10 @@
                             "$ref": "#/definitions/BittrexTradesResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1.1"
+                ]
             }
         },
         "/v1.1/public/getmarkets": {
@@ -775,7 +831,10 @@
                             "$ref": "#/definitions/BittrexSymbolsResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1.1"
+                ]
             }
         },
         "/v1.1/public/getmarketsummaries": {
@@ -796,7 +855,10 @@
                             "$ref": "#/definitions/BittrexMarketSummariesResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1.1"
+                ]
             }
         },
         "/v1.1/public/getmarketsummary": {
@@ -823,7 +885,10 @@
                             "$ref": "#/definitions/BittrexMarketSummaryResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1.1"
+                ]
             }
         },
         "/v1.1/public/getorderbook": {
@@ -862,7 +927,10 @@
                             "$ref": "#/definitions/BittrexDepthResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1.1"
+                ]
             }
         },
         "/v1.1/public/getticker": {
@@ -889,7 +957,10 @@
                             "$ref": "#/definitions/BittrexTickerResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1.1"
+                ]
             }
         },
         "/v2.0/pub/market/GetLatestTick": {
@@ -928,7 +999,10 @@
                             "$ref": "#/definitions/BittrexChartDataResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v2.0"
+                ]
             }
         },
         "/v2.0/pub/market/getticks": {
@@ -961,7 +1035,10 @@
                             "$ref": "#/definitions/BittrexChartDataResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v2.0"
+                ]
             }
         }
     },

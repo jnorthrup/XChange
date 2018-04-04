@@ -10,6 +10,14 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "exchange"
+        },
+        {
+            "name": "payment"
+        }
+    ],
     "paths": {
         "/exchange/all/order_book?depth={depth}&groupByPrice={groupByPrice}": {
             "get": {
@@ -41,7 +49,10 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "exchange"
+                ]
             }
         },
         "/exchange/buylimit": {
@@ -92,7 +103,10 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "exchange"
+                ]
             }
         },
         "/exchange/buymarket": {
@@ -137,7 +151,10 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "exchange"
+                ]
             }
         },
         "/exchange/cancellimit": {
@@ -182,7 +199,10 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "exchange"
+                ]
             }
         },
         "/exchange/client_orders": {
@@ -251,7 +271,10 @@
                             "$ref": "#/definitions/LivecoinPaginatedResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "exchange"
+                ]
             }
         },
         "/exchange/last_trades?currencyPair={baseCurrency}/{targetCurrency}": {
@@ -284,7 +307,10 @@
                             "$ref": "#/definitions/LivecoinTrade"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "exchange"
+                ]
             }
         },
         "/exchange/order_book?currencyPair={baseCurrency}/{targetCurrency}&depth={depth}&groupByPrice={groupByPrice}": {
@@ -329,7 +355,10 @@
                             "$ref": "#/definitions/LivecoinOrderBook"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "exchange"
+                ]
             }
         },
         "/exchange/restrictions": {
@@ -350,7 +379,10 @@
                             "$ref": "#/definitions/LivecoinRestrictions"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "exchange"
+                ]
             }
         },
         "/exchange/selllimit": {
@@ -401,7 +433,10 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "exchange"
+                ]
             }
         },
         "/exchange/sellmarket": {
@@ -446,7 +481,10 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "exchange"
+                ]
             }
         },
         "/exchange/ticker": {
@@ -470,7 +508,10 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "exchange"
+                ]
             }
         },
         "/exchange/ticker?currencyPair={baseCurrency}/{targetCurrency}": {
@@ -503,7 +544,10 @@
                             "$ref": "#/definitions/LivecoinTicker"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "exchange"
+                ]
             }
         },
         "/payment/balances": {
@@ -545,7 +589,10 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "payment"
+                ]
             }
         },
         "/payment/get/address": {
@@ -584,7 +631,10 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "payment"
+                ]
             }
         },
         "/payment/history/transactions": {
@@ -650,7 +700,10 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "payment"
+                ]
             }
         },
         "/payment/out/capitalist": {
@@ -701,7 +754,10 @@
                             "$ref": "#/definitions/Map;>"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "payment"
+                ]
             }
         },
         "/payment/out/card": {
@@ -764,7 +820,10 @@
                             "$ref": "#/definitions/Map;>"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "payment"
+                ]
             }
         },
         "/payment/out/coin": {
@@ -815,7 +874,10 @@
                             "$ref": "#/definitions/Map;>"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "payment"
+                ]
             }
         },
         "/payment/out/okpay": {
@@ -872,7 +934,10 @@
                             "$ref": "#/definitions/Map;>"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "payment"
+                ]
             }
         },
         "/payment/out/payeer": {
@@ -941,7 +1006,10 @@
                             "$ref": "#/definitions/Map;>"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "payment"
+                ]
             }
         },
         "/payment/out/perfectmoney": {
@@ -1004,7 +1072,10 @@
                             "$ref": "#/definitions/Map;>"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "payment"
+                ]
             }
         }
     },

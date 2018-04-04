@@ -10,6 +10,11 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "api"
+        }
+    ],
     "paths": {
         "/api/bitcoin_deposit_address": {
             "post": {
@@ -49,7 +54,10 @@
                         }
                     }
                 },
-                "deprecated": true
+                "deprecated": true,
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/bitcoin_withdrawal": {
@@ -102,7 +110,10 @@
                         }
                     }
                 },
-                "deprecated": true
+                "deprecated": true,
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/buy": {
@@ -155,7 +166,10 @@
                         }
                     }
                 },
-                "deprecated": true
+                "deprecated": true,
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/cancel_all_orders": {
@@ -196,7 +210,10 @@
                         }
                     }
                 },
-                "deprecated": true
+                "deprecated": true,
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/cancel_order": {
@@ -243,7 +260,10 @@
                         }
                     }
                 },
-                "deprecated": true
+                "deprecated": true,
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/open_orders": {
@@ -284,7 +304,10 @@
                         }
                     }
                 },
-                "deprecated": true
+                "deprecated": true,
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/order_book": {
@@ -307,7 +330,10 @@
                         }
                     }
                 },
-                "deprecated": true
+                "deprecated": true,
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/order_status": {
@@ -354,7 +380,10 @@
                         }
                     }
                 },
-                "deprecated": true
+                "deprecated": true,
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/ripple_address": {
@@ -395,7 +424,10 @@
                         }
                     }
                 },
-                "deprecated": true
+                "deprecated": true,
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/ripple_withdrawal": {
@@ -455,7 +487,10 @@
                         }
                     }
                 },
-                "deprecated": true
+                "deprecated": true,
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/sell": {
@@ -508,7 +543,10 @@
                         }
                     }
                 },
-                "deprecated": true
+                "deprecated": true,
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/ticker": {
@@ -530,7 +568,10 @@
                         }
                     }
                 },
-                "deprecated": true
+                "deprecated": true,
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/transactions": {
@@ -558,7 +599,10 @@
                         }
                     }
                 },
-                "deprecated": true
+                "deprecated": true,
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/unconfirmed_btc": {
@@ -599,7 +643,10 @@
                         }
                     }
                 },
-                "deprecated": true
+                "deprecated": true,
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/user_transactions": {
@@ -658,7 +705,10 @@
                         }
                     }
                 },
-                "deprecated": true
+                "deprecated": true,
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/v2/balance": {
@@ -699,7 +749,10 @@
                         }
                     }
                 },
-                "deprecated": true
+                "deprecated": true,
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/v2/bch_withdrawal": {
@@ -751,7 +804,10 @@
                             "$ref": "#/definitions/BitstampWithdrawal"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/v2/eth_address": {
@@ -792,7 +848,10 @@
                         }
                     }
                 },
-                "deprecated": true
+                "deprecated": true,
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/v2/eth_withdrawal": {
@@ -845,7 +904,10 @@
                         }
                     }
                 },
-                "deprecated": true
+                "deprecated": true,
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/v2/ltc_address": {
@@ -886,7 +948,10 @@
                         }
                     }
                 },
-                "deprecated": true
+                "deprecated": true,
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/v2/ltc_withdrawal": {
@@ -939,7 +1004,10 @@
                         }
                     }
                 },
-                "deprecated": true
+                "deprecated": true,
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/v2/open_orders/{pair}": {
@@ -985,7 +1053,10 @@
                             "$ref": "#/definitions/BitstampOrder_2"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/v2/order_book/{pair}": {
@@ -1012,7 +1083,10 @@
                             "$ref": "#/definitions/BitstampOrderBook"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/v2/ticker/{pair}": {
@@ -1039,7 +1113,10 @@
                             "$ref": "#/definitions/BitstampTicker"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/v2/transactions/{pair}": {
@@ -1077,7 +1154,10 @@
                             "$ref": "#/definitions/BitstampTransaction"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/v2/transfer-to-main": {
@@ -1135,7 +1215,10 @@
                             "$ref": "#/definitions/BitstampTransferBalanceResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/v2/user_transactions": {
@@ -1193,7 +1276,10 @@
                             "$ref": "#/definitions/BitstampUserTransaction"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/v2/user_transactions/{pair}": {
@@ -1257,7 +1343,10 @@
                             "$ref": "#/definitions/BitstampUserTransaction"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/v2/withdrawal-requests": {
@@ -1303,7 +1392,10 @@
                             "$ref": "#/definitions/WithdrawalRequest"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/v2/xrp_withdrawal": {
@@ -1361,7 +1453,10 @@
                             "$ref": "#/definitions/BitstampWithdrawal"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/v2/{side}/market/{pair}": {
@@ -1423,7 +1518,10 @@
                             "$ref": "#/definitions/BitstampOrder"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/v2/{side}/{pair}": {
@@ -1491,7 +1589,10 @@
                             "$ref": "#/definitions/BitstampOrder"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/withdrawal_requests": {
@@ -1532,7 +1633,10 @@
                         }
                     }
                 },
-                "deprecated": true
+                "deprecated": true,
+                "tags": [
+                    "api"
+                ]
             }
         }
     },

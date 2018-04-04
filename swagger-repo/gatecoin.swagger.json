@@ -10,6 +10,20 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "Balance"
+        },
+        {
+            "name": "ElectronicWallet"
+        },
+        {
+            "name": "Trade"
+        },
+        {
+            "name": "public"
+        }
+    ],
     "paths": {
         "/Balance/Balances": {
             "get": {
@@ -53,7 +67,10 @@
                             "$ref": "#/definitions/GatecoinBalanceResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "Balance"
+                ]
             }
         },
         "/ElectronicWallet/DepositWallets": {
@@ -92,7 +109,10 @@
                             "$ref": "#/definitions/GatecoinDepositAddressResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "ElectronicWallet"
+                ]
             }
         },
         "/ElectronicWallet/Withdrawals/{DigiCurrency}": {
@@ -150,7 +170,10 @@
                             "$ref": "#/definitions/GatecoinWithdrawResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "ElectronicWallet"
+                ]
             }
         },
         "/Trade/Orders": {
@@ -189,7 +212,10 @@
                             "$ref": "#/definitions/GatecoinOrderResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "Trade"
+                ]
             },
             "post": {
                 "consumes": [
@@ -251,7 +277,10 @@
                             "$ref": "#/definitions/GatecoinPlaceOrderResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "Trade"
+                ]
             },
             "delete": {
                 "consumes": [
@@ -289,7 +318,10 @@
                             "$ref": "#/definitions/GatecoinCancelOrderResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "Trade"
+                ]
             }
         },
         "/Trade/Orders/{OrderId}": {
@@ -335,7 +367,10 @@
                             "$ref": "#/definitions/GatecoinCancelOrderResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "Trade"
+                ]
             }
         },
         "/Trade/Trades": {
@@ -392,7 +427,10 @@
                             "$ref": "#/definitions/GatecoinTradeHistoryResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "Trade"
+                ]
             }
         },
         "/public/MarketDepth/{CurrencyPair}": {
@@ -420,7 +458,10 @@
                             "$ref": "#/definitions/GatecoinDepthResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "public"
+                ]
             }
         },
         "/public/livetickers": {
@@ -441,7 +482,10 @@
                             "$ref": "#/definitions/GatecoinTickerResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "public"
+                ]
             }
         },
         "/public/transactions/{CurrencyPair}": {
@@ -481,7 +525,10 @@
                             "$ref": "#/definitions/GatecoinTransactionResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "public"
+                ]
             }
         }
     },

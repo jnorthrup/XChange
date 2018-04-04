@@ -10,6 +10,14 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "api"
+        },
+        {
+            "name": "tapi"
+        }
+    ],
     "paths": {
         "/api/v1/orderbook": {
             "get": {
@@ -30,7 +38,10 @@
                             "$ref": "#/definitions/MercadoBitcoinOrderBook"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/v1/orderbook_litecoin": {
@@ -52,7 +63,10 @@
                             "$ref": "#/definitions/MercadoBitcoinOrderBook"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/v1/trades": {
@@ -73,7 +87,10 @@
                             "$ref": "#/definitions/MercadoBitcoinTransaction"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/v1/trades/{start_timestamp}": {
@@ -100,7 +117,10 @@
                             "$ref": "#/definitions/MercadoBitcoinTransaction"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/v1/trades/{start_timestamp}/{end_timestamp}": {
@@ -133,7 +153,10 @@
                             "$ref": "#/definitions/MercadoBitcoinTransaction"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/v1/trades_litecoin": {
@@ -154,7 +177,10 @@
                             "$ref": "#/definitions/MercadoBitcoinTransaction"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/v1/trades_litecoin/{start_timestamp}": {
@@ -181,7 +207,10 @@
                             "$ref": "#/definitions/MercadoBitcoinTransaction"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/v1/trades_litecoin/{start_timestamp}/{end_timestamp}": {
@@ -214,7 +243,10 @@
                             "$ref": "#/definitions/MercadoBitcoinTransaction"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/v2/ticker": {
@@ -235,7 +267,10 @@
                             "$ref": "#/definitions/MercadoBitcoinTicker"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/v2/ticker_litecoin": {
@@ -256,7 +291,10 @@
                             "$ref": "#/definitions/MercadoBitcoinTicker"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/tapi": {
@@ -362,7 +400,10 @@
                             "$ref": "#/definitions/MercadoBitcoinCancelOrderResult;>"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "tapi"
+                ]
             }
         }
     },

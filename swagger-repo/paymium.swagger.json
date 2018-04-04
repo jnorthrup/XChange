@@ -10,6 +10,17 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "depth"
+        },
+        {
+            "name": "ticker"
+        },
+        {
+            "name": "trades"
+        }
+    ],
     "paths": {
         "/depth": {
             "get": {
@@ -29,7 +40,10 @@
                             "$ref": "#/definitions/PaymiumMarketDepth"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "depth"
+                ]
             }
         },
         "/ticker": {
@@ -50,7 +64,10 @@
                             "$ref": "#/definitions/PaymiumTicker"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "ticker"
+                ]
             }
         },
         "/trades": {
@@ -71,7 +88,10 @@
                             "$ref": "#/definitions/PaymiumTrade"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "trades"
+                ]
             }
         }
     },

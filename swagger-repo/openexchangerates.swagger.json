@@ -10,6 +10,11 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "api"
+        }
+    ],
     "paths": {
         "/api/latest.json": {
             "get": {
@@ -35,7 +40,10 @@
                             "$ref": "#/definitions/OERTickers"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         }
     },

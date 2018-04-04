@@ -10,6 +10,11 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "api"
+        }
+    ],
     "paths": {
         "/api/1/accounts": {
             "post": {
@@ -50,7 +55,10 @@
                             "$ref": "#/definitions/LunoAccount"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/1/accounts/{id}/pending": {
@@ -84,7 +92,10 @@
                             "$ref": "#/definitions/LunoPendingTransactions"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/1/accounts/{id}/transactions": {
@@ -133,7 +144,10 @@
                             "$ref": "#/definitions/LunoAccountTransactions"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/1/balance": {
@@ -161,7 +175,10 @@
                             "$ref": "#/definitions/LunoBalance"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/1/fee_info": {
@@ -196,7 +213,10 @@
                             "$ref": "#/definitions/LunoFeeInfo"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/1/funding_address": {
@@ -238,7 +258,10 @@
                             "$ref": "#/definitions/LunoFundingAddress"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             },
             "post": {
                 "description": "Allocates a new receive address to your account. There is a rate limit of 1 address per hour,\nbut bursts of up to 10 addresses are allowed.",
@@ -270,7 +293,10 @@
                             "$ref": "#/definitions/LunoFundingAddress"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/1/listorders": {
@@ -317,7 +343,10 @@
                             "$ref": "#/definitions/LunoOrders"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/1/listtrades": {
@@ -366,7 +395,10 @@
                             "$ref": "#/definitions/LunoUserTrades"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/1/marketorder": {
@@ -443,7 +475,10 @@
                             "$ref": "#/definitions/LunoPostOrder"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/1/orderbook": {
@@ -472,7 +507,10 @@
                             "$ref": "#/definitions/LunoOrderBook"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/1/orders/{id}": {
@@ -507,7 +545,10 @@
                             "$ref": "#/definitions/LunoOrders$Order_2"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/1/postorder": {
@@ -584,7 +625,10 @@
                             "$ref": "#/definitions/LunoPostOrder"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/1/quotes": {
@@ -640,7 +684,10 @@
                             "$ref": "#/definitions/LunoQuote"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/1/quotes/{id}": {
@@ -675,7 +722,10 @@
                             "$ref": "#/definitions/LunoQuote"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             },
             "put": {
                 "description": "Exercise a quote to perform the trade. If there is sufficient balance available in your\naccount, it will be debited and the counter amount credited.<br>\nAn error is returned if the quote has expired or if you have insufficient available balance.",
@@ -708,7 +758,10 @@
                             "$ref": "#/definitions/LunoQuote"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             },
             "delete": {
                 "description": "Discard a quote. Once a quote has been discarded, it cannot be exercised even if it has not\nexpired yet.",
@@ -741,7 +794,10 @@
                             "$ref": "#/definitions/LunoQuote"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/1/send": {
@@ -804,7 +860,10 @@
                             "$ref": "#/definitions/LunoBoolean"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/1/stoporder": {
@@ -839,7 +898,10 @@
                             "$ref": "#/definitions/LunoBoolean"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/1/ticker": {
@@ -868,7 +930,10 @@
                             "$ref": "#/definitions/LunoTicker"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/1/tickers": {
@@ -890,7 +955,10 @@
                             "$ref": "#/definitions/LunoTickers"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/1/trades": {
@@ -926,7 +994,10 @@
                             "$ref": "#/definitions/LunoTrades"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/1/withdrawals": {
@@ -954,7 +1025,10 @@
                             "$ref": "#/definitions/LunoWithdrawals"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             },
             "post": {
                 "description": "Creates a new withdrawal request.",
@@ -1001,7 +1075,10 @@
                             "$ref": "#/definitions/LunoWithdrawals$Withdrawal_2"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/1/withdrawals/{id}": {
@@ -1036,7 +1113,10 @@
                             "$ref": "#/definitions/LunoWithdrawals$Withdrawal_2"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             },
             "delete": {
                 "description": "Cancel a withdrawal request. This can only be done if the request is still in state PENDING.",
@@ -1069,7 +1149,10 @@
                             "$ref": "#/definitions/LunoWithdrawals$Withdrawal_2"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         }
     },

@@ -10,6 +10,11 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "v1"
+        }
+    ],
     "paths": {
         "/v1/markets.json": {
             "get": {
@@ -29,7 +34,10 @@
                             "$ref": "#/definitions/BitcoinChartsTicker"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         }
     },

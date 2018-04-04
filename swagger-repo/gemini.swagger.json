@@ -10,6 +10,11 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "v1"
+        }
+    ],
     "paths": {
         "/v1/balances": {
             "post": {
@@ -56,7 +61,10 @@
                             "$ref": "#/definitions/GeminiBalancesResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/book/{symbol}": {
@@ -95,7 +103,10 @@
                             "$ref": "#/definitions/GeminiDepth"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/deposit/{currency}/newAddress": {
@@ -149,7 +160,10 @@
                             "$ref": "#/definitions/GeminiDepositAddressResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/lendbook/{currency}": {
@@ -188,7 +202,10 @@
                             "$ref": "#/definitions/GeminiLendDepth"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/lends/{currency}": {
@@ -227,7 +244,10 @@
                             "$ref": "#/definitions/GeminiLend"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/mytrades": {
@@ -275,7 +295,10 @@
                             "$ref": "#/definitions/GeminiTradeResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/order/cancel": {
@@ -323,7 +346,10 @@
                             "$ref": "#/definitions/GeminiOrderStatusResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/order/new": {
@@ -371,7 +397,10 @@
                             "$ref": "#/definitions/GeminiOrderStatusResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/order/status": {
@@ -419,7 +448,10 @@
                             "$ref": "#/definitions/GeminiOrderStatusResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/orders": {
@@ -467,7 +499,10 @@
                             "$ref": "#/definitions/GeminiOrderStatusResponse_2"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/pubticker/{symbol}": {
@@ -494,7 +529,10 @@
                             "$ref": "#/definitions/GeminiTicker"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/symbols": {
@@ -518,7 +556,10 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/trades/{symbol}": {
@@ -557,7 +598,10 @@
                             "$ref": "#/definitions/GeminiTrade"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/withdraw/{currency}": {
@@ -611,7 +655,10 @@
                             "$ref": "#/definitions/GeminiWithdrawalResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         }
     },

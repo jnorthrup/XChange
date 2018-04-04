@@ -10,6 +10,17 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "dwapi"
+        },
+        {
+            "name": "mapi"
+        },
+        {
+            "name": "tapi"
+        }
+    ],
     "paths": {
         "/dwapi": {
             "post": {
@@ -64,11 +75,14 @@
                         "headers": {
                         },
                         "schema": {
-                            "$ref": "#/definitions/DSXCryptoDepositAddressReturn"
+                            "$ref": "#/definitions/DSXTransactionStatusReturn"
                         }
                     }
                 },
-                "deprecated": true
+                "deprecated": true,
+                "tags": [
+                    "dwapi"
+                ]
             }
         },
         "/dwapi/cryptoWithdraw": {
@@ -133,7 +147,10 @@
                         }
                     }
                 },
-                "deprecated": true
+                "deprecated": true,
+                "tags": [
+                    "dwapi"
+                ]
             }
         },
         "/dwapi/fiatWithdraw": {
@@ -186,7 +203,10 @@
                         }
                     }
                 },
-                "deprecated": true
+                "deprecated": true,
+                "tags": [
+                    "dwapi"
+                ]
             }
         },
         "/dwapi/getTransactions": {
@@ -280,7 +300,10 @@
                         }
                     }
                 },
-                "deprecated": true
+                "deprecated": true,
+                "tags": [
+                    "dwapi"
+                ]
             }
         },
         "/dwapi/v2/deposit/cryptoaddress": {
@@ -336,7 +359,10 @@
                             "$ref": "#/definitions/DSXCryptoDepositAddressReturn"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "dwapi"
+                ]
             }
         },
         "/dwapi/v2/transaction/status": {
@@ -384,7 +410,10 @@
                             "$ref": "#/definitions/DSXTransactionStatusReturn"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "dwapi"
+                ]
             }
         },
         "/dwapi/v2/withdraw/cancel": {
@@ -432,7 +461,10 @@
                             "$ref": "#/definitions/DSXTransactionReturn"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "dwapi"
+                ]
             }
         },
         "/dwapi/v2/withdraw/crypto": {
@@ -501,7 +533,10 @@
                             "$ref": "#/definitions/DSXCryptoWithdrawReturn"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "dwapi"
+                ]
             }
         },
         "/dwapi/v2/withdraw/fiat": {
@@ -556,7 +591,10 @@
                             "$ref": "#/definitions/DSXFiatWithdrawReturn"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "dwapi"
+                ]
             }
         },
         "/dwapi/v2/withdraw/submit": {
@@ -604,7 +642,10 @@
                             "$ref": "#/definitions/DSXTransactionReturn"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "dwapi"
+                ]
             }
         },
         "/mapi/depth/{pairs}": {
@@ -645,7 +686,10 @@
                             "$ref": "#/definitions/DSXOrderbookWrapper"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "mapi"
+                ]
             }
         },
         "/mapi/info": {
@@ -665,7 +709,10 @@
                             "$ref": "#/definitions/DSXExchangeInfo"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "mapi"
+                ]
             }
         },
         "/mapi/lastBars/{pairs}/{period}/{amount}": {
@@ -718,7 +765,10 @@
                             "$ref": "#/definitions/DSXBarsWrapper"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "mapi"
+                ]
             }
         },
         "/mapi/ticker/{pairs}": {
@@ -759,7 +809,10 @@
                             "$ref": "#/definitions/DSXTickerWrapper"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "mapi"
+                ]
             }
         },
         "/mapi/trades/{pairs}": {
@@ -807,7 +860,10 @@
                             "$ref": "#/definitions/DSXTradesWrapper"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "mapi"
+                ]
             }
         },
         "/tapi": {
@@ -842,7 +898,7 @@
                         "name": "count",
                         "in": "formData",
                         "required": false,
-                        "description": "Number of transactions to display. Default value is 1000",
+                        "description": "Number of orders to display",
                         "default": "1000"
                     },
                     {
@@ -858,15 +914,8 @@
                         "name": "count",
                         "in": "formData",
                         "required": false,
-                        "description": "Number of orders to display",
+                        "description": "Number of transactions to display. Default value is 1000",
                         "default": "1000"
-                    },
-                    {
-                        "type": "integer",
-                        "name": "end",
-                        "in": "formData",
-                        "required": true,
-                        "description": "Time to which start selecting trades by trade time(UNIX time). If this value is not     null order will become «asc»"
                     },
                     {
                         "type": "integer",
@@ -880,6 +929,13 @@
                         "name": "end",
                         "in": "formData",
                         "required": true,
+                        "description": "Time to which start selecting trades by trade time(UNIX time). If this value is not     null order will become «asc»"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "end",
+                        "in": "formData",
+                        "required": true,
                         "description": "Time to which start selecting orders by trade time(UNIX time). If this value is not     null order will become «asc»."
                     },
                     {
@@ -887,7 +943,7 @@
                         "name": "end_id",
                         "in": "formData",
                         "required": true,
-                        "description": "ID of the last transaction of the selection"
+                        "description": "ID of the last trade of the selection"
                     },
                     {
                         "type": "integer",
@@ -901,14 +957,7 @@
                         "name": "end_id",
                         "in": "formData",
                         "required": true,
-                        "description": "ID of the last trade of the selection"
-                    },
-                    {
-                        "type": "integer",
-                        "name": "from",
-                        "in": "formData",
-                        "required": true,
-                        "description": "ID of the first transaction of the selection"
+                        "description": "ID of the last transaction of the selection"
                     },
                     {
                         "type": "integer",
@@ -916,6 +965,13 @@
                         "in": "formData",
                         "required": true,
                         "description": "ID of the first trade of the selection"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "from",
+                        "in": "formData",
+                        "required": true,
+                        "description": "ID of the first transaction of the selection"
                     },
                     {
                         "type": "integer",
@@ -959,7 +1015,7 @@
                         "name": "order",
                         "in": "formData",
                         "required": true,
-                        "description": "Order in which transactions shown. Possible values: «asc» — from first to last,     «desc» — from last to first. Default value is «DESK»"
+                        "description": "Order in which transactions shown. Possible values: «asc» — from first to last,     «desc» — from last to first. Default value is «desc»"
                     },
                     {
                         "type": "string",
@@ -981,7 +1037,7 @@
                         "name": "order",
                         "in": "formData",
                         "required": true,
-                        "description": "Order in which transactions shown. Possible values: «asc» — from first to last,     «desc» — from last to first. Default value is «desc»"
+                        "description": "Order in which transactions shown. Possible values: «asc» — from first to last,     «desc» — from last to first. Default value is «DESK»"
                     },
                     {
                         "type": "integer",
@@ -995,13 +1051,6 @@
                         "name": "pair",
                         "in": "formData",
                         "required": true,
-                        "description": "Currency pair."
-                    },
-                    {
-                        "type": "string",
-                        "name": "pair",
-                        "in": "formData",
-                        "required": true,
                         "description": "Currency pair"
                     },
                     {
@@ -1009,13 +1058,20 @@
                         "name": "pair",
                         "in": "formData",
                         "required": true,
-                        "description": "the pair to display the orders eg. btcusd"
+                        "description": "Currency pair."
                     },
                     {
                         "type": "string",
                         "name": "pair",
                         "in": "formData",
                         "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "pair",
+                        "in": "formData",
+                        "required": true,
+                        "description": "the pair to display the orders eg. btcusd"
                     },
                     {
                         "type": "string",
@@ -1028,14 +1084,14 @@
                         "name": "since",
                         "in": "formData",
                         "required": true,
-                        "description": "Time from which start selecting transaction by transaction time(UNIX time). If     this value is not null order will become «ASK»"
+                        "description": "Time from which start selecting orders by trade time(UNIX time). If this value is     not null order will become «asc»."
                     },
                     {
                         "type": "integer",
                         "name": "since",
                         "in": "formData",
                         "required": true,
-                        "description": "Time from which start selecting orders by trade time(UNIX time). If this value is     not null order will become «asc»."
+                        "description": "Time from which start selecting transaction by transaction time(UNIX time). If     this value is not null order will become «ASK»"
                     },
                     {
                         "type": "integer",
@@ -1061,11 +1117,14 @@
                         "headers": {
                         },
                         "schema": {
-                            "$ref": "#/definitions/DSXCancelOrderReturn"
+                            "$ref": "#/definitions/DSXOrderHistoryReturn"
                         }
                     }
                 },
-                "deprecated": true
+                "deprecated": true,
+                "tags": [
+                    "tapi"
+                ]
             }
         },
         "/tapi/v2/fees": {
@@ -1106,7 +1165,10 @@
                             "$ref": "#/definitions/DSXFeesReturn"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "tapi"
+                ]
             }
         },
         "/tapi/v2/history/orders": {
@@ -1201,7 +1263,10 @@
                             "$ref": "#/definitions/DSXOrderHistoryReturn"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "tapi"
+                ]
             }
         },
         "/tapi/v2/history/trades": {
@@ -1296,7 +1361,10 @@
                             "$ref": "#/definitions/DSXTradeHistoryReturn"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "tapi"
+                ]
             }
         },
         "/tapi/v2/history/transactions": {
@@ -1405,7 +1473,10 @@
                             "$ref": "#/definitions/DSXTransHistoryReturn"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "tapi"
+                ]
             }
         },
         "/tapi/v2/info/account": {
@@ -1446,7 +1517,10 @@
                             "$ref": "#/definitions/DSXAccountInfoReturn"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "tapi"
+                ]
             }
         },
         "/tapi/v2/order/cancel": {
@@ -1494,7 +1568,10 @@
                             "$ref": "#/definitions/DSXCancelOrderReturn"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "tapi"
+                ]
             }
         },
         "/tapi/v2/order/cancel/all": {
@@ -1535,7 +1612,10 @@
                             "$ref": "#/definitions/DSXCancelAllOrdersReturn"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "tapi"
+                ]
             }
         },
         "/tapi/v2/order/new": {
@@ -1613,7 +1693,10 @@
                             "$ref": "#/definitions/DSXTradeReturn"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "tapi"
+                ]
             }
         },
         "/tapi/v2/order/status": {
@@ -1661,7 +1744,10 @@
                             "$ref": "#/definitions/DSXOrderStatusReturn"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "tapi"
+                ]
             }
         },
         "/tapi/v2/orders": {
@@ -1709,7 +1795,10 @@
                             "$ref": "#/definitions/DSXActiveOrdersReturn"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "tapi"
+                ]
             }
         },
         "/tapi/v2/volume": {
@@ -1750,7 +1839,10 @@
                             "$ref": "#/definitions/DSXVolumeReturn"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "tapi"
+                ]
             }
         }
     },

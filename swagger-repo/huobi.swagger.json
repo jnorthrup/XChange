@@ -10,6 +10,14 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "market"
+        },
+        {
+            "name": "v1"
+        }
+    ],
     "paths": {
         "/market/detail/merged": {
             "get": {
@@ -35,7 +43,10 @@
                             "$ref": "#/definitions/HuobiTickerResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "market"
+                ]
             }
         },
         "/v1/account/accounts": {
@@ -86,7 +97,10 @@
                             "$ref": "#/definitions/HuobiAccountResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/account/accounts/{account-id}/balance": {
@@ -143,7 +157,10 @@
                             "$ref": "#/definitions/HuobiBalanceResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/common/currencys": {
@@ -164,7 +181,10 @@
                             "$ref": "#/definitions/HuobiAssetsResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/common/symbols": {
@@ -185,7 +205,10 @@
                             "$ref": "#/definitions/HuobiAssetPairsResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/order/orders": {
@@ -242,7 +265,10 @@
                             "$ref": "#/definitions/HuobiOrdersResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/order/orders/place": {
@@ -302,7 +328,10 @@
                             "$ref": "#/definitions/HuobiOrderResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/order/orders/{order-id}": {
@@ -359,7 +388,10 @@
                             "$ref": "#/definitions/HuobiOrderInfoResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         },
         "/v1/order/orders/{order-id}/submitcancel": {
@@ -416,7 +448,10 @@
                             "$ref": "#/definitions/HuobiCancelOrderResult"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "v1"
+                ]
             }
         }
     },

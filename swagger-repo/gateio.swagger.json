@@ -10,6 +10,11 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "api2"
+        }
+    ],
     "paths": {
         "/api2/1/marketinfo": {
             "get": {
@@ -29,7 +34,10 @@
                             "$ref": "#/definitions/GateioMarketInfoWrapper"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api2"
+                ]
             }
         },
         "/api2/1/orderBook/{ident}_{currency}": {
@@ -62,7 +70,10 @@
                             "$ref": "#/definitions/GateioDepth"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api2"
+                ]
             }
         },
         "/api2/1/orderBooks": {
@@ -83,7 +94,10 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api2"
+                ]
             }
         },
         "/api2/1/pairs": {
@@ -104,7 +118,10 @@
                             "$ref": "#/definitions/GateioCurrencyPairs"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api2"
+                ]
             }
         },
         "/api2/1/private/balances": {
@@ -144,7 +161,10 @@
                             "$ref": "#/definitions/GateioFunds"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api2"
+                ]
             }
         },
         "/api2/1/private/buy": {
@@ -202,7 +222,10 @@
                             "$ref": "#/definitions/GateioPlaceOrderReturn"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api2"
+                ]
             }
         },
         "/api2/1/private/cancelAllOrders": {
@@ -254,7 +277,10 @@
                             "$ref": "#/definitions/GateioBaseResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api2"
+                ]
             }
         },
         "/api2/1/private/cancelorder": {
@@ -300,7 +326,10 @@
                             "$ref": "#/definitions/GateioBaseResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api2"
+                ]
             }
         },
         "/api2/1/private/depositAddress": {
@@ -340,7 +369,10 @@
                             "$ref": "#/definitions/GateioDepositAddress"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api2"
+                ]
             }
         },
         "/api2/1/private/getorder": {
@@ -386,7 +418,10 @@
                             "$ref": "#/definitions/GateioOrderStatus"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api2"
+                ]
             }
         },
         "/api2/1/private/openOrders": {
@@ -426,7 +461,10 @@
                             "$ref": "#/definitions/GateioOpenOrders"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api2"
+                ]
             }
         },
         "/api2/1/private/sell": {
@@ -484,7 +522,10 @@
                             "$ref": "#/definitions/GateioPlaceOrderReturn"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api2"
+                ]
             }
         },
         "/api2/1/private/tradeHistory": {
@@ -530,7 +571,10 @@
                             "$ref": "#/definitions/GateioTradeHistoryReturn"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api2"
+                ]
             }
         },
         "/api2/1/private/withdraw": {
@@ -582,7 +626,10 @@
                             "$ref": "#/definitions/GateioBaseResponse"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api2"
+                ]
             }
         },
         "/api2/1/ticker/{ident}_{currency}": {
@@ -615,7 +662,10 @@
                             "$ref": "#/definitions/GateioTicker"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api2"
+                ]
             }
         },
         "/api2/1/tickers": {
@@ -636,7 +686,10 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api2"
+                ]
             }
         },
         "/api2/1/trade/{ident}_{currency}": {
@@ -669,7 +722,10 @@
                             "$ref": "#/definitions/GateioTradeHistory"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api2"
+                ]
             }
         },
         "/api2/1/trade/{ident}_{currency}/{tradeId}": {
@@ -708,7 +764,10 @@
                             "$ref": "#/definitions/GateioTradeHistory"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api2"
+                ]
             }
         }
     },

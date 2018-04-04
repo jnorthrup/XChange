@@ -10,6 +10,11 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "api"
+        }
+    ],
     "paths": {
         "/api/1/currency_pairs/all": {
             "get": {
@@ -32,7 +37,10 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/1/depth/{baseCurrency}_{targetCurrency}": {
@@ -65,7 +73,10 @@
                             "$ref": "#/definitions/ZaifFullBook"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         }
     },

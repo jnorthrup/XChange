@@ -10,6 +10,11 @@
     "schemes": [
         "http"
     ],
+    "tags": [
+        {
+            "name": "api"
+        }
+    ],
     "paths": {
         "/api/v1/balance": {
             "post": {
@@ -48,7 +53,10 @@
                             "$ref": "#/definitions/CoinEggBalance"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/v1/depth?coin={symbol}": {
@@ -75,7 +83,10 @@
                             "$ref": "#/definitions/CoinEggOrders"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/v1/orders?coin={symbol}": {
@@ -102,7 +113,10 @@
                             "$ref": "#/definitions/CoinEggTrade"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/v1/ticker?coin={symbol}": {
@@ -129,7 +143,10 @@
                             "$ref": "#/definitions/CoinEggTicker"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/v1/trade_add": {
@@ -193,7 +210,10 @@
                             "$ref": "#/definitions/CoinEggTradeAdd"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/v1/trade_cancel": {
@@ -245,7 +265,10 @@
                             "$ref": "#/definitions/CoinEggTradeCancel"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/v1/trade_list": {
@@ -303,7 +326,10 @@
                             "$ref": "#/definitions/CoinEggTradeList"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         },
         "/api/v1/trade_view": {
@@ -355,7 +381,10 @@
                             "$ref": "#/definitions/CoinEggTradeView"
                         }
                     }
-                }
+                },
+                "tags": [
+                    "api"
+                ]
             }
         }
     },
