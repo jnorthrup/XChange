@@ -1,0 +1,538 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "4.3.6-SNAPSHOT",
+        "title": "XChange CoinEgg"
+    },
+    "host": "xchange-coinegg.changeme",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/api/v1/balance": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "key",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "signature",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CoinEggBalance"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/depth?coin={symbol}": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "symbol",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CoinEggOrders"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/orders?coin={symbol}": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "symbol",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CoinEggTrade"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/ticker?coin={symbol}": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "symbol",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CoinEggTicker"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/trade_add": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "amount",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "coin",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "key",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "price",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "signature",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "type",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CoinEggTradeAdd"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/trade_cancel": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "coin",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "id",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "key",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "signature",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CoinEggTradeCancel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/trade_list": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "coin",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "key",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "signature",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "since",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "type ",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CoinEggTradeList"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/trade_view": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "coin",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "id",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "key",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "signature",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CoinEggTradeView"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "CoinEggBalance": {
+            "properties": {
+                "bTCBalance": {
+                    "type": "number"
+                },
+                "bTCLocked": {
+                    "type": "boolean"
+                },
+                "eTHBalance": {
+                    "type": "number"
+                },
+                "eTHLocked": {
+                    "type": "boolean"
+                },
+                "iD": {
+                    "type": "integer"
+                },
+                "xASBalance": {
+                    "type": "number"
+                },
+                "xASLocked": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "CoinEggOrders": {
+            "properties": {
+                "asks": {
+                    "$ref": "#/definitions/CoinEggOrders$CoinEggOrder"
+                },
+                "bids": {
+                    "$ref": "#/definitions/CoinEggOrders$CoinEggOrder"
+                }
+            }
+        },
+        "CoinEggOrders$CoinEggOrder": {
+            "properties": {
+                "price": {
+                    "type": "number"
+                },
+                "quantity": {
+                    "type": "number"
+                }
+            }
+        },
+        "CoinEggTicker": {
+            "properties": {
+                "buy": {
+                    "type": "number"
+                },
+                "high": {
+                    "type": "number"
+                },
+                "last": {
+                    "type": "number"
+                },
+                "low": {
+                    "type": "number"
+                },
+                "sell": {
+                    "type": "number"
+                },
+                "volume": {
+                    "type": "number"
+                }
+            }
+        },
+        "CoinEggTrade": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "orderType": {
+                    "type": "string",
+                    "enum": [
+                        "ASK",
+                        "BID",
+                        "EXIT_ASK",
+                        "EXIT_BID"
+                    ]
+                },
+                "price": {
+                    "type": "number"
+                },
+                "timestamp": {
+                    "type": "integer"
+                },
+                "transactionID": {
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "BUY",
+                        "SELL"
+                    ]
+                }
+            }
+        },
+        "CoinEggTradeAdd": {
+            "properties": {
+                "iD": {
+                    "type": "integer"
+                },
+                "result": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "CoinEggTradeCancel": {
+            "properties": {
+                "iD": {
+                    "type": "integer"
+                },
+                "result": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "CoinEggTradeList": {
+            "properties": {
+                "amountOriginal": {
+                    "type": "number"
+                },
+                "amountOutstanding": {
+                    "type": "number"
+                },
+                "dateTime": {
+                    "type": "object"
+                },
+                "iD": {
+                    "type": "integer"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "BUY",
+                        "SELL"
+                    ]
+                }
+            }
+        },
+        "CoinEggTradeView": {
+            "properties": {
+                "amountOriginal": {
+                    "type": "number"
+                },
+                "amountOutstanding": {
+                    "type": "number"
+                },
+                "dateTime": {
+                    "type": "object"
+                },
+                "iD": {
+                    "type": "integer"
+                },
+                "open": {
+                    "type": "boolean"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "BUY",
+                        "SELL"
+                    ]
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,784 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "4.3.6-SNAPSHOT",
+        "title": "XChange Gatecoin"
+    },
+    "host": "xchange-gatecoin.changeme",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/Balance/Balances": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "API_PUBLIC_KEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "API_REQUEST_DATE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "API_REQUEST_SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "API_USER_ID",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/GatecoinBalanceResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/ElectronicWallet/DepositWallets": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "API_PUBLIC_KEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "API_REQUEST_DATE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "API_REQUEST_SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/GatecoinDepositAddressResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/ElectronicWallet/Withdrawals/{DigiCurrency}": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "DigiCurrency",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "API_PUBLIC_KEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "API_REQUEST_DATE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "API_REQUEST_SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "AddressName",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Amount",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/GatecoinWithdrawResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/Trade/Orders": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "API_PUBLIC_KEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "API_REQUEST_DATE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "API_REQUEST_SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/GatecoinOrderResult"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "API_PUBLIC_KEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "API_REQUEST_DATE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "API_REQUEST_SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Amount",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Code",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Price",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Way",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/GatecoinPlaceOrderResult"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "API_PUBLIC_KEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "API_REQUEST_DATE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "API_REQUEST_SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/GatecoinCancelOrderResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/Trade/Orders/{OrderId}": {
+            "delete": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "OrderId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "API_PUBLIC_KEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "API_REQUEST_DATE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "API_REQUEST_SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/GatecoinCancelOrderResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/Trade/Trades": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "API_PUBLIC_KEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "API_REQUEST_DATE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "API_REQUEST_SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "Count",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "Count",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "TransactionID",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/GatecoinTradeHistoryResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/public/MarketDepth/{CurrencyPair}": {
+            "get": {
+                "description": "Returns \"bids\" and \"asks\". Each is a list of open orders and each order is represented as a\nlist of price and amount.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "CurrencyPair",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/GatecoinDepthResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/public/livetickers": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/GatecoinTickerResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/public/transactions/{CurrencyPair}": {
+            "get": {
+                "description": "Returns descending list of transactions.\nReturns descending list of transactions.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "CurrencyPair",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "Count",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "TransactionId",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/GatecoinTransactionResult"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "GatecoinBalance": {
+            "properties": {
+                "availableBalance": {
+                    "type": "number"
+                },
+                "balance": {
+                    "type": "number"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "isDigital": {
+                    "type": "boolean"
+                },
+                "openOrder": {
+                    "type": "number"
+                },
+                "pendingIncoming": {
+                    "type": "number"
+                },
+                "pendingOutgoing": {
+                    "type": "number"
+                }
+            }
+        },
+        "GatecoinBalanceResult": {
+            "properties": {
+                "balances": {
+                    "$ref": "#/definitions/GatecoinBalance"
+                },
+                "responseStatus": {
+                    "$ref": "#/definitions/ResponseStatus"
+                }
+            }
+        },
+        "GatecoinCancelOrderResult": {
+            "properties": {
+                "responseStatus": {
+                    "$ref": "#/definitions/ResponseStatus"
+                }
+            }
+        },
+        "GatecoinDepositAddress": {
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "addressName": {
+                    "type": "string"
+                },
+                "createDateTime": {
+                    "type": "string"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "received": {
+                    "type": "number"
+                }
+            }
+        },
+        "GatecoinDepositAddressResult": {
+            "properties": {
+                "addresses": {
+                    "$ref": "#/definitions/GatecoinDepositAddress"
+                },
+                "responseStatus": {
+                    "$ref": "#/definitions/ResponseStatus"
+                }
+            }
+        },
+        "GatecoinDepth": {
+            "properties": {
+                "price": {
+                    "type": "number"
+                },
+                "volume": {
+                    "type": "number"
+                }
+            }
+        },
+        "GatecoinDepthResult": {
+            "properties": {
+                "asks": {
+                    "$ref": "#/definitions/GatecoinDepth"
+                },
+                "bids": {
+                    "$ref": "#/definitions/GatecoinDepth"
+                },
+                "responseStatus": {
+                    "$ref": "#/definitions/ResponseStatus"
+                }
+            }
+        },
+        "GatecoinOrder": {
+            "properties": {
+                "clOrderId": {
+                    "type": "string"
+                },
+                "code": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "string"
+                },
+                "initialQuantity": {
+                    "type": "number"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "remainingQuantity": {
+                    "type": "number"
+                },
+                "side": {
+                    "type": "integer"
+                },
+                "status": {
+                    "type": "integer"
+                },
+                "statusDesc": {
+                    "type": "string"
+                },
+                "transSeqNo": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "integer"
+                }
+            }
+        },
+        "GatecoinOrderResult": {
+            "properties": {
+                "orders": {
+                    "$ref": "#/definitions/GatecoinOrder"
+                },
+                "responseStatus": {
+                    "$ref": "#/definitions/ResponseStatus"
+                }
+            }
+        },
+        "GatecoinPlaceOrderResult": {
+            "properties": {
+                "orderId": {
+                    "type": "string"
+                },
+                "responseStatus": {
+                    "$ref": "#/definitions/ResponseStatus"
+                }
+            }
+        },
+        "GatecoinTicker": {
+            "properties": {
+                "ask": {
+                    "type": "number"
+                },
+                "askQ": {
+                    "type": "number"
+                },
+                "bid": {
+                    "type": "number"
+                },
+                "bidQ": {
+                    "type": "number"
+                },
+                "currencyPair": {
+                    "type": "string"
+                },
+                "high": {
+                    "type": "number"
+                },
+                "last": {
+                    "type": "number"
+                },
+                "lastQ": {
+                    "type": "number"
+                },
+                "low": {
+                    "type": "number"
+                },
+                "open": {
+                    "type": "number"
+                },
+                "timestamp": {
+                    "type": "integer"
+                },
+                "volume": {
+                    "type": "number"
+                },
+                "volumn": {
+                    "type": "number"
+                },
+                "vwap": {
+                    "type": "number"
+                }
+            }
+        },
+        "GatecoinTickerResult": {
+            "properties": {
+                "responseStatus": {
+                    "$ref": "#/definitions/ResponseStatus"
+                },
+                "ticker": {
+                    "$ref": "#/definitions/GatecoinTicker"
+                }
+            }
+        },
+        "GatecoinTradeHistory": {
+            "properties": {
+                "askOrderID": {
+                    "type": "string"
+                },
+                "bidOrderID": {
+                    "type": "string"
+                },
+                "currencyPair": {
+                    "type": "string"
+                },
+                "feeRate": {
+                    "type": "number"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "quantity": {
+                    "type": "number"
+                },
+                "transactionId": {
+                    "type": "integer"
+                },
+                "transactionTime": {
+                    "type": "string"
+                },
+                "way": {
+                    "type": "string"
+                }
+            }
+        },
+        "GatecoinTradeHistoryResult": {
+            "properties": {
+                "responseStatus": {
+                    "$ref": "#/definitions/ResponseStatus"
+                },
+                "transactions": {
+                    "$ref": "#/definitions/GatecoinTradeHistory"
+                }
+            }
+        },
+        "GatecoinTransaction": {
+            "properties": {
+                "currencyPair": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "quantity": {
+                    "type": "number"
+                },
+                "transacationTime": {
+                    "type": "integer"
+                },
+                "transactionId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "GatecoinTransactionResult": {
+            "properties": {
+                "responseStatus": {
+                    "$ref": "#/definitions/ResponseStatus"
+                },
+                "transactions": {
+                    "$ref": "#/definitions/GatecoinTransaction"
+                }
+            }
+        },
+        "GatecoinWithdrawResult": {
+            "properties": {
+                "responseStatus": {
+                    "$ref": "#/definitions/ResponseStatus"
+                }
+            }
+        },
+        "ResponseStatus": {
+            "properties": {
+                "errorCode": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

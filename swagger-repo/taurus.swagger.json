@@ -1,0 +1,723 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "4.3.6-SNAPSHOT",
+        "title": "XChange taurus"
+    },
+    "host": "xchange-taurus.changeme",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/balance": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "key",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "signature",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/TaurusBalance"
+                        }
+                    }
+                }
+            }
+        },
+        "/bitcoin_deposit_address": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "key",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "signature",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/bitcoin_withdrawal": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "address",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "amount",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "key",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "signature",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/buy": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "amount",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "key",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "price",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "signature",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/TaurusOrder"
+                        }
+                    }
+                }
+            }
+        },
+        "/cancel_order": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "id",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "key",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "signature",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                }
+            }
+        },
+        "/open_orders": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "key",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "signature",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/TaurusOrder_2"
+                        }
+                    }
+                }
+            }
+        },
+        "/order_book": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/TaurusOrderBook"
+                        }
+                    }
+                }
+            }
+        },
+        "/sell": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "amount",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "key",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "price",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "signature",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/TaurusOrder"
+                        }
+                    }
+                }
+            }
+        },
+        "/ticker": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/TaurusTicker"
+                        }
+                    }
+                }
+            }
+        },
+        "/transactions": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "enum": [
+                            "hour",
+                            "minute"
+                        ],
+                        "name": "time",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/TaurusTransaction"
+                        }
+                    }
+                }
+            }
+        },
+        "/user_transactions": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "key",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "limit",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "offset",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "signature",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "asc",
+                            "desc"
+                        ],
+                        "name": "sort",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/TaurusUserTransaction"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Currency": {
+            "properties": {
+                "codeCurrency": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "commonlyUsedCurrency": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "currencyCode": {
+                    "type": "string"
+                },
+                "currencyCodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "displayName": {
+                    "type": "string"
+                },
+                "iso4217Currency": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "symbol": {
+                    "type": "string"
+                }
+            }
+        },
+        "CurrencyPair": {
+            "properties": {
+                "base": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "counter": {
+                    "$ref": "#/definitions/Currency"
+                }
+            }
+        },
+        "TaurusBalance": {
+            "properties": {
+                "btcAvailable": {
+                    "type": "number"
+                },
+                "btcBalance": {
+                    "type": "number"
+                },
+                "btcReserved": {
+                    "type": "number"
+                },
+                "cadAvailable": {
+                    "type": "number"
+                },
+                "cadBalance": {
+                    "type": "number"
+                },
+                "cadReserved": {
+                    "type": "number"
+                },
+                "fee": {
+                    "type": "number"
+                }
+            }
+        },
+        "TaurusOrder": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "book": {
+                    "$ref": "#/definitions/CurrencyPair"
+                },
+                "datetime": {
+                    "type": "object"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": [
+                        "active",
+                        "cancelled",
+                        "complete",
+                        "partiallyFilled",
+                        "unknown"
+                    ]
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "ASK",
+                        "BID",
+                        "EXIT_ASK",
+                        "EXIT_BID"
+                    ]
+                }
+            }
+        },
+        "TaurusOrderBook": {
+            "properties": {
+                "asks": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                },
+                "bids": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                },
+                "timestamp": {
+                    "type": "object"
+                }
+            }
+        },
+        "TaurusOrder_2": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "book": {
+                    "$ref": "#/definitions/CurrencyPair"
+                },
+                "datetime": {
+                    "type": "object"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": [
+                        "active",
+                        "cancelled",
+                        "complete",
+                        "partiallyFilled",
+                        "unknown"
+                    ]
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "ASK",
+                        "BID",
+                        "EXIT_ASK",
+                        "EXIT_BID"
+                    ]
+                }
+            }
+        },
+        "TaurusTicker": {
+            "properties": {
+                "ask": {
+                    "type": "number"
+                },
+                "bid": {
+                    "type": "number"
+                },
+                "high": {
+                    "type": "number"
+                },
+                "last": {
+                    "type": "number"
+                },
+                "low": {
+                    "type": "number"
+                },
+                "timestamp": {
+                    "type": "object"
+                },
+                "volume": {
+                    "type": "number"
+                },
+                "vwap": {
+                    "type": "number"
+                }
+            }
+        },
+        "TaurusTransaction": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "date": {
+                    "type": "object"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "tid": {
+                    "type": "integer"
+                }
+            }
+        },
+        "TaurusUserTransaction": {
+            "properties": {
+                "btc": {
+                    "type": "number"
+                },
+                "cad": {
+                    "type": "number"
+                },
+                "datetime": {
+                    "type": "object"
+                },
+                "deposit": {
+                    "type": "boolean"
+                },
+                "fee": {
+                    "type": "number"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "marketTrade": {
+                    "type": "boolean"
+                },
+                "orderId": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "deposit",
+                        "trade",
+                        "type3_reserved",
+                        "type4_reserved",
+                        "type5_reseverd",
+                        "type6_reseved",
+                        "type7_reserved",
+                        "withdrawal"
+                    ]
+                },
+                "withdrawal": {
+                    "type": "boolean"
+                }
+            }
+        }
+    }
+}

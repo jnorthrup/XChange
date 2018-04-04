@@ -1,0 +1,265 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "4.3.6-SNAPSHOT",
+        "title": "XChange Kuna"
+    },
+    "host": "xchange-kuna.changeme",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/v2/order_book": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "market",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/KunaAskBid"
+                        }
+                    }
+                }
+            }
+        },
+        "/v2/tickers": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/v2/tickers/{pair}": {
+            "get": {
+                "description": "Returns ticker for given currency pair.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "pair",
+                        "in": "path",
+                        "required": true,
+                        "description": "currency pair"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/KunaTimeTicker"
+                        }
+                    }
+                }
+            }
+        },
+        "/v2/timestamp": {
+            "get": {
+                "description": "Returns current server timestamp.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "/v2/trades": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "market",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/KunaTrade"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "KunaAskBid": {
+            "properties": {
+                "asks": {
+                    "$ref": "#/definitions/KunaOrder"
+                },
+                "bids": {
+                    "$ref": "#/definitions/KunaOrder"
+                }
+            }
+        },
+        "KunaOrder": {
+            "properties": {
+                "averagePrice": {
+                    "type": "number"
+                },
+                "createdAt": {
+                    "type": "object"
+                },
+                "executedVolume": {
+                    "type": "number"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "market": {
+                    "type": "string"
+                },
+                "orderType": {
+                    "type": "string",
+                    "enum": [
+                        "LIMIT",
+                        "MARKET"
+                    ]
+                },
+                "price": {
+                    "type": "number"
+                },
+                "remainingVolume": {
+                    "type": "number"
+                },
+                "side": {
+                    "type": "string",
+                    "enum": [
+                        "BUY",
+                        "SELL"
+                    ]
+                },
+                "state": {
+                    "type": "string"
+                },
+                "tradesCount": {
+                    "type": "integer"
+                },
+                "volume": {
+                    "type": "number"
+                }
+            }
+        },
+        "KunaTicker": {
+            "properties": {
+                "buy": {
+                    "type": "number"
+                },
+                "high": {
+                    "type": "number"
+                },
+                "last": {
+                    "type": "number"
+                },
+                "low": {
+                    "type": "number"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "sell": {
+                    "type": "number"
+                },
+                "vol": {
+                    "type": "number"
+                }
+            }
+        },
+        "KunaTimeTicker": {
+            "properties": {
+                "ticker": {
+                    "$ref": "#/definitions/KunaTicker"
+                },
+                "timestamp": {
+                    "type": "integer"
+                }
+            }
+        },
+        "KunaTrade": {
+            "properties": {
+                "createdAt": {
+                    "type": "object"
+                },
+                "funds": {
+                    "type": "number"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "market": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "side": {
+                    "type": "string",
+                    "enum": [
+                        "BUY",
+                        "SELL"
+                    ]
+                },
+                "volume": {
+                    "type": "number"
+                }
+            }
+        }
+    }
+}

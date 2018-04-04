@@ -1,0 +1,573 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "4.3.6-SNAPSHOT",
+        "title": "XChange CampBX"
+    },
+    "host": "xchange-campbx.changeme",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/api/getbtcaddr.php": {
+            "post": {
+                "description": "An API call to get Bitcoin deposit address for your account can be made in following format:\n\n<blockquote>\n\nhttps://CampBX.com/api/getbtcaddr.php POST: user=USERNAME pass=PASSWORD\n\n</blockquote>\n\n<p>Please note that the parameters are case-sensitive. API call returns \"Success\" and the\nBitcoin Address if request is successful. An address generated through this method is your\ndedicated address, and can be used to make deposits as long as you would like.",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "pass",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "user",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CampBXResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/myfunds.php": {
+            "post": {
+                "description": "An API call to obtain latest account balances can be made in following format:\nhttps://CampBX.com/api/myfunds.php POST: user=USERNAME pass=PASSWORD Result is a JSON object\nwith six members. First two members show Total USD and BTC balances for a given account,\nprovided the login credentials are correct. Next two members show Liquid USD and BTC balances\nnot tied up in open orders on the order book. Last two members show Margin Account USD and BTC\nbalances. When you open or close a margin position, CampBX transparently moves funds in and out\nof the Margin Account; hence, no explicit funds-transfer is required.",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "pass",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "user",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/MyFunds"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/myorders.php": {
+            "post": {
+                "description": "An API call to obtain list pending orders for an account can be made in following format:\nhttps://CampBX.com/api/myorders.php POST: user=USERNAME pass=PASSWORD Result is a JSON object\nwith two arrays: Buy and Sell. Each array includes a sub-array of open Buy or Sell orders.",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "pass",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "user",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/MyOpenOrders"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/sendbtc.php": {
+            "post": {
+                "description": "An API call to send Bitcoins to an address can be made in following format:\n\n<blockquote>\n\nhttps://CampBX.com/api/sendbtc.php POST: user=USERNAME pass=PASSWORD BTCTo=ADDRESS\nBTCAmt=DECIMAL\n\n</blockquote>\n\n<p>Please note that the parameters listed below are case-sensitive. The BTCTo parameter must be\na valid Bitcoin address, while BTCAmt must be a decimal value less than your account balance.\nAPI call returns \"Success\" and the TX_ID if transfer is successful. The default withdrawal\nlimit is 500 Bitcoins per 24 hours, and this limit can be raised by submitting a ticket to the\nhelpdesk.",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "BTCAmt",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "BTCTo",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "pass",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "user",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CampBXResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/tradeadv.php": {
+            "post": {
+                "description": "An API call to place an advanced order can be made in following format:\n\n<p>https://CampBX.com/api/tradeadv.php\n\n<p>POST Mandatory fields: user=USERNAME pass=PASSWORD TradeMode=AdvancedBuy OR\nTradeMode=AdvancedSell Price=DECIMAL OR Price=Market Quantity=DECIMAL\n\n<p>Optional Fields: FillType=Incremental OR FillType=AON OR FillType=FOK (If omitted, default\nFill Type is Incremental)\n\n<p>DarkPool=No OR DarkPool=Yes (Default is No Darkpool)\n\n<p>Expiry=YYYY/MM/DD (Allowed range is 1 Hour through 31 Days) (Many additional formats are\nsupported as well, including relative values! Please contact our helpdesk if you would like\nadditional information about time/date formats.)\n\n<p>Please note that all parameters are case-sensitive. We highly recommend executing small\ntrades and experimenting with all of the possible parameter values before implementing them in\nyour strategy. Expiry date field allows using many relative and absolute values and offers a\nlot of flexibility. If this is something that you rely on heavily in your strategy, please\ncontact us for details about additional formats. Return Values: If your entire order is\nexecuted immediately, the return value will be '0' in JSON format: {\"Success\":\"0\"}\n\n<p>In case the order was not filled entirely, the return value would be corresponding Order ID\nin our Order Book.",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "enum": [
+                            "No",
+                            "Yes"
+                        ],
+                        "name": "DarkPool",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Expiry",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "AON",
+                            "FOK",
+                            "Incremental"
+                        ],
+                        "name": "FillType",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Price",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "Market"
+                        ],
+                        "name": "Price",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Quantity",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "AdvancedBuy",
+                            "AdvancedSell"
+                        ],
+                        "name": "TradeMode",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "pass",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "user",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CampBXResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/tradecancel.php": {
+            "post": {
+                "description": "An API call to cancel an open order can be made in following format:\n\n<blockquote>\n\nhttps://CampBX.com/api/tradecancel.php POST: user=USERNAME pass=PASSWORD Type=Buy\nOrderID=NUMERIC_ID\n\n</blockquote>\n\nOR\n\n<blockquote>\n\nhttps://CampBX.com/api/tradecancel.php POST: user=USERNAME pass=PASSWORD Type=Sell\nOrderID=NUMERIC_ID\n\n</blockquote>\n\nPlease note that the parameters for this call are case-sensitive. Type and OrderID parameters\nmust match the exact information provided by myorders.php call outlined in the previous\nsection. The \"Type\" parameter refers to the type of order; permitted values are Buy or Sell.\n\"OrderID\" must be a numeric value corresponding to the order that you are attempting to cancel.",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "OrderID",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "Buy",
+                            "Sell"
+                        ],
+                        "name": "Type",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "pass",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "user",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CampBXResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/tradeenter.php": {
+            "post": {
+                "description": "An API call to placing an order can be made in following format:\n\n<p>https://CampBX.com/api/tradeenter.php POST: user=USERNAME pass=PASSWORD TradeMode=QuickBuy\nQuantity=DECIMAL Price=DECIMAL\n\n<p>OR\n\n<p>https://CampBX.com/api/tradeenter.php POST: user=USERNAME pass=PASSWORD TradeMode=QuickSell\nQuantity=DECIMAL Price=DECIMAL Please note that the parameters listed below are case-sensitive.\nThe TradeMode parameter refers to the type of the order, and permitted values are QuickBuy or\nQuickSell. Quick orders are described in more detail on the FAQ page; essentially they are\nlimit-price orders that stay open on CampBX order book for up to 31 days. Quantity and Price\nare decimal values that must follow all rules / limits set by CampBX. Minimum quantity to place\nan order is 0.1 Bitcoins.\n\n<p>Return Values: If your entire order is executed immediately, the return value will be '0' in\nJSON format: {\"Success\":\"0\"}\n\n<p>In case the order was not filled entirely, the return value would be corresponding Order ID\nin our Order Book.",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Price",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Quantity",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "QuickBuy",
+                            "QuickSell"
+                        ],
+                        "name": "TradeMode",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "pass",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "user",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CampBXResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/xdepth.php": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CampBXOrderBook"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/xticker.php": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CampBXTicker"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "CampBXOrder": {
+            "properties": {
+                "darkPool": {
+                    "type": "boolean"
+                },
+                "error": {
+                    "type": "boolean"
+                },
+                "fillType": {
+                    "type": "string"
+                },
+                "info": {
+                    "type": "boolean"
+                },
+                "marginPercent": {
+                    "type": "string"
+                },
+                "orderEntered": {
+                    "type": "object"
+                },
+                "orderExpiry": {
+                    "type": "object"
+                },
+                "orderID": {
+                    "type": "string"
+                },
+                "orderType": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "quantity": {
+                    "type": "number"
+                },
+                "stopLoss": {
+                    "type": "boolean"
+                },
+                "success": {
+                    "type": "string"
+                }
+            }
+        },
+        "CampBXOrderBook": {
+            "properties": {
+                "asks": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                },
+                "bids": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                },
+                "error": {
+                    "type": "boolean"
+                },
+                "info": {
+                    "type": "boolean"
+                },
+                "success": {
+                    "type": "string"
+                }
+            }
+        },
+        "CampBXResponse": {
+            "properties": {
+                "error": {
+                    "type": "boolean"
+                },
+                "info": {
+                    "type": "boolean"
+                },
+                "success": {
+                    "type": "string"
+                }
+            }
+        },
+        "CampBXTicker": {
+            "properties": {
+                "ask": {
+                    "type": "number"
+                },
+                "bid": {
+                    "type": "number"
+                },
+                "error": {
+                    "type": "boolean"
+                },
+                "info": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "number"
+                },
+                "success": {
+                    "type": "string"
+                }
+            }
+        },
+        "MyFunds": {
+            "properties": {
+                "error": {
+                    "type": "boolean"
+                },
+                "info": {
+                    "type": "boolean"
+                },
+                "liquidBTC": {
+                    "type": "number"
+                },
+                "liquidUSD": {
+                    "type": "number"
+                },
+                "marginAccountBTC": {
+                    "type": "number"
+                },
+                "marginAccountUSD": {
+                    "type": "number"
+                },
+                "success": {
+                    "type": "string"
+                },
+                "totalBTC": {
+                    "type": "number"
+                },
+                "totalUSD": {
+                    "type": "number"
+                }
+            }
+        },
+        "MyOpenOrders": {
+            "properties": {
+                "buy": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CampBXOrder"
+                    }
+                },
+                "error": {
+                    "type": "boolean"
+                },
+                "info": {
+                    "type": "boolean"
+                },
+                "sell": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CampBXOrder"
+                    }
+                },
+                "success": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

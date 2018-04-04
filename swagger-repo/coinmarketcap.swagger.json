@@ -1,0 +1,136 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "4.3.6-SNAPSHOT",
+        "title": "XChange CoinMarketCap"
+    },
+    "host": "xchange-coinmarketcap.changeme",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/v1/ticker": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true,
+                        "description": "number of results. 0 = unlimited"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "start",
+                        "in": "query",
+                        "required": true,
+                        "description": "return results from rank [start] and above"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/CoinMarketCapTicker"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "CoinMarketCapCurrency": {
+            "properties": {
+                "currency": {
+                    "$ref": "#/definitions/Currency"
+                }
+            }
+        },
+        "CoinMarketCapTicker": {
+            "properties": {
+                "availableSupply": {
+                    "type": "number"
+                },
+                "baseCurrency": {
+                    "$ref": "#/definitions/CoinMarketCapCurrency"
+                },
+                "iD": {
+                    "type": "string"
+                },
+                "isoCode": {
+                    "type": "string"
+                },
+                "lastUpdated": {
+                    "type": "object"
+                },
+                "marketCapUSD": {
+                    "type": "number"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "pctChange1h": {
+                    "type": "number"
+                },
+                "pctChange24h": {
+                    "type": "number"
+                },
+                "pctChange7d": {
+                    "type": "number"
+                },
+                "priceBTC": {
+                    "type": "number"
+                },
+                "priceUSD": {
+                    "type": "number"
+                },
+                "totalSupply": {
+                    "type": "number"
+                },
+                "volume24hUSD": {
+                    "type": "number"
+                }
+            }
+        },
+        "Currency": {
+            "properties": {
+                "codeCurrency": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "commonlyUsedCurrency": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "currencyCode": {
+                    "type": "string"
+                },
+                "currencyCodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "displayName": {
+                    "type": "string"
+                },
+                "iso4217Currency": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "symbol": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

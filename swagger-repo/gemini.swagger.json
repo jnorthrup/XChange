@@ -1,0 +1,1000 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "4.3.6-SNAPSHOT",
+        "title": "XChange Gemini"
+    },
+    "host": "xchange-gemini.changeme",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/v1/balances": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "X-GEMINI-APIKEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-GEMINI-PAYLOAD",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-GEMINI-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/GeminiBalancesRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/GeminiBalancesResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/book/{symbol}": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "symbol",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "limit_asks",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "limit_bids",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/GeminiDepth"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/deposit/{currency}/newAddress": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "currency",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-GEMINI-APIKEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-GEMINI-PAYLOAD",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-GEMINI-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/GeminiDepositAddressRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/GeminiDepositAddressResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/lendbook/{currency}": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "currency",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "limit_asks",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "limit_bids",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/GeminiLendDepth"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/lends/{currency}": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "currency",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "limit_trades",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "timestamp",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/GeminiLend"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/mytrades": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "X-GEMINI-APIKEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-GEMINI-PAYLOAD",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-GEMINI-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/GeminiPastTradesRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/GeminiTradeResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/order/cancel": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "X-GEMINI-APIKEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-GEMINI-PAYLOAD",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-GEMINI-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/GeminiCancelOrderRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/GeminiOrderStatusResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/order/new": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "X-GEMINI-APIKEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-GEMINI-PAYLOAD",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-GEMINI-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/GeminiNewOrderRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/GeminiOrderStatusResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/order/status": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "X-GEMINI-APIKEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-GEMINI-PAYLOAD",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-GEMINI-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/GeminiOrderStatusRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/GeminiOrderStatusResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/orders": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "X-GEMINI-APIKEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-GEMINI-PAYLOAD",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-GEMINI-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/GeminiNonceOnlyRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/GeminiOrderStatusResponse_2"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/pubticker/{symbol}": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "symbol",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/GeminiTicker"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/symbols": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/trades/{symbol}": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "symbol",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "limit_trades",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "timestamp",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/GeminiTrade"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/withdraw/{currency}": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "currency",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-GEMINI-APIKEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-GEMINI-PAYLOAD",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-GEMINI-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/GeminiWithdrawalRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/GeminiWithdrawalResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "GeminiBalancesRequest": {
+            "properties": {
+                "nonce": {
+                    "type": "string"
+                },
+                "options": {
+                    "type": "string"
+                },
+                "request": {
+                    "type": "string"
+                }
+            }
+        },
+        "GeminiBalancesResponse": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "available": {
+                    "type": "number"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "GeminiCancelOrderRequest": {
+            "properties": {
+                "orderId": {
+                    "type": "string"
+                }
+            }
+        },
+        "GeminiDepositAddressRequest": {
+            "properties": {
+                "label": {
+                    "type": "string"
+                },
+                "nonce": {
+                    "type": "string"
+                },
+                "request": {
+                    "type": "string"
+                }
+            }
+        },
+        "GeminiDepositAddressResponse": {
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "method": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "string"
+                }
+            }
+        },
+        "GeminiDepth": {
+            "properties": {
+                "asks": {
+                    "$ref": "#/definitions/GeminiLevel"
+                },
+                "bids": {
+                    "$ref": "#/definitions/GeminiLevel"
+                }
+            }
+        },
+        "GeminiLend": {
+            "properties": {
+                "amountLent": {
+                    "type": "number"
+                },
+                "rate": {
+                    "type": "number"
+                },
+                "timestamp": {
+                    "type": "integer"
+                }
+            }
+        },
+        "GeminiLendDepth": {
+            "properties": {
+                "asks": {
+                    "$ref": "#/definitions/GeminiLendLevel"
+                },
+                "bids": {
+                    "$ref": "#/definitions/GeminiLendLevel"
+                }
+            }
+        },
+        "GeminiLendLevel": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "frr": {
+                    "type": "string"
+                },
+                "period": {
+                    "type": "integer"
+                },
+                "rate": {
+                    "type": "number"
+                },
+                "timestamp": {
+                    "type": "number"
+                }
+            }
+        },
+        "GeminiLevel": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "timestamp": {
+                    "type": "number"
+                }
+            }
+        },
+        "GeminiNewOrderRequest": {
+            "properties": {
+                "amount": {
+                    "type": "string"
+                },
+                "nonce": {
+                    "type": "string"
+                },
+                "options": {
+                    "$ref": "#/definitions/Object"
+                },
+                "price": {
+                    "type": "string"
+                },
+                "request": {
+                    "type": "string"
+                },
+                "side": {
+                    "type": "string"
+                },
+                "symbol": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "GeminiNonceOnlyRequest": {
+            "properties": {
+            }
+        },
+        "GeminiOrderStatusRequest": {
+            "properties": {
+                "orderId": {
+                    "type": "string"
+                }
+            }
+        },
+        "GeminiOrderStatusResponse": {
+            "properties": {
+                "avgExecutionPrice": {
+                    "type": "number"
+                },
+                "cancelled": {
+                    "type": "boolean"
+                },
+                "executedAmount": {
+                    "type": "number"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "live": {
+                    "type": "boolean"
+                },
+                "originalAmount": {
+                    "type": "number"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "remainingAmount": {
+                    "type": "number"
+                },
+                "side": {
+                    "type": "string"
+                },
+                "symbol": {
+                    "type": "string"
+                },
+                "timestamp": {
+                    "type": "string"
+                },
+                "timestampms": {
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "wasForced": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "GeminiOrderStatusResponse_2": {
+            "properties": {
+                "avgExecutionPrice": {
+                    "type": "number"
+                },
+                "cancelled": {
+                    "type": "boolean"
+                },
+                "executedAmount": {
+                    "type": "number"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "live": {
+                    "type": "boolean"
+                },
+                "originalAmount": {
+                    "type": "number"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "remainingAmount": {
+                    "type": "number"
+                },
+                "side": {
+                    "type": "string"
+                },
+                "symbol": {
+                    "type": "string"
+                },
+                "timestamp": {
+                    "type": "string"
+                },
+                "timestampms": {
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "wasForced": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "GeminiPastTradesRequest": {
+            "properties": {
+            }
+        },
+        "GeminiTicker": {
+            "properties": {
+                "ask": {
+                    "type": "number"
+                },
+                "bid": {
+                    "type": "number"
+                },
+                "last": {
+                    "type": "number"
+                },
+                "volume": {
+                    "$ref": "#/definitions/GeminiTicker$Volume"
+                }
+            }
+        },
+        "GeminiTicker$Volume": {
+            "properties": {
+                "baseVolume": {
+                    "type": "number"
+                },
+                "counterVolume": {
+                    "type": "number"
+                },
+                "timestampMS": {
+                    "type": "integer"
+                }
+            }
+        },
+        "GeminiTrade": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "exchange": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "timestamp": {
+                    "type": "integer"
+                },
+                "tradeId": {
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "GeminiTradeResponse": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "feeAmount": {
+                    "type": "number"
+                },
+                "feeCurrency": {
+                    "type": "string"
+                },
+                "orderId": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "timestamp": {
+                    "type": "number"
+                },
+                "tradeId": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "GeminiWithdrawalRequest": {
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "amount": {
+                    "type": "string"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "nonce": {
+                    "type": "string"
+                },
+                "request": {
+                    "type": "string"
+                }
+            }
+        },
+        "GeminiWithdrawalResponse": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "destination": {
+                    "type": "string"
+                },
+                "txHash": {
+                    "type": "string"
+                }
+            }
+        },
+        "Object": {
+            "properties": {
+            }
+        }
+    }
+}

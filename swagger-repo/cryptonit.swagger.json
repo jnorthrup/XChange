@@ -1,0 +1,199 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "4.3.6-SNAPSHOT",
+        "title": "XChange Cryptonit"
+    },
+    "host": "xchange-cryptonit.changeme",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/apiv2/rest/public/ccorder.json?bid_currency={bid_currency}&ask_currency={ask_currency}&ticker": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "ask_currency",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "bid_currency",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CryptonitTicker"
+                        }
+                    }
+                }
+            }
+        },
+        "/apiv2/rest/public/ccorder.json?bid_currency={bid_currency}&ask_currency={ask_currency}&type={type}&limit={limit}": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "ask_currency",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "bid_currency",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "limit",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "type",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CryptonitOrders"
+                        }
+                    }
+                }
+            }
+        },
+        "/apiv2/rest/public/pairs.json": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "CryptonitOrder": {
+            "properties": {
+                "askAmount": {
+                    "type": "number"
+                },
+                "askCurrency": {
+                    "type": "string"
+                },
+                "askRate": {
+                    "type": "number"
+                },
+                "bidAmount": {
+                    "type": "number"
+                },
+                "bidCurrency": {
+                    "type": "string"
+                },
+                "bidRate": {
+                    "type": "number"
+                },
+                "created": {
+                    "type": "integer"
+                },
+                "filled": {
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "CryptonitOrders": {
+            "properties": {
+                "order": {
+                    "$ref": "#/definitions/CryptonitOrder"
+                },
+                "orders": {
+                    "type": "object"
+                }
+            }
+        },
+        "CryptonitRate": {
+            "properties": {
+                "ask": {
+                    "type": "number"
+                },
+                "bid": {
+                    "type": "number"
+                },
+                "high": {
+                    "type": "number"
+                },
+                "last": {
+                    "type": "number"
+                },
+                "low": {
+                    "type": "number"
+                }
+            }
+        },
+        "CryptonitTicker": {
+            "properties": {
+                "rate": {
+                    "$ref": "#/definitions/CryptonitRate"
+                },
+                "volume": {
+                    "$ref": "#/definitions/CryptonitVolume"
+                }
+            }
+        },
+        "CryptonitVolume": {
+            "properties": {
+                "volume": {
+                    "type": "number"
+                },
+                "volumes": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

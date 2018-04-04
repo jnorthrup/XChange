@@ -1,0 +1,541 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "4.3.6-SNAPSHOT",
+        "title": "XChange Open Exchange Rates"
+    },
+    "host": "xchange-openexchangerates.changeme",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/api/latest.json": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "app_id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/OERTickers"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "OERRates": {
+            "properties": {
+                "aED": {
+                    "type": "number"
+                },
+                "aFN": {
+                    "type": "number"
+                },
+                "aLL": {
+                    "type": "number"
+                },
+                "aMD": {
+                    "type": "number"
+                },
+                "aNG": {
+                    "type": "number"
+                },
+                "aOA": {
+                    "type": "number"
+                },
+                "aRS": {
+                    "type": "number"
+                },
+                "aUD": {
+                    "type": "number"
+                },
+                "aWG": {
+                    "type": "number"
+                },
+                "aZN": {
+                    "type": "number"
+                },
+                "bAM": {
+                    "type": "number"
+                },
+                "bBD": {
+                    "type": "number"
+                },
+                "bDT": {
+                    "type": "number"
+                },
+                "bGN": {
+                    "type": "number"
+                },
+                "bHD": {
+                    "type": "number"
+                },
+                "bIF": {
+                    "type": "number"
+                },
+                "bMD": {
+                    "type": "number"
+                },
+                "bND": {
+                    "type": "number"
+                },
+                "bOB": {
+                    "type": "number"
+                },
+                "bRL": {
+                    "type": "number"
+                },
+                "bSD": {
+                    "type": "number"
+                },
+                "bTC": {
+                    "type": "number"
+                },
+                "bTN": {
+                    "type": "number"
+                },
+                "bWP": {
+                    "type": "number"
+                },
+                "bYR": {
+                    "type": "number"
+                },
+                "bZD": {
+                    "type": "number"
+                },
+                "cAD": {
+                    "type": "number"
+                },
+                "cDF": {
+                    "type": "number"
+                },
+                "cHF": {
+                    "type": "number"
+                },
+                "cLF": {
+                    "type": "number"
+                },
+                "cLP": {
+                    "type": "number"
+                },
+                "cNY": {
+                    "type": "number"
+                },
+                "cOP": {
+                    "type": "number"
+                },
+                "cRC": {
+                    "type": "number"
+                },
+                "cUP": {
+                    "type": "number"
+                },
+                "cVE": {
+                    "type": "number"
+                },
+                "cZK": {
+                    "type": "number"
+                },
+                "dJF": {
+                    "type": "number"
+                },
+                "dKK": {
+                    "type": "number"
+                },
+                "dOP": {
+                    "type": "number"
+                },
+                "dZD": {
+                    "type": "number"
+                },
+                "eEK": {
+                    "type": "number"
+                },
+                "eGP": {
+                    "type": "number"
+                },
+                "eTB": {
+                    "type": "number"
+                },
+                "eUR": {
+                    "type": "number"
+                },
+                "fJD": {
+                    "type": "number"
+                },
+                "fKP": {
+                    "type": "number"
+                },
+                "gBP": {
+                    "type": "number"
+                },
+                "gEL": {
+                    "type": "number"
+                },
+                "gHS": {
+                    "type": "number"
+                },
+                "gIP": {
+                    "type": "number"
+                },
+                "gMD": {
+                    "type": "number"
+                },
+                "gNF": {
+                    "type": "number"
+                },
+                "gTQ": {
+                    "type": "number"
+                },
+                "gYD": {
+                    "type": "number"
+                },
+                "hKD": {
+                    "type": "number"
+                },
+                "hNL": {
+                    "type": "number"
+                },
+                "hRK": {
+                    "type": "number"
+                },
+                "hTG": {
+                    "type": "number"
+                },
+                "hUF": {
+                    "type": "number"
+                },
+                "iDR": {
+                    "type": "number"
+                },
+                "iLS": {
+                    "type": "number"
+                },
+                "iNR": {
+                    "type": "number"
+                },
+                "iQD": {
+                    "type": "number"
+                },
+                "iRR": {
+                    "type": "number"
+                },
+                "iSK": {
+                    "type": "number"
+                },
+                "jEP": {
+                    "type": "number"
+                },
+                "jMD": {
+                    "type": "number"
+                },
+                "jOD": {
+                    "type": "number"
+                },
+                "jPY": {
+                    "type": "number"
+                },
+                "kES": {
+                    "type": "number"
+                },
+                "kGS": {
+                    "type": "number"
+                },
+                "kHR": {
+                    "type": "number"
+                },
+                "kMF": {
+                    "type": "number"
+                },
+                "kPW": {
+                    "type": "number"
+                },
+                "kRW": {
+                    "type": "number"
+                },
+                "kWD": {
+                    "type": "number"
+                },
+                "kYD": {
+                    "type": "number"
+                },
+                "kZT": {
+                    "type": "number"
+                },
+                "lAK": {
+                    "type": "number"
+                },
+                "lBP": {
+                    "type": "number"
+                },
+                "lKR": {
+                    "type": "number"
+                },
+                "lRD": {
+                    "type": "number"
+                },
+                "lSL": {
+                    "type": "number"
+                },
+                "lTL": {
+                    "type": "number"
+                },
+                "lVL": {
+                    "type": "number"
+                },
+                "lYD": {
+                    "type": "number"
+                },
+                "mAD": {
+                    "type": "number"
+                },
+                "mDL": {
+                    "type": "number"
+                },
+                "mGA": {
+                    "type": "number"
+                },
+                "mKD": {
+                    "type": "number"
+                },
+                "mMK": {
+                    "type": "number"
+                },
+                "mNT": {
+                    "type": "number"
+                },
+                "mOP": {
+                    "type": "number"
+                },
+                "mRO": {
+                    "type": "number"
+                },
+                "mUR": {
+                    "type": "number"
+                },
+                "mVR": {
+                    "type": "number"
+                },
+                "mWK": {
+                    "type": "number"
+                },
+                "mXN": {
+                    "type": "number"
+                },
+                "mYR": {
+                    "type": "number"
+                },
+                "mZN": {
+                    "type": "number"
+                },
+                "nAD": {
+                    "type": "number"
+                },
+                "nGN": {
+                    "type": "number"
+                },
+                "nIO": {
+                    "type": "number"
+                },
+                "nOK": {
+                    "type": "number"
+                },
+                "nPR": {
+                    "type": "number"
+                },
+                "nZD": {
+                    "type": "number"
+                },
+                "oMR": {
+                    "type": "number"
+                },
+                "pAB": {
+                    "type": "number"
+                },
+                "pEN": {
+                    "type": "number"
+                },
+                "pGK": {
+                    "type": "number"
+                },
+                "pHP": {
+                    "type": "number"
+                },
+                "pKR": {
+                    "type": "number"
+                },
+                "pLN": {
+                    "type": "number"
+                },
+                "pYG": {
+                    "type": "number"
+                },
+                "qAR": {
+                    "type": "number"
+                },
+                "rON": {
+                    "type": "number"
+                },
+                "rSD": {
+                    "type": "number"
+                },
+                "rUB": {
+                    "type": "number"
+                },
+                "rWF": {
+                    "type": "number"
+                },
+                "sAR": {
+                    "type": "number"
+                },
+                "sBD": {
+                    "type": "number"
+                },
+                "sCR": {
+                    "type": "number"
+                },
+                "sDG": {
+                    "type": "number"
+                },
+                "sEK": {
+                    "type": "number"
+                },
+                "sGD": {
+                    "type": "number"
+                },
+                "sHP": {
+                    "type": "number"
+                },
+                "sLL": {
+                    "type": "number"
+                },
+                "sOS": {
+                    "type": "number"
+                },
+                "sRD": {
+                    "type": "number"
+                },
+                "sTD": {
+                    "type": "number"
+                },
+                "sVC": {
+                    "type": "number"
+                },
+                "sYP": {
+                    "type": "number"
+                },
+                "sZL": {
+                    "type": "number"
+                },
+                "tHB": {
+                    "type": "number"
+                },
+                "tJS": {
+                    "type": "number"
+                },
+                "tMT": {
+                    "type": "number"
+                },
+                "tND": {
+                    "type": "number"
+                },
+                "tOP": {
+                    "type": "number"
+                },
+                "tRY": {
+                    "type": "number"
+                },
+                "tTD": {
+                    "type": "number"
+                },
+                "tWD": {
+                    "type": "number"
+                },
+                "tZS": {
+                    "type": "number"
+                },
+                "uAH": {
+                    "type": "number"
+                },
+                "uGX": {
+                    "type": "number"
+                },
+                "uSD": {
+                    "type": "number"
+                },
+                "uYU": {
+                    "type": "number"
+                },
+                "uZS": {
+                    "type": "number"
+                },
+                "vEF": {
+                    "type": "number"
+                },
+                "vND": {
+                    "type": "number"
+                },
+                "vUV": {
+                    "type": "number"
+                },
+                "wST": {
+                    "type": "number"
+                },
+                "xAF": {
+                    "type": "number"
+                },
+                "xCD": {
+                    "type": "number"
+                },
+                "xDR": {
+                    "type": "number"
+                },
+                "xOF": {
+                    "type": "number"
+                },
+                "xPF": {
+                    "type": "number"
+                },
+                "yER": {
+                    "type": "number"
+                },
+                "zAR": {
+                    "type": "number"
+                },
+                "zMK": {
+                    "type": "number"
+                },
+                "zWL": {
+                    "type": "number"
+                }
+            }
+        },
+        "OERTickers": {
+            "properties": {
+                "rates": {
+                    "$ref": "#/definitions/OERRates"
+                },
+                "timestamp": {
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}

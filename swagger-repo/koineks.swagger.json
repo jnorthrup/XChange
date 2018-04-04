@@ -1,0 +1,285 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "4.3.6-SNAPSHOT",
+        "title": "XChange Koineks"
+    },
+    "host": "xchange-koineks.changeme",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/ticker": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/KoineksTicker"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Currency": {
+            "properties": {
+                "codeCurrency": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "commonlyUsedCurrency": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "currencyCode": {
+                    "type": "string"
+                },
+                "currencyCodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "displayName": {
+                    "type": "string"
+                },
+                "iso4217Currency": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "symbol": {
+                    "type": "string"
+                }
+            }
+        },
+        "KoineksBTCTicker": {
+            "properties": {
+                "ask": {
+                    "type": "number"
+                },
+                "bid": {
+                    "type": "number"
+                },
+                "changeAmount": {
+                    "type": "string"
+                },
+                "changePercentage": {
+                    "type": "number"
+                },
+                "currency": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "current": {
+                    "type": "number"
+                },
+                "high": {
+                    "type": "number"
+                },
+                "low": {
+                    "type": "number"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "shortCode": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "timestamp": {
+                    "type": "string"
+                },
+                "volume": {
+                    "type": "number"
+                }
+            }
+        },
+        "KoineksDASHTicker": {
+            "properties": {
+                "ask": {
+                    "type": "number"
+                },
+                "bid": {
+                    "type": "number"
+                },
+                "changeAmount": {
+                    "type": "string"
+                },
+                "changePercentage": {
+                    "type": "number"
+                },
+                "currency": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "current": {
+                    "type": "number"
+                },
+                "high": {
+                    "type": "number"
+                },
+                "low": {
+                    "type": "number"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "shortCode": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "timestamp": {
+                    "type": "string"
+                },
+                "volume": {
+                    "type": "number"
+                }
+            }
+        },
+        "KoineksDOGETicker": {
+            "properties": {
+                "ask": {
+                    "type": "number"
+                },
+                "bid": {
+                    "type": "number"
+                },
+                "changeAmount": {
+                    "type": "string"
+                },
+                "changePercentage": {
+                    "type": "number"
+                },
+                "currency": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "current": {
+                    "type": "number"
+                },
+                "high": {
+                    "type": "number"
+                },
+                "low": {
+                    "type": "number"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "shortCode": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "timestamp": {
+                    "type": "string"
+                },
+                "volume": {
+                    "type": "number"
+                }
+            }
+        },
+        "KoineksETHTicker": {
+            "properties": {
+                "ask": {
+                    "type": "number"
+                },
+                "bid": {
+                    "type": "number"
+                },
+                "changeAmount": {
+                    "type": "string"
+                },
+                "changePercentage": {
+                    "type": "number"
+                },
+                "currency": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "current": {
+                    "type": "number"
+                },
+                "high": {
+                    "type": "number"
+                },
+                "low": {
+                    "type": "number"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "shortCode": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "timestamp": {
+                    "type": "string"
+                },
+                "volume": {
+                    "type": "number"
+                }
+            }
+        },
+        "KoineksLTCTicker": {
+            "properties": {
+                "ask": {
+                    "type": "number"
+                },
+                "bid": {
+                    "type": "number"
+                },
+                "changeAmount": {
+                    "type": "string"
+                },
+                "changePercentage": {
+                    "type": "number"
+                },
+                "currency": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "current": {
+                    "type": "number"
+                },
+                "high": {
+                    "type": "number"
+                },
+                "low": {
+                    "type": "number"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "shortCode": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "timestamp": {
+                    "type": "string"
+                },
+                "volume": {
+                    "type": "number"
+                }
+            }
+        },
+        "KoineksTicker": {
+            "properties": {
+                "koineksBTCTicker": {
+                    "$ref": "#/definitions/KoineksBTCTicker"
+                },
+                "koineksDASHTicker": {
+                    "$ref": "#/definitions/KoineksDASHTicker"
+                },
+                "koineksDOGETicker": {
+                    "$ref": "#/definitions/KoineksDOGETicker"
+                },
+                "koineksETHTicker": {
+                    "$ref": "#/definitions/KoineksETHTicker"
+                },
+                "koineksLTCTicker": {
+                    "$ref": "#/definitions/KoineksLTCTicker"
+                }
+            }
+        }
+    }
+}

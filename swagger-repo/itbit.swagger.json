@@ -1,0 +1,1114 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "4.3.6-SNAPSHOT",
+        "title": "XChange ItBit"
+    },
+    "host": "xchange-itbit.changeme",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/v1/markets/{ident}{currency}/order_book": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "currency",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "ident",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ItBitDepth"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/markets/{ident}{currency}/ticker": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "currency",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "ident",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ItBitTicker"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/markets/{ident}{currency}/trades": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "currency",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "ident",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "since",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ItBitTrades"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/wallets": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-Auth-Nonce",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "X-Auth-Timestamp",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "perPage",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "userId",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ItBitAccountInfoReturn"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/wallets/{walletId}": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "walletId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-Auth-Nonce",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "X-Auth-Timestamp",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ItBitAccountInfoReturn_2"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/wallets/{walletId}/cryptocurrency_deposits": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "walletId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-Auth-Nonce",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "X-Auth-Timestamp",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ItBitDepositRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ItBitDepositResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/wallets/{walletId}/cryptocurrency_withdrawals": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "walletId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-Auth-Nonce",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "X-Auth-Timestamp",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ItBitWithdrawalRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ItBitWithdrawalResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/wallets/{walletId}/funding_history": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "walletId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-Auth-Nonce",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "X-Auth-Timestamp",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "perPage",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ItBitFundingHistoryResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/wallets/{walletId}/orders": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "walletId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-Auth-Nonce",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "X-Auth-Timestamp",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "instrument",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "perPage",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "status",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ItBitOrder"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "walletId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-Auth-Nonce",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "X-Auth-Timestamp",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ItBitPlaceOrderRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ItBitOrder_2"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/wallets/{walletId}/orders/{orderId}": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "orderId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "walletId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-Auth-Nonce",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "X-Auth-Timestamp",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ItBitOrder_2"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Returns empty body, return object is always null",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "orderId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "walletId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-Auth-Nonce",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "X-Auth-Timestamp",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/wallets/{walletId}/trades": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "walletId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-Auth-Nonce",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "X-Auth-Timestamp",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "lastExecutionId",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "perPage",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "rangeEnd",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "rangeStart",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ItBitTradeHistory"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "BigDecimal": {
+            "properties": {
+            }
+        },
+        "ItBitAccountBalance": {
+            "properties": {
+                "availableBalance": {
+                    "type": "number"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "totalBalance": {
+                    "type": "number"
+                }
+            }
+        },
+        "ItBitAccountInfoReturn": {
+            "properties": {
+                "balances": {
+                    "$ref": "#/definitions/ItBitAccountBalance"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "userId": {
+                    "type": "string"
+                }
+            }
+        },
+        "ItBitAccountInfoReturn_2": {
+            "properties": {
+                "balances": {
+                    "$ref": "#/definitions/ItBitAccountBalance"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "userId": {
+                    "type": "string"
+                }
+            }
+        },
+        "ItBitDepositRequest": {
+            "properties": {
+                "currency": {
+                    "type": "string"
+                },
+                "metadata": {
+                    "type": "object"
+                }
+            }
+        },
+        "ItBitDepositResponse": {
+            "properties": {
+                "depositAddress": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "metadata": {
+                    "type": "object"
+                },
+                "walletId": {
+                    "type": "string"
+                }
+            }
+        },
+        "ItBitDepth": {
+            "properties": {
+                "asks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/BigDecimal"
+                    }
+                },
+                "bids": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/BigDecimal"
+                    }
+                }
+            }
+        },
+        "ItBitFunding": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "bankName": {
+                    "type": "string"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "destinationAddress": {
+                    "type": "string"
+                },
+                "holdingPeriodCompletionDate": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "time": {
+                    "type": "string"
+                },
+                "transactionType": {
+                    "type": "string"
+                },
+                "txnHash": {
+                    "type": "string"
+                },
+                "walletName": {
+                    "type": "string"
+                },
+                "withdrawalId": {
+                    "type": "string"
+                }
+            }
+        },
+        "ItBitFundingHistoryResponse": {
+            "properties": {
+                "currentPageNumber": {
+                    "type": "integer"
+                },
+                "fundingHistory": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ItBitFunding"
+                    }
+                },
+                "recordsPerPage": {
+                    "type": "integer"
+                },
+                "requestTime": {
+                    "type": "string"
+                },
+                "totalNumberOfRecords": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ItBitOrder": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "amountFilled": {
+                    "type": "number"
+                },
+                "createdTime": {
+                    "type": "string"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "instrument": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "side": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "volumeWeightedAveragePrice": {
+                    "type": "number"
+                },
+                "walletId": {
+                    "type": "string"
+                }
+            }
+        },
+        "ItBitOrder_2": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "amountFilled": {
+                    "type": "number"
+                },
+                "createdTime": {
+                    "type": "string"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "instrument": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "side": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "volumeWeightedAveragePrice": {
+                    "type": "number"
+                },
+                "walletId": {
+                    "type": "string"
+                }
+            }
+        },
+        "ItBitPlaceOrderRequest": {
+            "properties": {
+                "amount": {
+                    "type": "string"
+                },
+                "baseCurrency": {
+                    "type": "string"
+                },
+                "instrument": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "string"
+                },
+                "side": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "ItBitTicker": {
+            "properties": {
+                "ask": {
+                    "type": "number"
+                },
+                "askAmt": {
+                    "type": "number"
+                },
+                "bid": {
+                    "type": "number"
+                },
+                "bidAmt": {
+                    "type": "number"
+                },
+                "currencyPair": {
+                    "type": "string"
+                },
+                "highToday": {
+                    "type": "number"
+                },
+                "lastAmt": {
+                    "type": "number"
+                },
+                "lastPrice": {
+                    "type": "number"
+                },
+                "lowToday": {
+                    "type": "number"
+                },
+                "openToday": {
+                    "type": "number"
+                },
+                "timestamp": {
+                    "type": "string"
+                },
+                "volume24h": {
+                    "type": "number"
+                },
+                "vwap24h": {
+                    "type": "number"
+                },
+                "vwapToday": {
+                    "type": "number"
+                }
+            }
+        },
+        "ItBitTrade": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "matchNumber": {
+                    "type": "integer"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "timestamp": {
+                    "type": "string"
+                }
+            }
+        },
+        "ItBitTradeHistory": {
+            "properties": {
+                "currentPageNumber": {
+                    "type": "integer"
+                },
+                "latestExecutionId": {
+                    "type": "string"
+                },
+                "recordsPerPage": {
+                    "type": "integer"
+                },
+                "totalNumberOfRecords": {
+                    "type": "integer"
+                },
+                "tradingHistory": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ItBitUserTrade"
+                    }
+                }
+            }
+        },
+        "ItBitTrades": {
+            "properties": {
+                "count": {
+                    "type": "integer"
+                },
+                "trades": {
+                    "$ref": "#/definitions/ItBitTrade"
+                }
+            }
+        },
+        "ItBitUserTrade": {
+            "properties": {
+                "commissionCurrency": {
+                    "type": "string"
+                },
+                "commissionPaid": {
+                    "type": "number"
+                },
+                "currency1": {
+                    "type": "string"
+                },
+                "currency1Amount": {
+                    "type": "number"
+                },
+                "currency2": {
+                    "type": "string"
+                },
+                "currency2Amount": {
+                    "type": "number"
+                },
+                "direction": {
+                    "type": "string",
+                    "enum": [
+                        "buy",
+                        "sell"
+                    ]
+                },
+                "instrument": {
+                    "type": "string"
+                },
+                "orderId": {
+                    "type": "string"
+                },
+                "rate": {
+                    "type": "number"
+                },
+                "rebateCurrency": {
+                    "type": "string"
+                },
+                "rebatesApplied": {
+                    "type": "number"
+                },
+                "timestamp": {
+                    "type": "object"
+                }
+            }
+        },
+        "ItBitWithdrawalRequest": {
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "amount": {
+                    "type": "string"
+                },
+                "currency": {
+                    "type": "string"
+                }
+            }
+        },
+        "ItBitWithdrawalResponse": {
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "amount": {
+                    "type": "number"
+                },
+                "completionDate": {
+                    "type": "string"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

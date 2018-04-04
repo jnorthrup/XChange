@@ -1,0 +1,282 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "4.3.6-SNAPSHOT",
+        "title": "XChange BTC Turk"
+    },
+    "host": "xchange-btcturk.changeme",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/api/ohlcdata": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "last",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "pairSymbol",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BTCTurkOHLC"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/orderbook": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "pairSymbol",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BTCTurkOrderBook"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/ticker": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "pairSymbol",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BTCTurkTicker"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trades": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "last",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "pairSymbol",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BTCTurkTrade"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "BTCTurk$Pair": {
+            "properties": {
+                "pair": {
+                    "$ref": "#/definitions/CurrencyPair"
+                }
+            }
+        },
+        "BTCTurkOHLC": {
+            "properties": {
+                "average": {
+                    "type": "number"
+                },
+                "close": {
+                    "type": "number"
+                },
+                "dailyChangeAmount": {
+                    "type": "number"
+                },
+                "dailyChangePercentage": {
+                    "type": "number"
+                },
+                "high": {
+                    "type": "number"
+                },
+                "low": {
+                    "type": "number"
+                },
+                "open": {
+                    "type": "number"
+                },
+                "time": {
+                    "type": "object"
+                },
+                "volume": {
+                    "type": "number"
+                }
+            }
+        },
+        "BTCTurkOrderBook": {
+            "properties": {
+                "asks": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                },
+                "bids": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                },
+                "timestamp": {
+                    "type": "object"
+                }
+            }
+        },
+        "BTCTurkTicker": {
+            "properties": {
+                "ask": {
+                    "type": "number"
+                },
+                "average": {
+                    "type": "number"
+                },
+                "bid": {
+                    "type": "number"
+                },
+                "high": {
+                    "type": "number"
+                },
+                "last": {
+                    "type": "number"
+                },
+                "low": {
+                    "type": "number"
+                },
+                "open": {
+                    "type": "number"
+                },
+                "pair": {
+                    "$ref": "#/definitions/BTCTurk$Pair"
+                },
+                "timestamp": {
+                    "type": "integer"
+                },
+                "volume": {
+                    "type": "number"
+                }
+            }
+        },
+        "BTCTurkTrade": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "tid": {
+                    "type": "integer"
+                }
+            }
+        },
+        "Currency": {
+            "properties": {
+                "codeCurrency": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "commonlyUsedCurrency": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "currencyCode": {
+                    "type": "string"
+                },
+                "currencyCodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "displayName": {
+                    "type": "string"
+                },
+                "iso4217Currency": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "symbol": {
+                    "type": "string"
+                }
+            }
+        },
+        "CurrencyPair": {
+            "properties": {
+                "base": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "counter": {
+                    "$ref": "#/definitions/Currency"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,75 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "4.3.6-SNAPSHOT",
+        "title": "XChange Koinim"
+    },
+    "host": "xchange-koinim.changeme",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/ticker": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/KoinimTicker"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "KoinimTicker": {
+            "properties": {
+                "ask": {
+                    "type": "number"
+                },
+                "avg": {
+                    "type": "number"
+                },
+                "bid": {
+                    "type": "number"
+                },
+                "buy": {
+                    "type": "number"
+                },
+                "changeRate": {
+                    "type": "number"
+                },
+                "high": {
+                    "type": "number"
+                },
+                "lastOrder": {
+                    "type": "number"
+                },
+                "low": {
+                    "type": "number"
+                },
+                "sell": {
+                    "type": "number"
+                },
+                "volume": {
+                    "type": "number"
+                },
+                "wavg": {
+                    "type": "number"
+                }
+            }
+        }
+    }
+}

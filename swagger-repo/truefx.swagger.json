@@ -1,0 +1,74 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "4.3.6-SNAPSHOT",
+        "title": "XChange Bitcoin Core"
+    },
+    "host": "xchange-truefx.changeme",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/rates/connect.html?f=csv&c={pair}": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "pair",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/TrueFxTicker"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "TrueFxTicker": {
+            "properties": {
+                "ask": {
+                    "type": "number"
+                },
+                "askBP": {
+                    "type": "number"
+                },
+                "bid": {
+                    "type": "number"
+                },
+                "bidBP": {
+                    "type": "number"
+                },
+                "high": {
+                    "type": "number"
+                },
+                "low": {
+                    "type": "number"
+                },
+                "open": {
+                    "type": "number"
+                },
+                "pair": {
+                    "type": "string"
+                },
+                "timestamp": {
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}

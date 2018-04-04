@@ -1,0 +1,139 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "4.3.6-SNAPSHOT",
+        "title": "XChange Zaif"
+    },
+    "host": "xchange-zaif.changeme",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/api/1/currency_pairs/all": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ZaifMarket"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/1/depth/{baseCurrency}_{targetCurrency}": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "baseCurrency",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "targetCurrency",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ZaifFullBook"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Currency": {
+            "properties": {
+                "codeCurrency": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "commonlyUsedCurrency": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "currencyCode": {
+                    "type": "string"
+                },
+                "currencyCodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "displayName": {
+                    "type": "string"
+                },
+                "iso4217Currency": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "symbol": {
+                    "type": "string"
+                }
+            }
+        },
+        "CurrencyPair": {
+            "properties": {
+                "base": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "counter": {
+                    "$ref": "#/definitions/Currency"
+                }
+            }
+        },
+        "ZaifFullBook": {
+            "properties": {
+                "asks": {
+                    "$ref": "#/definitions/ZaifFullBookTier"
+                },
+                "bids": {
+                    "$ref": "#/definitions/ZaifFullBookTier"
+                }
+            }
+        },
+        "ZaifFullBookTier": {
+            "properties": {
+                "price": {
+                    "type": "number"
+                },
+                "volume": {
+                    "type": "number"
+                }
+            }
+        },
+        "ZaifMarket": {
+            "properties": {
+                "name": {
+                    "$ref": "#/definitions/CurrencyPair"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,455 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "4.3.6-SNAPSHOT",
+        "title": "XChange Mercado Bitcoin"
+    },
+    "host": "xchange-mercadobitcoin.changeme",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/api/v1/orderbook": {
+            "get": {
+                "description": "Returns \"bids\" and \"asks\". Each is a list of open orders and each order is represented as a\nlist of price and amount.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/MercadoBitcoinOrderBook"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/orderbook_litecoin": {
+            "get": {
+                "description": "Returns \"bids\" and \"asks\". Each is a list of open orders and each order is represented as a\nlist of price and amount.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/MercadoBitcoinOrderBook"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/trades": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/MercadoBitcoinTransaction"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/trades/{start_timestamp}": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "start_timestamp",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/MercadoBitcoinTransaction"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/trades/{start_timestamp}/{end_timestamp}": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "end_timestamp",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "start_timestamp",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/MercadoBitcoinTransaction"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/trades_litecoin": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/MercadoBitcoinTransaction"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/trades_litecoin/{start_timestamp}": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "start_timestamp",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/MercadoBitcoinTransaction"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/trades_litecoin/{start_timestamp}/{end_timestamp}": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "end_timestamp",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "start_timestamp",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/MercadoBitcoinTransaction"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v2/ticker": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/MercadoBitcoinTicker"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v2/ticker_litecoin": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/MercadoBitcoinTicker"
+                        }
+                    }
+                }
+            }
+        },
+        "/tapi": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Sign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "end",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "endId",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "fromId",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "method",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "order_id",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "pair",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "price",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "since",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "status",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "tonce",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "type",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "volume",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/MercadoBitcoinCancelOrderResult;>"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "MercadoBitcoinCancelOrderResult": {
+            "properties": {
+            }
+        },
+        "MercadoBitcoinCancelOrderResult;>": {
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "integer"
+                },
+                "theReturn": {
+                    "$ref": "#/definitions/MercadoBitcoinCancelOrderResult"
+                }
+            }
+        },
+        "MercadoBitcoinOrderBook": {
+            "properties": {
+                "asks": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                },
+                "bids": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                }
+            }
+        },
+        "MercadoBitcoinTicker": {
+            "properties": {
+                "ticker": {
+                    "$ref": "#/definitions/MercadoBitcoinTicker$Ticker"
+                }
+            }
+        },
+        "MercadoBitcoinTicker$Ticker": {
+            "properties": {
+                "buy": {
+                    "type": "number"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "high": {
+                    "type": "number"
+                },
+                "last": {
+                    "type": "number"
+                },
+                "low": {
+                    "type": "number"
+                },
+                "sell": {
+                    "type": "number"
+                },
+                "vol": {
+                    "type": "number"
+                }
+            }
+        },
+        "MercadoBitcoinTransaction": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "tid": {
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

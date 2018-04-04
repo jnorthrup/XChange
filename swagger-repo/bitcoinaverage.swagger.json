@@ -1,0 +1,103 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "4.3.6-SNAPSHOT",
+        "title": "XChange BitcoinAverage"
+    },
+    "host": "xchange-bitcoinaverage.changeme",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/indices/global/ticker/short?crypto={crypto}": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "crypto",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BitcoinAverageTickers"
+                        }
+                    }
+                }
+            }
+        },
+        "/indices/global/ticker/{symbol}": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "symbol",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BitcoinAverageTicker"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "BitcoinAverageTicker": {
+            "properties": {
+                "ask": {
+                    "type": "number"
+                },
+                "bid": {
+                    "type": "number"
+                },
+                "last": {
+                    "type": "number"
+                },
+                "timestamp": {
+                    "type": "object"
+                },
+                "volume": {
+                    "type": "number"
+                },
+                "volumePercent": {
+                    "type": "number"
+                }
+            }
+        },
+        "BitcoinAverageTickers": {
+            "properties": {
+                "tickers": {
+                    "type": "object"
+                },
+                "timestamp": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

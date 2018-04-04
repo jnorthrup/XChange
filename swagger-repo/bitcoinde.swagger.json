@@ -1,0 +1,609 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "4.3.6-SNAPSHOT",
+        "title": "XChange Bitcoin.de"
+    },
+    "host": "xchange-bitcoinde.changeme",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/account": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "X-API-KEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-API-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-API-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BitcoindeAccountWrapper"
+                        }
+                    }
+                }
+            }
+        },
+        "/orders": {
+            "post": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "X-API-KEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-API-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-API-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "max_amount",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "price",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "trading_pair",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "type",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BitcoindeIdResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/orders/compact": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "X-API-KEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-API-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-API-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "trading_pair",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BitcoindeOrderbookWrapper"
+                        }
+                    }
+                }
+            }
+        },
+        "/orders/my_own": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "X-API-KEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-API-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-API-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BitcoindeMyOpenOrdersWrapper"
+                        }
+                    }
+                }
+            }
+        },
+        "/orders/{order_id}/{trading_pair}": {
+            "delete": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "order_id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "trading_pair",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-API-KEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-API-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-API-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BitcoindeIdResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/trades/history": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "X-API-KEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-API-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-API-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "since_tid",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "trading_pair",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BitcoindeTradesWrapper"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "BitcoindeAccountWrapper": {
+            "properties": {
+                "credits": {
+                    "type": "integer"
+                },
+                "data": {
+                    "$ref": "#/definitions/BitcoindeData"
+                },
+                "errors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Object"
+                    }
+                }
+            }
+        },
+        "BitcoindeAllocation": {
+            "properties": {
+                "eurVolumeOpenOrders": {
+                    "type": "integer"
+                },
+                "maxEurVolume": {
+                    "type": "integer"
+                },
+                "percent": {
+                    "type": "integer"
+                }
+            }
+        },
+        "BitcoindeAllocations": {
+            "properties": {
+                "btc": {
+                    "$ref": "#/definitions/BitcoindeAllocation"
+                }
+            }
+        },
+        "BitcoindeBalance": {
+            "properties": {
+                "availableAmount": {
+                    "type": "number"
+                },
+                "reservedAmount": {
+                    "type": "number"
+                },
+                "totalAmount": {
+                    "type": "number"
+                }
+            }
+        },
+        "BitcoindeBalances": {
+            "properties": {
+                "bch": {
+                    "$ref": "#/definitions/BitcoindeBalance"
+                },
+                "btc": {
+                    "$ref": "#/definitions/BitcoindeBalance"
+                },
+                "eth": {
+                    "$ref": "#/definitions/BitcoindeBalance"
+                }
+            }
+        },
+        "BitcoindeData": {
+            "properties": {
+                "balances": {
+                    "$ref": "#/definitions/BitcoindeBalances"
+                },
+                "encryptedInformation": {
+                    "$ref": "#/definitions/BitcoindeEncryptedInformation"
+                },
+                "fidorReservation": {
+                    "$ref": "#/definitions/BitcoindeFidorReservation"
+                }
+            }
+        },
+        "BitcoindeEncryptedInformation": {
+            "properties": {
+                "bicFull": {
+                    "type": "string"
+                },
+                "bicShort": {
+                    "type": "string"
+                },
+                "uid": {
+                    "type": "string"
+                }
+            }
+        },
+        "BitcoindeFidorReservation": {
+            "properties": {
+                "allocation": {
+                    "$ref": "#/definitions/BitcoindeAllocations"
+                },
+                "availableAmount": {
+                    "type": "number"
+                },
+                "reservedAt": {
+                    "type": "string"
+                },
+                "totalAmount": {
+                    "type": "number"
+                },
+                "validUntil": {
+                    "type": "string"
+                }
+            }
+        },
+        "BitcoindeIdResponse": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                }
+            }
+        },
+        "BitcoindeMaintenance": {
+            "properties": {
+                "end": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "start": {
+                    "type": "string"
+                }
+            }
+        },
+        "BitcoindeMyOpenOrdersWrapper": {
+            "properties": {
+                "credits": {
+                    "type": "integer"
+                },
+                "errors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Object"
+                    }
+                },
+                "maintenance": {
+                    "$ref": "#/definitions/BitcoindeMaintenance"
+                },
+                "orders": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/BitcoindeMyOrder"
+                    }
+                },
+                "page": {
+                    "$ref": "#/definitions/BitcoindePage"
+                }
+            }
+        },
+        "BitcoindeMyOrder": {
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "endDatetime": {
+                    "type": "string"
+                },
+                "maxAmount": {
+                    "type": "number"
+                },
+                "maxVolume": {
+                    "type": "integer"
+                },
+                "minAmount": {
+                    "type": "number"
+                },
+                "minVolume": {
+                    "type": "integer"
+                },
+                "newOrderForRemainingAmount": {
+                    "type": "boolean"
+                },
+                "orderId": {
+                    "type": "string"
+                },
+                "orderRequirements": {
+                    "$ref": "#/definitions/BitcoindeOrderRequirements"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "state": {
+                    "type": "integer"
+                },
+                "tradingPair": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "BitcoindeOrder": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "price": {
+                    "type": "number"
+                }
+            }
+        },
+        "BitcoindeOrderRequirements": {
+            "properties": {
+                "minTrustLevel": {
+                    "type": "string"
+                },
+                "onlyKycFull": {
+                    "type": "boolean"
+                },
+                "paymentOption": {
+                    "type": "integer"
+                },
+                "seatOfBank": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "BitcoindeOrderbookWrapper": {
+            "properties": {
+                "bitcoindeOrders": {
+                    "$ref": "#/definitions/BitcoindeOrders"
+                },
+                "credits": {
+                    "type": "integer"
+                },
+                "errors": {
+                    "$ref": "#/definitions/String"
+                }
+            }
+        },
+        "BitcoindeOrders": {
+            "properties": {
+                "asks": {
+                    "$ref": "#/definitions/BitcoindeOrder"
+                },
+                "bids": {
+                    "$ref": "#/definitions/BitcoindeOrder"
+                }
+            }
+        },
+        "BitcoindePage": {
+            "properties": {
+                "current": {
+                    "type": "integer"
+                },
+                "last": {
+                    "type": "integer"
+                }
+            }
+        },
+        "BitcoindeTrade": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "tid": {
+                    "type": "integer"
+                }
+            }
+        },
+        "BitcoindeTradesWrapper": {
+            "properties": {
+                "credits": {
+                    "type": "integer"
+                },
+                "errors": {
+                    "$ref": "#/definitions/String"
+                },
+                "trades": {
+                    "$ref": "#/definitions/BitcoindeTrade"
+                }
+            }
+        },
+        "Object": {
+            "properties": {
+            }
+        },
+        "String": {
+            "properties": {
+                "bytes": {
+                    "$ref": "#/definitions/["
+                },
+                "empty": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "[": {
+            "properties": {
+            }
+        }
+    }
+}

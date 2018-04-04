@@ -1,0 +1,828 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "4.3.6-SNAPSHOT",
+        "title": "XChange Coinfloor"
+    },
+    "host": "xchange-coinfloor.changeme",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/bist/{base}/{counter}/balance": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "base",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "counter",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CoinfloorBalance"
+                        }
+                    }
+                }
+            }
+        },
+        "/bist/{base}/{counter}/buy": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "base",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "counter",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "amount",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "price",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CoinfloorOrder"
+                        }
+                    }
+                }
+            }
+        },
+        "/bist/{base}/{counter}/buy_market": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "base",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "counter",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "quantity",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CoinfloorMarketOrderResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/bist/{base}/{counter}/cancel_order": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "base",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "counter",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                }
+            }
+        },
+        "/bist/{base}/{counter}/open_orders": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "base",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "counter",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CoinfloorOrder_2"
+                        }
+                    }
+                }
+            }
+        },
+        "/bist/{base}/{counter}/order_book": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "base",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "counter",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CoinfloorOrderBook"
+                        }
+                    }
+                }
+            }
+        },
+        "/bist/{base}/{counter}/sell": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "base",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "counter",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "amount",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "price",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CoinfloorOrder"
+                        }
+                    }
+                }
+            }
+        },
+        "/bist/{base}/{counter}/sell_market": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "base",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "counter",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "quantity",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CoinfloorMarketOrderResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/bist/{base}/{counter}/ticker": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "base",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "counter",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CoinfloorTicker"
+                        }
+                    }
+                }
+            }
+        },
+        "/bist/{base}/{counter}/transactions": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "base",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "counter",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "DAY",
+                            "HOUR",
+                            "MINUTE"
+                        ],
+                        "name": "time",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CoinfloorTransaction"
+                        }
+                    }
+                }
+            }
+        },
+        "/bist/{base}/{counter}/user_transactions": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "base",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "counter",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "limit",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "offset",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "sort",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CoinfloorUserTransaction"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Balance": {
+            "properties": {
+                "available": {
+                    "type": "number"
+                },
+                "availableForWithdrawal": {
+                    "type": "number"
+                },
+                "borrowed": {
+                    "type": "number"
+                },
+                "currency": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "depositing": {
+                    "type": "number"
+                },
+                "frozen": {
+                    "type": "number"
+                },
+                "loaned": {
+                    "type": "number"
+                },
+                "total": {
+                    "type": "number"
+                },
+                "withdrawing": {
+                    "type": "number"
+                }
+            }
+        },
+        "CoinfloorBalance": {
+            "properties": {
+                "balance": {
+                    "$ref": "#/definitions/Balance"
+                },
+                "bchAvailable": {
+                    "type": "number"
+                },
+                "bchBalance": {
+                    "type": "number"
+                },
+                "bchReserved": {
+                    "type": "number"
+                },
+                "btcAvailable": {
+                    "type": "number"
+                },
+                "btcBalance": {
+                    "type": "number"
+                },
+                "btcReserved": {
+                    "type": "number"
+                },
+                "ethAvailable": {
+                    "type": "number"
+                },
+                "ethBalance": {
+                    "type": "number"
+                },
+                "ethReserved": {
+                    "type": "number"
+                },
+                "eurAvailable": {
+                    "type": "number"
+                },
+                "eurBalance": {
+                    "type": "number"
+                },
+                "eurReserved": {
+                    "type": "number"
+                },
+                "gbpAvailable": {
+                    "type": "number"
+                },
+                "gbpBalance": {
+                    "type": "number"
+                },
+                "gbpReserved": {
+                    "type": "number"
+                },
+                "ltcAvailable": {
+                    "type": "number"
+                },
+                "ltcBalance": {
+                    "type": "number"
+                },
+                "ltcReserved": {
+                    "type": "number"
+                },
+                "usdAvailable": {
+                    "type": "number"
+                },
+                "usdBalance": {
+                    "type": "number"
+                },
+                "usdReserved": {
+                    "type": "number"
+                },
+                "xrpAvailable": {
+                    "type": "number"
+                },
+                "xrpBalance": {
+                    "type": "number"
+                },
+                "xrpReserved": {
+                    "type": "number"
+                }
+            }
+        },
+        "CoinfloorMarketOrderResponse": {
+            "properties": {
+                "remaining": {
+                    "type": "number"
+                }
+            }
+        },
+        "CoinfloorOrder": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "currencyPair": {
+                    "$ref": "#/definitions/CurrencyPair"
+                },
+                "datetime": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "side": {
+                    "type": "string",
+                    "enum": [
+                        "ASK",
+                        "BID",
+                        "EXIT_ASK",
+                        "EXIT_BID"
+                    ]
+                },
+                "type": {
+                    "type": "integer"
+                }
+            }
+        },
+        "CoinfloorOrderBook": {
+            "properties": {
+                "asks": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                },
+                "bids": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                }
+            }
+        },
+        "CoinfloorOrder_2": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "currencyPair": {
+                    "$ref": "#/definitions/CurrencyPair"
+                },
+                "datetime": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "side": {
+                    "type": "string",
+                    "enum": [
+                        "ASK",
+                        "BID",
+                        "EXIT_ASK",
+                        "EXIT_BID"
+                    ]
+                },
+                "type": {
+                    "type": "integer"
+                }
+            }
+        },
+        "CoinfloorTicker": {
+            "properties": {
+                "ask": {
+                    "type": "number"
+                },
+                "bid": {
+                    "type": "number"
+                },
+                "high": {
+                    "type": "number"
+                },
+                "last": {
+                    "type": "number"
+                },
+                "low": {
+                    "type": "number"
+                },
+                "volume": {
+                    "type": "number"
+                },
+                "vwap": {
+                    "type": "number"
+                }
+            }
+        },
+        "CoinfloorTransaction": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "tid": {
+                    "type": "integer"
+                }
+            }
+        },
+        "CoinfloorUserTransaction": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "bch": {
+                    "type": "number"
+                },
+                "bch_gbp": {
+                    "type": "number"
+                },
+                "btc": {
+                    "type": "number"
+                },
+                "btc_eur": {
+                    "type": "number"
+                },
+                "btc_gbp": {
+                    "type": "number"
+                },
+                "btc_usd": {
+                    "type": "number"
+                },
+                "currency": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "currencyPair": {
+                    "$ref": "#/definitions/CurrencyPair"
+                },
+                "dateTime": {
+                    "type": "string"
+                },
+                "datetime": {
+                    "type": "string"
+                },
+                "deposit": {
+                    "type": "boolean"
+                },
+                "eth": {
+                    "type": "number"
+                },
+                "eth_gbp": {
+                    "type": "number"
+                },
+                "eur": {
+                    "type": "number"
+                },
+                "fee": {
+                    "type": "number"
+                },
+                "gbp": {
+                    "type": "number"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "ltc": {
+                    "type": "number"
+                },
+                "ltc_gbp": {
+                    "type": "number"
+                },
+                "orderId": {
+                    "type": "integer"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "side": {
+                    "type": "string",
+                    "enum": [
+                        "ASK",
+                        "BID",
+                        "EXIT_ASK",
+                        "EXIT_BID"
+                    ]
+                },
+                "trade": {
+                    "type": "boolean"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "DEPOSIT",
+                        "TRADE",
+                        "UNKNOWN",
+                        "WITHDRAWAL"
+                    ]
+                },
+                "usd": {
+                    "type": "number"
+                },
+                "withdrawal": {
+                    "type": "boolean"
+                },
+                "xrp": {
+                    "type": "number"
+                },
+                "xrp_gbp": {
+                    "type": "number"
+                }
+            }
+        },
+        "Currency": {
+            "properties": {
+                "codeCurrency": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "commonlyUsedCurrency": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "currencyCode": {
+                    "type": "string"
+                },
+                "currencyCodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "displayName": {
+                    "type": "string"
+                },
+                "iso4217Currency": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "symbol": {
+                    "type": "string"
+                }
+            }
+        },
+        "CurrencyPair": {
+            "properties": {
+                "base": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "counter": {
+                    "$ref": "#/definitions/Currency"
+                }
+            }
+        }
+    }
+}

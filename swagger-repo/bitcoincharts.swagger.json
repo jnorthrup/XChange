@@ -1,0 +1,75 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "4.3.6-SNAPSHOT",
+        "title": "XChange Bitcoin Charts"
+    },
+    "host": "xchange-bitcoincharts.changeme",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/v1/markets.json": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BitcoinChartsTicker"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "BitcoinChartsTicker": {
+            "properties": {
+                "ask": {
+                    "type": "number"
+                },
+                "avg": {
+                    "type": "number"
+                },
+                "bid": {
+                    "type": "number"
+                },
+                "close": {
+                    "type": "number"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "currencyVolume": {
+                    "type": "number"
+                },
+                "high": {
+                    "type": "number"
+                },
+                "latestTrade": {
+                    "type": "integer"
+                },
+                "low": {
+                    "type": "number"
+                },
+                "symbol": {
+                    "type": "string"
+                },
+                "volume": {
+                    "type": "number"
+                }
+            }
+        }
+    }
+}

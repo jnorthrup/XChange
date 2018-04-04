@@ -1,0 +1,1600 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "4.3.6-SNAPSHOT",
+        "title": "XChange Luno"
+    },
+    "host": "xchange-luno.changeme",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/api/1/accounts": {
+            "post": {
+                "description": "Create an additional account for the specified currency. You must be verified to trade currency\nin order to be able to create an account. A user has a limit of 4 accounts per currency.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "currency",
+                        "in": "query",
+                        "required": true,
+                        "description": "required - The currency code for the account you want to create e.g. XBT, IDR,     MYR, ZAR"
+                    },
+                    {
+                        "type": "string",
+                        "name": "name",
+                        "in": "query",
+                        "required": true,
+                        "description": "required - The label to use for this account e.g. \"Trading ACC\"."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/LunoAccount"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/1/accounts/{id}/pending": {
+            "get": {
+                "description": "Return a list of all pending transactions related to the account.<br>\nUnlike account entries, pending transactions are not numbered, and may be reordered, deleted or\nupdated at any time.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/LunoPendingTransactions"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/1/accounts/{id}/transactions": {
+            "get": {
+                "description": "Return a list of transaction entries from an account.<br>\nTransaction entry rows are numbered sequentially starting from 1, where 1 is the oldest entry.\nThe range of rows to return are specified with the min_row (inclusive) and max_row (exclusive)\nparameters. At most 1000 rows can be requested per call.<br>\nIf min_row or max_row is non-positive, the range wraps around the most recent row. For example,\nto fetch the 100 most recent rows, use min_row=-100 and max_row=0.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "required - Account ID"
+                    },
+                    {
+                        "type": "string",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "max_row",
+                        "in": "query",
+                        "required": true,
+                        "description": "required - Maximum of the row range to return (exclusive)"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "min_row",
+                        "in": "query",
+                        "required": true,
+                        "description": "required - Minimum of the row range to return (inclusive)"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/LunoAccountTransactions"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/1/balance": {
+            "get": {
+                "description": "Return the list of all accounts and their respective balances.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/LunoBalance"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/1/fee_info": {
+            "get": {
+                "description": "Returns your fees and 30 day trading volume (as of midnight) for a given pair.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "pair",
+                        "in": "query",
+                        "required": true,
+                        "description": "required - Filter to trades of this currency pair e.g. XBTZAR"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/LunoFeeInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/1/funding_address": {
+            "get": {
+                "description": "Returns the default receive address associated with your account and the amount received via\nthe address. You can specify an optional address parameter to return information for a\nnon-default receive address. In the response, total_received is the total confirmed Bitcoin\namount received excluding unconfirmed transactions. total_unconfirmed is the total sum of\nunconfirmed receive transactions.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "address",
+                        "in": "query",
+                        "required": true,
+                        "description": "optional - Specific Bitcoin address to retrieve. If not provided, the default     address will be used."
+                    },
+                    {
+                        "type": "string",
+                        "name": "asset",
+                        "in": "query",
+                        "required": true,
+                        "description": "required - Currency code of the asset e.g. XBT"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/LunoFundingAddress"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Allocates a new receive address to your account. There is a rate limit of 1 address per hour,\nbut bursts of up to 10 addresses are allowed.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "asset",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/LunoFundingAddress"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/1/listorders": {
+            "get": {
+                "description": "Returns a list of the most recently placed orders. You can specify an optional state=PENDING\nparameter to restrict the results to only open orders. You can also specify the market by using\nthe optional pair parameter. The list is truncated after 100 items.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "pair",
+                        "in": "query",
+                        "required": true,
+                        "description": "optional - Filter to only orders of this currency pair e.g. XBTZAR"
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "COMPLETE",
+                            "PENDING",
+                            "UNKNOWN"
+                        ],
+                        "name": "state",
+                        "in": "query",
+                        "required": true,
+                        "description": "optional - Filter to only orders of this state e.g. PENDING"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/LunoOrders"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/1/listtrades": {
+            "get": {
+                "description": "Returns a list of your recent trades for a given pair, sorted by oldest first.<br>\ntype in the response indicates the type of order that you placed in order to participate in the\ntrade.<br>\nIf is_buy in the response is true, then the order which completed the trade (market taker) was\na bid order.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true,
+                        "description": "optional - Limit to this number of trades (min 1, max 100, default 100)"
+                    },
+                    {
+                        "type": "string",
+                        "name": "pair",
+                        "in": "query",
+                        "required": true,
+                        "description": "required - Filter to trades of this currency pair e.g. XBTZAR"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "since",
+                        "in": "query",
+                        "required": true,
+                        "description": "optional - Filter to trades on or after this timestamp, e.g. 1470810728478"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/LunoUserTrades"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/1/marketorder": {
+            "post": {
+                "description": "Create a new market order.<br>\nWarning! Orders cannot be reversed once they have executed. Please ensure your program has been\nthoroughly tested before submitting orders.<br>\nIf no base_account_id or counter_account_id are specified, your default base currency or\ncounter currency account will be used. You can find your account IDs by calling the Balances\nAPI https://www.luno.com/en/api#accounts-balances.<br>\nA market order executes immediately, and either buys as much bitcoin that can be bought for a\nset amount of fiat currency, or sells a set amount of bitcoin for as much fiat as possible.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "base_account_id",
+                        "in": "formData",
+                        "required": true,
+                        "description": "optional - The base currency account to use in the trade."
+                    },
+                    {
+                        "type": "string",
+                        "name": "base_volume",
+                        "in": "formData",
+                        "required": true,
+                        "description": "required, if type is \"SELL\" - For a \"SELL\" order: amount of Bitcoin to sell     as a decimal string in units of BTC e.g. \"1.423\"."
+                    },
+                    {
+                        "type": "string",
+                        "name": "counter_account_id",
+                        "in": "formData",
+                        "required": true,
+                        "description": "optional - The counter currency account to use in the trade."
+                    },
+                    {
+                        "type": "string",
+                        "name": "counter_volume",
+                        "in": "formData",
+                        "required": true,
+                        "description": "required, if type is \"BUY\" - For a \"BUY\" order: amount of local currency     (e.g. ZAR, MYR) to spend as a decimal string in units of the local currency e.g. \"100.50\"."
+                    },
+                    {
+                        "type": "string",
+                        "name": "pair",
+                        "in": "formData",
+                        "required": true,
+                        "description": "required - The currency pair to trade e.g. XBTZAR"
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "ASK",
+                            "BID",
+                            "BUY",
+                            "SELL",
+                            "UNKNOWN"
+                        ],
+                        "name": "type",
+                        "in": "formData",
+                        "required": true,
+                        "description": "required - \"BUY\" to buy bitcoin, or \"SELL\" to sell bitcoin."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/LunoPostOrder"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/1/orderbook": {
+            "get": {
+                "description": "Returns a list of bids and asks in the order book. Ask orders are sorted by price ascending.\nBid orders are sorted by price descending. Note that multiple orders at the same price are not\nnecessarily conflated.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "pair",
+                        "in": "query",
+                        "required": true,
+                        "description": "required - Currency pair e.g. XBTZAR"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/LunoOrderBook"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/1/orders/{id}": {
+            "get": {
+                "description": "Get an order by its id.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "required - The order ID"
+                    },
+                    {
+                        "type": "string",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/LunoOrders$Order_2"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/1/postorder": {
+            "post": {
+                "description": "Create a new trade order.<br>\nWarning! Orders cannot be reversed once they have executed. Please ensure your program has been\nthoroughly tested before submitting orders.<br>\nIf no base_account_id or counter_account_id are specified, your default base currency or\ncounter currency account will be used. You can find your account IDs by calling the Balances\nAPI https://www.luno.com/en/api#accounts-balances.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "base_account_id",
+                        "in": "formData",
+                        "required": true,
+                        "description": "optional - The base currency account to use in the trade."
+                    },
+                    {
+                        "type": "string",
+                        "name": "counter_account_id",
+                        "in": "formData",
+                        "required": true,
+                        "description": "optional - The counter currency account to use in the trade."
+                    },
+                    {
+                        "type": "string",
+                        "name": "pair",
+                        "in": "formData",
+                        "required": true,
+                        "description": "required - The currency pair to trade e.g. XBTZAR"
+                    },
+                    {
+                        "type": "string",
+                        "name": "price",
+                        "in": "formData",
+                        "required": true,
+                        "description": "required - Limit price as a decimal string in units of ZAR/BTC e.g. \"1200\"."
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "ASK",
+                            "BID",
+                            "BUY",
+                            "SELL",
+                            "UNKNOWN"
+                        ],
+                        "name": "type",
+                        "in": "formData",
+                        "required": true,
+                        "description": "required - \"BID\" for a bid (buy) limit order or \"ASK\" for an ask (sell) limit     order."
+                    },
+                    {
+                        "type": "string",
+                        "name": "volume",
+                        "in": "formData",
+                        "required": true,
+                        "description": "required - Amount of Bitcoin to buy or sell as a decimal string in units of BTC     e.g. \"1.423\"."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/LunoPostOrder"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/1/quotes": {
+            "post": {
+                "description": "Creates a new quote to buy or sell a particular amount.<br>\nYou can specify either the exact amount that you want to pay or the exact amount that you want\ntoo receive.<br>\nFor example, to buy exactly 0.1 Bitcoin using ZAR, you would create a quote to BUY 0.1 XBTZAR.\nThe returned quote includes the appropriate ZAR amount. To buy Bitcoin using exactly ZAR 100,\nyou would create a quote to SELL 100 ZARXBT. The returned quote specifies the Bitcoin as the\ncounter amount that will be returned.<br>\nAn error is returned if your account is not verified for the currency pair, or if your account\nwould have insufficient balance to ever exercise the quote.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "base_amount",
+                        "in": "formData",
+                        "required": true,
+                        "description": "required - Amount to buy or sell in the pair base currency."
+                    },
+                    {
+                        "type": "string",
+                        "name": "pair",
+                        "in": "formData",
+                        "required": true,
+                        "description": "required - Currency pair to trade e.g. XBTZAR, XBTMYR. The pair can also be flipped     if you want to buy or sell the counter currency (e.g. ZARXBT)."
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "ASK",
+                            "BID",
+                            "BUY",
+                            "SELL",
+                            "UNKNOWN"
+                        ],
+                        "name": "type",
+                        "in": "formData",
+                        "required": true,
+                        "description": "required - Possible types: BUY, SELL"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/LunoQuote"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/1/quotes/{id}": {
+            "get": {
+                "description": "Get the latest status of a quote.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "required - ID of the quote to retrieve."
+                    },
+                    {
+                        "type": "string",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/LunoQuote"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Exercise a quote to perform the trade. If there is sufficient balance available in your\naccount, it will be debited and the counter amount credited.<br>\nAn error is returned if the quote has expired or if you have insufficient available balance.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "required - ID of the quote to exercise."
+                    },
+                    {
+                        "type": "string",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/LunoQuote"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Discard a quote. Once a quote has been discarded, it cannot be exercised even if it has not\nexpired yet.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "required - ID of the quote to discard."
+                    },
+                    {
+                        "type": "string",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/LunoQuote"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/1/send": {
+            "post": {
+                "description": "Send Bitcoin from your account to a Bitcoin address or email address.<br>\nIf the email address is not associated with an existing Luno account, an invitation to create\nan account and claim the funds will be sent.<br>\nWarning! Bitcoin transactions are irreversible. Please ensure your program has been thoroughly\ntested before using this call.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "address",
+                        "in": "formData",
+                        "required": true,
+                        "description": "required - Destination Bitcoin address or email address to send to."
+                    },
+                    {
+                        "type": "string",
+                        "name": "amount",
+                        "in": "formData",
+                        "required": true,
+                        "description": "required - Amount to send as a decimal string."
+                    },
+                    {
+                        "type": "string",
+                        "name": "currency",
+                        "in": "formData",
+                        "required": true,
+                        "description": "required - Currency to send e.g. XBT"
+                    },
+                    {
+                        "type": "string",
+                        "name": "description",
+                        "in": "formData",
+                        "required": true,
+                        "description": "optional - Description for the transaction to record on the account     statement."
+                    },
+                    {
+                        "type": "string",
+                        "name": "message",
+                        "in": "formData",
+                        "required": true,
+                        "description": "optional - Message to send to the recipient. This is only relevant when sending     to an email address."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/LunoBoolean"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/1/stoporder": {
+            "post": {
+                "description": "Request to stop an order.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "order_id",
+                        "in": "formData",
+                        "required": true,
+                        "description": "required - The order reference as a string e.g. BXMC2CJ7HNB88U4"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/LunoBoolean"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/1/ticker": {
+            "get": {
+                "description": "Market data API calls can be accessed by anyone without authentication.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "pair",
+                        "in": "query",
+                        "required": true,
+                        "description": "required - Currency pair e.g. XBTZAR"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/LunoTicker"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/1/tickers": {
+            "get": {
+                "description": "Returns the latest ticker indicators from all active Luno exchanges.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/LunoTickers"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/1/trades": {
+            "get": {
+                "description": "Returns a list of the most recent trades. At most 100 results are returned per call.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "pair",
+                        "in": "query",
+                        "required": true,
+                        "description": "required - Currency pair e.g. XBTZAR"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "since",
+                        "in": "query",
+                        "required": true,
+                        "description": "optional - Fetch trades executed after this time, specified as a Unix timestamp in     milliseconds."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/LunoTrades"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/1/withdrawals": {
+            "get": {
+                "description": "Returns a list of withdrawal requests.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/LunoWithdrawals"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Creates a new withdrawal request.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "amount",
+                        "in": "formData",
+                        "required": true,
+                        "description": "required - Amount to withdraw. The currency depends on the type."
+                    },
+                    {
+                        "type": "string",
+                        "name": "beneficiary_id",
+                        "in": "formData",
+                        "required": true,
+                        "description": "optional - The beneficiary ID of the bank account the withdrawal will be     paid out to. This parameter is required if you have multiple bank accounts. Your bank     account beneficiary ID can be found by clicking on the beneficiary name on the     Beneficiaries page [https://www.luno.com/wallet/beneficiaries]."
+                    },
+                    {
+                        "type": "string",
+                        "name": "type",
+                        "in": "formData",
+                        "required": true,
+                        "description": "required - Withdrawal types e.g. ZAR_EFT, NAD_EFT, KES_MPESA, MYR_IBG, IDR_LLG"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/LunoWithdrawals$Withdrawal_2"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/1/withdrawals/{id}": {
+            "get": {
+                "description": "Returns the status of a particular withdrawal request.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "required - Withdrawal ID to retrieve."
+                    },
+                    {
+                        "type": "string",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/LunoWithdrawals$Withdrawal_2"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Cancel a withdrawal request. This can only be done if the request is still in state PENDING.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "required - ID of the withdrawal to cancel."
+                    },
+                    {
+                        "type": "string",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/LunoWithdrawals$Withdrawal_2"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "LunoAccount": {
+            "properties": {
+                "currency": {
+                    "type": "string"
+                },
+                "defaultAccount": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "LunoAccountTransactions": {
+            "properties": {
+                "defaultAccount": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "transactions": {
+                    "$ref": "#/definitions/LunoAccountTransactions$Transaction"
+                }
+            }
+        },
+        "LunoAccountTransactions$Transaction": {
+            "properties": {
+                "available": {
+                    "type": "number"
+                },
+                "availableDelta": {
+                    "type": "number"
+                },
+                "balance": {
+                    "type": "number"
+                },
+                "balanceDelta": {
+                    "type": "number"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "rowIndex": {
+                    "type": "integer"
+                },
+                "timestamp": {
+                    "type": "object"
+                }
+            }
+        },
+        "LunoBalance": {
+            "properties": {
+                "balance": {
+                    "$ref": "#/definitions/LunoBalance$Balance"
+                }
+            }
+        },
+        "LunoBalance$Balance": {
+            "properties": {
+                "accountId": {
+                    "type": "string"
+                },
+                "asset": {
+                    "type": "string"
+                },
+                "balance": {
+                    "type": "number"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "reserved": {
+                    "type": "number"
+                },
+                "unconfirmed": {
+                    "type": "number"
+                }
+            }
+        },
+        "LunoBoolean": {
+            "properties": {
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "LunoFeeInfo": {
+            "properties": {
+                "makerFee": {
+                    "type": "number"
+                },
+                "takerFee": {
+                    "type": "number"
+                },
+                "thirtyDayVolume": {
+                    "type": "number"
+                }
+            }
+        },
+        "LunoFundingAddress": {
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "asset": {
+                    "type": "string"
+                },
+                "totalReceived": {
+                    "type": "number"
+                },
+                "totalUnconfirmed": {
+                    "type": "number"
+                }
+            }
+        },
+        "LunoOrderBook": {
+            "properties": {
+                "asks": {
+                    "type": "object"
+                },
+                "bids": {
+                    "type": "object"
+                },
+                "timestamp": {
+                    "type": "object"
+                }
+            }
+        },
+        "LunoOrders": {
+            "properties": {
+                "orders": {
+                    "$ref": "#/definitions/LunoOrders$Order"
+                }
+            }
+        },
+        "LunoOrders$Order": {
+            "properties": {
+                "base": {
+                    "type": "number"
+                },
+                "completedTimestamp": {
+                    "type": "object"
+                },
+                "counter": {
+                    "type": "number"
+                },
+                "creationTimestamp": {
+                    "type": "object"
+                },
+                "expirationTimestamp": {
+                    "type": "object"
+                },
+                "feeBase": {
+                    "type": "number"
+                },
+                "feeCounter": {
+                    "type": "number"
+                },
+                "limitPrice": {
+                    "type": "number"
+                },
+                "limitVolume": {
+                    "type": "number"
+                },
+                "orderId": {
+                    "type": "string"
+                },
+                "pair": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string",
+                    "enum": [
+                        "COMPLETE",
+                        "PENDING",
+                        "UNKNOWN"
+                    ]
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "ASK",
+                        "BID",
+                        "BUY",
+                        "SELL",
+                        "UNKNOWN"
+                    ]
+                }
+            }
+        },
+        "LunoOrders$Order_2": {
+            "properties": {
+                "base": {
+                    "type": "number"
+                },
+                "completedTimestamp": {
+                    "type": "object"
+                },
+                "counter": {
+                    "type": "number"
+                },
+                "creationTimestamp": {
+                    "type": "object"
+                },
+                "expirationTimestamp": {
+                    "type": "object"
+                },
+                "feeBase": {
+                    "type": "number"
+                },
+                "feeCounter": {
+                    "type": "number"
+                },
+                "limitPrice": {
+                    "type": "number"
+                },
+                "limitVolume": {
+                    "type": "number"
+                },
+                "orderId": {
+                    "type": "string"
+                },
+                "pair": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string",
+                    "enum": [
+                        "COMPLETE",
+                        "PENDING",
+                        "UNKNOWN"
+                    ]
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "ASK",
+                        "BID",
+                        "BUY",
+                        "SELL",
+                        "UNKNOWN"
+                    ]
+                }
+            }
+        },
+        "LunoPendingTransactions": {
+            "properties": {
+                "defaultAccount": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "transactions": {
+                    "$ref": "#/definitions/LunoPendingTransactions$PendingTransaction"
+                }
+            }
+        },
+        "LunoPendingTransactions$PendingTransaction": {
+            "properties": {
+                "available": {
+                    "type": "number"
+                },
+                "availableDelta": {
+                    "type": "number"
+                },
+                "balance": {
+                    "type": "number"
+                },
+                "balanceDelta": {
+                    "type": "number"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "timestamp": {
+                    "type": "object"
+                }
+            }
+        },
+        "LunoPostOrder": {
+            "properties": {
+                "orderId": {
+                    "type": "string"
+                }
+            }
+        },
+        "LunoQuote": {
+            "properties": {
+                "baseAmount": {
+                    "type": "number"
+                },
+                "counterAmount": {
+                    "type": "number"
+                },
+                "createdAt": {
+                    "type": "object"
+                },
+                "discarded": {
+                    "type": "boolean"
+                },
+                "exercised": {
+                    "type": "boolean"
+                },
+                "expiresAt": {
+                    "type": "object"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "pair": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "LunoTicker": {
+            "properties": {
+                "ask": {
+                    "type": "number"
+                },
+                "bid": {
+                    "type": "number"
+                },
+                "lastTrade": {
+                    "type": "number"
+                },
+                "pair": {
+                    "type": "string"
+                },
+                "rolling24HourVolume": {
+                    "type": "number"
+                },
+                "timestamp": {
+                    "type": "object"
+                }
+            }
+        },
+        "LunoTicker_2": {
+            "properties": {
+                "ask": {
+                    "type": "number"
+                },
+                "bid": {
+                    "type": "number"
+                },
+                "lastTrade": {
+                    "type": "number"
+                },
+                "pair": {
+                    "type": "string"
+                },
+                "rolling24HourVolume": {
+                    "type": "number"
+                },
+                "timestamp": {
+                    "type": "object"
+                }
+            }
+        },
+        "LunoTickers": {
+            "properties": {
+                "tickers": {
+                    "$ref": "#/definitions/LunoTicker_2"
+                }
+            }
+        },
+        "LunoTrades": {
+            "properties": {
+                "trades": {
+                    "$ref": "#/definitions/LunoTrades$Trade"
+                }
+            }
+        },
+        "LunoTrades$Trade": {
+            "properties": {
+                "buy": {
+                    "type": "boolean"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "timestamp": {
+                    "type": "object"
+                },
+                "volume": {
+                    "type": "number"
+                }
+            }
+        },
+        "LunoUserTrades": {
+            "properties": {
+                "trades": {
+                    "$ref": "#/definitions/LunoUserTrades$UserTrade"
+                }
+            }
+        },
+        "LunoUserTrades$UserTrade": {
+            "properties": {
+                "base": {
+                    "type": "number"
+                },
+                "buy": {
+                    "type": "boolean"
+                },
+                "counter": {
+                    "type": "number"
+                },
+                "feeBase": {
+                    "type": "number"
+                },
+                "feeCounter": {
+                    "type": "number"
+                },
+                "orderId": {
+                    "type": "string"
+                },
+                "pair": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "timestamp": {
+                    "type": "object"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "ASK",
+                        "BID",
+                        "BUY",
+                        "SELL",
+                        "UNKNOWN"
+                    ]
+                },
+                "volume": {
+                    "type": "number"
+                }
+            }
+        },
+        "LunoWithdrawals": {
+            "properties": {
+                "withdrawals": {
+                    "$ref": "#/definitions/LunoWithdrawals$Withdrawal"
+                }
+            }
+        },
+        "LunoWithdrawals$Withdrawal": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "createdAt": {
+                    "type": "object"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "fee": {
+                    "type": "number"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": [
+                        "CANCELLED",
+                        "COMPLETED",
+                        "PENDING",
+                        "UNKNOWN"
+                    ]
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "LunoWithdrawals$Withdrawal_2": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "createdAt": {
+                    "type": "object"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "fee": {
+                    "type": "number"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": [
+                        "CANCELLED",
+                        "COMPLETED",
+                        "PENDING",
+                        "UNKNOWN"
+                    ]
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

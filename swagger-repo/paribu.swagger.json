@@ -1,0 +1,70 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "4.3.6-SNAPSHOT",
+        "title": "XChange Paribu"
+    },
+    "host": "xchange-paribu.changeme",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/ticker": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ParibuTicker"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "BTC_TL": {
+            "properties": {
+                "high24hr": {
+                    "type": "number"
+                },
+                "highestBid": {
+                    "type": "number"
+                },
+                "last": {
+                    "type": "number"
+                },
+                "low24hr": {
+                    "type": "number"
+                },
+                "lowestAsk": {
+                    "type": "number"
+                },
+                "percentChange": {
+                    "type": "number"
+                },
+                "volume": {
+                    "type": "number"
+                }
+            }
+        },
+        "ParibuTicker": {
+            "properties": {
+                "btcTL": {
+                    "$ref": "#/definitions/BTC_TL"
+                }
+            }
+        }
+    }
+}

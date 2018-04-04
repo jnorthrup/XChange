@@ -1,0 +1,786 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "4.3.6-SNAPSHOT",
+        "title": "XChange CryptoFacilities"
+    },
+    "host": "xchange-cryptofacilities.changeme",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/api/v3/accounts": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "APIKey",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Authent",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Nonce",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CryptoFacilitiesAccounts"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v3/cancelorder": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "APIKey",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Authent",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Nonce",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "order_id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CryptoFacilitiesCancel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v3/fills": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "APIKey",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Authent",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Nonce",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CryptoFacilitiesFills"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v3/instruments": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CryptoFacilitiesInstruments"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v3/openorders": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "APIKey",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Authent",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Nonce",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CryptoFacilitiesOpenOrders"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v3/openpositions": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "APIKey",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Authent",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Nonce",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CryptoFacilitiesOpenPositions"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v3/orderbook": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "symbol",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CryptoFacilitiesOrderBook"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v3/sendorder": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "APIKey",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Authent",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Nonce",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "limitPrice",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "orderType",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "side",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "size",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "symbol",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CryptoFacilitiesOrder"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v3/tickers": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CryptoFacilitiesTickers"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "CryptoFacilitiesAccounts": {
+            "properties": {
+                "accounts": {
+                    "type": "object"
+                },
+                "error": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "CryptoFacilitiesCancel": {
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "CryptoFacilitiesFill": {
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "fillId": {
+                    "type": "string"
+                },
+                "fillTime": {
+                    "type": "object"
+                },
+                "orderId": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "result": {
+                    "type": "string"
+                },
+                "side": {
+                    "type": "string"
+                },
+                "size": {
+                    "type": "number"
+                },
+                "success": {
+                    "type": "boolean"
+                },
+                "symbol": {
+                    "type": "string"
+                }
+            }
+        },
+        "CryptoFacilitiesFills": {
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "fills": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CryptoFacilitiesFill"
+                    }
+                },
+                "result": {
+                    "type": "string"
+                },
+                "serverTime": {
+                    "type": "object"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "CryptoFacilitiesInstrument": {
+            "properties": {
+                "contractSize": {
+                    "type": "number"
+                },
+                "error": {
+                    "type": "string"
+                },
+                "lastTradingTime": {
+                    "type": "object"
+                },
+                "result": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "boolean"
+                },
+                "symbol": {
+                    "type": "string"
+                },
+                "tickSize": {
+                    "type": "number"
+                },
+                "tradeable": {
+                    "type": "boolean"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "underlying": {
+                    "type": "string"
+                }
+            }
+        },
+        "CryptoFacilitiesInstruments": {
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "instruments": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CryptoFacilitiesInstrument"
+                    }
+                },
+                "result": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "CryptoFacilitiesOpenOrder": {
+            "properties": {
+                "direction": {
+                    "type": "string"
+                },
+                "error": {
+                    "type": "string"
+                },
+                "filled": {
+                    "type": "number"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "limitPrice": {
+                    "type": "number"
+                },
+                "quantity": {
+                    "type": "number"
+                },
+                "result": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "stopPrice": {
+                    "type": "number"
+                },
+                "success": {
+                    "type": "boolean"
+                },
+                "symbol": {
+                    "type": "string"
+                },
+                "timestamp": {
+                    "type": "object"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "unfilled": {
+                    "type": "number"
+                }
+            }
+        },
+        "CryptoFacilitiesOpenOrders": {
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "orders": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CryptoFacilitiesOpenOrder"
+                    }
+                },
+                "result": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "CryptoFacilitiesOpenPosition": {
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "fillTime": {
+                    "type": "object"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "result": {
+                    "type": "string"
+                },
+                "side": {
+                    "type": "string"
+                },
+                "size": {
+                    "type": "number"
+                },
+                "success": {
+                    "type": "boolean"
+                },
+                "symbol": {
+                    "type": "string"
+                }
+            }
+        },
+        "CryptoFacilitiesOpenPositions": {
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "openPositions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CryptoFacilitiesOpenPosition"
+                    }
+                },
+                "result": {
+                    "type": "string"
+                },
+                "serverTime": {
+                    "type": "object"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "CryptoFacilitiesOrder": {
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "orderId": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "CryptoFacilitiesOrderBook": {
+            "properties": {
+                "asks": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                },
+                "bids": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                },
+                "currencyPair": {
+                    "$ref": "#/definitions/CurrencyPair"
+                },
+                "error": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "string"
+                },
+                "serverTime": {
+                    "type": "object"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "CryptoFacilitiesTicker": {
+            "properties": {
+                "ask": {
+                    "type": "number"
+                },
+                "askSize": {
+                    "type": "number"
+                },
+                "bid": {
+                    "type": "number"
+                },
+                "bidSize": {
+                    "type": "number"
+                },
+                "error": {
+                    "type": "string"
+                },
+                "high24H": {
+                    "type": "number"
+                },
+                "last": {
+                    "type": "number"
+                },
+                "lastSize": {
+                    "type": "number"
+                },
+                "lastTime": {
+                    "type": "object"
+                },
+                "low24H": {
+                    "type": "number"
+                },
+                "markPrice": {
+                    "type": "number"
+                },
+                "open24H": {
+                    "type": "number"
+                },
+                "result": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "boolean"
+                },
+                "suspended": {
+                    "type": "boolean"
+                },
+                "symbol": {
+                    "type": "string"
+                },
+                "vol24H": {
+                    "type": "number"
+                }
+            }
+        },
+        "CryptoFacilitiesTickers": {
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "string"
+                },
+                "serverTime": {
+                    "type": "object"
+                },
+                "success": {
+                    "type": "boolean"
+                },
+                "ticker": {
+                    "$ref": "#/definitions/CryptoFacilitiesTicker"
+                },
+                "tickers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CryptoFacilitiesTicker"
+                    }
+                }
+            }
+        },
+        "Currency": {
+            "properties": {
+                "codeCurrency": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "commonlyUsedCurrency": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "currencyCode": {
+                    "type": "string"
+                },
+                "currencyCodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "displayName": {
+                    "type": "string"
+                },
+                "iso4217Currency": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "symbol": {
+                    "type": "string"
+                }
+            }
+        },
+        "CurrencyPair": {
+            "properties": {
+                "base": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "counter": {
+                    "$ref": "#/definitions/Currency"
+                }
+            }
+        }
+    }
+}

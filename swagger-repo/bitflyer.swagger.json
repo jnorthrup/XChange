@@ -1,0 +1,992 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "4.3.6-SNAPSHOT",
+        "title": "XChange BitFlyer"
+    },
+    "host": "xchange-bitflyer.changeme",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/v1/getboard": {
+            "get": {
+                "description": "return \"BTC_JPY\" or \"BTC_USD\" for U.S. accounts.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "product_code",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BitflyerOrderbook"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/getexecutions": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "product_code",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/BitflyerExecution"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/getmarkets": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/BitflyerMarket"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/getticker": {
+            "get": {
+                "description": "return \"BTC_JPY\" or \"BTC_USD\" for U.S. accounts.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "product_code",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BitflyerTicker"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/me/getaddresses": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "ACCESS-KEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "ACCESS-SIGN",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "ACCESS-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/BitflyerAddress"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/me/getbalance": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "ACCESS-KEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "ACCESS-SIGN",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "ACCESS-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/BitflyerBalance"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/me/getbankaccounts": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "ACCESS-KEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "ACCESS-SIGN",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "ACCESS-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/BitflyerBankAccount"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/me/getcoinins": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "ACCESS-KEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "ACCESS-SIGN",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "ACCESS-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/BitflyerCoinHistory"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/me/getcoinouts": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "ACCESS-KEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "ACCESS-SIGN",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "ACCESS-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/BitflyerCoinHistory"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/me/getcollateral": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "ACCESS-KEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "ACCESS-SIGN",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "ACCESS-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BitflyerMarginStatus"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/me/getcollateralaccounts": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "ACCESS-KEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "ACCESS-SIGN",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "ACCESS-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/BitflyerMarginAccount"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/me/getcollateralhistory": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "ACCESS-KEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "ACCESS-SIGN",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "ACCESS-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/BitflyerMarginTransaction"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/me/getdeposits": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "ACCESS-KEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "ACCESS-SIGN",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "ACCESS-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/BitflyerDepositOrWithdrawal"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/me/getpermissions": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "ACCESS-KEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "ACCESS-SIGN",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "ACCESS-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/me/getpositions": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "ACCESS-KEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "ACCESS-SIGN",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "ACCESS-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "product_code",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/BitflyerPosition"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/me/getwithdrawals": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "ACCESS-KEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "ACCESS-SIGN",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "ACCESS-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/BitflyerDepositOrWithdrawal"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/me/withdraw": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "ACCESS-KEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "ACCESS-SIGN",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "ACCESS-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/BitflyerWithdrawRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BitflyerWithdrawResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "BitflyerAddress": {
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "currencyCode": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "BitflyerBalance": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "available": {
+                    "type": "number"
+                },
+                "currencyCode": {
+                    "type": "string"
+                }
+            }
+        },
+        "BitflyerBankAccount": {
+            "properties": {
+                "accountName": {
+                    "type": "string"
+                },
+                "accountNumber": {
+                    "type": "string"
+                },
+                "accountType": {
+                    "type": "string"
+                },
+                "bankName": {
+                    "type": "string"
+                },
+                "branchName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "verified": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "BitflyerCoinHistory": {
+            "properties": {
+                "additionalFee": {
+                    "type": "number"
+                },
+                "address": {
+                    "type": "string"
+                },
+                "amount": {
+                    "type": "number"
+                },
+                "currencyCode": {
+                    "type": "string"
+                },
+                "eventDate": {
+                    "type": "string"
+                },
+                "fee": {
+                    "type": "number"
+                },
+                "iD": {
+                    "type": "string"
+                },
+                "orderID": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "txHash": {
+                    "type": "string"
+                }
+            }
+        },
+        "BitflyerDepositOrWithdrawal": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "currencyCode": {
+                    "type": "string"
+                },
+                "eventDate": {
+                    "type": "string"
+                },
+                "iD": {
+                    "type": "string"
+                },
+                "orderID": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "BitflyerExecution": {
+            "properties": {
+                "buyChildOrderAcceptanceId": {
+                    "type": "string"
+                },
+                "execDate": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "sellChildOrderAcceptanceId": {
+                    "type": "string"
+                },
+                "side": {
+                    "type": "string"
+                },
+                "size": {
+                    "type": "number"
+                }
+            }
+        },
+        "BitflyerMarginAccount": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "currencyCode": {
+                    "type": "string"
+                }
+            }
+        },
+        "BitflyerMarginStatus": {
+            "properties": {
+                "collateral": {
+                    "type": "number"
+                },
+                "keepRate": {
+                    "type": "number"
+                },
+                "openPositionPnl": {
+                    "type": "number"
+                },
+                "requireCollateral": {
+                    "type": "number"
+                }
+            }
+        },
+        "BitflyerMarginTransaction": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "change": {
+                    "type": "number"
+                },
+                "currencyCode": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "reasonCode": {
+                    "type": "string"
+                }
+            }
+        },
+        "BitflyerMarket": {
+            "properties": {
+                "alias": {
+                    "type": "string"
+                },
+                "productCode": {
+                    "type": "string"
+                }
+            }
+        },
+        "BitflyerOrderbook": {
+            "properties": {
+                "asks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/BitflyerOrderbookEntry"
+                    }
+                },
+                "bids": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/BitflyerOrderbookEntry"
+                    }
+                },
+                "midPrice": {
+                    "type": "number"
+                }
+            }
+        },
+        "BitflyerOrderbookEntry": {
+            "properties": {
+                "price": {
+                    "type": "number"
+                },
+                "size": {
+                    "type": "number"
+                }
+            }
+        },
+        "BitflyerPosition": {
+            "properties": {
+                "commission": {
+                    "type": "number"
+                },
+                "leverage": {
+                    "type": "number"
+                },
+                "openDate": {
+                    "type": "string"
+                },
+                "pnl": {
+                    "type": "number"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "productCode": {
+                    "type": "string"
+                },
+                "requireCollateral": {
+                    "type": "number"
+                },
+                "side": {
+                    "type": "string"
+                },
+                "size": {
+                    "type": "number"
+                },
+                "swapPointAccumulate": {
+                    "type": "number"
+                }
+            }
+        },
+        "BitflyerTicker": {
+            "properties": {
+                "bestAsk": {
+                    "type": "number"
+                },
+                "bestAskSize": {
+                    "type": "number"
+                },
+                "bestBid": {
+                    "type": "number"
+                },
+                "bestBidSize": {
+                    "type": "number"
+                },
+                "ltp": {
+                    "type": "number"
+                },
+                "productCode": {
+                    "type": "string"
+                },
+                "tickId": {
+                    "type": "integer"
+                },
+                "timestamp": {
+                    "type": "string"
+                },
+                "totalAskDepth": {
+                    "type": "number"
+                },
+                "totalBidDepth": {
+                    "type": "number"
+                },
+                "volume": {
+                    "type": "number"
+                },
+                "volumeByProduct": {
+                    "type": "number"
+                }
+            }
+        },
+        "BitflyerWithdrawRequest": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "bankAccountID": {
+                    "type": "string"
+                },
+                "currencyCode": {
+                    "type": "string"
+                }
+            }
+        },
+        "BitflyerWithdrawResponse": {
+            "properties": {
+            }
+        }
+    }
+}

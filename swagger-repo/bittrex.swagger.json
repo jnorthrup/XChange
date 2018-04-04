@@ -1,0 +1,1711 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "4.3.6-SNAPSHOT",
+        "title": "XChange Bittrex"
+    },
+    "host": "xchange-bittrex.changeme",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/v1.1/account/getbalance": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "apisign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "apikey",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "currency",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BittrexBalanceResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1.1/account/getbalances": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "apisign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "apikey",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BittrexBalancesResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1.1/account/getdepositaddress": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "apisign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "apikey",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "currency",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BittrexDepositAddressResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1.1/account/getdeposithistory": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "apisign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "apikey",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "currency",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BittrexDepositsHistoryResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1.1/account/getorder": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "apisign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "apikey",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "uuid",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BittrexOrderResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1.1/account/getorderhistory": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "apisign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "apikey",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "market",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BittrexTradeHistoryResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1.1/account/getwithdrawalhistory": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "apisign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "apikey",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "currency",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BittrexWithdrawalsHistoryResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1.1/account/withdraw": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "apisign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "address",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "apikey",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "currency",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "paymentid",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "quantity",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BittrexWithdrawResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1.1/market/buylimit": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "apisign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "apikey",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "market",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "quantity",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "rate",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BittrexTradeResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1.1/market/buymarket": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "apisign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "apikey",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "market",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "quantity",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BittrexTradeResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1.1/market/cancel": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "apisign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "apikey",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "uuid",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BittrexCancelOrderResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1.1/market/getopenorders": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "apisign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "apikey",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "market",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BittrexOpenOrdersResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1.1/market/selllimit": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "apisign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "apikey",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "market",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "quantity",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "rate",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BittrexTradeResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1.1/market/sellmarket": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "apisign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "apikey",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "market",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "quantity",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BittrexTradeResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1.1/public/getcurrencies": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BittrexCurrenciesResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1.1/public/getmarkethistory": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "count",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "market",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BittrexTradesResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1.1/public/getmarkets": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BittrexSymbolsResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1.1/public/getmarketsummaries": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BittrexMarketSummariesResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1.1/public/getmarketsummary": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "market",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BittrexMarketSummaryResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1.1/public/getorderbook": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "depth",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "market",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "type",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BittrexDepthResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1.1/public/getticker": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "market",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BittrexTickerResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v2.0/pub/market/GetLatestTick": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "_",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "marketName",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "tickInterval",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BittrexChartDataResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v2.0/pub/market/getticks": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "marketname",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "tickinterval",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BittrexChartDataResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "BittrexBalance": {
+            "properties": {
+                "available": {
+                    "type": "number"
+                },
+                "balance": {
+                    "type": "number"
+                },
+                "cryptoAddress": {
+                    "type": "string"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "pending": {
+                    "type": "number"
+                },
+                "requested": {
+                    "type": "boolean"
+                },
+                "uuid": {
+                    "type": "string"
+                }
+            }
+        },
+        "BittrexBalanceResponse": {
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "result": {
+                    "$ref": "#/definitions/BittrexBalance"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "BittrexBalancesResponse": {
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/BittrexBalance"
+                    }
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "BittrexCancelOrderResponse": {
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "object"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "BittrexChartData": {
+            "properties": {
+                "baseVolume": {
+                    "type": "number"
+                },
+                "close": {
+                    "type": "number"
+                },
+                "high": {
+                    "type": "number"
+                },
+                "low": {
+                    "type": "number"
+                },
+                "open": {
+                    "type": "number"
+                },
+                "timeStamp": {
+                    "type": "object"
+                },
+                "volume": {
+                    "type": "number"
+                }
+            }
+        },
+        "BittrexChartDataResponse": {
+            "properties": {
+                "chartData": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/BittrexChartData"
+                    }
+                },
+                "message": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "BittrexCurrenciesResponse": {
+            "properties": {
+                "currencies": {
+                    "$ref": "#/definitions/BittrexCurrency"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "BittrexCurrency": {
+            "properties": {
+                "active": {
+                    "type": "boolean"
+                },
+                "baseAddress": {
+                    "type": "string"
+                },
+                "coinType": {
+                    "type": "string"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "currencyLong": {
+                    "type": "string"
+                },
+                "minConfirmations": {
+                    "type": "integer"
+                },
+                "txFee": {
+                    "type": "number"
+                }
+            }
+        },
+        "BittrexDepositAddress": {
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "currency": {
+                    "type": "string"
+                }
+            }
+        },
+        "BittrexDepositAddressResponse": {
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "result": {
+                    "$ref": "#/definitions/BittrexDepositAddress"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "BittrexDepositHistory": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "confirmations": {
+                    "type": "integer"
+                },
+                "cryptoAddress": {
+                    "type": "string"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "lastUpdated": {
+                    "type": "object"
+                },
+                "txId": {
+                    "type": "string"
+                }
+            }
+        },
+        "BittrexDepositsHistoryResponse": {
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/BittrexDepositHistory"
+                    }
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "BittrexDepth": {
+            "properties": {
+                "asks": {
+                    "$ref": "#/definitions/BittrexLevel"
+                },
+                "bids": {
+                    "$ref": "#/definitions/BittrexLevel"
+                }
+            }
+        },
+        "BittrexDepthResponse": {
+            "properties": {
+                "depth": {
+                    "$ref": "#/definitions/BittrexDepth"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "BittrexLevel": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "price": {
+                    "type": "number"
+                }
+            }
+        },
+        "BittrexMarketSummariesResponse": {
+            "properties": {
+                "marketSummaries": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/BittrexMarketSummary"
+                    }
+                },
+                "message": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "BittrexMarketSummary": {
+            "properties": {
+                "ask": {
+                    "type": "number"
+                },
+                "baseVolume": {
+                    "type": "number"
+                },
+                "bid": {
+                    "type": "number"
+                },
+                "created": {
+                    "type": "string"
+                },
+                "displayMarketName": {
+                    "type": "string"
+                },
+                "high": {
+                    "type": "number"
+                },
+                "last": {
+                    "type": "number"
+                },
+                "low": {
+                    "type": "number"
+                },
+                "marketName": {
+                    "type": "string"
+                },
+                "openBuyOrders": {
+                    "type": "integer"
+                },
+                "openSellOrders": {
+                    "type": "integer"
+                },
+                "prevDay": {
+                    "type": "number"
+                },
+                "timeStamp": {
+                    "type": "string"
+                },
+                "volume": {
+                    "type": "number"
+                }
+            }
+        },
+        "BittrexMarketSummaryResponse": {
+            "properties": {
+                "marketSummary": {
+                    "$ref": "#/definitions/BittrexMarketSummary"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "BittrexOpenOrder": {
+            "properties": {
+                "cancelInitiated": {
+                    "type": "boolean"
+                },
+                "closed": {
+                    "type": "object"
+                },
+                "commissionPaid": {
+                    "type": "number"
+                },
+                "condition": {
+                    "type": "object"
+                },
+                "conditionTarget": {
+                    "type": "object"
+                },
+                "exchange": {
+                    "type": "string"
+                },
+                "immediateOrCancel": {
+                    "type": "boolean"
+                },
+                "isConditional": {
+                    "type": "boolean"
+                },
+                "limit": {
+                    "type": "number"
+                },
+                "opened": {
+                    "type": "string"
+                },
+                "orderType": {
+                    "type": "string"
+                },
+                "orderUuid": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "pricePerUnit": {
+                    "type": "number"
+                },
+                "quantity": {
+                    "type": "number"
+                },
+                "quantityRemaining": {
+                    "type": "number"
+                },
+                "uuid": {
+                    "type": "object"
+                }
+            }
+        },
+        "BittrexOpenOrdersResponse": {
+            "properties": {
+                "bittrexOpenOrders": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/BittrexOpenOrder"
+                    }
+                },
+                "message": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "BittrexOrder": {
+            "properties": {
+                "accountId": {
+                    "type": "string"
+                },
+                "cancelInitiated": {
+                    "type": "boolean"
+                },
+                "closed": {
+                    "type": "object"
+                },
+                "commissionPaid": {
+                    "type": "number"
+                },
+                "commissionReserveRemaining": {
+                    "type": "number"
+                },
+                "commissionReserved": {
+                    "type": "number"
+                },
+                "condition": {
+                    "type": "string"
+                },
+                "conditionTarget": {
+                    "type": "string"
+                },
+                "conditional": {
+                    "type": "boolean"
+                },
+                "exchange": {
+                    "type": "string"
+                },
+                "immediateOrCancel": {
+                    "type": "boolean"
+                },
+                "isOpen": {
+                    "type": "boolean"
+                },
+                "limit": {
+                    "type": "number"
+                },
+                "opened": {
+                    "type": "object"
+                },
+                "orderUuid": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "pricePerUnit": {
+                    "type": "number"
+                },
+                "quantity": {
+                    "type": "number"
+                },
+                "quantityRemaining": {
+                    "type": "number"
+                },
+                "reserveRemaining": {
+                    "type": "number"
+                },
+                "reserved": {
+                    "type": "number"
+                },
+                "sentinel": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "BittrexOrderResponse": {
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "result": {
+                    "$ref": "#/definitions/BittrexOrder"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "BittrexSymbol": {
+            "properties": {
+                "baseCurrency": {
+                    "type": "string"
+                },
+                "baseCurrencyLong": {
+                    "type": "string"
+                },
+                "created": {
+                    "type": "string"
+                },
+                "isActive": {
+                    "type": "boolean"
+                },
+                "marketCurrency": {
+                    "type": "string"
+                },
+                "marketCurrencyLong": {
+                    "type": "string"
+                },
+                "marketName": {
+                    "type": "string"
+                },
+                "minTradeSize": {
+                    "type": "object"
+                }
+            }
+        },
+        "BittrexSymbolsResponse": {
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "boolean"
+                },
+                "symbols": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/BittrexSymbol"
+                    }
+                }
+            }
+        },
+        "BittrexTicker": {
+            "properties": {
+                "ask": {
+                    "type": "number"
+                },
+                "bid": {
+                    "type": "number"
+                },
+                "last": {
+                    "type": "number"
+                }
+            }
+        },
+        "BittrexTickerResponse": {
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "boolean"
+                },
+                "ticker": {
+                    "$ref": "#/definitions/BittrexTicker"
+                }
+            }
+        },
+        "BittrexTrade": {
+            "properties": {
+                "fillType": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "orderType": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "quantity": {
+                    "type": "number"
+                },
+                "timeStamp": {
+                    "type": "string"
+                },
+                "total": {
+                    "type": "number"
+                }
+            }
+        },
+        "BittrexTradeHistoryResponse": {
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/BittrexUserTrade"
+                    }
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "BittrexTradeId": {
+            "properties": {
+                "uuid": {
+                    "type": "string"
+                }
+            }
+        },
+        "BittrexTradeResponse": {
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "result": {
+                    "$ref": "#/definitions/BittrexTradeId"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "BittrexTradesResponse": {
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "boolean"
+                },
+                "trades": {
+                    "$ref": "#/definitions/BittrexTrade"
+                }
+            }
+        },
+        "BittrexUserTrade": {
+            "properties": {
+                "closed": {
+                    "type": "string"
+                },
+                "commission": {
+                    "type": "number"
+                },
+                "condition": {
+                    "type": "object"
+                },
+                "conditionTarget": {
+                    "type": "object"
+                },
+                "exchange": {
+                    "type": "string"
+                },
+                "immediateOrCancel": {
+                    "type": "boolean"
+                },
+                "isConditional": {
+                    "type": "boolean"
+                },
+                "limit": {
+                    "type": "number"
+                },
+                "orderType": {
+                    "type": "string"
+                },
+                "orderUuid": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "pricePerUnit": {
+                    "type": "number"
+                },
+                "quantity": {
+                    "type": "number"
+                },
+                "quantityRemaining": {
+                    "type": "number"
+                },
+                "timeStamp": {
+                    "type": "string"
+                }
+            }
+        },
+        "BittrexWithdrawResponse": {
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "result": {
+                    "$ref": "#/definitions/BittrexWithdrawUuid"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "BittrexWithdrawUuid": {
+            "properties": {
+                "uuid": {
+                    "type": "string"
+                }
+            }
+        },
+        "BittrexWithdrawalHistory": {
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "amount": {
+                    "type": "number"
+                },
+                "authorized": {
+                    "type": "boolean"
+                },
+                "canceled": {
+                    "type": "boolean"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "invalidAddress": {
+                    "type": "boolean"
+                },
+                "opened": {
+                    "type": "object"
+                },
+                "paymentUuid": {
+                    "type": "string"
+                },
+                "pendingPayment": {
+                    "type": "boolean"
+                },
+                "txCost": {
+                    "type": "number"
+                },
+                "txId": {
+                    "type": "string"
+                }
+            }
+        },
+        "BittrexWithdrawalsHistoryResponse": {
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/BittrexWithdrawalHistory"
+                    }
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        }
+    }
+}

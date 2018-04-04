@@ -1,0 +1,490 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "4.3.6-SNAPSHOT",
+        "title": "XChange Vaultoro"
+    },
+    "host": "xchange-vaultoro.changeme",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/1/balance": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "X-Signature",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "apikey",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/VaultoroBalancesResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/1/buy/{symbol}/{type}": {
+            "post": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "symbol",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "type",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-Signature",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "apikey",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "btc",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "price",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/VaultoroNewOrderResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/1/cancel/{orderid}": {
+            "post": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "orderid",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-Signature",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "apikey",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/VaultoroCancelOrderResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/1/orders": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "X-Signature",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "apikey",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/VaultoroOrdersResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/1/sell/{symbol}/{type}": {
+            "post": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "symbol",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "type",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-Signature",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "apikey",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "gld",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "price",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/VaultoroNewOrderResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/latest": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                }
+            }
+        },
+        "/orderbook": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/VaultoroOrderBookResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/transactions/month": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/VaultoroTrade"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "VaultoroBalance": {
+            "properties": {
+                "cash": {
+                    "type": "number"
+                },
+                "currencyCode": {
+                    "type": "string"
+                },
+                "reserved": {
+                    "type": "number"
+                }
+            }
+        },
+        "VaultoroBalancesResponse": {
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/VaultoroBalance"
+                    }
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "VaultoroCancelOrderData": {
+            "properties": {
+                "orderID": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "VaultoroCancelOrderResponse": {
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/VaultoroCancelOrderData"
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "VaultoroNewOrderData": {
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "btc": {
+                    "type": "number"
+                },
+                "gld": {
+                    "type": "number"
+                },
+                "orderID": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "time": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "VaultoroNewOrderResponse": {
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/VaultoroNewOrderData"
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "VaultoroOpenOrder;>;>": {
+            "properties": {
+            }
+        },
+        "VaultoroOrder": {
+            "properties": {
+                "goldAmount": {
+                    "type": "number"
+                },
+                "goldPrice": {
+                    "type": "number"
+                }
+            }
+        },
+        "VaultoroOrderBook": {
+            "properties": {
+                "buys": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/VaultoroOrder"
+                    }
+                },
+                "sells": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/VaultoroOrder"
+                    }
+                }
+            }
+        },
+        "VaultoroOrderBookResponse": {
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/VaultoroOrderBook"
+                    }
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "VaultoroOrdersResponse": {
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/VaultoroOpenOrder;>;>"
+                    }
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "VaultoroTrade": {
+            "properties": {
+                "goldAmount": {
+                    "type": "number"
+                },
+                "goldPrice": {
+                    "type": "number"
+                },
+                "time": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,885 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "4.3.6-SNAPSHOT",
+        "title": "XChange C-Cex"
+    },
+    "host": "xchange-ccex.changeme",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/t/api.html?a=buylimit&apikey={apikey}&nonce={nonce}&market={lmarket}-{rmarket}&quantity={quantity}&rate={rate}": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "apikey",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "lmarket",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "quantity",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "rate",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "rmarket",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "apisign",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CCEXBuySellLimitResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/t/api.html?a=cancel&apikey={apikey}&nonce={nonce}&uuid={uuid}": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "apikey",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "uuid",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "apisign",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CCEXCancelResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/t/api.html?a=getbalance&apikey={apikey}&nonce={nonce}&currency={currency}": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "apikey",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "currency",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "apisign",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CCEXBalanceResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/t/api.html?a=getbalances&apikey={apikey}&nonce={nonce}": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "apikey",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "apisign",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CCEXBalancesResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/t/api.html?a=getopenorders&apikey={apikey}&nonce={nonce}": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "apikey",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "apisign",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CCEXGetopenordersResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/t/api.html?a=getorderhistory&apikey={apikey}&nonce={nonce}": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "apikey",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "apisign",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CCEXGetorderhistoryResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/t/api.html?a=selllimit&apikey={apikey}&nonce={nonce}&market={lmarket}-{rmarket}&quantity={quantity}&rate={rate}": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "apikey",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "lmarket",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "quantity",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "rate",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "rmarket",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "apisign",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CCEXBuySellLimitResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/t/api_pub.html?a=getmarkethistory&market={pair}&count=100": {
+            "get": {
+                "description": "Returns Latest trades that have occured for a specific market.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "pair",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CCEXTrades"
+                        }
+                    }
+                }
+            }
+        },
+        "/t/api_pub.html?a=getmarkets": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CCEXMarkets"
+                        }
+                    }
+                }
+            }
+        },
+        "/t/api_pub.html?a=getorderbook&market={pair}&type=both&depth={depth}": {
+            "get": {
+                "description": "Returns \"bids\" and \"asks\". Each is a list of open orders and each order is represented as a\nlist of data.",
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "depth",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "pair",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CCEXGetorderbook"
+                        }
+                    }
+                }
+            }
+        },
+        "/t/pairs.json": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CCEXPairs"
+                        }
+                    }
+                }
+            }
+        },
+        "/t/{lpair}-{rpair}.json": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "lpair",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "rpair",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CCEXTickerResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "CCEXBalance": {
+            "properties": {
+                "available": {
+                    "type": "number"
+                },
+                "balance": {
+                    "type": "number"
+                },
+                "cryptoAddress": {
+                    "type": "string"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "pending": {
+                    "type": "number"
+                }
+            }
+        },
+        "CCEXBalanceResponse": {
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "result": {
+                    "$ref": "#/definitions/CCEXBalance"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "CCEXBalancesResponse": {
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CCEXBalance"
+                    }
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "CCEXBuySellData": {
+            "properties": {
+                "quantity": {
+                    "type": "number"
+                },
+                "rate": {
+                    "type": "number"
+                }
+            }
+        },
+        "CCEXBuySellLimitResponse": {
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "result": {
+                    "$ref": "#/definitions/CCEXUUIDResponse"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "CCEXBuySellResult": {
+            "properties": {
+                "buy": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CCEXBuySellData"
+                    }
+                },
+                "sell": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CCEXBuySellData"
+                    }
+                }
+            }
+        },
+        "CCEXCancelResponse": {
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "CCEXGetopenordersResponse": {
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CCEXOpenorder"
+                    }
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "CCEXGetorderbook": {
+            "properties": {
+                "asks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CCEXBuySellData"
+                    }
+                },
+                "bids": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CCEXBuySellData"
+                    }
+                },
+                "message": {
+                    "type": "string"
+                },
+                "result": {
+                    "$ref": "#/definitions/CCEXBuySellResult"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "CCEXGetorderhistoryResponse": {
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CCEXOrderhistory"
+                    }
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "CCEXMarket": {
+            "properties": {
+                "baseCurrency": {
+                    "type": "string"
+                },
+                "baseCurrencyLong": {
+                    "type": "string"
+                },
+                "created": {
+                    "type": "string"
+                },
+                "isActive": {
+                    "type": "boolean"
+                },
+                "marketCurrency": {
+                    "type": "string"
+                },
+                "marketCurrencyLong": {
+                    "type": "string"
+                },
+                "marketName": {
+                    "type": "string"
+                },
+                "minTradeSize": {
+                    "type": "number"
+                }
+            }
+        },
+        "CCEXMarkets": {
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CCEXMarket"
+                    }
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "CCEXOpenorder": {
+            "properties": {
+                "cancelInitiated": {
+                    "type": "boolean"
+                },
+                "closed": {
+                    "type": "string"
+                },
+                "commissionPaid": {
+                    "type": "number"
+                },
+                "condition": {
+                    "type": "string"
+                },
+                "conditionTarget": {
+                    "type": "string"
+                },
+                "exchange": {
+                    "type": "string"
+                },
+                "immediateOrCancel": {
+                    "type": "boolean"
+                },
+                "isConditional": {
+                    "type": "boolean"
+                },
+                "limit": {
+                    "type": "number"
+                },
+                "opened": {
+                    "type": "string"
+                },
+                "orderType": {
+                    "type": "string"
+                },
+                "orderUuid": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "pricePerUnit": {
+                    "type": "number"
+                },
+                "quantity": {
+                    "type": "number"
+                },
+                "quantityRemaining": {
+                    "type": "number"
+                }
+            }
+        },
+        "CCEXOrderhistory": {
+            "properties": {
+                "commission": {
+                    "type": "number"
+                },
+                "condition": {
+                    "type": "string"
+                },
+                "conditionTarget": {
+                    "type": "string"
+                },
+                "exchange": {
+                    "type": "string"
+                },
+                "immediateOrCancel": {
+                    "type": "boolean"
+                },
+                "isConditional": {
+                    "type": "boolean"
+                },
+                "limit": {
+                    "type": "number"
+                },
+                "orderType": {
+                    "type": "string"
+                },
+                "orderUuid": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "pricePerUnit": {
+                    "type": "number"
+                },
+                "quantity": {
+                    "type": "number"
+                },
+                "quantityRemaining": {
+                    "type": "number"
+                },
+                "timeStamp": {
+                    "type": "string"
+                }
+            }
+        },
+        "CCEXPairs": {
+            "properties": {
+                "pairs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "CCEXPriceResponse": {
+            "properties": {
+                "avg": {
+                    "type": "number"
+                },
+                "buy": {
+                    "type": "number"
+                },
+                "buysupport": {
+                    "type": "number"
+                },
+                "high": {
+                    "type": "number"
+                },
+                "lastbuy": {
+                    "type": "number"
+                },
+                "lastprice": {
+                    "type": "number"
+                },
+                "lastsell": {
+                    "type": "number"
+                },
+                "low": {
+                    "type": "number"
+                },
+                "sell": {
+                    "type": "number"
+                },
+                "updated": {
+                    "type": "integer"
+                }
+            }
+        },
+        "CCEXTickerResponse": {
+            "properties": {
+                "ticker": {
+                    "$ref": "#/definitions/CCEXPriceResponse"
+                }
+            }
+        },
+        "CCEXTrade": {
+            "properties": {
+                "fillType": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "orderType": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "quantity": {
+                    "type": "number"
+                },
+                "timestamp": {
+                    "type": "string"
+                },
+                "total": {
+                    "type": "number"
+                }
+            }
+        },
+        "CCEXTrades": {
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CCEXTrade"
+                    }
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "CCEXUUIDResponse": {
+            "properties": {
+                "uuid": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

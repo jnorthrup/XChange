@@ -1,0 +1,1325 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "4.3.6-SNAPSHOT",
+        "title": "XChange ANX"
+    },
+    "host": "xchange-anx.changeme",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/api/2/money/info": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Rest-Key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Rest-Sign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ANXAccountInfoWrapper"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/2/money/order/lag": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ANXLagWrapper"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/2/money/orders": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Rest-Key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Rest-Sign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ANXOpenOrderWrapper"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/2/money/trade/list": {
+            "post": {
+                "description": "List of executed trades",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Rest-Key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Rest-Sign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "from",
+                        "in": "formData",
+                        "required": true,
+                        "description": "optional Unix timestamp"
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "to",
+                        "in": "formData",
+                        "required": true,
+                        "description": "optional Unix timestamp"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ANXTradeResultWrapper"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/2/money/wallet/history": {
+            "post": {
+                "description": "Returns the History of the selected wallet",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Rest-Key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Rest-Sign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "currency",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "from",
+                        "in": "formData",
+                        "required": true,
+                        "description": "start time (can be null)"
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "page",
+                        "in": "formData",
+                        "required": true,
+                        "description": "to fetch (can be null for first page)"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "to",
+                        "in": "formData",
+                        "required": true,
+                        "description": "end time (can be null)"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ANXWalletHistoryWrapper"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/2/money/{currency}/address": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "currency",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Rest-Key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Rest-Sign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ANXBitcoinDepositAddressWrapper"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/2/money/{currency}/send_simple": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "currency",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Rest-Key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Rest-Sign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "address",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "amount_int",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "destinationTag",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "fee_int",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "boolean",
+                        "name": "green",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "boolean",
+                        "name": "no_instant",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ANXWithdrawalResponseWrapper"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/2/{baseCurrency}{counterCurrency}/money/order/add": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "baseCurrency",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "counterCurrency",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Rest-Key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Rest-Sign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "amount",
+                        "in": "formData",
+                        "required": true,
+                        "description": "can be omitted to place market order"
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "price",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "type",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ANXGenericResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/2/{baseCurrency}{counterCurrency}/money/order/cancel": {
+            "post": {
+                "description": "Note: I know it's weird to have BTCEUR hardcoded in the URL, but it really doesn't seems to\nmatter. BTCUSD works too.",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "baseCurrency",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "counterCurrency",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Rest-Key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Rest-Sign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "oid",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ANXGenericResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/2/{baseCurrency}{counterCurrency}/money/order/result": {
+            "post": {
+                "description": "Status of the order",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "baseCurrency",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "counterCurrency",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Rest-Key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Rest-Sign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "order",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "type",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ANXOrderResultWrapper"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/2/{baseCurrency}{counterCurrency}/money/orders": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "baseCurrency",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "counterCurrency",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Rest-Key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Rest-Sign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ANXOpenOrderWrapper"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/2/{ident}{currency}/money/depth/fetch": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "currency",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "ident",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ANXDepthWrapper"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/2/{ident}{currency}/money/depth/full": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "currency",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "ident",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "extraCcyPairs",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ANXDepthWrapper"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/2/{ident}{currency}/money/ticker": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "currency",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "ident",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "extraCcyPairs",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ANXTickerWrapper"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/2/{ident}{currency}/money/trade/fetch": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "currency",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "ident",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "since",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ANXTradesWrapper"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ANXAccountInfo": {
+            "properties": {
+                "created": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "index": {
+                    "type": "string"
+                },
+                "language": {
+                    "type": "string"
+                },
+                "lastLogin": {
+                    "type": "string"
+                },
+                "login": {
+                    "type": "string"
+                },
+                "monthlyVolume": {
+                    "$ref": "#/definitions/ANXValue"
+                },
+                "rights": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "tradeFee": {
+                    "type": "number"
+                },
+                "wallets": {
+                    "type": "object"
+                }
+            }
+        },
+        "ANXAccountInfoWrapper": {
+            "properties": {
+                "aNXAccountInfo": {
+                    "$ref": "#/definitions/ANXAccountInfo"
+                },
+                "error": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "string"
+                }
+            }
+        },
+        "ANXBitcoinDepositAddress": {
+            "properties": {
+                "address": {
+                    "type": "string"
+                }
+            }
+        },
+        "ANXBitcoinDepositAddressWrapper": {
+            "properties": {
+                "anxBitcoinDepositAddress": {
+                    "$ref": "#/definitions/ANXBitcoinDepositAddress"
+                },
+                "error": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "string"
+                }
+            }
+        },
+        "ANXDepth": {
+            "properties": {
+                "asks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ANXOrder"
+                    }
+                },
+                "bids": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ANXOrder"
+                    }
+                },
+                "filterMaxPrice": {
+                    "$ref": "#/definitions/ANXDepth$FilterPrice"
+                },
+                "filterMinPrice": {
+                    "$ref": "#/definitions/ANXDepth$FilterPrice"
+                },
+                "microTime": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ANXDepth$FilterPrice": {
+            "properties": {
+                "currency": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "number"
+                },
+                "valueInt": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ANXDepthWrapper": {
+            "properties": {
+                "anxDepth": {
+                    "$ref": "#/definitions/ANXDepth"
+                },
+                "error": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "string"
+                }
+            }
+        },
+        "ANXGenericResponse": {
+            "properties": {
+                "data": {
+                    "type": "object"
+                },
+                "dataString": {
+                    "type": "string"
+                },
+                "error": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "string"
+                }
+            }
+        },
+        "ANXLag": {
+            "properties": {
+                "lag": {
+                    "type": "integer"
+                },
+                "lagDecimal": {
+                    "type": "number"
+                },
+                "lagText": {
+                    "type": "string"
+                },
+                "length": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ANXLagWrapper": {
+            "properties": {
+                "aNXLag": {
+                    "$ref": "#/definitions/ANXLag"
+                },
+                "error": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "string"
+                }
+            }
+        },
+        "ANXOpenOrder": {
+            "properties": {
+                "amount": {
+                    "$ref": "#/definitions/ANXValue"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "effectiveAmount": {
+                    "$ref": "#/definitions/ANXValue"
+                },
+                "invalidAmount": {
+                    "$ref": "#/definitions/ANXValue"
+                },
+                "item": {
+                    "type": "string"
+                },
+                "oid": {
+                    "type": "string"
+                },
+                "price": {
+                    "$ref": "#/definitions/ANXValue"
+                },
+                "priority": {
+                    "type": "integer"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "ANXOpenOrderWrapper": {
+            "properties": {
+                "aNXOpenOrders": {
+                    "$ref": "#/definitions/ANXOpenOrder"
+                },
+                "error": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "string"
+                }
+            }
+        },
+        "ANXOrder": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "amountInt": {
+                    "type": "integer"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "priceInt": {
+                    "type": "integer"
+                },
+                "stamp": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ANXOrderResult": {
+            "properties": {
+                "avgCost": {
+                    "$ref": "#/definitions/ANXValue"
+                },
+                "orderId": {
+                    "type": "string"
+                },
+                "totalAmount": {
+                    "$ref": "#/definitions/ANXValue"
+                },
+                "totalSpent": {
+                    "$ref": "#/definitions/ANXValue"
+                },
+                "trades": {
+                    "$ref": "#/definitions/ANXOrderResultTrade"
+                }
+            }
+        },
+        "ANXOrderResultTrade": {
+            "properties": {
+                "amount": {
+                    "$ref": "#/definitions/ANXValue"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "string"
+                },
+                "item": {
+                    "type": "string"
+                },
+                "price": {
+                    "$ref": "#/definitions/ANXValue"
+                },
+                "primary": {
+                    "type": "string"
+                },
+                "properties": {
+                    "type": "string"
+                },
+                "tradeId": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "ANXOrderResultWrapper": {
+            "properties": {
+                "aNXOrderResult": {
+                    "$ref": "#/definitions/ANXOrderResult"
+                },
+                "error": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "string"
+                }
+            }
+        },
+        "ANXTicker": {
+            "properties": {
+                "avg": {
+                    "$ref": "#/definitions/ANXValue"
+                },
+                "buy": {
+                    "$ref": "#/definitions/ANXValue"
+                },
+                "high": {
+                    "$ref": "#/definitions/ANXValue"
+                },
+                "last": {
+                    "$ref": "#/definitions/ANXValue"
+                },
+                "low": {
+                    "$ref": "#/definitions/ANXValue"
+                },
+                "now": {
+                    "type": "integer"
+                },
+                "sell": {
+                    "$ref": "#/definitions/ANXValue"
+                },
+                "vol": {
+                    "$ref": "#/definitions/ANXValue"
+                },
+                "vwap": {
+                    "$ref": "#/definitions/ANXValue"
+                }
+            }
+        },
+        "ANXTickerWrapper": {
+            "properties": {
+                "anxTicker": {
+                    "$ref": "#/definitions/ANXTicker"
+                },
+                "error": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "string"
+                }
+            }
+        },
+        "ANXTrade": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "amountInt": {
+                    "type": "integer"
+                },
+                "item": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "priceCurrency": {
+                    "type": "string"
+                },
+                "priceInt": {
+                    "type": "integer"
+                },
+                "primary": {
+                    "type": "string"
+                },
+                "properties": {
+                    "type": "string"
+                },
+                "tid": {
+                    "type": "integer"
+                },
+                "tradeType": {
+                    "type": "string"
+                }
+            }
+        },
+        "ANXTradeResult": {
+            "properties": {
+                "currencyPair": {
+                    "type": "string"
+                },
+                "orderId": {
+                    "type": "string"
+                },
+                "settlementCurrencyFillAmount": {
+                    "type": "number"
+                },
+                "side": {
+                    "type": "string"
+                },
+                "timestamp": {
+                    "type": "object"
+                },
+                "tradeId": {
+                    "type": "string"
+                },
+                "tradedCurrencyFillAmount": {
+                    "type": "number"
+                }
+            }
+        },
+        "ANXTradeResultWrapper": {
+            "properties": {
+                "anxTradeResults": {
+                    "$ref": "#/definitions/ANXTradeResult"
+                },
+                "error": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "string"
+                }
+            }
+        },
+        "ANXTradesWrapper": {
+            "properties": {
+                "aNXTrades": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ANXTrade"
+                    }
+                },
+                "error": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "string"
+                }
+            }
+        },
+        "ANXValue": {
+            "properties": {
+                "currency": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "number"
+                }
+            }
+        },
+        "ANXWalletHistory": {
+            "properties": {
+                "aNXWalletHistoryEntries": {
+                    "$ref": "#/definitions/ANXWalletHistoryEntry"
+                },
+                "currentPage": {
+                    "type": "integer"
+                },
+                "maxPage": {
+                    "type": "integer"
+                },
+                "maxResults": {
+                    "type": "integer"
+                },
+                "records": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ANXWalletHistoryEntry": {
+            "properties": {
+                "balance": {
+                    "$ref": "#/definitions/ANXValue"
+                },
+                "date": {
+                    "type": "string"
+                },
+                "index": {
+                    "type": "integer"
+                },
+                "info": {
+                    "type": "string"
+                },
+                "link": {
+                    "$ref": "#/definitions/String"
+                },
+                "trade": {
+                    "$ref": "#/definitions/ANXWalletHistoryEntry$ANXWalletHistoryEntryTrade"
+                },
+                "transactionId": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "value": {
+                    "$ref": "#/definitions/ANXValue"
+                }
+            }
+        },
+        "ANXWalletHistoryEntry$ANXWalletHistoryEntryTrade": {
+            "properties": {
+                "amount": {
+                    "$ref": "#/definitions/ANXValue"
+                },
+                "app": {
+                    "type": "string"
+                },
+                "oid": {
+                    "type": "string"
+                },
+                "properties": {
+                    "type": "string"
+                },
+                "tid": {
+                    "type": "string"
+                }
+            }
+        },
+        "ANXWalletHistoryWrapper": {
+            "properties": {
+                "aNXWalletHistory": {
+                    "$ref": "#/definitions/ANXWalletHistory"
+                },
+                "error": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "string"
+                }
+            }
+        },
+        "ANXWithdrawalResponse": {
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "transactionId": {
+                    "type": "string"
+                }
+            }
+        },
+        "ANXWithdrawalResponseWrapper": {
+            "properties": {
+                "anxWithdrawalResponse": {
+                    "$ref": "#/definitions/ANXWithdrawalResponse"
+                },
+                "error": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "string"
+                }
+            }
+        },
+        "String": {
+            "properties": {
+                "bytes": {
+                    "$ref": "#/definitions/["
+                },
+                "empty": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "[": {
+            "properties": {
+            }
+        }
+    }
+}

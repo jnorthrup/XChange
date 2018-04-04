@@ -1,0 +1,61 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "4.3.6-SNAPSHOT",
+        "title": "XChange Bitcoin Core"
+    },
+    "host": "xchange-bitcoincore.changeme",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/BitcoinCoreBalanceRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BitcoinCoreBalanceResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "BitcoinCoreBalanceRequest": {
+            "properties": {
+                "method": {
+                    "type": "string"
+                }
+            }
+        },
+        "BitcoinCoreBalanceResponse": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,191 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "4.3.6-SNAPSHOT",
+        "title": "XChange Blockchain"
+    },
+    "host": "xchange-blockchain.changeme",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/address/{address}?format=json": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "address",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BitcoinAddress"
+                        }
+                    }
+                }
+            }
+        },
+        "/multiaddr": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "active",
+                        "in": "query",
+                        "required": true,
+                        "description": "- Pipe (|) separated addresses"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BitcoinAddresses"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "BitcoinAddress": {
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "finalBalance": {
+                    "type": "integer"
+                },
+                "finalBalanceDecimal": {
+                    "type": "number"
+                },
+                "hash160": {
+                    "type": "string"
+                },
+                "numTransactions": {
+                    "type": "integer"
+                },
+                "totalReceived": {
+                    "type": "integer"
+                },
+                "totalReceivedDecimal": {
+                    "type": "number"
+                },
+                "totalSent": {
+                    "type": "integer"
+                },
+                "totalSentDecimal": {
+                    "type": "number"
+                },
+                "txs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Txs"
+                    }
+                }
+            }
+        },
+        "BitcoinAddresses": {
+            "properties": {
+                "bitcoinAddresses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/BitcoinAddress"
+                    }
+                }
+            }
+        },
+        "Inputs": {
+            "properties": {
+                "prevOut": {
+                    "$ref": "#/definitions/Out"
+                }
+            }
+        },
+        "Out": {
+            "properties": {
+                "addr": {
+                    "type": "string"
+                },
+                "n": {
+                    "type": "integer"
+                },
+                "txIndex": {
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "integer"
+                },
+                "value": {
+                    "type": "integer"
+                }
+            }
+        },
+        "Txs": {
+            "properties": {
+                "blockHeight": {
+                    "type": "integer"
+                },
+                "hash": {
+                    "type": "string"
+                },
+                "inputs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Inputs"
+                    }
+                },
+                "out": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Out"
+                    }
+                },
+                "relayedBy": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "integer"
+                },
+                "size": {
+                    "type": "integer"
+                },
+                "time": {
+                    "type": "integer"
+                },
+                "txIndex": {
+                    "type": "integer"
+                },
+                "ver": {
+                    "type": "integer"
+                },
+                "vinSz": {
+                    "type": "integer"
+                },
+                "voutSz": {
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}

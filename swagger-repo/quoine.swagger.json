@@ -1,0 +1,1329 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "4.3.6-SNAPSHOT",
+        "title": "XChange Quoine"
+    },
+    "host": "xchange-quoine.changeme",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/accounts/balance": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Content-Type",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "X-Quoine-API-Version",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-Quoine-Auth",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/QuoineAccountBalance"
+                        }
+                    }
+                }
+            }
+        },
+        "/crypto_accounts": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Content-Type",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "X-Quoine-API-Version",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-Quoine-Auth",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BitcoinAccount"
+                        }
+                    }
+                }
+            }
+        },
+        "/executions/me": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Content-Type",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "X-Quoine-API-Version",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-Quoine-Auth",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "product_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "with_details",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/QuoineExecutionsResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/fiat_accounts": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Content-Type",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "X-Quoine-API-Version",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-Quoine-Auth",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/FiatAccount"
+                        }
+                    }
+                }
+            }
+        },
+        "/orders": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Content-Type",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "X-Quoine-API-Version",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-Quoine-Auth",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "status",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/QuoineOrdersList"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Content-Type",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "X-Quoine-API-Version",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-Quoine-Auth",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/QuoineNewOrderRequestWrapper"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/QuoineOrderResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/orders/{order_id}": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "order_id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Content-Type",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "X-Quoine-API-Version",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-Quoine-Auth",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/QuoineOrderDetailsResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/orders/{order_id}/cancel": {
+            "put": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "order_id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Content-Type",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "X-Quoine-API-Version",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-Quoine-Auth",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/QuoineOrderResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/products": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/QuoineProduct"
+                        }
+                    }
+                }
+            }
+        },
+        "/products/code/CASH/{currency_pair_code}": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "currency_pair_code",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/QuoineProduct_2"
+                        }
+                    }
+                }
+            }
+        },
+        "/products/{product_id}/price_levels": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "product_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/QuoineOrderBook"
+                        }
+                    }
+                }
+            }
+        },
+        "/trades": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Content-Type",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "X-Quoine-API-Version",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-Quoine-Auth",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "funding_currency",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "status",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/QuoineTradesResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/trading_accounts": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Content-Type",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "X-Quoine-API-Version",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-Quoine-Auth",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/QuoineTradingAccountInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/transactions": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Content-Type",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "X-Quoine-API-Version",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "X-Quoine-Auth",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "currency",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "transaction_type",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/QuoineTransactionsResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "BigDecimal": {
+            "properties": {
+            }
+        },
+        "BitcoinAccount": {
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "balance": {
+                    "type": "number"
+                },
+                "btcMinimumWithdraw": {
+                    "type": "number"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "currencySymbol": {
+                    "type": "string"
+                },
+                "freeBalance": {
+                    "type": "number"
+                },
+                "highestOfferInterestRate": {
+                    "type": "number"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "lowestOfferInterestRate": {
+                    "type": "number"
+                },
+                "pusherChannel": {
+                    "type": "string"
+                }
+            }
+        },
+        "Execution": {
+            "properties": {
+                "buyFxRate": {
+                    "type": "number"
+                },
+                "buyerFee": {
+                    "type": "number"
+                },
+                "createdAt": {
+                    "type": "number"
+                },
+                "makerSide": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "quantity": {
+                    "type": "number"
+                },
+                "sellFxRate": {
+                    "type": "number"
+                },
+                "sellerFee": {
+                    "type": "number"
+                }
+            }
+        },
+        "FiatAccount": {
+            "properties": {
+                "balance": {
+                    "type": "number"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "currencySymbol": {
+                    "type": "string"
+                },
+                "highestOfferInterestRate": {
+                    "type": "number"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "lowestOfferInterestRate": {
+                    "type": "number"
+                },
+                "pusherChannel": {
+                    "type": "string"
+                },
+                "sendToBtcAddress": {
+                    "type": "string"
+                }
+            }
+        },
+        "Model": {
+            "properties": {
+                "bitcoinAccountId": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "number"
+                },
+                "currencyPairCode": {
+                    "type": "string"
+                },
+                "filledQuantity": {
+                    "type": "number"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "leverageLevel": {
+                    "type": "integer"
+                },
+                "orderType": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "productCode": {
+                    "type": "string"
+                },
+                "quantity": {
+                    "type": "number"
+                },
+                "side": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "type": "number"
+                }
+            }
+        },
+        "QuoineAccountBalance": {
+            "properties": {
+                "balance": {
+                    "type": "number"
+                },
+                "currency": {
+                    "type": "string"
+                }
+            }
+        },
+        "QuoineExecution": {
+            "properties": {
+                "createdAt": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "mySide": {
+                    "type": "string"
+                },
+                "orderId": {
+                    "type": "string"
+                },
+                "pnl": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "quantity": {
+                    "type": "number"
+                },
+                "takerSide": {
+                    "type": "string"
+                },
+                "target": {
+                    "type": "string"
+                }
+            }
+        },
+        "QuoineExecutionsResponse": {
+            "properties": {
+                "currentPage": {
+                    "type": "integer"
+                },
+                "models": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/QuoineExecution"
+                    }
+                },
+                "totalPages": {
+                    "type": "integer"
+                }
+            }
+        },
+        "QuoineNewOrderRequest": {
+            "properties": {
+                "orderType": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "productId": {
+                    "type": "integer"
+                },
+                "quantity": {
+                    "type": "number"
+                },
+                "side": {
+                    "type": "string"
+                }
+            }
+        },
+        "QuoineNewOrderRequestWrapper": {
+            "properties": {
+                "order": {
+                    "$ref": "#/definitions/QuoineNewOrderRequest"
+                }
+            }
+        },
+        "QuoineOrderBook": {
+            "properties": {
+                "buyPriceLevels": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/BigDecimal"
+                    }
+                },
+                "sellPriceLevels": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/BigDecimal"
+                    }
+                }
+            }
+        },
+        "QuoineOrderDetailsResponse": {
+            "properties": {
+                "createdAt": {
+                    "type": "number"
+                },
+                "currencyPairCode": {
+                    "type": "string"
+                },
+                "executions": {
+                    "$ref": "#/definitions/Execution"
+                },
+                "filledQuantity": {
+                    "type": "number"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "leverageLevel": {
+                    "type": "integer"
+                },
+                "orderFee": {
+                    "type": "number"
+                },
+                "orderType": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "productCode": {
+                    "type": "string"
+                },
+                "quantity": {
+                    "type": "number"
+                },
+                "settings": {
+                    "type": "object"
+                },
+                "side": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "type": "number"
+                }
+            }
+        },
+        "QuoineOrderResponse": {
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "currencyPairCode": {
+                    "type": "string"
+                },
+                "filledQuantity": {
+                    "type": "number"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "notes": {
+                    "type": "object"
+                },
+                "orderType": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "productCode": {
+                    "type": "string"
+                },
+                "quantity": {
+                    "type": "number"
+                },
+                "side": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "boolean"
+                },
+                "updatedAt": {
+                    "type": "string"
+                }
+            }
+        },
+        "QuoineOrdersList": {
+            "properties": {
+                "currentPage": {
+                    "type": "integer"
+                },
+                "models": {
+                    "$ref": "#/definitions/Model"
+                },
+                "totalPages": {
+                    "type": "integer"
+                }
+            }
+        },
+        "QuoineProduct": {
+            "properties": {
+                "baseCurrency": {
+                    "type": "string"
+                },
+                "btcMinimumWithdraw": {
+                    "type": "number"
+                },
+                "cashSpotAsk": {
+                    "type": "number"
+                },
+                "cashSpotBid": {
+                    "type": "number"
+                },
+                "code": {
+                    "type": "string"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "currencyPairCode": {
+                    "type": "string"
+                },
+                "currencyPairId": {
+                    "type": "string"
+                },
+                "fiatMinimumWithdraw": {
+                    "type": "number"
+                },
+                "highMarketAsk": {
+                    "type": "number"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "indicator": {
+                    "type": "integer"
+                },
+                "lastPrice24h": {
+                    "type": "number"
+                },
+                "lastTradedPrice": {
+                    "type": "number"
+                },
+                "lowMarketBid": {
+                    "type": "number"
+                },
+                "makerFee": {
+                    "type": "number"
+                },
+                "marketAsk": {
+                    "type": "number"
+                },
+                "marketBid": {
+                    "type": "number"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "productType": {
+                    "type": "string"
+                },
+                "pusherChannel": {
+                    "type": "string"
+                },
+                "quotedCurrency": {
+                    "type": "string"
+                },
+                "symbol": {
+                    "type": "string"
+                },
+                "takerFee": {
+                    "type": "number"
+                },
+                "volume24h": {
+                    "type": "number"
+                }
+            }
+        },
+        "QuoineProduct_2": {
+            "properties": {
+                "baseCurrency": {
+                    "type": "string"
+                },
+                "btcMinimumWithdraw": {
+                    "type": "number"
+                },
+                "cashSpotAsk": {
+                    "type": "number"
+                },
+                "cashSpotBid": {
+                    "type": "number"
+                },
+                "code": {
+                    "type": "string"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "currencyPairCode": {
+                    "type": "string"
+                },
+                "currencyPairId": {
+                    "type": "string"
+                },
+                "fiatMinimumWithdraw": {
+                    "type": "number"
+                },
+                "highMarketAsk": {
+                    "type": "number"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "indicator": {
+                    "type": "integer"
+                },
+                "lastPrice24h": {
+                    "type": "number"
+                },
+                "lastTradedPrice": {
+                    "type": "number"
+                },
+                "lowMarketBid": {
+                    "type": "number"
+                },
+                "makerFee": {
+                    "type": "number"
+                },
+                "marketAsk": {
+                    "type": "number"
+                },
+                "marketBid": {
+                    "type": "number"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "productType": {
+                    "type": "string"
+                },
+                "pusherChannel": {
+                    "type": "string"
+                },
+                "quotedCurrency": {
+                    "type": "string"
+                },
+                "symbol": {
+                    "type": "string"
+                },
+                "takerFee": {
+                    "type": "number"
+                },
+                "volume24h": {
+                    "type": "number"
+                }
+            }
+        },
+        "QuoineTrade": {
+            "properties": {
+                "closePnl": {
+                    "type": "number"
+                },
+                "closePrice": {
+                    "type": "number"
+                },
+                "closeQuantity": {
+                    "type": "number"
+                },
+                "createdAt": {
+                    "type": "integer"
+                },
+                "currencyPairCode": {
+                    "type": "string"
+                },
+                "fundingCurrency": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "leverageLevel": {
+                    "type": "number"
+                },
+                "marginUsed": {
+                    "type": "number"
+                },
+                "openPnl": {
+                    "type": "number"
+                },
+                "openPrice": {
+                    "type": "number"
+                },
+                "openQuantity": {
+                    "type": "number"
+                },
+                "pnl": {
+                    "type": "number"
+                },
+                "productCode": {
+                    "type": "string"
+                },
+                "productId": {
+                    "type": "string"
+                },
+                "quantity": {
+                    "type": "number"
+                },
+                "side": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "stopLoss": {
+                    "type": "number"
+                },
+                "takeProfit": {
+                    "type": "number"
+                },
+                "totalInterest": {
+                    "type": "number"
+                },
+                "traderId": {
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "type": "integer"
+                }
+            }
+        },
+        "QuoineTradesResponse": {
+            "properties": {
+                "currentPage": {
+                    "type": "integer"
+                },
+                "models": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/QuoineTrade"
+                    }
+                },
+                "totalPages": {
+                    "type": "integer"
+                }
+            }
+        },
+        "QuoineTradingAccountInfo": {
+            "properties": {
+                "balance": {
+                    "type": "number"
+                },
+                "currencyPairCode": {
+                    "type": "string"
+                },
+                "currentLeverageLevel": {
+                    "type": "integer"
+                },
+                "equity": {
+                    "type": "number"
+                },
+                "freeMargin": {
+                    "type": "number"
+                },
+                "fundingCurrency": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "leverageLevel": {
+                    "type": "integer"
+                },
+                "margin": {
+                    "type": "number"
+                },
+                "marginPercent": {
+                    "type": "number"
+                },
+                "pnl": {
+                    "type": "number"
+                },
+                "position": {
+                    "type": "number"
+                },
+                "productCode": {
+                    "type": "string"
+                },
+                "pusher_channel": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "traderId": {
+                    "type": "integer"
+                },
+                "updatedAt": {
+                    "type": "object"
+                }
+            }
+        },
+        "QuoineTransaction": {
+            "properties": {
+                "createdAt": {
+                    "type": "integer"
+                },
+                "exchange_fee": {
+                    "type": "number"
+                },
+                "execution": {
+                    "type": "string"
+                },
+                "from_account_id": {
+                    "type": "string"
+                },
+                "from_role": {
+                    "type": "string"
+                },
+                "gross_amount": {
+                    "type": "number"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "loan": {
+                    "type": "string"
+                },
+                "net_amount": {
+                    "type": "number"
+                },
+                "network_fee": {
+                    "type": "number"
+                },
+                "notes": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "to_account_id": {
+                    "type": "string"
+                },
+                "to_role": {
+                    "type": "string"
+                },
+                "transaction_hash": {
+                    "type": "string"
+                },
+                "transaction_type": {
+                    "type": "string"
+                }
+            }
+        },
+        "QuoineTransactionsResponse": {
+            "properties": {
+                "currentPage": {
+                    "type": "integer"
+                },
+                "models": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/QuoineTransaction"
+                    }
+                },
+                "totalPages": {
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}

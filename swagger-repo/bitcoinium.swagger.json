@@ -1,0 +1,217 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "4.3.6-SNAPSHOT",
+        "title": "XChange Bitcoinium"
+    },
+    "host": "xchange-bitcoinium.changeme",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/orderbook": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "X-BITCOINIUM-API-KEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "orderbookwindow",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "pair",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BitcoiniumOrderbook"
+                        }
+                    }
+                }
+            }
+        },
+        "/ticker": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "X-BITCOINIUM-API-KEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "pair",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BitcoiniumTicker"
+                        }
+                    }
+                }
+            }
+        },
+        "/tickerhistory": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "X-BITCOINIUM-API-KEY",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "historytimewindow",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "pair",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/BitcoiniumTickerHistory"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "BitcoiniumOrderbook": {
+            "properties": {
+                "asks": {
+                    "$ref": "#/definitions/BitcoiniumOrderbook$CondensedOrder"
+                },
+                "bids": {
+                    "$ref": "#/definitions/BitcoiniumOrderbook$CondensedOrder"
+                },
+                "bitcoiniumTicker": {
+                    "$ref": "#/definitions/BitcoiniumTicker"
+                }
+            }
+        },
+        "BitcoiniumOrderbook$CondensedOrder": {
+            "properties": {
+                "price": {
+                    "type": "number"
+                },
+                "volume": {
+                    "type": "number"
+                }
+            }
+        },
+        "BitcoiniumTicker": {
+            "properties": {
+                "ask": {
+                    "type": "number"
+                },
+                "bid": {
+                    "type": "number"
+                },
+                "high": {
+                    "type": "number"
+                },
+                "last": {
+                    "type": "number"
+                },
+                "low": {
+                    "type": "number"
+                },
+                "timestamp": {
+                    "type": "integer"
+                },
+                "trades": {
+                    "type": "number"
+                },
+                "volume": {
+                    "type": "number"
+                }
+            }
+        },
+        "BitcoiniumTickerHistory": {
+            "properties": {
+                "bitcoiniumTicker": {
+                    "$ref": "#/definitions/BitcoiniumTicker"
+                },
+                "condensedTickers": {
+                    "$ref": "#/definitions/BitcoiniumTicker_2"
+                }
+            }
+        },
+        "BitcoiniumTicker_2": {
+            "properties": {
+                "ask": {
+                    "type": "number"
+                },
+                "bid": {
+                    "type": "number"
+                },
+                "high": {
+                    "type": "number"
+                },
+                "last": {
+                    "type": "number"
+                },
+                "low": {
+                    "type": "number"
+                },
+                "timestamp": {
+                    "type": "integer"
+                },
+                "trades": {
+                    "type": "number"
+                },
+                "volume": {
+                    "type": "number"
+                }
+            }
+        }
+    }
+}

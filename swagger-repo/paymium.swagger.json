@@ -1,0 +1,174 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "4.3.6-SNAPSHOT",
+        "title": "XChange Paymium"
+    },
+    "host": "xchange-paymium.changeme",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/depth": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/PaymiumMarketDepth"
+                        }
+                    }
+                }
+            }
+        },
+        "/ticker": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/PaymiumTicker"
+                        }
+                    }
+                }
+            }
+        },
+        "/trades": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/PaymiumTrade"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "PaymiumMarketDepth": {
+            "properties": {
+                "asks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/PaymiumMarketOrder"
+                    }
+                },
+                "bids": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/PaymiumMarketOrder"
+                    }
+                }
+            }
+        },
+        "PaymiumMarketOrder": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "timestamp": {
+                    "type": "integer"
+                }
+            }
+        },
+        "PaymiumTicker": {
+            "properties": {
+                "ask": {
+                    "type": "number"
+                },
+                "at": {
+                    "type": "integer"
+                },
+                "bid": {
+                    "type": "number"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "high": {
+                    "type": "number"
+                },
+                "low": {
+                    "type": "number"
+                },
+                "midpoint": {
+                    "type": "number"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "variation": {
+                    "type": "number"
+                },
+                "volume": {
+                    "type": "number"
+                },
+                "vwap": {
+                    "type": "number"
+                }
+            }
+        },
+        "PaymiumTrade": {
+            "properties": {
+                "created_at": {
+                    "type": "string"
+                },
+                "created_at_int": {
+                    "type": "integer"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "traded_btc": {
+                    "type": "number"
+                },
+                "traded_currency": {
+                    "type": "number"
+                },
+                "uuid": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

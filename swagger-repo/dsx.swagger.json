@@ -1,0 +1,2118 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "4.3.6-SNAPSHOT",
+        "title": "XChange DSX"
+    },
+    "host": "xchange-dsx.changeme",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/dwapi": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Sign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "currency",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "newAddress",
+                        "in": "formData",
+                        "required": false,
+                        "default": "0"
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/DSXCryptoDepositAddressReturn"
+                        }
+                    }
+                },
+                "deprecated": true
+            }
+        },
+        "/dwapi/cryptoWithdraw": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Sign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "address",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "amount",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "commission",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "currency",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/DSXCryptoWithdrawReturn"
+                        }
+                    }
+                },
+                "deprecated": true
+            }
+        },
+        "/dwapi/fiatWithdraw": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Sign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "amount",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "currency",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/DSXFiatWithdrawReturn"
+                        }
+                    }
+                },
+                "deprecated": true
+            }
+        },
+        "/dwapi/getTransactions": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Sign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "currency",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "from",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "fromId",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "Cancelling",
+                            "Completed",
+                            "Failed",
+                            "Processing",
+                            "Rejected"
+                        ],
+                        "name": "status",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "to",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "told",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "Incoming",
+                            "Withdraw"
+                        ],
+                        "name": "type",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/DSXTransactionReturn"
+                        }
+                    }
+                },
+                "deprecated": true
+            }
+        },
+        "/dwapi/v2/deposit/cryptoaddress": {
+            "post": {
+                "description": "This method provides address for depositing cryptocurrency.",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Sign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "currency",
+                        "in": "formData",
+                        "required": true,
+                        "description": "Cryptocurrency which you want to deposit. Required."
+                    },
+                    {
+                        "type": "integer",
+                        "name": "newAddress",
+                        "in": "formData",
+                        "required": false,
+                        "description": "Do you want to get new crypto address or you want to receive previous     address. 1 - generate new address. 0 - get old address. Default value is 0.",
+                        "default": "0"
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/DSXCryptoDepositAddressReturn"
+                        }
+                    }
+                }
+            }
+        },
+        "/dwapi/v2/transaction/status": {
+            "post": {
+                "description": "This method provides information about single user transaction.",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Sign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "formData",
+                        "required": true,
+                        "description": "Transaction ID. Required."
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/DSXTransactionStatusReturn"
+                        }
+                    }
+                }
+            }
+        },
+        "/dwapi/v2/withdraw/cancel": {
+            "post": {
+                "description": "This method provides cancelling processing withdraw All parameters are obligatory (ie. none may\nbe null)",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Sign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "transactionId",
+                        "in": "formData",
+                        "required": true,
+                        "description": "Id of transaction which you want to cancel"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/DSXTransactionReturn"
+                        }
+                    }
+                }
+            }
+        },
+        "/dwapi/v2/withdraw/crypto": {
+            "post": {
+                "description": "This method provides preparing for submitting crypto withdraw All parameters are obligatory\n(ie. none may be null)",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Sign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "address",
+                        "in": "formData",
+                        "required": true,
+                        "description": "Crypto address"
+                    },
+                    {
+                        "type": "string",
+                        "name": "amount",
+                        "in": "formData",
+                        "required": true,
+                        "description": "Amount of cryptocurrency you want to withdraw"
+                    },
+                    {
+                        "type": "string",
+                        "name": "commission",
+                        "in": "formData",
+                        "required": true,
+                        "description": "Amount of cryptocurrency you want to spend as network fee. If not sent -     default commission will be used"
+                    },
+                    {
+                        "type": "string",
+                        "name": "currency",
+                        "in": "formData",
+                        "required": true,
+                        "description": "Cryptocurrency name"
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/DSXCryptoWithdrawReturn"
+                        }
+                    }
+                }
+            }
+        },
+        "/dwapi/v2/withdraw/fiat": {
+            "post": {
+                "description": "This method provides preparing for submitting crypto withdraw All parameters are obligatory\n(ie. none may be null)",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Sign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "amount",
+                        "in": "formData",
+                        "required": true,
+                        "description": "Amount of fiat you want to withdraw"
+                    },
+                    {
+                        "type": "string",
+                        "name": "currency",
+                        "in": "formData",
+                        "required": true,
+                        "description": "Fiat currency name"
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/DSXFiatWithdrawReturn"
+                        }
+                    }
+                }
+            }
+        },
+        "/dwapi/v2/withdraw/submit": {
+            "post": {
+                "description": "This method provides submitting withdraw by transactionId, which we got from crypto or fiat\nwithdraw All parameters are obligatory (ie. none may be null)",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Sign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "transactionId",
+                        "in": "formData",
+                        "required": true,
+                        "description": "Id of transaction which you want to submit"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/DSXTransactionReturn"
+                        }
+                    }
+                }
+            }
+        },
+        "/mapi/depth/{pairs}": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "pairs",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "ignore_invalid",
+                        "in": "query",
+                        "required": false,
+                        "default": "1"
+                    },
+                    {
+                        "type": "string",
+                        "name": "mode",
+                        "in": "query",
+                        "required": false,
+                        "default": "LIVE"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/DSXOrderbookWrapper"
+                        }
+                    }
+                }
+            }
+        },
+        "/mapi/info": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/DSXExchangeInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/mapi/lastBars/{pairs}/{period}/{amount}": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "amount",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "pairs",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "period",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "ignore_invalid",
+                        "in": "query",
+                        "required": false,
+                        "default": "1"
+                    },
+                    {
+                        "type": "string",
+                        "name": "mode",
+                        "in": "query",
+                        "required": false,
+                        "default": "LIVE"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/DSXBarsWrapper"
+                        }
+                    }
+                }
+            }
+        },
+        "/mapi/ticker/{pairs}": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "pairs",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "ignore_invalid",
+                        "in": "query",
+                        "required": false,
+                        "default": "1"
+                    },
+                    {
+                        "type": "string",
+                        "name": "mode",
+                        "in": "query",
+                        "required": false,
+                        "default": "LIVE"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/DSXTickerWrapper"
+                        }
+                    }
+                }
+            }
+        },
+        "/mapi/trades/{pairs}": {
+            "get": {
+                "consumes": [
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "pairs",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "ignore_invalid",
+                        "in": "query",
+                        "required": false,
+                        "default": "1"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "default": "150"
+                    },
+                    {
+                        "type": "string",
+                        "name": "mode",
+                        "in": "query",
+                        "required": false,
+                        "default": "LIVE"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/DSXTradesWrapper"
+                        }
+                    }
+                }
+            }
+        },
+        "/tapi": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Sign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "amount",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "count",
+                        "in": "formData",
+                        "required": false,
+                        "description": "Number of transactions to display. Default value is 1000",
+                        "default": "1000"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "count",
+                        "in": "formData",
+                        "required": false,
+                        "description": "Number of trades to display",
+                        "default": "1000"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "count",
+                        "in": "formData",
+                        "required": false,
+                        "description": "Number of orders to display",
+                        "default": "1000"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "end",
+                        "in": "formData",
+                        "required": true,
+                        "description": "Time to which start selecting trades by trade time(UNIX time). If this value is not     null order will become «asc»"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "end",
+                        "in": "formData",
+                        "required": true,
+                        "description": "Time to which start selecting transaction by transaction time(UNIX time). If this     value is not null order will become «ASK»"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "end",
+                        "in": "formData",
+                        "required": true,
+                        "description": "Time to which start selecting orders by trade time(UNIX time). If this value is not     null order will become «asc»."
+                    },
+                    {
+                        "type": "integer",
+                        "name": "end_id",
+                        "in": "formData",
+                        "required": true,
+                        "description": "ID of the last transaction of the selection"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "end_id",
+                        "in": "formData",
+                        "required": true,
+                        "description": "ID of the last order of the selection"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "end_id",
+                        "in": "formData",
+                        "required": true,
+                        "description": "ID of the last trade of the selection"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "from",
+                        "in": "formData",
+                        "required": true,
+                        "description": "ID of the first transaction of the selection"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "from",
+                        "in": "formData",
+                        "required": true,
+                        "description": "ID of the first trade of the selection"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "from",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "from_id",
+                        "in": "formData",
+                        "required": true,
+                        "description": "ID of the first transaction of the selection"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "from_id",
+                        "in": "formData",
+                        "required": true,
+                        "description": "ID of the first order of the selection"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "from_id",
+                        "in": "formData",
+                        "required": true,
+                        "description": "ID of the first trade of the selection"
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "order",
+                        "in": "formData",
+                        "required": true,
+                        "description": "Order in which transactions shown. Possible values: «asc» — from first to last,     «desc» — from last to first. Default value is «DESK»"
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "order",
+                        "in": "formData",
+                        "required": true,
+                        "description": "Order in which orders shown. Possible values: «asc» — from first to last, «desc» —     from last to first. Default value is «desc»"
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "order",
+                        "in": "formData",
+                        "required": true,
+                        "description": "Order in which transactions shown. Possible values: «asc» — from first to last,     «desc» — from last to first. Default value is «desc»"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "order_id",
+                        "in": "formData",
+                        "required": true,
+                        "description": "Id of order to cancel"
+                    },
+                    {
+                        "type": "string",
+                        "name": "pair",
+                        "in": "formData",
+                        "required": true,
+                        "description": "Currency pair."
+                    },
+                    {
+                        "type": "string",
+                        "name": "pair",
+                        "in": "formData",
+                        "required": true,
+                        "description": "Currency pair"
+                    },
+                    {
+                        "type": "string",
+                        "name": "pair",
+                        "in": "formData",
+                        "required": true,
+                        "description": "the pair to display the orders eg. btcusd"
+                    },
+                    {
+                        "type": "string",
+                        "name": "pair",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "rate",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "since",
+                        "in": "formData",
+                        "required": true,
+                        "description": "Time from which start selecting transaction by transaction time(UNIX time). If     this value is not null order will become «ASK»"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "since",
+                        "in": "formData",
+                        "required": true,
+                        "description": "Time from which start selecting orders by trade time(UNIX time). If this value is     not null order will become «asc»."
+                    },
+                    {
+                        "type": "integer",
+                        "name": "since",
+                        "in": "formData",
+                        "required": true,
+                        "description": "Time from which start selecting trades by trade time(UNIX time). If this value is     not null order will become «asc»"
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "buy",
+                            "sell"
+                        ],
+                        "name": "type",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/DSXCancelOrderReturn"
+                        }
+                    }
+                },
+                "deprecated": true
+            }
+        },
+        "/tapi/v2/fees": {
+            "post": {
+                "description": "This method provides fees for current user",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Sign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/DSXFeesReturn"
+                        }
+                    }
+                }
+            }
+        },
+        "/tapi/v2/history/orders": {
+            "post": {
+                "description": "This method provides information about user orders history. All parameters are nullable",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Sign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "count",
+                        "in": "formData",
+                        "required": false,
+                        "description": "Number of orders to display",
+                        "default": "1000"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "end",
+                        "in": "formData",
+                        "required": true,
+                        "description": "Time to which start selecting orders by trade time(UNIX time). If this value is not     null order will become \"asc\"."
+                    },
+                    {
+                        "type": "integer",
+                        "name": "endId",
+                        "in": "formData",
+                        "required": true,
+                        "description": "ID of the last order of the selection"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "fromId",
+                        "in": "formData",
+                        "required": true,
+                        "description": "ID of the first order of the selection"
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "order",
+                        "in": "formData",
+                        "required": true,
+                        "description": "Order in which orders shown. Possible values: \"asc\" — from first to last, \"desc\" —     from last to first. Default value is \"desc\""
+                    },
+                    {
+                        "type": "string",
+                        "name": "pair",
+                        "in": "formData",
+                        "required": true,
+                        "description": "Currency pair."
+                    },
+                    {
+                        "type": "integer",
+                        "name": "since",
+                        "in": "formData",
+                        "required": true,
+                        "description": "Time from which start selecting orders by trade time(UNIX time). If this value is     not null order will become \"asc\"."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/DSXOrderHistoryReturn"
+                        }
+                    }
+                }
+            }
+        },
+        "/tapi/v2/history/trades": {
+            "post": {
+                "description": "This method provides information about user trades history. All parameters are nullable",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Sign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "count",
+                        "in": "formData",
+                        "required": false,
+                        "description": "Number of trades to display",
+                        "default": "1000"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "end",
+                        "in": "formData",
+                        "required": true,
+                        "description": "Time to which start selecting trades by trade time(UNIX time). If this value is not     null order will become \"asc\""
+                    },
+                    {
+                        "type": "integer",
+                        "name": "endId",
+                        "in": "formData",
+                        "required": true,
+                        "description": "ID of the last trade of the selection"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "fromId",
+                        "in": "formData",
+                        "required": true,
+                        "description": "ID of the first trade of the selection"
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "order",
+                        "in": "formData",
+                        "required": true,
+                        "description": "Order in which trades are displayed. Possible values: \"asc\" — from first to last,     \"desc\" — from last to first. Default value is \"desc\""
+                    },
+                    {
+                        "type": "string",
+                        "name": "pair",
+                        "in": "formData",
+                        "required": true,
+                        "description": "Currency pair"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "since",
+                        "in": "formData",
+                        "required": true,
+                        "description": "Time from which start selecting trades by trade time(UNIX time). If this value is     not null order will become \"asc\""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/DSXTradeHistoryReturn"
+                        }
+                    }
+                }
+            }
+        },
+        "/tapi/v2/history/transactions": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Sign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "count",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "currency",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "end",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "endId",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "fromId",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "order",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "since",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "Completed",
+                            "Failed",
+                            "Processing",
+                            "Rejected",
+                            "reserved0"
+                        ],
+                        "name": "status",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "Incoming",
+                            "Withdraw"
+                        ],
+                        "name": "type",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/DSXTransHistoryReturn"
+                        }
+                    }
+                }
+            }
+        },
+        "/tapi/v2/info/account": {
+            "post": {
+                "description": "This method provides information about user balance, server time, active orders count, rights\nof the currently used keys.",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Sign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/DSXAccountInfoReturn"
+                        }
+                    }
+                }
+            }
+        },
+        "/tapi/v2/order/cancel": {
+            "post": {
+                "description": "This method provides cancelling active order operation. All parameters are obligatory (ie. none\nmay be null)",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Sign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "orderId",
+                        "in": "formData",
+                        "required": true,
+                        "description": "Id of order to cancel"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/DSXCancelOrderReturn"
+                        }
+                    }
+                }
+            }
+        },
+        "/tapi/v2/order/cancel/all": {
+            "post": {
+                "description": "This method provides cancelling all active order operation",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Sign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/DSXCancelAllOrdersReturn"
+                        }
+                    }
+                }
+            }
+        },
+        "/tapi/v2/order/new": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Sign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "limit",
+                            "market"
+                        ],
+                        "name": "orderType",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "pair",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "rate",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "buy",
+                            "sell"
+                        ],
+                        "name": "type",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "volume",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/DSXTradeReturn"
+                        }
+                    }
+                }
+            }
+        },
+        "/tapi/v2/order/status": {
+            "post": {
+                "description": "This method provides order status and related deals to order All parameters are obligatory (ie.\nnone may be null)",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Sign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "orderId",
+                        "in": "formData",
+                        "required": true,
+                        "description": "Id of order to show status"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/DSXOrderStatusReturn"
+                        }
+                    }
+                }
+            }
+        },
+        "/tapi/v2/orders": {
+            "post": {
+                "description": "This method provides information about active user orders. All parameters are obligatory (ie.\nnone may be null)",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Sign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "pair",
+                        "in": "formData",
+                        "required": true,
+                        "description": "the pair to display the orders eg. btcusd"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/DSXActiveOrdersReturn"
+                        }
+                    }
+                }
+            }
+        },
+        "/tapi/v2/volume": {
+            "post": {
+                "description": "This method provides trading volume for user",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "Sign",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "nonce",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/DSXVolumeReturn"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "BigDecimal": {
+            "properties": {
+            }
+        },
+        "DSXAccountInfoReturn": {
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "returnValue": {
+                    "type": "object"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "DSXActiveOrdersReturn": {
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "returnValue": {
+                    "type": "object"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "DSXBar": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "close": {
+                    "type": "number"
+                },
+                "high": {
+                    "type": "number"
+                },
+                "low": {
+                    "type": "number"
+                },
+                "open": {
+                    "type": "number"
+                },
+                "timestamp": {
+                    "type": "integer"
+                }
+            }
+        },
+        "DSXBarsWrapper": {
+            "properties": {
+                "bars": {
+                    "$ref": "#/definitions/DSXBar"
+                },
+                "barsMap": {
+                    "type": "object"
+                }
+            }
+        },
+        "DSXCancelAllOrdersReturn": {
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "returnValue": {
+                    "type": "object"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "DSXCancelOrderReturn": {
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "returnValue": {
+                    "type": "object"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "DSXCryptoDepositAddressReturn": {
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "returnValue": {
+                    "type": "object"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "DSXCryptoWithdrawReturn": {
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "returnValue": {
+                    "type": "object"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "DSXExchangeInfo": {
+            "properties": {
+                "pairs": {
+                    "type": "object"
+                },
+                "serverTime": {
+                    "type": "integer"
+                }
+            }
+        },
+        "DSXFeesReturn": {
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "returnValue": {
+                    "type": "object"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "DSXFiatWithdrawReturn": {
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "returnValue": {
+                    "type": "object"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "DSXOrderHistoryReturn": {
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "returnValue": {
+                    "type": "object"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "DSXOrderStatusReturn": {
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "returnValue": {
+                    "type": "object"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "DSXOrderbook": {
+            "properties": {
+                "asks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/BigDecimal"
+                    }
+                },
+                "bids": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/BigDecimal"
+                    }
+                },
+                "marketBuyPrice": {
+                    "type": "number"
+                },
+                "marketSellPrice": {
+                    "type": "number"
+                }
+            }
+        },
+        "DSXOrderbookWrapper": {
+            "properties": {
+                "orderbook": {
+                    "$ref": "#/definitions/DSXOrderbook"
+                },
+                "orderbookMap": {
+                    "type": "object"
+                }
+            }
+        },
+        "DSXTicker": {
+            "properties": {
+                "avg": {
+                    "type": "number"
+                },
+                "buy": {
+                    "type": "number"
+                },
+                "high": {
+                    "type": "number"
+                },
+                "last": {
+                    "type": "number"
+                },
+                "low": {
+                    "type": "number"
+                },
+                "pair": {
+                    "type": "string"
+                },
+                "sell": {
+                    "type": "number"
+                },
+                "updated": {
+                    "type": "integer"
+                },
+                "vol": {
+                    "type": "number"
+                },
+                "volCur": {
+                    "type": "number"
+                }
+            }
+        },
+        "DSXTickerWrapper": {
+            "properties": {
+                "ticker": {
+                    "$ref": "#/definitions/DSXTicker"
+                },
+                "tickerMap": {
+                    "type": "object"
+                }
+            }
+        },
+        "DSXTrade": {
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "tid": {
+                    "type": "integer"
+                },
+                "tradeType": {
+                    "type": "string"
+                }
+            }
+        },
+        "DSXTradeHistoryReturn": {
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "returnValue": {
+                    "type": "object"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "DSXTradeReturn": {
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "returnValue": {
+                    "type": "object"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "DSXTradesWrapper": {
+            "properties": {
+                "trades": {
+                    "$ref": "#/definitions/DSXTrade"
+                },
+                "tradesMap": {
+                    "type": "object"
+                }
+            }
+        },
+        "DSXTransHistoryReturn": {
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "returnValue": {
+                    "type": "object"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "DSXTransactionReturn": {
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "returnValue": {
+                    "type": "object"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "DSXTransactionStatusReturn": {
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "returnValue": {
+                    "type": "object"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "DSXVolumeReturn": {
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "returnValue": {
+                    "type": "object"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        }
+    }
+}
