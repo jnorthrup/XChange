@@ -79,7 +79,9 @@
                                         <artifactDescription>${exchangeName}</artifactDescription>
                                         <interfaceOnly>true</interfaceOnly>
                                     </configOptions>
-                                    <typeMappings><typeMapping>integer=java.math.BigInteger</typeMapping></typeMappings>
+                                    <typeMappings>
+                                        <typeMapping>integer=java.math.BigInteger</typeMapping>
+                                    </typeMappings>
                                 </configuration>
                             </execution>
                         </executions>
@@ -98,80 +100,8 @@
                                 <configuration>
                                     <target>
                                         <move todir="${project.build.directory}/generated-sources">
-                                            <fileset dir="${project.build.directory}/generated-sources/swagger/src/gen"/>
-                                        </move>
-                                        <!--<move todir="${project.build.directory}/generated-test-sources">-->
-                                            <!--<fileset dir="${project.build.directory}/generated-sources/swagger/src/test"/>-->
-                                        <!--</move>-->
-                                    </target>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-
-        </profile>
-        <profile>
-            <id>mvsrc</id>
-            <activation>
-                <file>
-                    <exists>${project.build.directory}/generated-sources/swagger/src/main/java</exists>
-                </file>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-antrun-plugin</artifactId>
-                        <version>1.8</version>
-                        <executions>
-                            <execution>
-                                <phase>generate-sources</phase>
-                                <id>move-broken-src</id>
-                                <goals>
-                                    <goal>run</goal>
-                                </goals>
-                                <configuration>
-                                    <target>
-                                        <move todir="${project.build.directory}/generated-sources/">
                                             <fileset
-                                                    dir="${project.build.directory}/generated-sources/swagger/src/main"/>
-                                        </move>
-                                    </target>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>mvtest</id>
-            <activation>
-                <file>
-                    <exists>${project.build.directory}/generated-sources/swagger/src/test/java</exists>
-                </file>
-
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-antrun-plugin</artifactId>
-                        <version>1.8</version>
-                        <executions>
-                            <execution>
-                                <phase>generate-sources</phase>
-                                <id>move-broken-test</id>
-                                <goals>
-                                    <goal>run</goal>
-                                </goals>
-                                <configuration>
-                                    <target>
-                                        <move todir="${project.build.directory}/generated-test-sources/">
-                                            <fileset
-                                                    dir="${project.build.directory}/generated-sources/swagger/src/test"/>
+                                                    dir="${project.build.directory}/generated-sources/swagger/src/gen"/>
                                         </move>
                                     </target>
                                 </configuration>
@@ -211,7 +141,27 @@
             <version>1.1.0.Final</version>
         </dependency>
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <!--   <executions>
+                       <execution>
+                           <phase>compile</phase>
 
+                       </execution>
+                   </executions> -->
+                <configuration>
+                    <compileSourceRoots>
+                        <sourceRoot>${project.basedir}/src/main/java</sourceRoot>
+                        <sourceRoot>${project.build.directory}/generated-sources/java</sourceRoot>
+                    </compileSourceRoots>
+                    <!--<generatedSourcesDirectory>${project.build.directory}/generated-sources/java</generatedSourcesDirectory>&lt;!&ndash;&ndash;&gt;-->
+                </configuration>
+
+            </plugin>
+        </plugins>
+    </build>
     <properties>
         <java.version>1.8</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
@@ -223,9 +173,11 @@
         <maven-plugin-version>1.0.0</maven-plugin-version>
         <junit-version>4.12</junit-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!--<gen-package>${project.parent.groupId}</gen-package>--><gen-package>org.knowm.xchange</gen-package>
+        <!--<gen-package>${project.parent.groupId}</gen-package>-->
+        <gen-package>org.knowm.xchange</gen-package>
         <commons-codec.version>1.11</commons-codec.version>
-        <rebuild.sentinel>${project.build.directory}/generated-sources/swagger/.swagger-codegen/VERSION</rebuild.sentinel>
+        <rebuild.sentinel>${project.build.directory}/generated-sources/swagger/.swagger-codegen/VERSION
+        </rebuild.sentinel>
         <toxic.test.include>${project.build.directory}/generated-sources/swagger/src/test</toxic.test.include>
         <exchangeName>idexjaxrs</exchangeName>
     </properties>

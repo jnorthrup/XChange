@@ -28,7 +28,7 @@
         <version.commons.io>2.6</version.commons.io>
         <version.commons.lang3>3.7</version.commons.lang3>
         <version.fasterxml>2.9.5</version.fasterxml>
-        <version.github.mmazi>2.0.2</version.github.mmazi>
+        <version.github.mmazi>2.0.3-SNAPSHOT</version.github.mmazi>
         <version.junit>4.12</version.junit>
         <version.knowm.xchart>3.5.1</version.knowm.xchart>
         <version.powermock>1.7.3</version.powermock>
