@@ -393,6 +393,11 @@
             <artifactId>xchange-zaif</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.knowm.xchange</groupId>
+            <artifactId>xchange-idex</artifactId>
+            <version>4.3.4-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 </project>

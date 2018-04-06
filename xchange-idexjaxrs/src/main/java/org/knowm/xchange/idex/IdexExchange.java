@@ -94,9 +94,4 @@ public class IdexExchange extends BaseExchange {
     };
   }
 
-  public static void main(String[] args) throws IOException {
-    Exchange exchange = ExchangeFactory.INSTANCE.createExchange(IdexExchange.class);
-    Ticker ticker = exchange.getMarketDataService().getTicker(new CurrencyPair("OMG", "ETH"));
-    System.out.println(ticker);
-  }
 }
