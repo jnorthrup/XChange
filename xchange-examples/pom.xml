@@ -395,8 +395,8 @@
         </dependency>
         <dependency>
             <groupId>org.knowm.xchange</groupId>
-            <artifactId>xchange-idex</artifactId>
-            <version>4.3.4-SNAPSHOT</version>
+            <artifactId>xchange-idexjaxrs</artifactId>
+            <version>4.3.6-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

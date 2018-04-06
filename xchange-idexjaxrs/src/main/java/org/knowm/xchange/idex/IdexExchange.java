@@ -1,10 +1,7 @@
 package org.knowm.xchange.idex;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 import org.knowm.xchange.BaseExchange;
-import org.knowm.xchange.Exchange;
-import org.knowm.xchange.ExchangeFactory;
 import org.knowm.xchange.ExchangeSpecification;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.marketdata.OrderBook;
@@ -60,21 +57,26 @@ public class IdexExchange extends BaseExchange {
         Ticker ret = null;
         try {
           Market market = new Market();
-          ReturnTickerResponse ticker =
-              proxy.ticker(
-                  market.market(
-                      currencyPair.counter.getSymbol() + "_" + currencyPair.base.getSymbol()));
+          String market1 = currencyPair.base.getSymbol() + "_" + currencyPair.counter.getSymbol();
+          Market market2 = market.market(market1);
+          ReturnTickerResponse ticker = proxy.ticker(market2);
 
           System.err.println(ticker.toString());
+          BigDecimal last = safeParse(ticker.getLast());
+          BigDecimal ask = safeParse(ticker.getLowestAsk());
+          BigDecimal bid = safeParse(ticker.getHighestBid());
+          BigDecimal volume = safeParse(ticker.getBaseVolume());
+          BigDecimal high = safeParse(ticker.getHigh());
+          BigDecimal low = safeParse(ticker.getLow());
           ret =
               new Builder()
                   .currencyPair(currencyPair)
-                  .last(new BigDecimal(ticker.getLast()))
-                  .ask(new BigDecimal(ticker.getLowestAsk()))
-                  .bid(new BigDecimal(ticker.getHighestBid()))
-                  .volume(new BigDecimal(ticker.getBaseVolume()))
-                  .high(new BigDecimal(ticker.getHigh()))
-                  .low(new BigDecimal(ticker.getLow()))
+                  .last(last)
+                  .ask(ask)
+                  .bid(bid)
+                  .volume(volume)
+                  .high(high)
+                  .low(low)
                   .build() /*incomplete*/;
         } catch (Exception e) {
           e.printStackTrace();
@@ -94,4 +96,12 @@ public class IdexExchange extends BaseExchange {
     };
   }
 
+  public static BigDecimal safeParse(String s) {
+    try {
+      return new BigDecimal(s);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return null;
+  }
 }

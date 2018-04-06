@@ -99,9 +99,12 @@
                                 </goals>
                                 <configuration>
                                     <target>
-                                        <move todir="${project.build.directory}/generated-sources">
+                                        <replace token= "@Valid " value="/*@/Valid */ " dir="${generated-origin}">
+                                            <include name="**/*.java"/>
+                                        </replace>
+                                        <move todir="${generated-sources}">
                                             <fileset
-                                                    dir="${project.build.directory}/generated-sources/swagger/src/gen"/>
+                                                    dir="${generated-origin}"/>
                                         </move>
                                     </target>
                                 </configuration>
@@ -118,6 +121,7 @@
             <artifactId>xchange-core</artifactId>
             <version>4.3.6-SNAPSHOT</version>
         </dependency>
+
         <dependency>
             <groupId>io.swagger</groupId>
             <artifactId>swagger-annotations</artifactId>
@@ -154,7 +158,7 @@
                 <configuration>
                     <compileSourceRoots>
                         <sourceRoot>${project.basedir}/src/main/java</sourceRoot>
-                        <sourceRoot>${project.build.directory}/generated-sources/java</sourceRoot>
+                        <sourceRoot>${generated-sources}/java</sourceRoot>
                     </compileSourceRoots>
                     <!--<generatedSourcesDirectory>${project.build.directory}/generated-sources/java</generatedSourcesDirectory>&lt;!&ndash;&ndash;&gt;-->
                 </configuration>
@@ -176,10 +180,12 @@
         <!--<gen-package>${project.parent.groupId}</gen-package>-->
         <gen-package>org.knowm.xchange</gen-package>
         <commons-codec.version>1.11</commons-codec.version>
-        <rebuild.sentinel>${project.build.directory}/generated-sources/swagger/.swagger-codegen/VERSION
+        <rebuild.sentinel>${generated-sources}/swagger/.swagger-codegen/VERSION
         </rebuild.sentinel>
-        <toxic.test.include>${project.build.directory}/generated-sources/swagger/src/test</toxic.test.include>
+        <toxic.test.include>${generated-sources}/swagger/src/test</toxic.test.include>
         <exchangeName>idexjaxrs</exchangeName>
+        <generated-sources>${project.build.directory}/generated-sources</generated-sources>
+        <generated-origin>${generated-sources}/swagger/src/gen</generated-origin>
     </properties>
 
 </project>
