@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -35,7 +36,6 @@
         <version.qos.logback>1.2.3</version.qos.logback>
         <version.reflections>0.9.11</version.reflections>
         <version.slf4j>1.7.25</version.slf4j>
-
         <skipIntegrationTests>true</skipIntegrationTests>
         <reformat.skip>true</reformat.skip>
     </properties>
@@ -87,9 +87,9 @@
     </ciManagement>
 
     <modules>
-<!--shouldn't this always be first?-->
+        <!--shouldn't this always be first?-->
         <module>xchange-core</module>
- <!--child modules-->
+        <!--child modules-->
         <module>xchange-abucoins</module>
         <module>xchange-acx</module>
         <module>xchange-anx</module>
@@ -364,29 +364,33 @@
             <properties>
                 <additionalparam>-Xdoclint:none</additionalparam>
             </properties>
-        </profile><profile><id>extract</id>
-    <build><plugins>            <plugin>
-        <groupId>com.sebastian-daschner</groupId>
-        <artifactId>jaxrs-analyzer-maven-plugin</artifactId>
-        <version>0.17-SNAPSHOT</version>
-        <executions>
-            <execution>
-                <goals>
-                    <goal>analyze-jaxrs</goal>
-                </goals>
-                <configuration>
-                    <backend>swagger</backend>
-                    <deployedDomain>${project.artifactId}.changeme</deployedDomain>
-                </configuration>
-            </execution>
-        </executions>
-    </plugin>
-    </plugins>
-    </build></profile>
+        </profile>
+        <profile>
+            <id>extract</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.sebastian-daschner</groupId>
+                        <artifactId>jaxrs-analyzer-maven-plugin</artifactId>
+                        <version>0.17-SNAPSHOT</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>analyze-jaxrs</goal>
+                                </goals>
+                                <configuration>
+                                    <backend>swagger</backend>
+                                    <deployedDomain>${project.artifactId}.changeme</deployedDomain>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
     </profiles>
 
     <build>
-
         <plugins>
             <!-- Ensure compilation is done under Java 8 in all environments -->
             <plugin>
@@ -401,16 +405,16 @@
                 </configuration>
             </plugin>
             <!-- for deploying to Maven Central -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <version>2.5.3</version>
-                <configuration>
-                    <autoVersionSubmodules>true</autoVersionSubmodules>
-                </configuration>
-            </plugin>
+            <!--            <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-release-plugin</artifactId>
+                            <version>2.5.3</version>
+                            <configuration>
+                                <autoVersionSubmodules>true</autoVersionSubmodules>
+                            </configuration>
+                        </plugin>-->
 
-            <plugin>
+            <!--<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
                 <version>3.0.1</version>
@@ -425,8 +429,8 @@
                 <configuration>
                     <skipSource>false</skipSource>
                 </configuration>
-            </plugin>
-            <plugin>
+            </plugin>-->
+            <!--<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.0.0-M1</version>
@@ -442,12 +446,12 @@
                     <quiet>true</quiet>
                     <skip>false</skip>
                 </configuration>
-            </plugin>
+            </plugin>--><!--
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.20.1</version>
-            </plugin>
+            </plugin>-->
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -474,7 +478,7 @@
                 <version>2.4.0</version>
                 <configuration>
                     <filesNamePattern>.*\.java</filesNamePattern>
-                    <skip>false</skip>
+                    <skip>true</skip>
                 </configuration>
                 <executions>
                     <execution>
@@ -484,25 +488,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-        <groupId>com.sebastian-daschner</groupId>
-        <artifactId>jaxrs-analyzer-maven-plugin</artifactId>
-        <version>0.17-SNAPSHOT</version>
-        <executions>
-            <execution>
-                <goals>
-                    <goal>analyze-jaxrs</goal>
-                </goals>
-                <configuration>
-                    <renderSwaggerTags>true</renderSwaggerTags>
-                    <inlinePrettify>true</inlinePrettify>
-                    <swaggerTagsPathOffset>0</swaggerTagsPathOffset>
-                    <backend>swagger</backend>
-                    <deployedDomain>${project.artifactId}.changeme</deployedDomain>
-                </configuration>
-            </execution>
-        </executions>
-    </plugin>
         </plugins>
     </build>
 

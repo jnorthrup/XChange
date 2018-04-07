@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -149,7 +150,7 @@ public class KucoinAdapters {
       List<KucoinTicker> tickers, List<KucoinCoin> coins) {
 
     Map<String, KucoinCoin> coinMap =
-        coins.stream().collect(Collectors.toMap(c -> c.getCoin(), c -> c));
+        coins.stream().collect(Collectors.toMap(c -> c.getCoin(), Function.identity()));
     Map<CurrencyPair, CurrencyPairMetaData> pairMeta = adaptCurrencyPairMap(tickers, coinMap);
     Map<Currency, CurrencyMetaData> coinMeta = adaptCurrencyMap(coins);
     return new ExchangeMetaData(pairMeta, coinMeta, null, null, null);

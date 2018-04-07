@@ -3,6 +3,7 @@ package org.knowm.xchange.hitbtc.v2.service;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -32,7 +33,7 @@ public class HitbtcMarketDataServiceRaw extends HitbtcBaseService {
         .stream()
         .collect(
             Collectors.toMap(
-                hitbtcTicker -> hitbtcTicker.getSymbol(), hitbtcTicker -> hitbtcTicker));
+                hitbtcTicker -> hitbtcTicker.getSymbol(), Function.identity()));
   }
 
   public HitbtcTicker getHitbtcTicker(CurrencyPair currencyPair) throws IOException {
