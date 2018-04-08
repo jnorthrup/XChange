@@ -3,9 +3,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <parent>
-        <groupId>org.github.jnorthrup.XChange</groupId>
+        <groupId>org.knowm.xchange</groupId>
         <artifactId>xchange-parent</artifactId>
-        <version>4.3.5-SNAPSHOT</version>
+        <version>4.3.4-SNAPSHOT</version>
     </parent>
     <dependencyManagement>
         <dependencies>
@@ -18,9 +18,9 @@
                 <type>pom</type>
             </dependency>
             <dependency>
-                <groupId>org.github.jnorthrup.XChange</groupId>
-                <artifactId>xchange-all</artifactId>
-                <version>4.3.5-SNAPSHOT</version>
+                <groupId>${project.parent.groupId}</groupId>
+                <artifactId>xchange-core</artifactId>
+                <version>${project.parent.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -33,14 +33,6 @@
         <profile>
             <id>regenerate</id>
             <activation><file><missing>${rebuild.sentinel}</missing></file></activation>
-
-            <repositories>
-                <repository>
-                    <id>jitpack.io</id>
-                    <url>https://jitpack.io</url>
-                </repository>
-            </repositories>
-
             <build>
                 <plugins>
                     <plugin>
@@ -54,8 +46,7 @@
                                 </goals>
                                 <configuration>
                                     <language>java</language>
-                                    <inputSpec>${project.basedir}/src/main/swagger/${exchangeName}.yaml
-                                    </inputSpec>                                    <!--&lt;!&ndash;<configHelp>true</configHelp>&ndash;&gt;-->
+                                    <inputSpec>${project.basedir}/src/main/swagger/${exchangeName}.yaml</inputSpec>                                    <!--&lt;!&ndash;<configHelp>true</configHelp>&ndash;&gt;-->
                                     <configOptions>
                                         <apiPackage>${gen-package}.${exchangeName}.service</apiPackage>
                                         <modelPackage>${gen-package}.${exchangeName}.dto</modelPackage>
@@ -71,9 +62,7 @@
                                         <artifactVersion>${project.parent.version}</artifactVersion>
                                         <artifactDescription>${exchangeName}</artifactDescription>
                                     </configOptions>
-                                    <typeMappings>
-                                        <typeMapping>integer=java.math.BigInteger</typeMapping>
-                                    </typeMappings>
+                                    <typeMappings><typeMapping>integer=java.math.BigInteger</typeMapping></typeMappings>
                                 </configuration>
                             </execution>
                         </executions>
@@ -84,19 +73,15 @@
                         <version>1.8</version>
                         <executions>
                             <execution>
-                                <phase>generate-sources</phase>
-                                <id>move-broken-src</id>
+                                <phase>install</phase>
                                 <goals>
                                     <goal>run</goal>
                                 </goals>
                                 <configuration>
                                     <target>
-                                        <move todir="${project.build.directory}/generated-sources">
-                                            <fileset dir="${project.build.directory}/generated-sources/swagger/src/main"/>
-                                        </move>
-                                        <move todir="${project.build.directory}/generated-test-sources">
-                                            <fileset dir="${project.build.directory}/generated-sources/swagger/src/test"/>
-                                        </move>
+                                        <delete
+                                                dir="${toxic.test.include}"
+                                                includeemptydirs="true"/>
                                     </target>
                                 </configuration>
                             </execution>
@@ -104,14 +89,12 @@
                     </plugin>
                 </plugins>
             </build>
-
         </profile>
     </profiles>
     <dependencies>
         <dependency>
-            <groupId>org.github.jnorthrup.XChange</groupId>
-            <artifactId>xchange-all</artifactId>
-            <version>4.3.5-SNAPSHOT</version>
+            <groupId>org.knowm.xchange</groupId>
+            <artifactId>xchange-core</artifactId>
         </dependency>
         <dependency>
             <groupId>commons-codec</groupId>
@@ -177,10 +160,10 @@
                             <goal>compile</goal>
                         </goals>
                         <configuration>
-                            <!--sourceDirs>
+                            <sourceDirs>
                                 <source>target/generated-sources/swagger/src/main/java</source>
                                 <source>src/main/java</source>
-                            </sourceDirs-->
+                            </sourceDirs>
                         </configuration>
                     </execution>
                     <execution>
@@ -229,12 +212,11 @@
         <maven-plugin-version>1.0.0</maven-plugin-version>
         <junit-version>4.12</junit-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!--<gen-package>${project.parent.groupId}</gen-package>-->
-        <gen-package>org.knowm.xchange</gen-package>
-        <kotlin.version>1.2.31</kotlin.version>
+        <gen-package>${project.parent.groupId}</gen-package>
+        <kotlin.version>1.2.21</kotlin.version>
         <commons-codec.version>1.11</commons-codec.version>
-        <rebuild.sentinel>${project.build.directory}/generated-sources/swagger/.swagger-codegen/VERSION</rebuild.sentinel>
-        <toxic.test.include>${project.build.directory}/generated-sources/swagger/src/test</toxic.test.include>
+        <rebuild.sentinel>target/generated-sources/swagger/pom.xml</rebuild.sentinel>
+        <toxic.test.include>${build.directory}/generated-sources/swagger/src/test</toxic.test.include>
         <exchangeName>huobipro</exchangeName>
     </properties>
 

@@ -19,7 +19,7 @@ in bash, (not windows bash) run [`bin/bootstrap`](bin/bootstrap) (ssd helps)
 
 ```bash
 git clone git@github.com:jnorthrup/XChange.git
-git clone XChange -b Xpolyglot  Xpolyglot
+git clone XChange -b Xpolyglot  jaxrs
 cd Xpolyglot
 ```
 
@@ -70,7 +70,7 @@ e.g. as of this writing this branch uses (subject to change, but a guideline)
     <dependency>
      <groupId>com.github.jnorthrup.XChange</groupId>
      <artifactId>xchange-all</artifactId>
-     <version>4.3.5-SNAPSHOT</version>
+     <version>4.3.6-SNAPSHOT</version>
     </dependency>
 
 ```
