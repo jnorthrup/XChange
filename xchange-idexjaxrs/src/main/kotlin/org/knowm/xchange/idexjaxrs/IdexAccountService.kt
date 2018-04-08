@@ -4,7 +4,7 @@ import org.knowm.xchange.currency.Currency
 import org.knowm.xchange.dto.account.*
 import org.knowm.xchange.idexjaxrs.dto.*
 import org.knowm.xchange.idexjaxrs.service.*
-import org.knowm.xchange.idexjaxrs.util.*
+
 import org.knowm.xchange.service.account.*
 import org.knowm.xchange.service.trade.params.*
 import java.math.*
@@ -17,8 +17,8 @@ class IdexAccountService(private val idexjaxrsExchange: IdexjaxrsExchange) : Acc
     init {
 
         if (IdexjaxrsExchange.debugMe) {
-            apiClient = ApiClient()
-            IdexjaxrsExchange.setupDebug(apiClient)
+//            apiClient = ApiClient()
+//            IdexjaxrsExchange.setupDebug(apiClient)
         }
     }
 

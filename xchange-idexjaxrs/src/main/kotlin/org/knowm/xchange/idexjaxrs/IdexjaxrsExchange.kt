@@ -77,6 +77,11 @@ class IdexjaxrsExchange : Exchange, BaseExchange() {
 
         val gson by lazy { JSON().gson }
 
+        class JSON {
+            val gson: Any ?= null
+
+        }
+
         /**
          * if you need to debug the REST api calls use -DXChangeDebug=true
          */
@@ -85,7 +90,11 @@ class IdexjaxrsExchange : Exchange, BaseExchange() {
 
         fun setupDebug(apiClient: ApiClient) {
             val element = debugInterceptor
-            apiClient.httpClient.interceptors().add(debugInterceptor)
+//            apiClient.httpClient.interceptors().add(debugInterceptor)
+        }
+
+        class ApiClient {
+
         }
 
         val debugInterceptor by lazy {
