@@ -20,14 +20,14 @@
         </dependency>
     </dependencies>
     <parent>
-        <groupId>org.github.jnorthrup.XChange</groupId>
+        <groupId>org.knowm.xchange</groupId>
         <artifactId>xchange-parent</artifactId>
-        <version>4.3.5-SNAPSHOT</version>
+        <version>4.3.6-SNAPSHOT</version>
     </parent>
 
-    <artifactId>xchange-all</artifactId>
+    <artifactId>xchange-core</artifactId>
 
-    <name>XChange Speedball</name>
+    <name>XChange Core</name>
     <description>Core functionality used by all other modules.</description>
 
     <url>http://knowm.org/open-source/xchange/</url>
@@ -37,17 +37,11 @@
         <name>Knowm Inc.</name>
         <url>http://knowm.org/open-source/xchange/</url>
     </organization>
-    <repositories>
-        <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </repository>
-    </repositories>
 
-<!--    &lt;!&ndash; Parent provides default configuration for dependencies &ndash;&gt;
+    <!-- Parent provides default configuration for dependencies -->
     <dependencies>
 
-        &lt;!&ndash; Third party dependencies &ndash;&gt;
+        <!-- Third party dependencies -->
 
         <dependency>
             <groupId>com.github.mmazi</groupId>
@@ -65,11 +59,5 @@
             <artifactId>commons-lang3</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.7</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>-->
+    </dependencies>
 </project>
