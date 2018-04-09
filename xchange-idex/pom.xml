@@ -223,7 +223,7 @@
         <junit-version>4.12</junit-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <gen-package>${project.parent.groupId}</gen-package>
-        <kotlin.version>1.2.21</kotlin.version>
+        <kotlin.version>1.2.31</kotlin.version>
         <commons-codec.version>1.11</commons-codec.version>
         <rebuild.sentinel>target/generated-sources/swagger/pom.xml</rebuild.sentinel>
         <toxic.test.include>${build.directory}/generated-sources/swagger/src/test</toxic.test.include>

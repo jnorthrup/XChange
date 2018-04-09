@@ -7,8 +7,11 @@ import org.knowm.xchange.ExchangeSpecification;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.marketdata.Ticker;
 import org.knowm.xchange.dto.marketdata.Trades;
-import org.knowm.xchange.service.account.AccountService;
+import org.knowm.xchange.idexjaxrs.dto.NextNonceReq;
+import org.knowm.xchange.idexjaxrs.dto.ReturnNextNonceResponse;
+import org.knowm.xchange.idexjaxrs.service.ReturnNextNonceApi;
 import org.knowm.xchange.service.marketdata.MarketDataService;
+import si.mazi.rescu.RestProxyFactory;
 import si.mazi.rescu.SynchronizedValueFactory;
 
 import java.io.IOException;
@@ -17,29 +20,56 @@ import java.util.Arrays;
 
 public class IdexExchange extends BaseExchange implements Exchange {
 
-    @Override
-    public AccountService getAccountService() {
-        return new IdexAccountService(this);
+    private IdexAccountService idexAccountService;
+    private IdexTradeService idexTradeService;
+    private IdexMarketDataService idexMarketDataService;
+    private ReturnNextNonceApi nextNonceApi;
+
+    public IdexExchange() {
+    }
+
+    public ReturnNextNonceApi getNextNonceApi() {
+        if (null == nextNonceApi)
+            nextNonceApi = RestProxyFactory.createProxy(ReturnNextNonceApi.class, exchangeSpecification.getSslUri());
+        return nextNonceApi;
+    }
+
+    public IdexAccountService getAccountService() {
+        if (null == idexAccountService) idexAccountService = new IdexAccountService(this);
+        return idexAccountService;
+    }
+
+    public IdexMarketDataService getMarketDataService() {
+        if (null == idexMarketDataService) idexMarketDataService = new IdexMarketDataService(this);
+        return idexMarketDataService;
+    }
+
+    public IdexTradeService getTradeService() {
+        if (null == idexTradeService) idexTradeService = new IdexTradeService(this);
+        return idexTradeService;
     }
 
     @Override
     protected void initServices() {
     }
 
-
     @Override
     public SynchronizedValueFactory<Long> getNonceFactory() {
-        return null;
+        return (SynchronizedValueFactory) () -> {
+            Long ret = null;
+            try {
+                ReturnNextNonceResponse var10000 = getNextNonceApi().nextNonce(new NextNonceReq());
+                ret = var10000.getNonce().longValue();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return ret;
+        };
     }
 
     @Override
     public ExchangeSpecification getDefaultExchangeSpecification() {
         return new Companion.IdexExchangeSpecification();
-    }
-
-    @Override
-    public MarketDataService getMarketDataService() {
-        return new IdexMarketDataService(this);
     }
 
 
@@ -70,6 +100,7 @@ public class IdexExchange extends BaseExchange implements Exchange {
             Trades trades = marketDataService.getTrades(currencyPair);
             System.err.println(Arrays.deepToString(new Object[]{trades}));
         }
+
         static class IdexExchangeSpecification extends ExchangeSpecification {
             public IdexExchangeSpecification() {
                 super(IdexExchange.class);

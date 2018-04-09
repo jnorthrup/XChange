@@ -22,7 +22,6 @@ import org.knowm.xchange.service.trade.params.WithdrawFundsParams;
 import si.mazi.rescu.RestProxyFactory;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Date;
@@ -170,13 +169,5 @@ public class IdexAccountService implements AccountService {
     }
 
 
-
-    public final class IdexTradeHistoryParams extends DepositsWithdrawalsReq implements TradeHistoryParams {
-    }
 }
 
-final class IdexWithdraw extends WithdrawReq implements WithdrawFundsParams {
-    public IdexWithdraw(@NotNull String address, @NotNull String amount, @NotNull String token, @NotNull BigInteger nonce, @NotNull String s, @NotNull BigInteger v, @NotNull String r) {
-       this.address(address).amount(amount).token(token).nonce(nonce).s(s).v(v).r(r);
-    }
-}
