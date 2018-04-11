@@ -36,7 +36,7 @@ public class IdexMarketDataService implements MarketDataService {
         Ticker ret = null;
 
         Market market = new Market();
-        String market1 = IdexExchange.Companion.cpairString(currencyPair);
+        String market1 = IdexExchange.Companion.getMarket(currencyPair);
         Market market2 = market.market(market1);
         ReturnTickerResponse ticker = null;
         try {
@@ -69,7 +69,7 @@ public class IdexMarketDataService implements MarketDataService {
         OrderBook ret = null;
         try {
             ReturnOrderBookResponse returnOrderBookResponse =
-                    proxy1.orderBook(new OrderBookReq().market(IdexExchange.Companion.cpairString(currencyPair)));
+                    proxy1.orderBook(new OrderBookReq().market(IdexExchange.Companion.getMarket(currencyPair)));
             ret =
                     new OrderBook(
                             new Date(),
@@ -114,7 +114,7 @@ public class IdexMarketDataService implements MarketDataService {
             ret =   new Trades(
                             RestProxyFactory.createProxy(
                                     ReturnTradeHistoryApi.class, idexExchange.getDefaultExchangeSpecification().getSslUri())
-                                    .tradeHistory(new TradeHistoryReq().market(IdexExchange.Companion.cpairString(currencyPair)))
+                                    .tradeHistory(new TradeHistoryReq().market(IdexExchange.Companion.getMarket(currencyPair)))
                                     .stream()
                                     .map(
                                             tradeHistoryItem -> new Trade.Builder()

@@ -283,67 +283,7 @@ paths:
       responses:
         '200':
           schema:
-            type: object
-            properties:
-              error:
-                type: string
-              orderNumber:
-                type: integer
-                title: The Ordernumber Schema
-              orderHash:
-                type: string
-                title: The Orderhash Schema
-                default: ''
-              price:
-                type: string
-                title: The Price Schema
-                default: ''
-              amount:
-                type: string
-                title: The Amount Schema
-                default: ''
-              total:
-                type: string
-                title: The Total Schema
-                default: ''
-              type:
-                $ref: '#/definitions/IdexBuySell'
-              params:
-                type: object
-                properties:
-                  tokenBuy:
-                    type: string
-                    title: The Tokenbuy Schema
-                    default: ''
-                  buyPrecision:
-                    type: integer
-                    title: The Buyprecision Schema
-                  amountBuy:
-                    type: string
-                    title: The Amountbuy Schema
-                    default: ''
-                  tokenSell:
-                    type: string
-                    title: The Tokensell Schema
-                    default: ''
-                  sellPrecision:
-                    type: integer
-                    title: The Sellprecision Schema
-                  amountSell:
-                    type: string
-                    title: The Amountsell Schema
-                    default: ''
-                  expires:
-                    type: string
-                    title: The Expires Schema
-                    default: '0'
-                  nonce:
-                    type: integer
-                    title: The Nonce Schema
-                  user:
-                    type: string
-                    title: The User Schema
-                    default: ''
+            $ref: '#/definitions/orderResponse'
   /returnCurrencies:
     post:
       tags:
@@ -565,74 +505,146 @@ definitions:
     additionalProperties:
       $ref: '#/definitions/returnOrderBookResponse'
   returnOpenOrdersResponse:
+    $id: http://example.com/example.json
     type: array
+    definitions: {}
+    $schema: http://json-schema.org/draft-07/schema#
     items:
+      $id: http://example.com/example.json/items
       type: object
       properties:
-        orderNumber:
+        timestamp:
+          $id: http://example.com/example.json/items/properties/timestamp
           type: integer
-          title: The Ordernumber Schema
+          title: 'The Timestamp Schema '
+          default: 0
+          examples:
+          - 1523265879
         orderHash:
+          $id: http://example.com/example.json/items/properties/orderHash
           type: string
-          title: The Orderhash Schema
+          title: 'The Orderhash Schema '
           default: ''
-        price:
+          examples:
+          - '0xf1ae732c76bd980609a79f44bf52119f946c19c1c50794b7225815b10625bbbb'
+        market:
+          $id: http://example.com/example.json/items/properties/market
           type: string
-          title: The Price Schema
+          title: 'The Market Schema '
           default: ''
-        amount:
-          type: string
-          title: The Amount Schema
-          default: ''
-        total:
-          type: string
-          title: The Total Schema
-          default: ''
+          examples:
+          - ETH_TAY
         type:
           $ref: '#/definitions/IdexBuySell'
+        orderNumber:
+          $id: http://example.com/example.json/items/properties/orderNumber
+          type: integer
+          title: 'The Ordernumber Schema '
+          default: 0
+          examples:
+          - 9071666
         params:
+          $id: http://example.com/example.json/items/properties/params
           type: object
           properties:
             tokenBuy:
+              $id: http://example.com/example.json/items/properties/params/properties/tokenBuy
               type: string
-              title: The Tokenbuy Schema
+              title: 'The Tokenbuy Schema '
               default: ''
+              examples:
+              - '0x0000000000000000000000000000000000000000'
             buySymbol:
+              $id: http://example.com/example.json/items/properties/params/properties/buySymbol
               type: string
-              title: The Buysymbol Schema
+              title: 'The Buysymbol Schema '
               default: ''
+              examples:
+              - ETH
             buyPrecision:
+              $id: http://example.com/example.json/items/properties/params/properties/buyPrecision
               type: integer
-              title: The Buyprecision Schema
+              title: 'The Buyprecision Schema '
+              default: 0
+              examples:
+              - 18
             amountBuy:
+              $id: http://example.com/example.json/items/properties/params/properties/amountBuy
               type: string
-              title: The Amountbuy Schema
+              title: 'The Amountbuy Schema '
               default: ''
+              examples:
+              - '1079814697731000000'
             tokenSell:
+              $id: http://example.com/example.json/items/properties/params/properties/tokenSell
               type: string
-              title: The Tokensell Schema
+              title: 'The Tokensell Schema '
               default: ''
+              examples:
+              - '0xc4d557d7877687688045b380f169e4113f'
             sellSymbol:
+              $id: http://example.com/example.json/items/properties/params/properties/sellSymbol
               type: string
-              title: The Sellsymbol Schema
+              title: 'The Sellsymbol Schema '
               default: ''
+              examples:
+              - TAY
             sellPrecision:
+              $id: http://example.com/example.json/items/properties/params/properties/sellPrecision
               type: integer
-              title: The Sellprecision Schema
+              title: 'The Sellprecision Schema '
+              default: 0
+              examples:
+              - 18
             amountSell:
+              $id: http://example.com/example.json/items/properties/params/properties/amountSell
               type: string
-              title: The Amountsell Schema
+              title: 'The Amountsell Schema '
               default: ''
+              examples:
+              - '1558330000003022702051'
             expires:
+              $id: http://example.com/example.json/items/properties/params/properties/expires
               type: integer
-              title: The Expires Schema
+              title: 'The Expires Schema '
+              default: 0
+              examples:
+              - 10000
             nonce:
+              $id: http://example.com/example.json/items/properties/params/properties/nonce
               type: integer
-              title: The Nonce Schema
+              title: 'The Nonce Schema '
+              default: 0
+              examples:
+              - 2744808260
             user:
+              $id: http://example.com/example.json/items/properties/params/properties/user
               type: string
-              title: The User Schema
+              title: 'The User Schema '
               default: ''
+              examples:
+              - '0x955e6576576576557500a16bc30eb7997518'
+        price:
+          $id: http://example.com/example.json/items/properties/price
+          type: string
+          title: 'The Price Schema '
+          default: ''
+          examples:
+          - '0.000692930699998656'
+        amount:
+          $id: http://example.com/example.json/items/properties/amount
+          type: string
+          title: 'The Amount Schema '
+          default: ''
+          examples:
+          - '1558.330000003022702051'
+        total:
+          $id: http://example.com/example.json/items/properties/total
+          type: string
+          title: 'The Total Schema '
+          default: ''
+          examples:
+          - '1.079814697731'
   TradeHistoryItem:
     $id: http://example.com/example.json
     type: object
@@ -857,6 +869,8 @@ definitions:
   orderResponse:
     type: object
     properties:
+      error:
+        type: string
       orderNumber:
         type: integer
         title: The Ordernumber Schema
@@ -875,7 +889,6 @@ definitions:
       total:
         type: string
         title: The Total Schema
-        default: ''
       type:
         $ref: '#/definitions/IdexBuySell'
       params:
@@ -884,27 +897,23 @@ definitions:
           tokenBuy:
             type: string
             title: The Tokenbuy Schema
-            default: ''
           buyPrecision:
             type: integer
             title: The Buyprecision Schema
           amountBuy:
             type: string
             title: The Amountbuy Schema
-            default: ''
           tokenSell:
             type: string
             title: The Tokensell Schema
-            default: ''
           sellPrecision:
             type: integer
             title: The Sellprecision Schema
           amountSell:
             type: string
             title: The Amountsell Schema
-            default: ''
           expires:
-            type: integer
+            type: string
             title: The Expires Schema
           nonce:
             type: integer
@@ -912,7 +921,7 @@ definitions:
           user:
             type: string
             title: The User Schema
-            default: ''
+
   tradeResponse:
     type: array
     items:
