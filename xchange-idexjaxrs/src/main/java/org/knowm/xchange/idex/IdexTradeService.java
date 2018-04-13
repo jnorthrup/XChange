@@ -2,7 +2,6 @@ package org.knowm.xchange.idex;
 
 
 import org.apache.commons.codec.binary.Hex;
-import org.knowm.xchange.Exchange;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
@@ -49,7 +48,6 @@ public class IdexTradeService implements TradeService {
 
         OpenOrders ret = null;
         try {
-
             ReturnOpenOrdersResponse openOrdersResponse = proxy.openOrders(new OpenOrdersReq().address(getIdexExchange().getExchangeSpecification().getApiKey()));
 
             ret = new OpenOrders(
@@ -122,13 +120,12 @@ public class IdexTradeService implements TradeService {
     @Override
     public void verifyOrder(MarketOrder marketOrder) {
         throw new UnsupportedOperationException("Idex API doesn't support verify order");
-
     }
 
     @Override
     public TradeHistoryParams createTradeHistoryParams() {
 
-        return null;
+        return new IdexTradeHistoryParams()   ;
     }
 
     @Override
@@ -219,13 +216,12 @@ public class IdexTradeService implements TradeService {
         return null;
     }
 
-    public Exchange getIdexExchange() {
+    public IdexExchange getIdexExchange() {
         return idexExchange;
     }
 
     public String getApiKey() {
         return getIdexExchange().getExchangeSpecification().getApiKey();
-
     }
 
 }
