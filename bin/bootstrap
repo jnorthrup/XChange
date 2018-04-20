@@ -25,7 +25,7 @@ grep -e '[</]module.*>' -e '</project>' -e 'dependencyManagement>' -v target/ori
 rm -fr xchange-*
 
  D=( $(for i in `grep -il --regexp='<name>.*{.*</name>' target/gen/xchange-*/pom.xml |grep -v bitmex` ; do echo $(dirname $i);done ) )
- cp -a ${D[*]}  .
+ cp -alf ${D[*]}  .
 
 [[ ${alreadypom}  ]] || {
 
@@ -38,10 +38,10 @@ done
 echo  '</modules>'
 echo  '</project>'
  } >>pom.xml
-cp -a target/orig/xchange-core xchange-all
+cp -alf target/orig/xchange-core xchange-all
 #as of this writing, the codebase for examples contains dead xchange artifacts that seem to never be ovrloooked by travis
 rm -fr target/orig/xchange-examples
-cp -au target/orig/xchange-*/src xchange-all/
+cp -alfu target/orig/xchange-*/src xchange-all/
 
 pushd xchange-all/src/test/
 mkdir -p ../test-integration
