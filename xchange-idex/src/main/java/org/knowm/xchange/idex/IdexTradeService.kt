@@ -65,6 +65,7 @@ class IdexTradeService(val idexExchange: IdexExchange) : TradeService, TradeApi(
         idexExchange.exchangeMetaData.currencies[baseCurrency]
         idexExchange.exchangeMetaData.currencies[counterCurrency]
 
+        throw new Error("untested, 50/50 you will lose money, awaiting testnet validation.")
 
         var c = listOf(baseCurrency,//OMG
                        counterCurrency//ETH
